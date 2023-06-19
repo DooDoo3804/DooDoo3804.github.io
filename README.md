@@ -1,4 +1,4 @@
-[DooDoo IT Blog](https://huangxuan.me)
+[DooDoo IT Blog](https://doodoo3804.github.io/)
 ================================
 
 ### Checkout the [full user manual](_doc/Manual.md)!
