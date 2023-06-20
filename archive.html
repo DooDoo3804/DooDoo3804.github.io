@@ -1,7 +1,7 @@
 ---
 title: Archive
 layout: default
-description: "「我干了什么 究竟拿了时间换了什么」"
+description: "「시간과 정신의 방...」"
 header-img: "img/bg-little-universe.jpg"
 ---
 
@@ -68,7 +68,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
 					<div class="post-preview item" data-tags="{{ _tags }}">
 						<a href="{{ _article.url | prepend: site.baseurl }}">
 							<h2 class="post-title">
-								{{ _article.title }}
+								<b>{{ _article.title }}</b>
 							</h2>
 							{% if _article.subtitle %}
 							<h3 class="post-subtitle">
@@ -76,8 +76,10 @@ https://github.com/kitian616/jekyll-TeXt-theme
 							</h3>
 							{% endif %}
 						</a>
-						<hr>
+							
+							<p class="post-meta">{{ _article.date | date: "%B %d, %Y" }}</p>
 					</div>
+					<hr>
 					{%- if forloop.last -%}
 				</section>{%- endif -%}
 				{% endfor %}
