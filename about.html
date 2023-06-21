@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-description: "변화를 두려워하지 않는 개발자"
+description: "「변화를 두려워하지 않는 개발자」"
 header-img: "img/bg-me-2022.jpg"
 header-mask: 0.3
 multilingual: true
@@ -24,15 +24,15 @@ multilingual: true
 
 <!-- disqus 블로그 댓글 기능 -->
 {% if site.disqus_username %}
-<!-- disqus 评论框 start -->
+<!-- disqus comment start -->
 <div class="comment">
     <div id="disqus_thread" class="disqus-thread">
 
     </div>
 </div>
-<!-- disqus 评论框 end -->
+<!-- disqus comment end -->
 
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<!-- disqus 기본 JS start -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
@@ -45,5 +45,5 @@ multilingual: true
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<!-- disqus 公共JS代码 end -->
+<!-- disqus 기본 JS end -->
 {% endif %}

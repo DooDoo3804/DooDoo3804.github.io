@@ -59,7 +59,8 @@ kramdown:
       start_line: 1
 
 # Disqus settings
-# disqus_username: hux
+disqus_username: doodoo3804
+comments: true
 
 # Netease settings
 netease_comment: false
