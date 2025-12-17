@@ -33,7 +33,6 @@ exclude:
     "package.json",
     "README.md",
     "README.zh.md",
-    "node_modules",
     "dev-react-pages"
   ]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`

@@ -46,3 +46,16 @@ sketch
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/jekyll,react,visualstudiocode
+
+### Custom ###
+# React dev environment
+dev-react-pages/node_modules/
+dev-react-pages/build/
+
+# Binary files
+*.exe
+
+# Development source files (use .min versions only)
+js/jquery.js
+js/bootstrap.js
+css/bootstrap.css
