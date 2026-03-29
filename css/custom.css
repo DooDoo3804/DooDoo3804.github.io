@@ -180,6 +180,7 @@ body.has-mobile-toc #back-to-top {
     border-left: 3px solid #0085a1;
     position: relative;
     margin: 1.5em 0;
+    padding-top: 2em;
 }
 
 .code-lang-label {
@@ -382,6 +383,27 @@ pre:hover .copy-btn {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ========================================
+   ABOUT PAGE - Tech Stack Tags
+   ======================================== */
+.post-container code {
+    background: rgba(0, 133, 161, 0.08);
+    color: var(--accent-primary);
+    border: 1px solid rgba(0, 133, 161, 0.2);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 13px;
+    font-family: var(--font-mono);
+}
+
+.post-container pre code {
+    background: transparent;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font-size: inherit;
 }
 
 /* ========================================
@@ -760,6 +782,17 @@ pre:hover .copy-btn {
     height: 3px;
     background: var(--accent-gradient);
     border-radius: 12px 12px 0 0;
+}
+
+/* Post card tag-based gradient bar */
+.post-card[data-tag="kotlin"]::before {
+    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+}
+.post-card[data-tag="algorithm"]::before {
+    background: linear-gradient(90deg, #0f2027, #2c5364);
+}
+.post-card[data-tag="react"]::before {
+    background: linear-gradient(90deg, #1a1a2e, #0f3460);
 }
 
 /* ========================================
