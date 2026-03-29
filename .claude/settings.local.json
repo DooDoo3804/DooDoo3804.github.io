@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(grep -E \"\\\\.\\(html|md\\)$\")",
+      "Bash(grep -h \"^tags:\" /c/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts/*/*.md)",
+      "Bash(for f:*)",
+      "Bash(do grep:*)",
+      "Bash(done)",
+      "Bash(grep -r site.ba_track_id C:/Users/HOME/Desktop/Git_Hub/Git-Blog --include=*.html)",
+      "Bash(node -c js/hux-blog.min.js)",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''pwa/manifest.json'', ''utf8''\\)\\)\")",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''package.json'', ''utf8''\\)\\)\")",
+      "Bash(ruby -e \"require ''yaml''; YAML.load_file\\(''_config.yml''\\)\")",
+      "Bash(grep -n '\\\\$kr\\\\|\\\\$zh\\\\|\\\\.kr\\\\|\\\\.zh' _includes/footer.html)",
+      "Bash(mv \"_posts/unpublished_posts/2023-06-21-kotlin-고급-문법 copy 2.md\" \"_drafts/2023-06-21-kotlin-advanced-syntax.md\")",
+      "Bash(mv \"_posts/unpublished_posts/Trie.md\" \"_drafts/trie.md\")",
+      "Bash(mv \"_posts/unpublished_posts/unpub-base.md\" \"_drafts/post-template.md\")",
+      "Bash(rmdir \"_posts/unpublished_posts\")",
+      "Bash(cd:*)",
+      "Bash(mv \"_posts/data_rep/2020-06-19-data-rep-int.md\" \"_drafts/\")",
+      "Bash(mv \"_posts/data_rep/2020-06-21-data-rep-float.md\" \"_drafts/\")",
+      "Bash(rmdir \"_posts/data_rep\")",
+      "Bash(ls -d \"/c/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts\"/*/)",
+      "Bash(xargs -I{} basename {})",
+      "Bash(node -c js/custom.js)",
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "Bash(find /c/Users/HOME/Desktop/Git_Hub/Git-Blog/img -type f -exec ls -lh {})",
+      "Bash(2)",
+      "Bash(grep -r header-img /c/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts --include=*.md --include=*.markdown)",
+      "Bash(find C:/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts -type f -name *.md)"
+    ]
+  }
+}

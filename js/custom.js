@@ -27,8 +27,10 @@
     }
 
     function initDarkMode() {
+        // Theme is already applied by inline script in head.html (FOUC prevention)
+        // Only update toggle icon and bind click handler here
         var theme = getPreferredTheme();
-        setTheme(theme);
+        updateToggleIcon(theme);
 
         document.addEventListener('click', function(e) {
             var toggle = e.target.closest('.dark-mode-toggle');
