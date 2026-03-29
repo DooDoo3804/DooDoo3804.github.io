@@ -241,7 +241,12 @@ body.has-mobile-toc #back-to-top {
     border-left: 3px solid #0085a1;
     position: relative;
     margin: 1.5em 0;
-    padding-top: 2em;
+}
+
+/* Override hux-blog.min.css specificity - ensure label space */
+.post-container .highlighter-rouge .highlight pre,
+.post-container .rouge-code pre {
+    padding-top: 2em !important;
 }
 
 .code-lang-label {
