@@ -3,8 +3,8 @@ title: DooDoo IT Blog
 SEOTitle: 개발 블로그 | DooDoo IT Blog
 # header-img removed - using CSS gradients instead
 email: doodoo3804@gmail.com
-description: "백엔드 개발자를 향한 여정. 알고리즘, Kotlin, Java, React 등 개발 학습 기록을 공유하는 블로그입니다."
-keyword: "doodoo, 개발, IT, DooDoo IT Blog, 블로그, Blog"
+description: "백엔드 개발을 향한 여정. 알고리즘, 자료구조, Kotlin, Java, Spring, React 학습 기록을 공유합니다."
+keyword: "백엔드 개발, 알고리즘, Kotlin, Java, Spring Boot, React, 개발 블로그, DooDoo, 김도윤"
 url: "https://doodoo3804.github.io/" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 

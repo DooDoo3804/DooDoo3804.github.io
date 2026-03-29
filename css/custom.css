@@ -34,6 +34,26 @@ body {
     margin-bottom: 0.8em;
 }
 
+/* --- Blockquote --- */
+.post-container blockquote {
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(0, 133, 161, 0.04);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 20px;
+    margin: 1.5em 0;
+    color: #555;
+}
+
+.post-container blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .post-container blockquote {
+    background: rgba(88, 166, 255, 0.06);
+    border-left-color: #58a6ff;
+    color: #8b949e;
+}
+
 /* --- Smooth Scroll --- */
 html {
     scroll-behavior: smooth;
@@ -293,40 +313,112 @@ pre:hover .copy-btn {
 /* --- 404 Page --- */
 .error-404-content {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px 80px;
 }
 
-.error-404-content .error-code {
-    font-size: 120px;
-    font-weight: 800;
-    color: #0085a1;
-    line-height: 1;
-    margin-bottom: 10px;
-    opacity: 0.15;
+.error-terminal {
+    background: #0d1117;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    max-width: 520px;
+    margin: 0 auto 32px;
+    text-align: left;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.error-404-content .error-msg {
-    font-size: 24px;
+.error-terminal-header {
+    background: #161b22;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid #30363d;
+}
+
+.error-terminal-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.error-terminal-header .dot.red    { background: #ff5f57; }
+.error-terminal-header .dot.yellow { background: #febc2e; }
+.error-terminal-header .dot.green  { background: #28c840; }
+
+.terminal-title {
+    font-size: 12px;
+    color: #8b949e;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-mono);
+}
+
+.error-terminal-body {
+    padding: 20px 24px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.8;
+    color: #c9d1d9;
+}
+
+.error-terminal-body p {
+    margin: 0;
+}
+
+.prompt {
+    color: #3fb950;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
+    margin-right: 8px;
 }
 
-.error-404-content .error-desc {
-    font-size: 16px;
-    color: #888;
-    margin-bottom: 30px;
+.error-status {
+    color: #f85149;
+    font-weight: 600;
 }
 
-.error-404-content .btn-home {
+.error-output {
+    color: #8b949e;
+}
+
+.cursor {
     display: inline-block;
-    padding: 12px 32px;
-    background: #0085a1;
-    color: #fff;
+    animation: blink 1s step-end infinite;
+    color: #58a6ff;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.error-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-404-content .btn-home,
+.error-404-content .btn-archive {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
     border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
+    transition: all 0.2s;
+}
+
+.error-404-content .btn-home {
+    background: var(--accent-primary);
+    color: #fff;
+}
+
+.error-404-content .btn-archive {
+    background: transparent;
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
 }
 
 .error-404-content .btn-home:hover {
@@ -334,6 +426,26 @@ pre:hover .copy-btn {
     transform: translateY(-2px);
     color: #fff;
     text-decoration: none;
+}
+
+.error-404-content .btn-archive:hover {
+    background: rgba(0, 133, 161, 0.08);
+    transform: translateY(-2px);
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+[data-theme="dark"] .error-terminal {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .error-404-content .btn-home {
+    background: #58a6ff;
+}
+
+[data-theme="dark"] .error-404-content .btn-archive {
+    color: #58a6ff;
+    border-color: #58a6ff;
 }
 
 /* --- Tag Improvements --- */
@@ -503,7 +615,8 @@ pre:hover .copy-btn {
 
 [data-theme="dark"] .post-container code {
     background: rgba(110, 118, 129, 0.15);
-    color: #e6edf3;
+    color: #79c0ff;
+    border-color: rgba(110, 118, 129, 0.3);
 }
 
 [data-theme="dark"] .post-container pre code {
