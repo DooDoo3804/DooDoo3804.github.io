@@ -564,12 +564,20 @@ pre:hover .copy-btn {
     font-size: inherit;
 }
 
-/* --- Side Catalog Fixed Position Fix --- */
-/* Override hux-blog.min.css: .side-catalog.fixed { top: -21px } which hides under navbar */
-.side-catalog.fixed {
+/* --- Side Catalog Sticky Fix --- */
+/* hux-blog.min.js toggles .fixed class (position:fixed; top:-21px) on scroll.
+   Replace with position:sticky so the catalog stays in its column bounds. */
+.side-catalog {
+    position: sticky !important;
     top: 80px !important;
+    height: auto !important;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+}
+
+.side-catalog.fixed {
+    position: sticky !important;
+    top: 80px !important;
 }
 
 /* ========================================
