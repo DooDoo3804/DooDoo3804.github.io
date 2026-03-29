@@ -4,31 +4,30 @@ description: "「SW 개발자」"
 header-mask: 0.3
 ---
 
+<div class="post-cards-grid">
 {% for post in paginator.posts %}
-<div class="post-preview">
+<div class="post-card">
     <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
+        <div class="post-card-tags">
+            {% for tag in post.tags %}
+            <span>{{ tag }}</span>
+            {% endfor %}
+        </div>
+        <h2 class="post-title">{{ post.title }}</h2>
         {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
+        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
         {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncate:250 }}
-            {% else %}
-                {{ post.content | strip_html | truncate:150 }}
-            {% endif %}
+        <p class="post-card-excerpt">
+            {{ post.content | strip_html | truncate:120 }}
+        </p>
+        <div class="post-card-meta">
+            <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+            <span class="read-time">{% assign words = post.content | number_of_words %}{% if words < 200 %}1{% else %}{{ words | divided_by: 200 }}{% endif %} min read</span>
         </div>
     </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
 </div>
-<hr>
 {% endfor %}
+</div>
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}

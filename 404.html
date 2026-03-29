@@ -2,15 +2,25 @@
 layout: default
 title: 404
 hide-in-nav: true
-description: "올바르지 않은 주소입니다 :("
-header-img: "img/404-bg.jpg"
+description: "Page Not Found"
+header-img: "img/home-bg.jpg"
+header-mask: 0.6
 permalink: /404.html
 ---
 
-
-<!-- Page Header -->
 {% include intro-header.html type="page" short='true' %}
 
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="error-404-content">
+                <div class="error-code">404</div>
+                <p class="error-msg">Page Not Found</p>
+                <p class="error-desc">Sorry, the page you're looking for doesn't exist or has been moved.</p>
+                <a href="{{ site.baseurl }}/" class="btn-home">
+                    <i class="fa fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
