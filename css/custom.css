@@ -2,8 +2,17 @@
    DooDoo IT Blog - Custom Styles
    ======================================== */
 
+/* --- Design System Variables --- */
+:root {
+    --accent-primary: #0085a1;
+    --accent-secondary: #7b2ff7;
+    --accent-gradient: linear-gradient(135deg, #0085a1, #7b2ff7);
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 /* --- Typography --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -658,4 +667,350 @@ pre:hover .code-lang-label {
 /* --- Disqus dark mode --- */
 [data-theme="dark"] .comment {
     filter: invert(0.88) hue-rotate(180deg);
+}
+
+/* ========================================
+   INTRO HEADER - Gradient Support
+   ======================================== */
+.intro-header {
+    background-color: #0d1117;
+}
+
+.intro-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat;
+    opacity: 0.025;
+    pointer-events: none;
+}
+
+/* ========================================
+   NAVBAR - Glassmorphism
+   ======================================== */
+.navbar-custom.is-fixed {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+
+[data-theme="dark"] .navbar-custom.is-fixed {
+    background: rgba(13, 17, 23, 0.92) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ========================================
+   POST CARDS - Gradient Accent Bar
+   ======================================== */
+.post-card {
+    position: relative;
+}
+
+.post-card::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 12px 12px 0 0;
+}
+
+/* ========================================
+   CODE - Monospace Font
+   ======================================== */
+code, kbd, pre, samp, .code-lang-label {
+    font-family: var(--font-mono) !important;
+}
+
+/* ========================================
+   ARCHIVE PAGE
+   ======================================== */
+.archive-container {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.archive-sidebar {
+    padding-top: 10px;
+}
+
+.archive-side-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.archive-side-card h5 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.archive-stat-total {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.archive-stat-total strong {
+    color: var(--accent-primary);
+    font-size: 20px;
+}
+
+.archive-year-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.archive-year-item:last-child {
+    border-bottom: none;
+}
+
+.archive-year-item:hover {
+    color: var(--accent-primary);
+}
+
+.archive-year-count {
+    font-size: 12px;
+    background: rgba(0, 133, 161, 0.08);
+    color: var(--accent-primary);
+    padding: 2px 9px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Archive tag cloud - modern pill style */
+#tag_cloud {
+    margin-bottom: 24px;
+}
+
+#tag_cloud .tag-button--all,
+#tag_cloud .tag-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin: 4px;
+    padding: 6px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#tag_cloud .tag-button--all:hover,
+#tag_cloud .tag-button:hover,
+#tag_cloud .tag-button.focus {
+    background: var(--accent-primary);
+    color: #fff;
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 133, 161, 0.25);
+    text-decoration: none;
+}
+
+#tag_cloud .tag-button sup,
+#tag_cloud .tag-button--all sup {
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.08);
+    padding: 1px 5px;
+    border-radius: 8px;
+    margin-left: 2px;
+    font-style: normal;
+    vertical-align: middle;
+    top: 0;
+}
+
+#tag_cloud .tag-button.focus sup,
+#tag_cloud .tag-button--all:hover sup,
+#tag_cloud .tag-button:hover sup {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Archive post list */
+.mini-post-list .listing-seperator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #999;
+    border: none;
+    padding: 0;
+}
+
+.mini-post-list .listing-seperator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #f0f0f0;
+}
+
+.mini-post-list .tag-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.mini-post-list .post-preview.item {
+    padding: 14px 0;
+}
+
+.mini-post-list .post-preview.item .post-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    transition: color 0.2s;
+    color: #333;
+}
+
+.mini-post-list .post-preview.item a:hover .post-title {
+    color: var(--accent-primary);
+}
+
+.mini-post-list .post-preview.item .post-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 4px;
+}
+
+.mini-post-list .post-preview.item .post-meta {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.mini-post-list .post-preview.item hr {
+    margin: 10px 0 0;
+    border-color: #f5f5f5;
+}
+
+/* Archive sidebar tags - override hux-blog white-on-white */
+.archive-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.archive-tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    font-size: 12px;
+    color: #555 !important;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: #fafafa;
+}
+
+.archive-tag-item:hover {
+    background: var(--accent-primary);
+    color: #fff !important;
+    border-color: var(--accent-primary);
+    text-decoration: none;
+}
+
+/* ========================================
+   ARCHIVE DARK MODE
+   ======================================== */
+[data-theme="dark"] .archive-side-card {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .archive-side-card h5 {
+    color: #8b949e;
+    border-bottom-color: #30363d;
+}
+
+[data-theme="dark"] .archive-stat-total {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .archive-year-item {
+    border-bottom-color: #21262d;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .archive-year-item:hover {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .archive-year-count {
+    background: rgba(88, 166, 255, 0.1);
+    color: #58a6ff;
+}
+
+[data-theme="dark"] #tag_cloud .tag-button--all,
+[data-theme="dark"] #tag_cloud .tag-button {
+    background: #161b22;
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] #tag_cloud .tag-button--all:hover,
+[data-theme="dark"] #tag_cloud .tag-button:hover,
+[data-theme="dark"] #tag_cloud .tag-button.focus {
+    background: #58a6ff;
+    border-color: #58a6ff;
+    color: #0d1117;
+    box-shadow: 0 4px 10px rgba(88, 166, 255, 0.25);
+}
+
+[data-theme="dark"] .mini-post-list .listing-seperator::after {
+    background: #30363d;
+}
+
+[data-theme="dark"] .mini-post-list .tag-text {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .mini-post-list .post-preview.item .post-title {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .mini-post-list .post-preview.item a:hover .post-title {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .mini-post-list .post-preview.item .post-subtitle {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .mini-post-list .post-preview.item hr {
+    border-color: #21262d;
+}
+
+[data-theme="dark"] .archive-tag-item {
+    background: #0d1117;
+    border-color: #30363d;
+    color: #c9d1d9 !important;
+}
+
+[data-theme="dark"] .archive-tag-item:hover {
+    background: #58a6ff;
+    border-color: #58a6ff;
+    color: #0d1117 !important;
 }

@@ -3,7 +3,7 @@ title: "Kotlin vs Java"
 subtitle: "What is difference between Kotlin and Java "
 layout: post
 author: "DooDoo"
-header-img: "img/post-bg-kotlin-java.png"
+header-bg-css: "linear-gradient(135deg, #7b2ff7 0%, #9b59b6 100%)"
 header-mask: 0.4
 keywords: "kotlin, java, difference"
 tags:

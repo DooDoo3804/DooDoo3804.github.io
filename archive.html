@@ -2,21 +2,17 @@
 title: Archive
 layout: default
 description: "「시간과 정신의 방...」"
-header-img: "img/bg-little-universe.jpg"
+header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+no-catalog: true
 ---
 
-<!--
-Credits: this page shamelessly borrowed a lot from:
-https://github.com/kitian616/jekyll-TeXt-theme
--->
-<!-- Page Header -->
 {% include intro-header.html type='page' short=true %}
 
-<!-- Main Content -->
-<div class="container">
+<div class="container archive-container">
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<!-- Tags (as filter) -->
+
+		<!-- Main: Tag filter + Post list -->
+		<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
 			<div id='tag_cloud' class="tags tags-sup js-tags">
 				<a class="tag-button--all" data-encode="">
 					Show All
@@ -36,12 +32,10 @@ https://github.com/kitian616/jekyll-TeXt-theme
 				{{ tags | split:'__SEPERATOR__' | sort }}
 			</div>
 
-			<!-- Article List -->
 			<div class="mini-post-list js-result d-none">
 				{%- assign _sorted_list = site.posts -%}
 				{%- assign _sorted_list = _sorted_list | sort: 'date' -%}
 				{%- assign _sorted_list = _sorted_list | reverse -%}
-
 
 				{%- for _article in _sorted_list -%}
 				{%- assign _tags = '' -%}
@@ -54,7 +48,6 @@ https://github.com/kitian616/jekyll-TeXt-theme
 				{%- endif -%}
 				{%- endfor -%}
 
-				{% comment %} group by year {% endcomment %}
 				{%- assign _currentdate = _article.date | date: '%Y' -%}
 				{%- if _currentdate != _date -%}
 				{%- unless forloop.first -%}</section>{%- endunless -%}
@@ -76,13 +69,65 @@ https://github.com/kitian616/jekyll-TeXt-theme
 							</h3>
 							{% endif %}
 						</a>
-							<p class="post-meta">{{ _article.date | date: "%B %d, %Y" }}</p>
-							<hr>
+						<p class="post-meta">{{ _article.date | date: "%B %d, %Y" }}</p>
+						<hr>
 					</div>
 					{%- if forloop.last -%}
 				</section>{%- endif -%}
 				{% endfor %}
 			</div>
 		</div>
+
+		<!-- Sidebar -->
+		<div class="col-lg-3 col-md-4 hidden-sm hidden-xs archive-sidebar">
+			<div class="archive-side-card">
+				<h5>STATISTICS</h5>
+				<p class="archive-stat-total">Total <strong>{{ site.posts.size }}</strong> posts</p>
+			</div>
+
+			<div class="archive-side-card">
+				<h5>BY YEAR</h5>
+				{% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+				{% for year in years %}
+				<div class="archive-year-item" data-year="{{ year.name }}">
+					<span>{{ year.name }}</span>
+					<span class="archive-year-count">{{ year.items | size }}</span>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="archive-side-card">
+				<h5>TOP TAGS</h5>
+				<div class="archive-tags-list">
+					{% for tag in site.tags %}
+					{% if tag[1].size >= site.featured-condition-size %}
+					<a href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" class="archive-tag-item">
+						{{ tag[0] }}<span class="archive-year-count">{{ tag[1].size }}</span>
+					</a>
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
 	</div>
 </div>
+
+<script>
+document.querySelectorAll('.archive-year-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+        var showAll = document.querySelector('.tag-button--all');
+        if (showAll) showAll.click();
+        var year = this.getAttribute('data-year');
+        setTimeout(function() {
+            var yearSpans = document.querySelectorAll('.mini-post-list .tag-text');
+            for (var i = 0; i < yearSpans.length; i++) {
+                if (yearSpans[i].textContent.trim() === year) {
+                    yearSpans[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                }
+            }
+        }, 100);
+    });
+});
+</script>
