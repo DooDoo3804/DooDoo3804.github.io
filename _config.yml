@@ -3,7 +3,7 @@ title: DooDoo IT Blog
 SEOTitle: 개발 블로그 | DooDoo IT Blog
 header-img: img/home-bg.jpg
 email: doodoo3804@gmail.com
-description: "IT 개발 블로그"
+description: "백엔드 개발자를 향한 여정. 알고리즘, Kotlin, Java, React 등 개발 학습 기록을 공유하는 블로그입니다."
 keyword: "doodoo, 개발, IT, DooDoo IT Blog, 블로그, Blog"
 url: "https://doodoo3804.github.io/" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
@@ -12,7 +12,7 @@ baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 future: true
 
 # SNS settings
-RSS: false
+RSS: "/feed.xml"
 github_username: doodoo3804
 email_address: doodoo3804@gmail.com
 # twitter_username: huxpro
@@ -43,7 +43,7 @@ anchorjs: true # if you want to customize anchor. check out line:181 of `post.ht
 # from PR#40, to support local preview for Jekyll 3.0
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
-plugins: [jekyll-paginate]
+plugins: [jekyll-paginate, jekyll-sitemap]
 
 # Markdown settings
 # replace redcarpet to kramdown,

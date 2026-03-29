@@ -17,22 +17,22 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/hux-blog.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Simple Jekyll Search -->
 <script src="{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Service Worker -->
 {% if site.service-worker %}
-<script src="{{ "/js/snackbar.js " | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/sw-registration.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/snackbar.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/sw-registration.js" | prepend: site.baseurl }}"></script>
 {% endif %}
 
 <!-- async load function -->
@@ -99,35 +99,19 @@
         $('#tag_cloud a').tagcloud();
     })
 </script>
-<script src='{{ "/js/archive.js " | prepend: site.baseurl }}'></script>
+<script src='{{ "/js/archive.js" | prepend: site.baseurl }}'></script>
 {% endif %}
 
-<!--fastClick.js -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
-        var $nav = document.querySelector("nav");
-        if ($nav) FastClick.attach($nav);
-    })
-</script>
 
 
-<!-- Google Analytics -->
+<!-- Google Analytics (GA4) -->
 {% if site.ga_track_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
 <script>
-    // dynamic User by Hux
-    var _gaId = '{{ site.ga_track_id }}';
-    var _gaDomain = '{{ site.ga_domain }}';
-
-    // Originial
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga_track_id }}');
 </script>
 {% endif %}
 
@@ -211,6 +195,33 @@
 </script>
 {% endunless %}
 
+<!-- Mobile TOC -->
+<script>
+$(document).ready(function() {
+    var $toggle = $('.mobile-toc-toggle');
+    var $panel = $('.mobile-toc-panel');
+    if ($toggle.length && $panel.length) {
+        // copy catalog items to mobile panel
+        var observer = new MutationObserver(function() {
+            var items = $('.catalog-body').html();
+            if (items) { $('.mobile-catalog-body').html(items); }
+        });
+        var target = document.querySelector('.catalog-body');
+        if (target) {
+            observer.observe(target, { childList: true });
+            // initial copy
+            var items = $('.catalog-body').html();
+            if (items) { $('.mobile-catalog-body').html(items); }
+        }
+        $toggle.on('click', function() { $panel.toggle(); });
+        // close on link click
+        $panel.on('click', 'a', function() { $panel.hide(); });
+    }
+});
+</script>
+
+<!-- Custom JS (dark mode, code copy, language labels, back-to-top, lazy images) -->
+<script src="{{ "/js/custom.js" | prepend: site.baseurl }}"></script>
 
 <!-- Multi-Lingual -->
 {% if page.multilingual %}
@@ -238,13 +249,13 @@
             $select.selectedIndex = 1;
             $en.style.display = "block";
             $en.classList.add("active");
-            $zh.style.display = "none";
-            $zh.classList.remove("active");
-            // default to zh-cn
+            $kr.style.display = "none";
+            $kr.classList.remove("active");
+            // default to kr
         } else {
             $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $zh.classList.add("active");
+            $kr.style.display = "block";
+            $kr.classList.add("active");
             $en.style.display = "none";
             $en.classList.remove("active");
         }

@@ -1,0 +1,661 @@
+/* ========================================
+   DooDoo IT Blog - Custom Styles
+   ======================================== */
+
+/* --- Typography --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.post-container {
+    line-height: 1.85;
+    font-size: 16.5px;
+}
+
+.post-container p {
+    margin-bottom: 1.5em;
+}
+
+.post-container h1, .post-container h2, .post-container h3 {
+    letter-spacing: -0.02em;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+/* --- Smooth Scroll --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Post Cards (Homepage) --- */
+.post-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .post-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.post-card a {
+    display: block;
+    padding: 28px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card-tags {
+    margin-bottom: 12px;
+}
+
+.post-card-tags span {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0085a1;
+    background: rgba(0, 133, 161, 0.08);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+}
+
+.post-card .post-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    line-height: 1.35;
+}
+
+.post-card .post-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 12px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.post-card-excerpt {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.post-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 12.5px;
+    color: #999;
+}
+
+.post-card-meta .read-time {
+    color: #0085a1;
+    font-weight: 600;
+}
+
+/* --- Back to Top Button --- */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0085a1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 3px 10px rgba(0, 133, 161, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top:hover {
+    background: #006d85;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 133, 161, 0.4);
+}
+
+/* offset for post pages with mobile TOC */
+body.has-mobile-toc #back-to-top {
+    bottom: 80px;
+}
+
+/* --- Code Block Enhancements --- */
+.post-container pre {
+    border-radius: 8px;
+    border: 1px solid #e1e4e8;
+    border-left: 3px solid #0085a1;
+    position: relative;
+    margin: 1.5em 0;
+}
+
+.code-lang-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 0 8px 0 6px;
+    border-bottom: 1px solid #e1e4e8;
+    border-left: 1px solid #e1e4e8;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 2;
+}
+
+.copy-btn:hover {
+    background: #0085a1;
+    color: #fff;
+    border-color: #0085a1;
+}
+
+pre:hover .copy-btn {
+    opacity: 1;
+}
+
+pre:hover .code-lang-label {
+    opacity: 0;
+}
+
+/* --- Related Posts --- */
+.related-posts {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.related-posts h4 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .related-posts-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.related-post-card {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e8e8e8;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.related-post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.related-post-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.related-post-card .rp-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: #0085a1;
+    text-transform: uppercase;
+}
+
+.related-post-card .rp-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+.related-post-card .rp-date {
+    font-size: 12px;
+    color: #999;
+}
+
+/* --- 404 Page --- */
+.error-404-content {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.error-404-content .error-code {
+    font-size: 120px;
+    font-weight: 800;
+    color: #0085a1;
+    line-height: 1;
+    margin-bottom: 10px;
+    opacity: 0.15;
+}
+
+.error-404-content .error-msg {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.error-404-content .error-desc {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.error-404-content .btn-home {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #0085a1;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.error-404-content .btn-home:hover {
+    background: #006d85;
+    transform: translateY(-2px);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --- Tag Improvements --- */
+.tag {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tag:hover {
+    transform: translateY(-1px);
+}
+
+.featured-tags .tag-item a {
+    border-radius: 20px;
+    padding: 4px 14px;
+    transition: all 0.2s;
+}
+
+.featured-tags .tag-item a:hover {
+    background: rgba(0, 133, 161, 0.08);
+}
+
+/* --- Image lazy load fade-in --- */
+.post-container img {
+    transition: opacity 0.4s ease;
+    border-radius: 6px;
+}
+
+.post-container img.lazy-loading {
+    opacity: 0;
+}
+
+.post-container img.lazy-loaded {
+    opacity: 1;
+}
+
+/* --- Page transition --- */
+.page-content {
+    animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+[data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-secondary: #161b22;
+    --text: #c9d1d9;
+    --text-secondary: #8b949e;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --card-bg: #161b22;
+}
+
+[data-theme="dark"] body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .navbar-custom {
+    background: rgba(13, 17, 23, 0.95);
+    border-bottom: 1px solid #30363d;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .navbar-custom .navbar-brand,
+[data-theme="dark"] .navbar-custom .nav a {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .navbar-custom.is-fixed {
+    background: rgba(13, 17, 23, 0.97);
+}
+
+[data-theme="dark"] footer {
+    background: #0d1117;
+}
+
+[data-theme="dark"] footer .copyright {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .post-card {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .post-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .post-card .post-subtitle,
+[data-theme="dark"] .post-card-excerpt {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .post-card-meta {
+    border-top-color: #30363d;
+    color: #8b949e;
+}
+
+[data-theme="dark"] .post-card-tags span {
+    color: #58a6ff;
+    background: rgba(88, 166, 255, 0.1);
+}
+
+[data-theme="dark"] .post-card-meta .read-time {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .post-container {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .post-container h1,
+[data-theme="dark"] .post-container h2,
+[data-theme="dark"] .post-container h3,
+[data-theme="dark"] .post-container h4 {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .post-container a {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .post-container blockquote {
+    border-left-color: #58a6ff;
+    color: #8b949e;
+}
+
+[data-theme="dark"] .post-container pre {
+    background: #161b22;
+    border-color: #30363d;
+    border-left-color: #58a6ff;
+}
+
+[data-theme="dark"] .post-container code {
+    background: rgba(110, 118, 129, 0.15);
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .post-container pre code {
+    background: transparent;
+}
+
+[data-theme="dark"] .code-lang-label {
+    color: #8b949e;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .copy-btn {
+    background: rgba(22, 27, 34, 0.9);
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .post-container table th,
+[data-theme="dark"] .post-container table td {
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .post-container table th {
+    background: #161b22;
+}
+
+[data-theme="dark"] .post-container hr {
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .header-mask {
+    background: rgba(0, 0, 0, 0.65) !important;
+}
+
+[data-theme="dark"] .sidebar-container {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .sidebar-container h5 {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .side-catalog {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .side-catalog a {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .side-catalog a.active {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .mobile-toc-panel {
+    background: #161b22 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #30363d;
+}
+
+[data-theme="dark"] .mobile-toc-panel a {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .pager li > a {
+    background: #161b22;
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .pager li > a:hover {
+    background: #1f2937;
+}
+
+[data-theme="dark"] .related-posts {
+    border-top-color: #30363d;
+}
+
+[data-theme="dark"] .related-post-card {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .related-post-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .related-post-card .rp-title {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .related-post-card .rp-tag {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .post-preview a .post-title,
+[data-theme="dark"] .post-preview a .post-subtitle {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .post-preview .post-meta {
+    color: #8b949e;
+}
+
+[data-theme="dark"] hr {
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .intro-header .post-heading h1,
+[data-theme="dark"] .intro-header .post-heading .subheading,
+[data-theme="dark"] .intro-header .site-heading h1,
+[data-theme="dark"] .intro-header .site-heading .subheading {
+    color: #fff;
+}
+
+[data-theme="dark"] #back-to-top {
+    background: #58a6ff;
+    box-shadow: 0 3px 10px rgba(88, 166, 255, 0.3);
+}
+
+[data-theme="dark"] #back-to-top:hover {
+    background: #79b8ff;
+    box-shadow: 0 6px 16px rgba(88, 166, 255, 0.4);
+}
+
+[data-theme="dark"] .mobile-toc-toggle {
+    background: #161b22 !important;
+    border-color: #30363d !important;
+    color: #c9d1d9 !important;
+}
+
+[data-theme="dark"] .error-404-content .error-msg {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .error-404-content .btn-home {
+    background: #58a6ff;
+}
+
+[data-theme="dark"] .search-page {
+    background: rgba(13, 17, 23, 0.97);
+}
+
+[data-theme="dark"] #search-input {
+    background: #161b22;
+    border-color: #30363d;
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .search-page .post-title {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .search-page .post-subtitle {
+    color: #8b949e;
+}
+
+/* dark mode toggle button in nav */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(30deg);
+}
+
+[data-theme="dark"] .featured-tags .tag-item a {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .featured-tags .tag-item a:hover {
+    background: rgba(88, 166, 255, 0.1);
+}
+
+/* --- Disqus dark mode --- */
+[data-theme="dark"] .comment {
+    filter: invert(0.88) hue-rotate(180deg);
+}

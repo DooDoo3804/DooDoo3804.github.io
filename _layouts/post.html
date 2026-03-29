@@ -46,6 +46,36 @@ layout: default
                     </li>
                     {% endif %}
                 </ul>
+                <!-- Related Posts -->
+                <div class="related-posts">
+                    <h4>Related Posts</h4>
+                    <div class="related-posts-grid">
+                    {% assign related = "" | split: "" %}
+                    {% for p in site.posts %}
+                        {% if p.url != page.url and related.size < 3 %}
+                            {% for tag in page.tags %}
+                                {% if p.tags contains tag %}
+                                    {% assign related = related | push: p %}
+                                    {% break %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if related.size == 0 %}
+                        {% assign related = site.posts | where_exp: "p", "p.url != page.url" | limit: 3 %}
+                    {% endif %}
+                    {% for post in related limit:3 %}
+                    <div class="related-post-card">
+                        <a href="{{ post.url | prepend: site.baseurl }}">
+                            <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
+                            <div class="rp-title">{{ post.title }}</div>
+                            <div class="rp-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
                 <hr style="visibility: hidden;">
 
                 {% if site.disqus_username %}
@@ -76,6 +106,17 @@ layout: default
                         <a class="catalog-toggle" href="#">CATALOG</a>
                     </h5>
                     <ul class="catalog-body"></ul>
+                </div>
+            </div>
+
+            <!-- Mobile TOC Toggle -->
+            <div class="visible-xs visible-sm visible-md" style="position:fixed;bottom:20px;right:20px;z-index:1000;">
+                <button class="btn btn-default btn-circle mobile-toc-toggle" style="width:45px;height:45px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:18px;">
+                    <i class="fa fa-list"></i>
+                </button>
+                <div class="mobile-toc-panel" style="display:none;position:fixed;bottom:75px;right:20px;width:260px;max-height:60vh;overflow-y:auto;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);padding:15px;z-index:1001;">
+                    <h5 style="margin-top:0;">CATALOG</h5>
+                    <ul class="mobile-catalog-body" style="list-style:none;padding-left:0;margin:0;"></ul>
                 </div>
             </div>
         {% endunless %}
@@ -133,7 +174,7 @@ layout: default
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/5.0.0/anchor.min.js",function(){
         anchors.options = {
           visible: 'hover',
           placement: 'right',
