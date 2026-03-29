@@ -59,6 +59,47 @@ html {
     scroll-behavior: smooth;
 }
 
+/* --- Post Content - Tables --- */
+.post-container table {
+    width: 100%;
+    margin: 1.5em 0;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.post-container table th {
+    background: rgba(0, 133, 161, 0.06);
+    color: #333;
+    font-weight: 700;
+    padding: 10px 14px;
+    border: 1px solid #e1e4e8;
+    text-align: left;
+}
+
+.post-container table td {
+    padding: 9px 14px;
+    border: 1px solid #e1e4e8;
+    vertical-align: top;
+}
+
+.post-container table tr:nth-child(even) td {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+[data-theme="dark"] .post-container table th {
+    background: rgba(88, 166, 255, 0.08);
+    color: #e6edf3;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .post-container table td {
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .post-container table tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
 /* --- Post Cards (Homepage) --- */
 .post-cards-grid {
     display: grid;
