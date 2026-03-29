@@ -672,6 +672,20 @@ pre:hover .copy-btn {
 }
 
 /* ========================================
+   READING PROGRESS BAR
+   ======================================== */
+#reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent-gradient);
+    z-index: 9999;
+    transition: width 0.1s linear;
+}
+
+/* ========================================
    MOBILE TOC
    ======================================== */
 .mobile-toc-wrapper {

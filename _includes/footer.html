@@ -7,9 +7,11 @@
                 {% include sns-links.html center=true %}
 
                 <p class="copyright text-muted">
-                    {{ site.time | date: '%Y' }} All rights reserved. &copy; {{ site.title }} 
-                    <br>
-                    Powered by <a href="https://doodoo3804.github.io/">DooDoo</a>
+                    &copy; {{ site.time | date: '%Y' }} {{ site.title }}
+                    &nbsp;&middot;&nbsp;
+                    Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
                 </p>
             </div>
         </div>
