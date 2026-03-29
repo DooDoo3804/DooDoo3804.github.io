@@ -7,9 +7,11 @@
                 {% include sns-links.html center=true %}
 
                 <p class="copyright text-muted">
-                    {{ site.time | date: '%Y' }} All rights reserved. &copy; {{ site.title }} 
-                    <br>
-                    Powered by <a href="https://doodoo3804.github.io/">DooDoo</a>
+                    &copy; {{ site.time | date: '%Y' }} {{ site.title }}
+                    &nbsp;&middot;&nbsp;
+                    Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
                 </p>
             </div>
         </div>
@@ -89,16 +91,6 @@
 
 
 {% if page.title == 'Archive' %}
-<!-- jquery.tagcloud.js -->
-<script>
-    async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}', function () {
-        $.fn.tagcloud.defaults = {
-            //size: {start: 1, end: 1, unit: 'em'},
-            color: { start: '#bbbbee', end: '#2f93b4' },
-        };
-        $('#tag_cloud a').tagcloud();
-    })
-</script>
 <script src='{{ "/js/archive.js" | prepend: site.baseurl }}'></script>
 {% endif %}
 

@@ -3,8 +3,8 @@ layout: default
 title: 404
 hide-in-nav: true
 description: "Page Not Found"
-header-img: "img/home-bg.jpg"
-header-mask: 0.6
+header-bg-css: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)"
+no-catalog: true
 permalink: /404.html
 ---
 
@@ -14,12 +14,32 @@ permalink: /404.html
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="error-404-content">
-                <div class="error-code">404</div>
-                <p class="error-msg">Page Not Found</p>
-                <p class="error-desc">Sorry, the page you're looking for doesn't exist or has been moved.</p>
-                <a href="{{ site.baseurl }}/" class="btn-home">
-                    <i class="fa fa-home"></i> Back to Home
-                </a>
+                <div class="error-terminal">
+                    <div class="error-terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">bash</span>
+                    </div>
+                    <div class="error-terminal-body">
+                        <p><span class="prompt">$</span> curl {{ site.url }}{{ page.url }}</p>
+                        <p class="error-output">HTTP/1.1 <span class="error-status">404 Not Found</span></p>
+                        <p class="error-output">Content-Type: text/html</p>
+                        <p class="error-output">&nbsp;</p>
+                        <p class="error-output">Error: The requested resource could not be found.</p>
+                        <p class="error-output">The page you're looking for doesn't exist or has been moved.</p>
+                        <p>&nbsp;</p>
+                        <p><span class="prompt">$</span> <span class="cursor">_</span></p>
+                    </div>
+                </div>
+                <div class="error-actions">
+                    <a href="{{ site.baseurl }}/" class="btn-home">
+                        <i class="fa fa-home"></i> Back to Home
+                    </a>
+                    <a href="{{ site.baseurl }}/archive" class="btn-archive">
+                        <i class="fa fa-list"></i> Browse Posts
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -6,6 +6,9 @@ layout: default
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
+<!-- Reading Progress Bar -->
+<div id="reading-progress-bar"></div>
+
 <!-- Post Header -->
 {% include intro-header.html type='post' %}
 
@@ -110,13 +113,13 @@ layout: default
             </div>
 
             <!-- Mobile TOC Toggle -->
-            <div class="visible-xs visible-sm visible-md" style="position:fixed;bottom:20px;right:20px;z-index:1000;">
-                <button class="btn btn-default btn-circle mobile-toc-toggle" style="width:45px;height:45px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:18px;">
+            <div class="mobile-toc-wrapper visible-xs visible-sm visible-md">
+                <button class="btn btn-default mobile-toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">
                     <i class="fa fa-list"></i>
                 </button>
-                <div class="mobile-toc-panel" style="display:none;position:fixed;bottom:75px;right:20px;width:260px;max-height:60vh;overflow-y:auto;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);padding:15px;z-index:1001;">
-                    <h5 style="margin-top:0;">CATALOG</h5>
-                    <ul class="mobile-catalog-body" style="list-style:none;padding-left:0;margin:0;"></ul>
+                <div class="mobile-toc-panel">
+                    <h5>CATALOG</h5>
+                    <ul class="mobile-catalog-body"></ul>
                 </div>
             </div>
         {% endunless %}

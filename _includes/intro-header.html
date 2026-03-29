@@ -7,8 +7,15 @@
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+        {% if page.header-bg-css and page.header-bg-css != '' %}
         background: {{ page.header-bg-css }};
+        {% elsif page.header-style == 'text' %}
+        background: transparent;
+        {% elsif page.header-img %}
+        background-image: url('{{ site.baseurl }}/{{ page.header-img }}');
+        {% else %}
+        background: linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%);
+        {% endif %}
     }
 
     {% if page.header-mask %}
@@ -46,7 +53,7 @@
                     <h1>{{ page.title }}</h1>
                     {% comment %} always create a h2 for keeping the margin {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }} | {% assign words = content | number_of_words %}{% if words < 200 %}1{% else %}{{ words | divided_by: 200 }}{% endif %} min read</span>
+                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }} | {% assign chars = content | strip_html | size %}{% assign words = content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
                 </div>
             </div>
         </div>
@@ -94,7 +101,7 @@
 {% endif %}
 
 {% if include.type == 'page' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="intro-header">
   <div class="header-mask"></div>
   <div class="container">
     <div class="row">

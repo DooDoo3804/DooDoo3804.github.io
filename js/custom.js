@@ -27,8 +27,10 @@
     }
 
     function initDarkMode() {
+        // Theme is already applied by inline script in head.html (FOUC prevention)
+        // Only update toggle icon and bind click handler here
         var theme = getPreferredTheme();
-        setTheme(theme);
+        updateToggleIcon(theme);
 
         document.addEventListener('click', function(e) {
             var toggle = e.target.closest('.dark-mode-toggle');
@@ -110,6 +112,26 @@
         });
     }
 
+    /* --- Reading Progress Bar --- */
+    function initReadingProgress() {
+        var bar = document.getElementById('reading-progress-bar');
+        if (!bar) return;
+
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+                    bar.style.width = pct + '%';
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
     /* --- Image Lazy Loading --- */
     function initLazyImages() {
         var imgs = document.querySelectorAll('.post-container img');
@@ -126,6 +148,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         initBackToTop();
+        initReadingProgress();
         initCodeLabels();
         initCopyButtons();
         initLazyImages();
