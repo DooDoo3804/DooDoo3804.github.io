@@ -222,6 +222,7 @@ $(document).ready(function() {
     // get nodes
     var $kr = document.querySelector(".kr");
     var $en = document.querySelector(".en");
+    var $ja = document.querySelector(".ja");
     var $select = document.querySelector("select");
 
     // Changes at v1.8.1: include lang flag as a url query. This interop well with catalog hash anchors.
@@ -233,25 +234,28 @@ $(document).ready(function() {
         document.location.search = params.toString()  // refresh.
     }
 
+    function _hideAll() {
+        [$kr, $en, $ja].forEach(function(el) {
+            if (el) { el.style.display = "none"; el.classList.remove("active"); }
+        });
+    }
+
     // handle render
     function _render() {
         var lang = getLang()
-        // en
+        _hideAll();
         if (lang == "en") {
             $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $en.classList.add("active");
-            $kr.style.display = "none";
-            $kr.classList.remove("active");
-            // default to kr
+            if ($en) { $en.style.display = "block"; $en.classList.add("active"); }
+        } else if (lang == "ja") {
+            $select.selectedIndex = 2;
+            if ($ja) { $ja.style.display = "block"; $ja.classList.add("active"); }
         } else {
+            // default to kr
             $select.selectedIndex = 0;
-            $kr.style.display = "block";
-            $kr.classList.add("active");
-            $en.style.display = "none";
-            $en.classList.remove("active");
+            if ($kr) { $kr.style.display = "block"; $kr.classList.add("active"); }
         }
-        // interop with catalog 
+        // interop with catalog
         generateCatalog(".catalog-body");
     }
 
@@ -259,8 +263,10 @@ $(document).ready(function() {
     function onLanChange(index) {
         if (index == 0) {
             lang = "kr"
-        } else {
+        } else if (index == 1) {
             lang = "en"
+        } else {
+            lang = "ja"
         }
         setLang(lang)
     }

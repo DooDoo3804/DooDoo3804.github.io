@@ -564,6 +564,14 @@ pre:hover .copy-btn {
     font-size: inherit;
 }
 
+/* --- Side Catalog Fixed Position Fix --- */
+/* Override hux-blog.min.css: .side-catalog.fixed { top: -21px } which hides under navbar */
+.side-catalog.fixed {
+    top: 80px !important;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
 /* ========================================
    DARK MODE
    ======================================== */
