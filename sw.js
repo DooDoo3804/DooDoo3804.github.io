@@ -20,19 +20,19 @@ const PRECACHE_LIST = [
   "./js/hux-blog.min.js",
   "./js/snackbar.js",
   "./img/home-bg.jpg",
-  "./img/home-bg.jpg",
   "./img/404-bg.jpg",
   "./css/hux-blog.min.css",
-  "./css/bootstrap.min.css"
-  // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css",
-  // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2?v=4.6.3",
-  // "//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"
+  "./css/bootstrap.min.css",
+  "./css/custom.css"
 ]
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "cdnjs.cloudflare.com"
 ]
 const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime']
+
+// Image extensions for cache-first strategy
+const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|ico)(\?.*)?$/i;
 
 
 // The Util Function to hack URLs of intercepted requests
@@ -68,6 +68,9 @@ const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GE
 // So It ends up with that regExp is still the king of URL routing ;)
 // P.S. An url.pathname has no '.' can not indicate it ends with extension (e.g. /api/version/1.2/)
 const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/))
+
+// Detect if a request is for an image
+const isImageReq = (req) => IMAGE_EXTENSIONS.test(new URL(req.url).pathname)
 
 // Redirect in SW manually fixed github pages arbitray 404s on things?blah
 // what we want:
@@ -130,7 +133,7 @@ var fetchHelper = {
   fetchThenCache: function(request){
     // Requests with mode "no-cors" can result in Opaque Response,
     // Requests to Allow-Control-Cross-Origin: * can't include credentials.
-    const init = { mode: "cors", credentials: "omit" } 
+    const init = { mode: "cors", credentials: "omit" }
 
     const fetched = fetch(request, init)
     const fetchedCopy = fetched.then(resp => resp.clone());
@@ -140,12 +143,12 @@ var fetchHelper = {
     Promise.all([fetchedCopy, caches.open(CACHE)])
       .then(([response, cache]) => response.ok && cache.put(request, response))
       .catch(_ => {/* eat any errors */})
-    
+
     return fetched;
   },
 
   cacheFirst: function(url){
-    return caches.match(url) 
+    return caches.match(url)
       .then(resp => resp || this.fetchThenCache(url))
       .catch(_ => {/* eat any errors */})
   }
@@ -159,11 +162,6 @@ var fetchHelper = {
  *  void respondWith(Promise<Response> r);
  */
 self.addEventListener('fetch', event => {
-  // logs for debugging
-  //console.log(`fetch ${event.request.url}`)
-  //console.log(` - type: ${event.request.type}; destination: ${event.request.destination}`)
-  //console.log(` - mode: ${event.request.mode}, accept: ${event.request.headers.get('accept')}`)
-
   // Skip some of cross-origin requests, like those for Google Analytics.
   if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
 
@@ -179,18 +177,47 @@ self.addEventListener('fetch', event => {
       return;
     }
 
-    // Stale-while-revalidate for possiblily dynamic content
-    // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-    // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
+    // Cache-first strategy for images (reduces bandwidth and improves load times)
+    if (isImageReq(event.request)) {
+      event.respondWith(
+        caches.match(event.request).then(cached => {
+          if (cached) return cached;
+          return fetch(event.request).then(response => {
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(CACHE).then(cache => cache.put(event.request, clone));
+            }
+            return response;
+          }).catch(_ => caches.match('offline.html'));
+        })
+      );
+      return;
+    }
+
+    // Network-first strategy for HTML pages (ensures fresh content)
+    if (isNavigationReq(event.request)) {
+      event.respondWith(
+        fetch(getCacheBustingUrl(event.request), { cache: "no-store" })
+          .then(response => {
+            const clone = response.clone();
+            caches.open(CACHE).then(cache => cache.put(event.request, clone));
+            return response;
+          })
+          .catch(_ => caches.match(event.request).then(resp => resp || caches.match('offline.html')))
+      );
+
+      // Check for content updates
+      const cached = caches.match(event.request);
+      const fetchedCopy = fetch(getCacheBustingUrl(event.request), { cache: "no-store" }).then(r => r.clone()).catch(_ => null);
+      event.waitUntil(revalidateContent(cached, fetchedCopy));
+      return;
+    }
+
+    // Stale-while-revalidate for other resources (CSS, JS, etc.)
     const cached = caches.match(event.request);
     const fetched = fetch(getCacheBustingUrl(event.request), { cache: "no-store" });
     const fetchedCopy = fetched.then(resp => resp.clone());
-    
-    // Call respondWith() with whatever we get first.
-    // Promise.race() resolves with first one settled (even rejected)
-    // If the fetch fails (e.g disconnected), wait for the cache.
-    // If there’s nothing in cache, wait for the fetch.
-    // If neither yields a response, return offline pages.
+
     event.respondWith(
       Promise.race([fetched.catch(_ => cached), cached])
         .then(resp => resp || fetched)
@@ -203,14 +230,6 @@ self.addEventListener('fetch', event => {
         .then(([response, cache]) => response.ok && cache.put(event.request, response))
         .catch(_ => {/* eat any errors */ })
     );
-
-    // If one request is a HTML naviagtion, checking update!
-    if (isNavigationReq(event.request)) {
-      // you need "preserve logs" to see this log
-      // cuz it happened before navigating
-      console.log(`fetch ${event.request.url}`)
-      event.waitUntil(revalidateContent(cached, fetchedCopy))
-    }
   }
 });
 
@@ -242,7 +261,7 @@ function sendMessageToClientsAsync(msg) {
 /**
  * if content modified, we can notify clients to refresh
  * TODO: Gh-pages rebuild everything in each release. should find a workaround (e.g. ETag with cloudflare)
- * 
+ *
  * @param  {Promise<response>} cachedResp  [description]
  * @param  {Promise<response>} fetchedResp [description]
  * @return {Promise}
@@ -251,6 +270,7 @@ function revalidateContent(cachedResp, fetchedResp) {
   // revalidate when both promise resolved
   return Promise.all([cachedResp, fetchedResp])
     .then(([cached, fetched]) => {
+      if (!cached || !fetched) return;
       const cachedVer = cached.headers.get('last-modified')
       const fetchedVer = fetched.headers.get('last-modified')
       console.log(`"${cachedVer}" vs. "${fetchedVer}"`);

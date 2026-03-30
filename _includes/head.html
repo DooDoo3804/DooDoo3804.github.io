@@ -102,14 +102,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://utteranc.es">
 
+    <!-- Google Fonts (non-blocking with display=swap) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
+
+    <!-- Add to Home Screen (iOS) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DooDoo Blog">
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/128.png">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <!-- Critical CSS (inlined for faster FCP) -->
+    <style>
+        :root {
+            --accent-primary: #0085a1;
+            --accent-secondary: #7b2ff7;
+            --accent-gradient: linear-gradient(135deg, #0085a1, #7b2ff7);
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
@@ -123,14 +148,6 @@
         (function(){var t=localStorage.getItem('doodoo-blog-theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();
     </script>
 
-    <!-- Font Awesome (loaded via Kit at bottom of head) -->
-
-
-
-    <!-- ga & ba script hoook -->
-    <script></script>
-
-    
     <!-- Font Awesome (async to avoid render blocking) -->
     <script src="https://kit.fontawesome.com/13854dfe88.js" crossorigin="anonymous" defer></script>
 </head>
