@@ -196,19 +196,21 @@ self.addEventListener('fetch', event => {
 
     // Network-first strategy for HTML pages (ensures fresh content)
     if (isNavigationReq(event.request)) {
+      const cached = caches.match(event.request);
+      const fetched = fetch(getCacheBustingUrl(event.request), { cache: "no-store" });
+      const fetchedCopy = fetched.then(resp => resp.clone()).catch(_ => null);
+
       event.respondWith(
-        fetch(getCacheBustingUrl(event.request), { cache: "no-store" })
+        fetched
           .then(response => {
             const clone = response.clone();
             caches.open(CACHE).then(cache => cache.put(event.request, clone));
             return response;
           })
-          .catch(_ => caches.match(event.request).then(resp => resp || caches.match('offline.html')))
+          .catch(_ => cached.then(resp => resp || caches.match('offline.html')))
       );
 
-      // Check for content updates
-      const cached = caches.match(event.request);
-      const fetchedCopy = fetch(getCacheBustingUrl(event.request), { cache: "no-store" }).then(r => r.clone()).catch(_ => null);
+      // Check for content updates (reuses the same fetch, no double request)
       event.waitUntil(revalidateContent(cached, fetchedCopy));
       return;
     }
