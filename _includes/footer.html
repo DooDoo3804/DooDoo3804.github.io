@@ -286,23 +286,32 @@ $(document).ready(function() {
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    SimpleJekyllSearch({
+    // highlight matched text in search results
+    function highlightMatch(text, query) {
+        if (!query || !text) return text;
+        var words = query.trim().split(/\s+/).filter(function(w) { return w.length > 1; });
+        if (words.length === 0) return text;
+        var escaped = words.map(function(w) { return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+        var re = new RegExp('(' + escaped.join('|') + ')', 'gi');
+        return text.replace(re, '<mark class="search-highlight">$1</mark>');
+    }
+
+    var searchInstance = SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-results'),
         json: '/search.json',
-        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
-        noResultsText: 'No results',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><p class="search-excerpt">{excerpt}</p><span class="search-date">{date}</span><hr></a></div>',
+        noResultsText: '<div class="no-results">No results found</div>',
         limit: 50,
         fuzzy: false,
-        // a hack to get escaped subtitle unescaped. for some reason, 
-        // post.subtitle w/o escape filter nuke entire search.
         templateMiddleware: function (prop, value, template) {
+            var query = document.getElementById('search-input').value;
             if (prop === 'subtitle' || prop === 'title') {
-                if (value.indexOf("code")) {
-                    return htmlDecode(value);
-                } else {
-                    return value;
-                }
+                var decoded = value.indexOf("code") ? htmlDecode(value) : value;
+                return highlightMatch(decoded, query);
+            }
+            if (prop === 'excerpt') {
+                return highlightMatch(htmlDecode(value), query);
             }
         }
     });
@@ -314,21 +323,42 @@ $(document).ready(function() {
         var $searchInput = $('#search-input');
         var $body = $('body');
 
-        $searchOpen.on('click', function (e) {
-            e.preventDefault();
-            $searchPage.toggleClass('search-active');
+        function openSearch() {
+            if ($searchPage.hasClass('search-active')) return;
+            $searchPage.addClass('search-active');
             var prevClasses = $body.attr('class') || '';
             setTimeout(function () {
                 $body.addClass('no-scroll');
-            }, 400)
+            }, 400);
+            $searchClose.off('click.search').on('click.search', function (e) {
+                e.preventDefault();
+                closeSearch(prevClasses);
+            });
+            $searchInput.focus();
+        }
 
-            if ($searchPage.hasClass('search-active')) {
-                $searchClose.on('click', function (e) {
-                    e.preventDefault();
-                    $searchPage.removeClass('search-active');
-                    $body.attr('class', prevClasses);  // from closure 
-                });
-                $searchInput.focus();
+        function closeSearch(prevClasses) {
+            $searchPage.removeClass('search-active');
+            $body.attr('class', prevClasses || '');
+        }
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            openSearch();
+        });
+
+        // Keyboard shortcut: / to open search, Esc to close
+        $(document).on('keydown', function (e) {
+            var tag = (e.target.tagName || '').toLowerCase();
+            var isInput = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;
+
+            if (e.key === '/' && !isInput) {
+                e.preventDefault();
+                openSearch();
+            }
+            if (e.key === 'Escape' && $searchPage.hasClass('search-active')) {
+                e.preventDefault();
+                closeSearch();
             }
         });
     });
