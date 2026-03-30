@@ -99,6 +99,13 @@
     </script>
     {% endif %}
 
+    <!-- Preconnect for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
 
@@ -128,6 +135,6 @@
     <script></script>
 
     
-    <!-- Font Awrsome -->
-    <script src="https://kit.fontawesome.com/13854dfe88.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome (async to avoid render blocking) -->
+    <script src="https://kit.fontawesome.com/13854dfe88.js" crossorigin="anonymous" defer></script>
 </head>
