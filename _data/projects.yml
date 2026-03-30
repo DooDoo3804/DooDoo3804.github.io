@@ -1,0 +1,58 @@
+- title: "DooDoo IT Blog"
+  description: "Jekyll 기반 기술 블로그. 다크모드, 반응형 디자인, PWA, 검색 기능, React 통합 등 모던 웹 기술을 적용한 개인 포트폴리오 블로그."
+  description_en: "A Jekyll-based tech blog with dark mode, responsive design, PWA, search, and React integration."
+  tech:
+    - Jekyll
+    - React
+    - GitHub Pages
+    - CSS
+  github: "https://github.com/DooDoo3804/DooDoo3804.github.io"
+  demo: "https://doodoo3804.github.io"
+  icon: "fa-globe"
+  featured: true
+
+- title: "알고리즘 문제 풀이"
+  description: "세그먼트 트리, 플로이드-워셜, MST 등 고급 알고리즘을 분석하고 풀이를 정리한 학습 기록 시리즈."
+  description_en: "In-depth analysis and solutions for advanced algorithms including Segment Trees, Floyd-Warshall, and MST."
+  tech:
+    - Kotlin
+    - Java
+    - Algorithm
+  github: "https://github.com/DooDoo3804"
+  icon: "fa-code"
+  featured: true
+
+- title: "Kotlin 학습 노트"
+  description: "Kotlin 문법 기초부터 Java와의 비교 분석까지. 백엔드 전환을 위한 체계적인 학습 기록."
+  description_en: "From Kotlin syntax fundamentals to detailed Java comparisons. A structured learning path for JVM backend transition."
+  tech:
+    - Kotlin
+    - Java
+    - JVM
+  github: "https://github.com/DooDoo3804"
+  demo: "/archive/?tag=kotlin"
+  icon: "fa-leaf"
+  featured: false
+
+- title: "Spring Boot 프로젝트"
+  description: "Spring Boot 기반 REST API 서버 개발. JPA/Hibernate, Redis 캐싱, JWT 인증 등 백엔드 핵심 기술 적용."
+  description_en: "Spring Boot REST API server with JPA/Hibernate, Redis caching, and JWT authentication."
+  tech:
+    - Spring
+    - Java
+    - Redis
+    - Docker
+  github: "https://github.com/DooDoo3804"
+  icon: "fa-server"
+  featured: true
+
+- title: "React 컴포넌트"
+  description: "블로그에 통합된 인터랙티브 React 컴포넌트 모음. GitHub 활동 위젯, 대시보드 등."
+  description_en: "Interactive React components integrated into the blog. GitHub activity widget, dashboards, and more."
+  tech:
+    - React
+    - JavaScript
+    - CSS
+  github: "https://github.com/DooDoo3804/DooDoo3804.github.io"
+  icon: "fa-puzzle-piece"
+  featured: false

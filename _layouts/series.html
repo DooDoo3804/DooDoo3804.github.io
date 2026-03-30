@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+{% include intro-header.html type='page' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{ content }}
+
+            {% assign series_tag = page.series_tag %}
+            {% assign series_posts = "" | split: "" %}
+            {% for p in site.posts %}
+                {% if p.tags contains series_tag %}
+                    {% assign series_posts = series_posts | push: p %}
+                {% endif %}
+            {% endfor %}
+            {% assign series_posts = series_posts | reverse %}
+
+            <section class="series-detail" aria-label="{{ page.title }}">
+                <div class="series-detail-meta">
+                    <span class="series-detail-count"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ series_posts.size }} posts</span>
+                    {% if series_posts.size > 0 %}
+                    <span class="series-detail-dates">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        {{ series_posts.first.date | date: "%b %Y" }} — {{ series_posts.last.date | date: "%b %Y" }}
+                    </span>
+                    {% endif %}
+                </div>
+
+                <ol class="series-post-list">
+                    {% for post in series_posts %}
+                    <li class="series-post-item">
+                        <span class="series-post-number">{{ forloop.index }}</span>
+                        <div class="series-post-content">
+                            <a href="{{ post.url | prepend: site.baseurl }}" class="series-post-title">{{ post.title }}</a>
+                            <div class="series-post-meta">
+                                <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+                                {% assign words = post.content | number_of_words %}
+                                {% assign minutes = words | plus: 0.0 | divided_by: 200 | ceil %}
+                                {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+                                <span>{{ minutes }} min read</span>
+                            </div>
+                            {% if post.subtitle %}
+                            <p class="series-post-desc">{{ post.subtitle }}</p>
+                            {% elsif post.excerpt %}
+                            <p class="series-post-desc">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </section>
+        </div>
+    </div>
+</div>

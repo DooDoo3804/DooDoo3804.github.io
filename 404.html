@@ -19,28 +19,49 @@ permalink: /404.html
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
-                        <span class="terminal-title">bash</span>
+                        <span class="terminal-title">doodoo@blog ~ %</span>
                     </div>
                     <div class="error-terminal-body">
-                        <p><span class="prompt">$</span> curl {{ site.url }}{{ page.url }}</p>
+                        <p><span class="prompt">$</span> curl -I {{ site.url }}{{ page.url }}</p>
                         <p class="error-output">HTTP/1.1 <span class="error-status">404 Not Found</span></p>
-                        <p class="error-output">Content-Type: text/html</p>
-                        <p class="error-output">&nbsp;</p>
-                        <p class="error-output">Error: The requested resource could not be found.</p>
-                        <p class="error-output">The page you're looking for doesn't exist or has been moved.</p>
+                        <p class="error-output">Server: DooDoo-Blog/2.0</p>
+                        <p class="error-output">X-Message: <span class="error-humor">This is not the page you're looking for.</span></p>
+                        <p>&nbsp;</p>
+                        <p><span class="prompt">$</span> git log --oneline -1 --grep="<span class="error-path" id="error-path">lost-page</span>"</p>
+                        <p class="error-output">fatal: no matching commits found</p>
+                        <p>&nbsp;</p>
+                        <p><span class="prompt">$</span> echo "Maybe try one of these?"</p>
+                        <p class="error-output">Maybe try one of these?</p>
                         <p>&nbsp;</p>
                         <p><span class="prompt">$</span> <span class="cursor">_</span></p>
                     </div>
                 </div>
+
+                <p class="error-subtitle">길을 잃었나요? 걱정 마세요, 좋은 곳들이 많습니다.</p>
+
                 <div class="error-actions">
                     <a href="{{ site.baseurl }}/" class="btn-home">
-                        <i class="fa fa-home"></i> Back to Home
+                        <i class="fa fa-home"></i> Home
                     </a>
                     <a href="{{ site.baseurl }}/archive" class="btn-archive">
-                        <i class="fa fa-list"></i> Browse Posts
+                        <i class="fa fa-list"></i> Posts
+                    </a>
+                    <a href="{{ site.baseurl }}/about" class="btn-archive">
+                        <i class="fa fa-user"></i> About
+                    </a>
+                    <a href="{{ site.baseurl }}/projects" class="btn-archive">
+                        <i class="fa fa-code"></i> Projects
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+(function() {
+    var path = window.location.pathname.replace(/\//g, ' ').trim() || 'lost-page';
+    var el = document.getElementById('error-path');
+    if (el) el.textContent = path;
+})();
+</script>

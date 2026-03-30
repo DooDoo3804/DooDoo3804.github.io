@@ -1,0 +1,71 @@
+---
+title: Series
+layout: default
+description: "시리즈별로 묶어 보는 포스트 모음"
+header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+no-catalog: true
+---
+
+{% include intro-header.html type='page' short=true %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+            <div class="series-index">
+            {% comment %}
+                Build a list of "series" = tags that have more than 1 post.
+                Each tag with 2+ posts is considered a series.
+            {% endcomment %}
+
+            {% assign tag_names = "" | split: "" %}
+            {% for tag in site.tags %}
+                {% if tag[1].size > 1 %}
+                    {% assign tag_names = tag_names | push: tag[0] %}
+                {% endif %}
+            {% endfor %}
+            {% assign tag_names = tag_names | sort %}
+
+            {% if tag_names.size == 0 %}
+            <div class="series-empty">
+                <i class="fa fa-layer-group"></i>
+                <p>No series yet. A series is created when 2 or more posts share the same tag.</p>
+            </div>
+            {% endif %}
+
+            {% for tag_name in tag_names %}
+                {% assign posts = site.tags[tag_name] | sort: "date" %}
+                {% assign first_post = posts | first %}
+                {% assign last_post = posts | last %}
+                <div class="series-card">
+                    <div class="series-card-header">
+                        <h3 class="series-card-title">
+                            <i class="fa fa-layer-group"></i>
+                            {{ tag_name }}
+                        </h3>
+                        <span class="series-card-count">{{ posts.size }} posts</span>
+                    </div>
+                    <div class="series-card-dates">
+                        <i class="fa fa-calendar"></i>
+                        {{ first_post.date | date: "%b %-d, %Y" }} — {{ last_post.date | date: "%b %-d, %Y" }}
+                    </div>
+                    {% if first_post.subtitle %}
+                    <p class="series-card-preview">{{ first_post.subtitle }}</p>
+                    {% elsif first_post.excerpt %}
+                    <p class="series-card-preview">{{ first_post.excerpt | strip_html | truncate: 150 }}</p>
+                    {% endif %}
+                    <ol class="series-card-posts">
+                        {% for post in posts %}
+                        <li>
+                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                            <span class="series-card-post-date">{{ post.date | date: "%b %-d" }}</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>

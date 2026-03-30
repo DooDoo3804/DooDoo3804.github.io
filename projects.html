@@ -1,0 +1,99 @@
+---
+layout: page
+title: "Projects"
+description: "개발 프로젝트 & 학습 기록"
+header-bg-css: "linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%)"
+header-mask: 0.3
+nav-style: invert
+---
+
+<div class="projects-page">
+    <!-- Filter Bar -->
+    <div class="projects-filter">
+        <button class="projects-filter-btn active" data-filter="all">All</button>
+        {% assign all_techs = "" %}
+        {% for project in site.data.projects %}
+            {% for tech in project.tech %}
+                {% unless all_techs contains tech %}
+                    {% if all_techs != "" %}
+                        {% assign all_techs = all_techs | append: "," | append: tech %}
+                    {% else %}
+                        {% assign all_techs = tech %}
+                    {% endif %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+        {% assign tech_list = all_techs | split: "," | sort %}
+        {% for tech in tech_list %}
+        <button class="projects-filter-btn" data-filter="{{ tech }}">{{ tech }}</button>
+        {% endfor %}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+        {% for project in site.data.projects %}
+        <div class="projects-card{% if project.featured %} projects-card--featured{% endif %}" data-techs="{{ project.tech | join: ',' }}">
+            <div class="projects-card-icon">
+                <i class="fa {{ project.icon }}" aria-hidden="true"></i>
+            </div>
+            <div class="projects-card-body">
+                <h3 class="projects-card-title">{{ project.title }}</h3>
+                <p class="projects-card-desc">{{ project.description }}</p>
+                <div class="projects-card-techs">
+                    {% for tech in project.tech %}
+                    <span class="projects-tech-tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="projects-card-links">
+                {% if project.github %}
+                <a href="{{ project.github }}" class="projects-link-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-github" aria-hidden="true"></i> GitHub
+                </a>
+                {% endif %}
+                {% if project.demo %}
+                <a href="{{ project.demo }}" class="projects-link-btn projects-link-btn--demo" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-external-link" aria-hidden="true"></i> Demo
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- No results message -->
+    <div class="projects-no-results" style="display: none;">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <p>해당 기술 스택의 프로젝트가 없습니다.</p>
+    </div>
+</div>
+
+<script>
+(function() {
+    var filterBtns = document.querySelectorAll('.projects-filter-btn');
+    var cards = document.querySelectorAll('.projects-card');
+    var noResults = document.querySelector('.projects-no-results');
+
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+
+            var filter = btn.getAttribute('data-filter');
+            var visibleCount = 0;
+
+            cards.forEach(function(card) {
+                var techs = card.getAttribute('data-techs').split(',');
+                if (filter === 'all' || techs.indexOf(filter) !== -1) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = visibleCount === 0 ? '' : 'none';
+        });
+    });
+})();
+</script>

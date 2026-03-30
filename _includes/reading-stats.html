@@ -1,0 +1,48 @@
+{% comment %}
+  Reading Stats Widget - Pure Liquid/Jekyll
+  Shows: total posts, total reading time, most used tags
+{% endcomment %}
+
+{% assign total_words = 0 %}
+{% for post in site.posts %}
+    {% assign words = post.content | number_of_words %}
+    {% assign total_words = total_words | plus: words %}
+{% endfor %}
+{% assign total_minutes = total_words | plus: 0.0 | divided_by: 200 | ceil %}
+{% assign total_hours = total_minutes | divided_by: 60 %}
+{% assign remaining_minutes = total_minutes | modulo: 60 %}
+
+<div class="reading-stats">
+    <div class="reading-stats-items">
+        <div class="reading-stats-item">
+            <span class="reading-stats-value">{{ site.posts.size }}</span>
+            <span class="reading-stats-label">Posts</span>
+        </div>
+        <div class="reading-stats-divider"></div>
+        <div class="reading-stats-item">
+            <span class="reading-stats-value">{% if total_hours > 0 %}{{ total_hours }}h {{ remaining_minutes }}m{% else %}{{ total_minutes }}m{% endif %}</span>
+            <span class="reading-stats-label">Total Read</span>
+        </div>
+        <div class="reading-stats-divider"></div>
+        <div class="reading-stats-item reading-stats-tags">
+            <span class="reading-stats-label">Top Tags</span>
+            <span class="reading-stats-tag-list">
+                {% assign tags_shown = 0 %}
+                {% for tag in site.tags %}
+                    {% if tag[1].size >= 2 and tags_shown < 5 %}
+                    <a href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" class="reading-stats-tag">{{ tag[0] }}<sup>{{ tag[1].size }}</sup></a>
+                    {% assign tags_shown = tags_shown | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if tags_shown == 0 %}
+                    {% for tag in site.tags %}
+                        {% if tags_shown < 3 %}
+                        <a href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" class="reading-stats-tag">{{ tag[0] }}<sup>{{ tag[1].size }}</sup></a>
+                        {% assign tags_shown = tags_shown | plus: 1 %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>

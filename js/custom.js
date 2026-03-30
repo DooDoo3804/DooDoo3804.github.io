@@ -18,6 +18,17 @@
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
         updateToggleIcon(theme);
+        updateUtterancesTheme(theme);
+    }
+
+    function updateUtterancesTheme(theme) {
+        var utterancesFrame = document.querySelector('.utterances-frame');
+        if (!utterancesFrame) return;
+        var utterancesTheme = theme === 'dark' ? 'github-dark' : 'github-light';
+        utterancesFrame.contentWindow.postMessage(
+            { type: 'set-theme', theme: utterancesTheme },
+            'https://utteranc.es'
+        );
     }
 
     function updateToggleIcon(theme) {

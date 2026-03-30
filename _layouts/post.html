@@ -28,6 +28,9 @@ layout: default
                     {% include multilingual-sel.html %}
                 {% endif %}
 
+                <!-- Reading Stats -->
+                {% include reading-stats.html %}
+
 				{{ content }}
 
                 <!-- Series Navigation (posts with same primary tag) -->
@@ -124,19 +127,22 @@ layout: default
 
                 <hr style="visibility: hidden;">
 
-                {% if site.disqus_username %}
-                <!-- disqus comment start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
+                <!-- Utterances Comments -->
+                <div class="utterances-container" id="utterances-container">
+                    <script>
+                    (function() {
+                        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'github-dark' : 'github-light';
+                        var s = document.createElement('script');
+                        s.src = 'https://utteranc.es/client.js';
+                        s.setAttribute('repo', 'DooDoo3804/DooDoo3804.github.io');
+                        s.setAttribute('issue-term', 'pathname');
+                        s.setAttribute('theme', theme);
+                        s.setAttribute('crossorigin', 'anonymous');
+                        s.async = true;
+                        document.getElementById('utterances-container').appendChild(s);
+                    })();
+                    </script>
                 </div>
-                <!-- disqus comment end -->
-                {% endif %}
-
-                {% if site.netease_comment %}
-                <!-- 网易云跟帖 评论框 start -->
-                <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-                <!-- 网易云跟帖 评论框 end -->
-                {% endif %}
             </div>  
 
     <!-- Side Catalog Container -->
@@ -188,22 +194,6 @@ layout: default
   {% include mathjax_support.html %}
 {% endif %}
 
-{% if site.disqus_username %}
-<!-- disqus 기본 JS start -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 기본 JS end -->
-{% endif %}
 
 
 {% if site.anchorjs %}
