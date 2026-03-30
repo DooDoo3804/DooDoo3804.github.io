@@ -105,8 +105,12 @@
                 var code = pre.querySelector('code');
                 var text = code ? code.textContent : pre.textContent;
                 navigator.clipboard.writeText(text).then(function() {
-                    btn.textContent = 'Copied!';
-                    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+                    btn.textContent = '\u2713 Copied!';
+                    btn.classList.add('copy-btn--success');
+                    setTimeout(function() {
+                        btn.textContent = 'Copy';
+                        btn.classList.remove('copy-btn--success');
+                    }, 1500);
                 });
             });
         });
@@ -132,9 +136,9 @@
         });
     }
 
-    /* --- Image Lazy Loading --- */
+    /* --- Image Lazy Loading (all images site-wide) --- */
     function initLazyImages() {
-        var imgs = document.querySelectorAll('.post-container img');
+        var imgs = document.querySelectorAll('img');
         imgs.forEach(function(img) {
             if (!img.hasAttribute('loading')) {
                 img.setAttribute('loading', 'lazy');

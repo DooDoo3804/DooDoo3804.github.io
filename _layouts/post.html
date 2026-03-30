@@ -30,6 +30,35 @@ layout: default
 
 				{{ content }}
 
+                <!-- Series Navigation (posts with same primary tag) -->
+                {% assign current_tag = page.tags | first %}
+                {% if current_tag %}
+                {% assign series_posts = "" | split: "" %}
+                {% for p in site.posts %}
+                    {% if p.tags contains current_tag %}
+                        {% assign series_posts = series_posts | push: p %}
+                    {% endif %}
+                {% endfor %}
+                {% if series_posts.size > 1 %}
+                <div class="series-nav">
+                    <h4 class="series-nav-title"><i class="fa fa-layer-group"></i> {{ current_tag }} Series <span class="series-count">{{ series_posts.size }} posts</span></h4>
+                    <ol class="series-list">
+                    {% assign reversed_series = series_posts | reverse %}
+                    {% for p in reversed_series %}
+                        <li class="series-item{% if p.url == page.url %} series-item--current{% endif %}">
+                            {% if p.url == page.url %}
+                                <span class="series-item-title">{{ p.title }}</span>
+                                <span class="series-item-current-badge">Current</span>
+                            {% else %}
+                                <a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ol>
+                </div>
+                {% endif %}
+                {% endif %}
+
                 <!-- Share Buttons -->
                 <div class="post-share">
                     <span class="post-share-label">Share</span>
