@@ -8,12 +8,9 @@
     {% assign words = post.content | number_of_words %}
     {% assign total_words = total_words | plus: words %}
 {% endfor %}
-{% assign total_minutes = total_words | divided_by: 200 %}
+{% assign total_minutes = total_words | plus: 0.0 | divided_by: 200 | ceil %}
 {% assign total_hours = total_minutes | divided_by: 60 %}
 {% assign remaining_minutes = total_minutes | modulo: 60 %}
-
-{% comment %} Get top 5 tags sorted by post count {% endcomment %}
-{% assign sorted_tags = site.tags | sort: 1 %}
 
 <div class="reading-stats">
     <div class="reading-stats-items">
@@ -30,25 +27,7 @@
         <div class="reading-stats-item reading-stats-tags">
             <span class="reading-stats-label">Top Tags</span>
             <span class="reading-stats-tag-list">
-                {% assign tag_count = 0 %}
-                {% for tag in site.tags %}
-                    {% if tag_count < 5 %}
-                    {% assign sorted_check = true %}
-                    {% for other_tag in site.tags %}
-                        {% if other_tag[1].size > tag[1].size %}
-                        {% elsif other_tag[0] == tag[0] %}
-                        {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                {% endfor %}
-                {% comment %} Simple approach: list tags with most posts {% endcomment %}
                 {% assign tags_shown = 0 %}
-                {% assign min_size = 999 %}
-                {% assign tag_pairs = "" | split: "" %}
-                {% for tag in site.tags %}
-                    {% assign pair = tag[0] | append: ":" | append: tag[1].size %}
-                    {% assign tag_pairs = tag_pairs | push: pair %}
-                {% endfor %}
                 {% for tag in site.tags %}
                     {% if tag[1].size >= 2 and tags_shown < 5 %}
                     <a href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" class="reading-stats-tag">{{ tag[0] }}<sup>{{ tag[1].size }}</sup></a>

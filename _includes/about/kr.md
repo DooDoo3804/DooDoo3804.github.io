@@ -16,28 +16,28 @@
     <div class="skill-viz">
         <div class="skill-viz-category">
             <h4 class="skill-viz-label"><i class="fa fa-server" aria-hidden="true"></i> Backend</h4>
-            <div class="skill-bar" data-skill="Kotlin" data-level="85"><div class="skill-bar-fill skill-bar--kotlin"></div></div>
-            <div class="skill-bar" data-skill="Java" data-level="80"><div class="skill-bar-fill skill-bar--java"></div></div>
-            <div class="skill-bar" data-skill="Spring Boot" data-level="75"><div class="skill-bar-fill skill-bar--spring"></div></div>
-            <div class="skill-bar" data-skill="JPA / Hibernate" data-level="70"><div class="skill-bar-fill skill-bar--spring"></div></div>
-            <div class="skill-bar" data-skill="REST API" data-level="80"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Kotlin" data-level="85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Kotlin"><div class="skill-bar-fill skill-bar--kotlin"></div></div>
+            <div class="skill-bar" data-skill="Java" data-level="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Java"><div class="skill-bar-fill skill-bar--java"></div></div>
+            <div class="skill-bar" data-skill="Spring Boot" data-level="75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Spring Boot"><div class="skill-bar-fill skill-bar--spring"></div></div>
+            <div class="skill-bar" data-skill="JPA / Hibernate" data-level="70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="JPA / Hibernate"><div class="skill-bar-fill skill-bar--spring"></div></div>
+            <div class="skill-bar" data-skill="REST API" data-level="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="REST API"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
         <div class="skill-viz-category">
             <h4 class="skill-viz-label"><i class="fa fa-desktop" aria-hidden="true"></i> Frontend</h4>
-            <div class="skill-bar" data-skill="React" data-level="60"><div class="skill-bar-fill skill-bar--react"></div></div>
-            <div class="skill-bar" data-skill="JavaScript" data-level="70"><div class="skill-bar-fill skill-bar--js"></div></div>
-            <div class="skill-bar" data-skill="HTML / CSS" data-level="75"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="React" data-level="60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="React"><div class="skill-bar-fill skill-bar--react"></div></div>
+            <div class="skill-bar" data-skill="JavaScript" data-level="70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript"><div class="skill-bar-fill skill-bar--js"></div></div>
+            <div class="skill-bar" data-skill="HTML / CSS" data-level="75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="HTML / CSS"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
         <div class="skill-viz-category">
             <h4 class="skill-viz-label"><i class="fa fa-database" aria-hidden="true"></i> Database</h4>
-            <div class="skill-bar" data-skill="MySQL / PostgreSQL" data-level="70"><div class="skill-bar-fill skill-bar--default"></div></div>
-            <div class="skill-bar" data-skill="Redis" data-level="55"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="MySQL / PostgreSQL" data-level="70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="MySQL / PostgreSQL"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Redis" data-level="55" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="Redis"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
         <div class="skill-viz-category">
             <h4 class="skill-viz-label"><i class="fa fa-cogs" aria-hidden="true"></i> DevOps & Tools</h4>
-            <div class="skill-bar" data-skill="Git" data-level="85"><div class="skill-bar-fill skill-bar--default"></div></div>
-            <div class="skill-bar" data-skill="Docker" data-level="60"><div class="skill-bar-fill skill-bar--default"></div></div>
-            <div class="skill-bar" data-skill="GitHub Actions" data-level="55"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Git" data-level="85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Git"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Docker" data-level="60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Docker"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="GitHub Actions" data-level="55" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="GitHub Actions"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
     </div>
 </div>

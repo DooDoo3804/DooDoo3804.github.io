@@ -18,27 +18,27 @@ layout: default
             {% endfor %}
             {% assign series_posts = series_posts | reverse %}
 
-            <div class="series-detail">
+            <section class="series-detail" aria-label="{{ page.title }}">
                 <div class="series-detail-meta">
-                    <span class="series-detail-count"><i class="fa fa-file-text-o"></i> {{ series_posts.size }} posts</span>
+                    <span class="series-detail-count"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ series_posts.size }} posts</span>
                     {% if series_posts.size > 0 %}
                     <span class="series-detail-dates">
-                        <i class="fa fa-calendar"></i>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
                         {{ series_posts.first.date | date: "%b %Y" }} — {{ series_posts.last.date | date: "%b %Y" }}
                     </span>
                     {% endif %}
                 </div>
 
-                <div class="series-post-list">
+                <ol class="series-post-list">
                     {% for post in series_posts %}
-                    <div class="series-post-item">
+                    <li class="series-post-item">
                         <span class="series-post-number">{{ forloop.index }}</span>
                         <div class="series-post-content">
                             <a href="{{ post.url | prepend: site.baseurl }}" class="series-post-title">{{ post.title }}</a>
                             <div class="series-post-meta">
                                 <span>{{ post.date | date: "%B %-d, %Y" }}</span>
                                 {% assign words = post.content | number_of_words %}
-                                {% assign minutes = words | divided_by: 200 %}
+                                {% assign minutes = words | plus: 0.0 | divided_by: 200 | ceil %}
                                 {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
                                 <span>{{ minutes }} min read</span>
                             </div>
@@ -48,10 +48,10 @@ layout: default
                             <p class="series-post-desc">{{ post.excerpt | strip_html | truncate: 120 }}</p>
                             {% endif %}
                         </div>
-                    </div>
+                    </li>
                     {% endfor %}
-                </div>
-            </div>
+                </ol>
+            </section>
         </div>
     </div>
 </div>
