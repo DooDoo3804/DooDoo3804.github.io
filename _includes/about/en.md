@@ -13,53 +13,31 @@
     <h3 class="about-section-title">
         <span class="about-section-icon">&#9775;</span> Tech Stack
     </h3>
-    <div class="skill-grid">
-        <div class="skill-category">
-            <h4 class="skill-category-label">Language</h4>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--kotlin">Kotlin</span>
-                <span class="skill-badge skill-badge--java">Java</span>
-                <span class="skill-badge skill-badge--python">Python</span>
-                <span class="skill-badge skill-badge--js">JavaScript</span>
-            </div>
+    <div class="skill-viz">
+        <div class="skill-viz-category">
+            <h4 class="skill-viz-label"><i class="fa fa-server" aria-hidden="true"></i> Backend</h4>
+            <div class="skill-bar" data-skill="Kotlin" data-level="85"><div class="skill-bar-fill skill-bar--kotlin"></div></div>
+            <div class="skill-bar" data-skill="Java" data-level="80"><div class="skill-bar-fill skill-bar--java"></div></div>
+            <div class="skill-bar" data-skill="Spring Boot" data-level="75"><div class="skill-bar-fill skill-bar--spring"></div></div>
+            <div class="skill-bar" data-skill="JPA / Hibernate" data-level="70"><div class="skill-bar-fill skill-bar--spring"></div></div>
+            <div class="skill-bar" data-skill="REST API" data-level="80"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
-        <div class="skill-category">
-            <h4 class="skill-category-label">Backend</h4>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--spring">Spring Boot</span>
-                <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
-                <span class="skill-badge skill-badge--default">REST API</span>
-                <span class="skill-badge skill-badge--default">MySQL / PostgreSQL</span>
-                <span class="skill-badge skill-badge--default">Redis</span>
-                <span class="skill-badge skill-badge--default">JUnit</span>
-            </div>
+        <div class="skill-viz-category">
+            <h4 class="skill-viz-label"><i class="fa fa-desktop" aria-hidden="true"></i> Frontend</h4>
+            <div class="skill-bar" data-skill="React" data-level="60"><div class="skill-bar-fill skill-bar--react"></div></div>
+            <div class="skill-bar" data-skill="JavaScript" data-level="70"><div class="skill-bar-fill skill-bar--js"></div></div>
+            <div class="skill-bar" data-skill="HTML / CSS" data-level="75"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
-        <div class="skill-category">
-            <h4 class="skill-category-label">Frontend</h4>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--react">React</span>
-                <span class="skill-badge skill-badge--default">HTML / CSS</span>
-                <span class="skill-badge skill-badge--default">Jekyll</span>
-            </div>
+        <div class="skill-viz-category">
+            <h4 class="skill-viz-label"><i class="fa fa-database" aria-hidden="true"></i> Database</h4>
+            <div class="skill-bar" data-skill="MySQL / PostgreSQL" data-level="70"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Redis" data-level="55"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
-        <div class="skill-category">
-            <h4 class="skill-category-label">Tools & Infra</h4>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--default">Git</span>
-                <span class="skill-badge skill-badge--default">Docker</span>
-                <span class="skill-badge skill-badge--default">IntelliJ IDEA</span>
-                <span class="skill-badge skill-badge--default">VS Code</span>
-                <span class="skill-badge skill-badge--default">GitHub Actions</span>
-            </div>
-        </div>
-        <div class="skill-category">
-            <h4 class="skill-category-label">CS Fundamentals</h4>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--algo">Data Structures</span>
-                <span class="skill-badge skill-badge--algo">Algorithms</span>
-                <span class="skill-badge skill-badge--default">Operating Systems</span>
-                <span class="skill-badge skill-badge--default">Networks</span>
-            </div>
+        <div class="skill-viz-category">
+            <h4 class="skill-viz-label"><i class="fa fa-cogs" aria-hidden="true"></i> DevOps & Tools</h4>
+            <div class="skill-bar" data-skill="Git" data-level="85"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="Docker" data-level="60"><div class="skill-bar-fill skill-bar--default"></div></div>
+            <div class="skill-bar" data-skill="GitHub Actions" data-level="55"><div class="skill-bar-fill skill-bar--default"></div></div>
         </div>
     </div>
 </div>

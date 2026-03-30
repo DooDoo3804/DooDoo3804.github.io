@@ -1702,6 +1702,163 @@ code, kbd, pre, samp, .code-lang-label {
     border-color: rgba(0, 0, 0, 0.08);
 }
 
+/* --- Skill Visualization (Animated Bars) --- */
+.skill-viz {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+}
+
+@media (min-width: 768px) {
+    .skill-viz {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.skill-viz-category {
+    padding: 22px;
+    background: #fafbfc;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.skill-viz-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #555;
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill-viz-label i {
+    font-size: 15px;
+    color: var(--accent-primary);
+}
+
+.skill-bar {
+    position: relative;
+    margin-bottom: 14px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.skill-bar:last-child {
+    margin-bottom: 0;
+}
+
+.skill-bar::before {
+    content: attr(data-skill);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.skill-bar::after {
+    content: attr(data-level) '%';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-weight: 700;
+    color: #999;
+    z-index: 2;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 14px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-bar.animated .skill-bar-fill {
+    width: var(--bar-width);
+}
+
+/* Skill bar color variants */
+.skill-bar-fill.skill-bar--kotlin {
+    background: linear-gradient(90deg, #7b2ff7, #a855f7);
+}
+
+.skill-bar-fill.skill-bar--java {
+    background: linear-gradient(90deg, #e27626, #f09860);
+}
+
+.skill-bar-fill.skill-bar--spring {
+    background: linear-gradient(90deg, #6db33f, #8dd35f);
+}
+
+.skill-bar-fill.skill-bar--react {
+    background: linear-gradient(90deg, #0d8ecf, #61dafb);
+}
+
+.skill-bar-fill.skill-bar--js {
+    background: linear-gradient(90deg, #b8a000, #f0db4f);
+}
+
+.skill-bar-fill.skill-bar--default {
+    background: linear-gradient(90deg, #0085a1, #00b4d8);
+}
+
+/* Dark mode for skill viz */
+[data-theme="dark"] .skill-viz-category {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] .skill-viz-label {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .skill-viz-label i {
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .skill-bar {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .skill-bar::after {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--kotlin {
+    background: linear-gradient(90deg, #9b59b6, #b07fff);
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--java {
+    background: linear-gradient(90deg, #e27626, #f0a060);
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--spring {
+    background: linear-gradient(90deg, #5a9a31, #8dd35f);
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--react {
+    background: linear-gradient(90deg, #1a9fdb, #61dafb);
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--js {
+    background: linear-gradient(90deg, #c4b200, #e3d04a);
+}
+
+[data-theme="dark"] .skill-bar-fill.skill-bar--default {
+    background: linear-gradient(90deg, #1a7f9b, #58a6ff);
+}
+
 /* --- Project Cards --- */
 .project-grid {
     display: grid;
