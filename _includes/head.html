@@ -28,17 +28,76 @@
     <meta property="og:description"
         content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     {% endcase %}
-    <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
+    {% if page.header-img %}
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.header-img }}">
+    {% else %}
+    <meta property="og:image" content="{{ site.sidebar-avatar }}">
+    {% endif %}
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.SEOTitle }}">
+    <meta property="og:locale" content="ko_KR">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
     <meta name="twitter:description" content="{% if page.layout == 'post' or page.path contains '_posts/' %}{{ page.excerpt | strip_html | truncate:160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    {% if page.header-img %}
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.header-img }}">
+    {% else %}
+    <meta name="twitter:image" content="{{ site.sidebar-avatar }}">
+    {% endif %}
     {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+
+    <!-- JSON-LD Structured Data -->
+    {% if page.layout == 'post' %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": {{ page.title | jsonify }},
+        "description": {{ page.excerpt | strip_html | truncate:200 | jsonify }},
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+        "author": {
+            "@type": "Person",
+            "name": "{{ page.author | default: site.title }}",
+            "url": "{{ site.url }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.title }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.url }}{{ site.baseurl }}/img/favicon.ico"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
+        },
+        {% if page.header-img %}"image": "{{ site.url }}{{ site.baseurl }}/{{ page.header-img }}",{% endif %}
+        "keywords": {{ page.tags | jsonify }},
+        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
+    }
+    </script>
+    {% else %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": {{ site.SEOTitle | jsonify }},
+        "description": {{ site.description | jsonify }},
+        "url": "{{ site.url }}{{ site.baseurl }}/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ site.url }}{{ site.baseurl }}/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    {% endif %}
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
