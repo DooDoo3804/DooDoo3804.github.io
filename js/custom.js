@@ -89,6 +89,30 @@
     }
 
     /* --- Enhanced Copy Button (replaces footer.html version) --- */
+    function fallbackCopy(text, btn, orig, onSuccess) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try { if (document.execCommand("copy")) onSuccess(); } catch(e) {}
+        document.body.removeChild(ta);
+    }
+
+    function copyToClipboard(text, btn) {
+        var orig = btn.innerHTML;
+        function onSuccess() {
+            btn.innerHTML = "\u2713 Copied!";
+            btn.classList.add('copy-btn--success');
+            setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copy-btn--success'); }, 1500);
+        }
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
+                fallbackCopy(text, btn, orig, onSuccess);
+            });
+        } else {
+            fallbackCopy(text, btn, orig, onSuccess);
+        }
+    }
+
     function initCopyButtons() {
         var pres = document.querySelectorAll('.post-container pre');
         pres.forEach(function(pre) {
@@ -104,14 +128,7 @@
             btn.addEventListener('click', function() {
                 var code = pre.querySelector('code');
                 var text = code ? code.textContent : pre.textContent;
-                navigator.clipboard.writeText(text).then(function() {
-                    btn.textContent = '\u2713 Copied!';
-                    btn.classList.add('copy-btn--success');
-                    setTimeout(function() {
-                        btn.textContent = 'Copy';
-                        btn.classList.remove('copy-btn--success');
-                    }, 1500);
-                });
+                copyToClipboard(text, btn);
             });
         });
     }
@@ -136,33 +153,41 @@
         });
     }
 
-    /* --- Image Lazy Loading (all images site-wide) --- */
+    /* --- Image Lazy Loading (skip first 3 above-the-fold) --- */
     function initLazyImages() {
-        var imgs = document.querySelectorAll('img');
-        imgs.forEach(function(img) {
-            if (!img.hasAttribute('loading')) {
-                img.setAttribute('loading', 'lazy');
-            }
+        var imgs = document.querySelectorAll('img:not([loading])');
+        imgs.forEach(function(img, i) {
+            if (i >= 3) img.setAttribute('loading', 'lazy');
         });
     }
 
     /* --- Post Share Buttons --- */
     function initShareButtons() {
+        var shareBtns = document.querySelectorAll('.share-btn--copy');
+        shareBtns.forEach(function(btn) {
+            btn._origHTML = btn.innerHTML;
+        });
         document.addEventListener('click', function(e) {
             var btn = e.target.closest('.share-btn--copy');
             if (!btn) return;
             e.preventDefault();
             var url = btn.getAttribute('data-url');
-            navigator.clipboard.writeText(url).then(function() {
-                var icon = btn.querySelector('i');
-                var origHTML = btn.innerHTML;
+            var origHTML = btn._origHTML || btn.innerHTML;
+            function onSuccess() {
                 btn.innerHTML = '<i class="fa fa-check"></i> Copied!';
                 btn.classList.add('share-btn--copied');
                 setTimeout(function() {
                     btn.innerHTML = origHTML;
                     btn.classList.remove('share-btn--copied');
                 }, 2000);
-            });
+            }
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(onSuccess).catch(function() {
+                    fallbackCopy(url, btn, origHTML, onSuccess);
+                });
+            } else {
+                fallbackCopy(url, btn, origHTML, onSuccess);
+            }
         });
     }
 

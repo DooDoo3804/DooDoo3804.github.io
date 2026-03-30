@@ -1,9 +1,11 @@
 <div class="about-hero">
     <h2 class="about-name">DoYoon Kim <span class="about-name-en">김도윤</span></h2>
-    <p class="about-tagline">Junior developer documenting my journey toward backend engineering</p>
+    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
+    <p class="about-intro">Hi! I'm a developer passionate about building robust backend systems. I enjoy algorithmic problem-solving and system design, and I document my learning journey on this blog.</p>
     <div class="about-links">
-        <a href="https://github.com/doodoo3804" class="about-link-btn"><i class="fa fa-github"></i> GitHub</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope"></i> Email</a>
+        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
 
@@ -27,6 +29,9 @@
                 <span class="skill-badge skill-badge--spring">Spring Boot</span>
                 <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
                 <span class="skill-badge skill-badge--default">REST API</span>
+                <span class="skill-badge skill-badge--default">MySQL / PostgreSQL</span>
+                <span class="skill-badge skill-badge--default">Redis</span>
+                <span class="skill-badge skill-badge--default">JUnit</span>
             </div>
         </div>
         <div class="skill-category">
@@ -41,6 +46,7 @@
             <h4 class="skill-category-label">Tools & Infra</h4>
             <div class="skill-badges">
                 <span class="skill-badge skill-badge--default">Git</span>
+                <span class="skill-badge skill-badge--default">Docker</span>
                 <span class="skill-badge skill-badge--default">IntelliJ IDEA</span>
                 <span class="skill-badge skill-badge--default">VS Code</span>
                 <span class="skill-badge skill-badge--default">GitHub Actions</span>
@@ -68,11 +74,11 @@
                 <span class="project-icon">&#128214;</span>
                 <h4 class="project-title">DooDoo IT Blog</h4>
             </div>
-            <p class="project-desc">A Jekyll-based tech blog featuring dark mode, responsive design, PWA support, and React integration. Built as a personal portfolio and knowledge base.</p>
+            <p class="project-desc">A Jekyll-based tech blog featuring dark mode, responsive design, PWA support, search, and React integration. Built as a personal portfolio and knowledge base.</p>
             <div class="project-tags">
                 <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
             </div>
-            <a href="https://doodoo3804.github.io" class="project-link">Live Site &rarr;</a>
+            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -83,7 +89,7 @@
             <div class="project-tags">
                 <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
             </div>
-            <a href="/archive/?tag=Algorithm" class="project-link">View Series &rarr;</a>
+            <a href="https://github.com/DooDoo3804" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -101,7 +107,39 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa fa-github"></i></span> GitHub Activity
+        <span class="about-section-icon">&#127891;</span> Education
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">Current</span>
+                <h4 class="timeline-title">Computer Science Major</h4>
+                <p class="timeline-desc">Coursework in Data Structures, Algorithms, Operating Systems, Networks, and Databases.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#128188;</span> Experience
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023 ~</span>
+                <h4 class="timeline-title">Personal Projects & Open Source</h4>
+                <p class="timeline-desc">Running a tech blog, solving algorithm problems, and building side projects with Spring Boot to strengthen practical skills.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHub Activity
     </h3>
     <div class="github-stats">
         <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" loading="lazy">
@@ -114,6 +152,14 @@
         <span class="about-section-icon">&#128640;</span> Learning Journey
     </h3>
     <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2026</span>
+                <h4 class="timeline-title">Advanced Backend Studies</h4>
+                <p class="timeline-desc">Expanding Spring Boot projects, studying system design, and applying infrastructure technologies like Docker and Redis.</p>
+            </div>
+        </div>
         <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">

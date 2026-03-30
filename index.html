@@ -24,7 +24,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
 <div class="post-cards-grid">
 {% for post in paginator.posts %}
-<div class="post-card" data-tag="{{ post.tags | first | downcase }}">
+<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <div class="post-card-tags">
             {% for tag in post.tags %}
@@ -84,7 +84,8 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
             var visibleCount = 0;
             cards.forEach(function(card) {
-                if (filter === 'all' || card.getAttribute('data-tag') === filter) {
+                var tags = (card.getAttribute('data-tags') || '').split(',');
+                if (filter === 'all' || tags.indexOf(filter) !== -1) {
                     card.style.display = '';
                     visibleCount++;
                 } else {

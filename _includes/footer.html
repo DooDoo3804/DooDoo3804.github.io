@@ -39,13 +39,15 @@
 
 <!-- async load function -->
 <script>
-    function async(u, c) {
-        var d = document, t = 'script',
-            o = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-        s.parentNode.insertBefore(o, s);
+    if (typeof async !== 'function') {
+        function async(u, c) {
+            var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            o.src = u;
+            if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+            s.parentNode.insertBefore(o, s);
+        }
     }
 </script>
 
@@ -205,7 +207,7 @@ $(document).ready(function() {
             var items = $('.catalog-body').html();
             if (items) { $('.mobile-catalog-body').html(items); }
         }
-        $toggle.on('click', function() { $panel.toggle(); });
+        $toggle.on('click', function() { $panel.toggle(); $toggle.attr('aria-expanded', $panel.is(':visible')); });
         // close on link click
         $panel.on('click', 'a', function() { $panel.hide(); });
     }
@@ -286,14 +288,15 @@ $(document).ready(function() {
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    // highlight matched text in search results
+    // highlight matched text in search results (safe against HTML entities)
     function highlightMatch(text, query) {
         if (!query || !text) return text;
+        var safe = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
         var words = query.trim().split(/\s+/).filter(function(w) { return w.length > 1; });
-        if (words.length === 0) return text;
+        if (words.length === 0) return safe;
         var escaped = words.map(function(w) { return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
         var re = new RegExp('(' + escaped.join('|') + ')', 'gi');
-        return text.replace(re, '<mark class="search-highlight">$1</mark>');
+        return safe.replace(re, '<mark class="search-highlight">$1</mark>');
     }
 
     var searchInstance = SimpleJekyllSearch({
@@ -307,7 +310,7 @@ $(document).ready(function() {
         templateMiddleware: function (prop, value, template) {
             var query = document.getElementById('search-input').value;
             if (prop === 'subtitle' || prop === 'title') {
-                var decoded = value.indexOf("code") ? htmlDecode(value) : value;
+                var decoded = value.indexOf("code") !== -1 ? htmlDecode(value) : value;
                 return highlightMatch(decoded, query);
             }
             if (prop === 'excerpt') {
@@ -327,6 +330,7 @@ $(document).ready(function() {
             if ($searchPage.hasClass('search-active')) return;
             $searchPage.addClass('search-active');
             var prevClasses = $body.attr('class') || '';
+            $body.data('prevClasses', prevClasses);
             setTimeout(function () {
                 $body.addClass('no-scroll');
             }, 400);
@@ -358,7 +362,7 @@ $(document).ready(function() {
             }
             if (e.key === 'Escape' && $searchPage.hasClass('search-active')) {
                 e.preventDefault();
-                closeSearch();
+                closeSearch($body.data('prevClasses'));
             }
         });
     });

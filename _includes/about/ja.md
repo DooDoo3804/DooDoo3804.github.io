@@ -1,9 +1,11 @@
 <div class="about-hero">
     <h2 class="about-name">キム・ドユン <span class="about-name-en">DoYoon Kim</span></h2>
-    <p class="about-tagline">バックエンドエンジニアを目指すジュニア開発者の学習記録</p>
+    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
+    <p class="about-intro">こんにちは！堅牢なバックエンドシステムの構築に情熱を持つ開発者です。アルゴリズムの問題解決とシステム設計が好きで、学んだことをこのブログに記録しています。</p>
     <div class="about-links">
-        <a href="https://github.com/doodoo3804" class="about-link-btn"><i class="fa fa-github"></i> GitHub</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope"></i> Email</a>
+        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
 
@@ -27,6 +29,9 @@
                 <span class="skill-badge skill-badge--spring">Spring Boot</span>
                 <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
                 <span class="skill-badge skill-badge--default">REST API</span>
+                <span class="skill-badge skill-badge--default">MySQL / PostgreSQL</span>
+                <span class="skill-badge skill-badge--default">Redis</span>
+                <span class="skill-badge skill-badge--default">JUnit</span>
             </div>
         </div>
         <div class="skill-category">
@@ -41,6 +46,7 @@
             <h4 class="skill-category-label">ツール & インフラ</h4>
             <div class="skill-badges">
                 <span class="skill-badge skill-badge--default">Git</span>
+                <span class="skill-badge skill-badge--default">Docker</span>
                 <span class="skill-badge skill-badge--default">IntelliJ IDEA</span>
                 <span class="skill-badge skill-badge--default">VS Code</span>
                 <span class="skill-badge skill-badge--default">GitHub Actions</span>
@@ -68,11 +74,11 @@
                 <span class="project-icon">&#128214;</span>
                 <h4 class="project-title">DooDoo IT Blog</h4>
             </div>
-            <p class="project-desc">Jekyllベースの技術ブログ。ダークモード、レスポンシブデザイン、PWA、React統合などモダンWeb技術を活用したポートフォリオブログ。</p>
+            <p class="project-desc">Jekyllベースの技術ブログ。ダークモード、レスポンシブデザイン、PWA、検索機能、React統合などモダンWeb技術を活用したポートフォリオブログ。</p>
             <div class="project-tags">
                 <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
             </div>
-            <a href="https://doodoo3804.github.io" class="project-link">サイトを見る &rarr;</a>
+            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -83,7 +89,7 @@
             <div class="project-tags">
                 <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
             </div>
-            <a href="/archive/?tag=Algorithm" class="project-link">シリーズを見る &rarr;</a>
+            <a href="https://github.com/DooDoo3804" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -101,7 +107,39 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa fa-github"></i></span> GitHubアクティビティ
+        <span class="about-section-icon">&#127891;</span> 学歴
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">在学中</span>
+                <h4 class="timeline-title">コンピュータサイエンス専攻</h4>
+                <p class="timeline-desc">データ構造、アルゴリズム、OS、ネットワーク、データベースなどCS核心科目を履修。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#128188;</span> 経験
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023 ~</span>
+                <h4 class="timeline-title">個人プロジェクト & オープンソース</h4>
+                <p class="timeline-desc">技術ブログ運営、アルゴリズム問題解決、Spring Bootベースのサイドプロジェクトを通じて実務能力を強化。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHubアクティビティ
     </h3>
     <div class="github-stats">
         <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" loading="lazy">
@@ -114,6 +152,14 @@
         <span class="about-section-icon">&#128640;</span> 学習の歩み
     </h3>
     <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2026</span>
+                <h4 class="timeline-title">バックエンド深化学習</h4>
+                <p class="timeline-desc">Spring Bootプロジェクト拡張、システム設計の学習、Docker/Redisなどインフラ技術の適用。</p>
+            </div>
+        </div>
         <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">

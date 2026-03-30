@@ -108,7 +108,7 @@ layout: default
                         {% endif %}
                     {% endfor %}
                     {% if related.size == 0 %}
-                        {% assign related = site.posts | where_exp: "p", "p.url != page.url" | limit: 3 %}
+                        {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
                     {% endif %}
                     {% for post in related limit:3 %}
                     <div class="related-post-card">

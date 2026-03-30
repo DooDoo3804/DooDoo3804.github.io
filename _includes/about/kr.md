@@ -1,9 +1,11 @@
 <div class="about-hero">
     <h2 class="about-name">김도윤 <span class="about-name-en">DoYoon Kim</span></h2>
-    <p class="about-tagline">백엔드 개발자를 향한 여정을 기록하는 주니어 개발자</p>
+    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
+    <p class="about-intro">안녕하세요! 견고한 백엔드 시스템을 만드는 것에 열정을 가진 개발자입니다. 알고리즘 문제 풀이와 시스템 설계를 즐기며, 배운 것들을 블로그에 기록하고 있습니다.</p>
     <div class="about-links">
-        <a href="https://github.com/doodoo3804" class="about-link-btn"><i class="fa fa-github"></i> GitHub</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope"></i> Email</a>
+        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
 
@@ -27,6 +29,9 @@
                 <span class="skill-badge skill-badge--spring">Spring Boot</span>
                 <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
                 <span class="skill-badge skill-badge--default">REST API</span>
+                <span class="skill-badge skill-badge--default">MySQL / PostgreSQL</span>
+                <span class="skill-badge skill-badge--default">Redis</span>
+                <span class="skill-badge skill-badge--default">JUnit</span>
             </div>
         </div>
         <div class="skill-category">
@@ -41,6 +46,7 @@
             <h4 class="skill-category-label">Tools & Infra</h4>
             <div class="skill-badges">
                 <span class="skill-badge skill-badge--default">Git</span>
+                <span class="skill-badge skill-badge--default">Docker</span>
                 <span class="skill-badge skill-badge--default">IntelliJ IDEA</span>
                 <span class="skill-badge skill-badge--default">VS Code</span>
                 <span class="skill-badge skill-badge--default">GitHub Actions</span>
@@ -68,11 +74,11 @@
                 <span class="project-icon">&#128214;</span>
                 <h4 class="project-title">DooDoo IT Blog</h4>
             </div>
-            <p class="project-desc">Jekyll 기반 기술 블로그. 다크모드, 반응형 디자인, PWA, React 통합 등 모던 웹 기술을 적용한 개인 포트폴리오 블로그.</p>
+            <p class="project-desc">Jekyll 기반 기술 블로그. 다크모드, 반응형 디자인, PWA, 검색 기능, React 통합 등 모던 웹 기술을 적용한 개인 포트폴리오 블로그.</p>
             <div class="project-tags">
                 <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
             </div>
-            <a href="https://doodoo3804.github.io" class="project-link">Live Site &rarr;</a>
+            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -83,7 +89,7 @@
             <div class="project-tags">
                 <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
             </div>
-            <a href="/archive/?tag=Algorithm" class="project-link">시리즈 보기 &rarr;</a>
+            <a href="https://github.com/DooDoo3804" class="project-link">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -101,7 +107,39 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa fa-github"></i></span> GitHub 활동
+        <span class="about-section-icon">&#127891;</span> 학력
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">재학 중</span>
+                <h4 class="timeline-title">컴퓨터공학 전공</h4>
+                <p class="timeline-desc">자료구조, 알고리즘, 운영체제, 네트워크, 데이터베이스 등 CS 핵심 과목 이수.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#128188;</span> 경험
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023 ~</span>
+                <h4 class="timeline-title">개인 프로젝트 & 오픈소스</h4>
+                <p class="timeline-desc">기술 블로그 운영, 알고리즘 문제 풀이, Spring Boot 기반 사이드 프로젝트를 통해 실무 역량 강화.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHub 활동
     </h3>
     <div class="github-stats">
         <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" loading="lazy">
@@ -117,9 +155,17 @@
         <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
+                <span class="timeline-date">2026</span>
+                <h4 class="timeline-title">백엔드 심화 학습</h4>
+                <p class="timeline-desc">Spring Boot 기반 프로젝트 확장, 시스템 설계 학습, Docker/Redis 등 인프라 기술 적용.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
                 <span class="timeline-date">2023 ~</span>
                 <h4 class="timeline-title">백엔드 개발 학습</h4>
-                <p class="timeline-desc">Spring Boot, JPA/Hibernate, REST API 설계 등 백엔드 핵심 기술 학습 중. Kotlin을 주 언어로 채택하고 JVM 생태계 탐구.</p>
+                <p class="timeline-desc">Spring Boot, JPA/Hibernate, REST API 설계 등 백엔드 핵심 기술 학습. Kotlin을 주 언어로 채택하고 JVM 생태계 탐구.</p>
             </div>
         </div>
         <div class="timeline-item">
