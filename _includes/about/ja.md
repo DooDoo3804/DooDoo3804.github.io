@@ -1,39 +1,132 @@
-はじめまして、**キム・ドユン**です。
+<div class="about-hero">
+    <h2 class="about-name">キム・ドユン <span class="about-name-en">DoYoon Kim</span></h2>
+    <p class="about-tagline">バックエンドエンジニアを目指すジュニア開発者の学習記録</p>
+    <div class="about-links">
+        <a href="https://github.com/doodoo3804" class="about-link-btn"><i class="fa fa-github"></i> GitHub</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope"></i> Email</a>
+    </div>
+</div>
 
-バックエンド開発の学習記録をまとめたブログです。アルゴリズム、データ構造、JVMエコシステム、Web開発について書いています。
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#9775;</span> 技術スタック
+    </h3>
+    <div class="skill-grid">
+        <div class="skill-category">
+            <h4 class="skill-category-label">言語</h4>
+            <div class="skill-badges">
+                <span class="skill-badge skill-badge--kotlin">Kotlin</span>
+                <span class="skill-badge skill-badge--java">Java</span>
+                <span class="skill-badge skill-badge--python">Python</span>
+                <span class="skill-badge skill-badge--js">JavaScript</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h4 class="skill-category-label">バックエンド</h4>
+            <div class="skill-badges">
+                <span class="skill-badge skill-badge--spring">Spring Boot</span>
+                <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
+                <span class="skill-badge skill-badge--default">REST API</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h4 class="skill-category-label">フロントエンド</h4>
+            <div class="skill-badges">
+                <span class="skill-badge skill-badge--react">React</span>
+                <span class="skill-badge skill-badge--default">HTML / CSS</span>
+                <span class="skill-badge skill-badge--default">Jekyll</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h4 class="skill-category-label">ツール & インフラ</h4>
+            <div class="skill-badges">
+                <span class="skill-badge skill-badge--default">Git</span>
+                <span class="skill-badge skill-badge--default">IntelliJ IDEA</span>
+                <span class="skill-badge skill-badge--default">VS Code</span>
+                <span class="skill-badge skill-badge--default">GitHub Actions</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h4 class="skill-category-label">CS基礎</h4>
+            <div class="skill-badges">
+                <span class="skill-badge skill-badge--algo">データ構造</span>
+                <span class="skill-badge skill-badge--algo">アルゴリズム</span>
+                <span class="skill-badge skill-badge--default">OS</span>
+                <span class="skill-badge skill-badge--default">ネットワーク</span>
+            </div>
+        </div>
+    </div>
+</div>
 
----
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#128187;</span> プロジェクト
+    </h3>
+    <div class="project-grid">
+        <div class="project-card">
+            <div class="project-card-header">
+                <span class="project-icon">&#128214;</span>
+                <h4 class="project-title">DooDoo IT Blog</h4>
+            </div>
+            <p class="project-desc">Jekyllベースの技術ブログ。ダークモード、レスポンシブデザイン、PWA、React統合などモダンWeb技術を活用したポートフォリオブログ。</p>
+            <div class="project-tags">
+                <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
+            </div>
+            <a href="https://doodoo3804.github.io" class="project-link">サイトを見る &rarr;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-header">
+                <span class="project-icon">&#9881;</span>
+                <h4 class="project-title">アルゴリズム解析</h4>
+            </div>
+            <p class="project-desc">セグメントツリー、ワーシャルフロイド法、最小全域木など高度なアルゴリズムの分析と解法をまとめた学習シリーズ。</p>
+            <div class="project-tags">
+                <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
+            </div>
+            <a href="/archive/?tag=Algorithm" class="project-link">シリーズを見る &rarr;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-header">
+                <span class="project-icon">&#127793;</span>
+                <h4 class="project-title">Kotlin学習ノート</h4>
+            </div>
+            <p class="project-desc">Kotlinの基本文法からJavaとの詳細比較まで。JVMバックエンド転換のための体系的な学習記録。</p>
+            <div class="project-tags">
+                <span>Kotlin</span><span>Java</span><span>JVM</span>
+            </div>
+            <a href="/archive/?tag=kotlin" class="project-link">シリーズを見る &rarr;</a>
+        </div>
+    </div>
+</div>
 
-##### 技術スタック
-
-**言語**
-`Kotlin` `Java` `Python` `JavaScript`
-
-**バックエンド**
-`Spring Boot` `JPA / Hibernate` `REST API`
-
-**アルゴリズム & CS**
-`データ構造` `アルゴリズム` `OS` `ネットワーク`
-
-**フロントエンド**
-`React` `HTML/CSS` `Jekyll`
-
-**ツール**
-`Git` `IntelliJ IDEA` `VS Code` `GitHub Actions`
-
----
-
-##### 主なトピック
-
-| カテゴリ | 内容 |
-|---------|------|
-| **アルゴリズム** | セグメントツリー、ワーシャルフロイド法、最小全域木（クラスカル法）など |
-| **Kotlin** | 基本文法、Kotlin vs Java 比較 |
-| **React** | Jekyll + React 連携とフロントエンド実験 |
-
----
-
-##### 連絡先
-
-- **GitHub**: [github.com/doodoo3804](https://github.com/doodoo3804)
-- **Email**: [doodoo3804@gmail.com](mailto:doodoo3804@gmail.com)
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#128640;</span> 学習の歩み
+    </h3>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023 ~</span>
+                <h4 class="timeline-title">バックエンド開発</h4>
+                <p class="timeline-desc">Spring Boot、JPA/Hibernate、REST API設計などバックエンドの核心技術を学習中。Kotlinを主言語に採用し、JVMエコシステムを探求。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023</span>
+                <h4 class="timeline-title">技術ブログ開設</h4>
+                <p class="timeline-desc">Jekyll + GitHub Pagesで開発ブログを構築。ダークモード、レスポンシブ、PWAなど自ら実装。学習内容の整理と共有。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023</span>
+                <h4 class="timeline-title">アルゴリズム & データ構造</h4>
+                <p class="timeline-desc">セグメントツリー、ワーシャルフロイド法、最小全域木など高度なアルゴリズムの学習と問題解決。CS基礎の強化。</p>
+            </div>
+        </div>
+    </div>
+</div>
