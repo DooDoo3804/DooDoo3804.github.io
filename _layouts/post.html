@@ -29,7 +29,21 @@ layout: default
                 {% endif %}
 
 				{{ content }}
- 
+
+                <!-- Share Buttons -->
+                <div class="post-share">
+                    <span class="post-share-label">Share</span>
+                    <button class="share-btn share-btn--copy" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}" aria-label="Copy link">
+                        <i class="fa fa-link"></i> Copy Link
+                    </button>
+                    <a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X/Twitter">
+                        <i class="fa-brands fa-x-twitter"></i> Post
+                    </a>
+                    <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i> Share
+                    </a>
+                </div>
+
                 <hr style="visibility: hidden;">
                 <ul class="pager">
                     {% if page.previous.url %}

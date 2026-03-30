@@ -142,6 +142,26 @@
         });
     }
 
+    /* --- Post Share Buttons --- */
+    function initShareButtons() {
+        document.addEventListener('click', function(e) {
+            var btn = e.target.closest('.share-btn--copy');
+            if (!btn) return;
+            e.preventDefault();
+            var url = btn.getAttribute('data-url');
+            navigator.clipboard.writeText(url).then(function() {
+                var icon = btn.querySelector('i');
+                var origHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fa fa-check"></i> Copied!';
+                btn.classList.add('share-btn--copied');
+                setTimeout(function() {
+                    btn.innerHTML = origHTML;
+                    btn.classList.remove('share-btn--copied');
+                }, 2000);
+            });
+        });
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -152,6 +172,7 @@
         initCodeLabels();
         initCopyButtons();
         initLazyImages();
+        initShareButtons();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {
