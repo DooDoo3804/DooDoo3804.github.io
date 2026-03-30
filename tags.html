@@ -1,0 +1,89 @@
+---
+title: Tags
+layout: default
+description: "Browse all posts by tag"
+header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+no-catalog: true
+---
+
+{% include intro-header.html type='page' short=true %}
+
+<div class="container tags-page-container">
+    <div class="row">
+
+        <!-- Tag Cloud -->
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="tags-cloud-section">
+                <h3 class="tags-section-title"><i class="fa fa-tags"></i> All Tags</h3>
+
+                {% comment %} Build tags sorted by frequency (most used first) {% endcomment %}
+                {% capture tags_with_count %}{% for tag in site.tags %}{{ tag[1].size | prepend: "0000" | slice: -4, 4 }}::{{ tag[0] }}{% unless forloop.last %}|||{% endunless %}{% endfor %}{% endcapture %}
+                {% assign sorted_tag_items = tags_with_count | split: "|||" | sort | reverse %}
+
+                <div class="tags-cloud">
+                    {% for item in sorted_tag_items %}
+                    {% assign parts = item | split: "::" %}
+                    {% assign tag_name = parts[1] | strip %}
+                    {% assign tag_posts = site.tags[tag_name] %}
+                    <a href="#tag-{{ tag_name | slugify }}" class="tags-pill" data-count="{{ tag_posts.size }}">
+                        {{ tag_name }}
+                        <span class="tags-pill-count">{{ tag_posts.size }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Posts grouped by tag (sorted by frequency) -->
+            <div class="tags-posts-section">
+                {% for item in sorted_tag_items %}
+                {% assign parts = item | split: "::" %}
+                {% assign tag_name = parts[1] | strip %}
+                {% assign tag_posts = site.tags[tag_name] %}
+                <div class="tags-group" id="tag-{{ tag_name | slugify }}">
+                    <div class="tags-group-header">
+                        <h4 class="tags-group-title">{{ tag_name }}</h4>
+                        <span class="tags-group-count">{{ tag_posts.size }} post{% if tag_posts.size != 1 %}s{% endif %}</span>
+                    </div>
+                    <div class="tags-group-posts">
+                        {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
+                        {% for post in sorted_posts %}
+                        <a href="{{ post.url | prepend: site.baseurl }}" class="tags-post-item">
+                            <div class="tags-post-meta">
+                                <span class="tags-post-category">{{ post.tags | first }}</span>
+                                <span class="tags-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                            </div>
+                            <div class="tags-post-title">{{ post.title }}</div>
+                            {% if post.subtitle %}
+                            <div class="tags-post-subtitle">{{ post.subtitle }}</div>
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+// Smooth scroll to tag section when clicking a tag pill
+document.querySelectorAll('.tags-pill').forEach(function(pill) {
+    pill.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            var offset = 80; // navbar height
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+
+            // Highlight effect
+            target.classList.add('tags-group--highlight');
+            setTimeout(function() {
+                target.classList.remove('tags-group--highlight');
+            }, 1500);
+        }
+    });
+});
+</script>
