@@ -101,6 +101,16 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
+        <span class="about-section-icon"><i class="fa fa-github"></i></span> GitHubアクティビティ
+    </h3>
+    <div class="github-stats">
+        <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DooDoo3804&layout=compact&hide_border=true&bg_color=00000000&title_color=0085a1&text_color=555" alt="Top Languages" class="github-stats-card" loading="lazy">
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
         <span class="about-section-icon">&#128640;</span> 学習の歩み
     </h3>
     <div class="timeline">
