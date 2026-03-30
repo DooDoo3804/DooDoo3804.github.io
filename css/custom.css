@@ -2188,8 +2188,8 @@ code, kbd, pre, samp, .code-lang-label {
 /* ========================================
    SEARCH HINT - Light Mode Fix
    ======================================== */
-body:not([data-theme="dark"]) .search-hint,
-body:not([data-theme="dark"]) .search-hint kbd {
+html:not([data-theme="dark"]) .search-hint,
+html:not([data-theme="dark"]) .search-hint kbd {
     color: rgba(0,0,0,0.4);
 }
 
@@ -2220,7 +2220,7 @@ button.search-icon-close {
    OVERFLOW FIXES
    ======================================== */
 pre { overflow-x: auto; }
-table { overflow-x: auto; display: block; }
+.post-container table { display: block; overflow-x: auto; max-width: 100%; }
 .post-container { overflow-wrap: break-word; word-break: break-word; }
 
 /* ========================================
