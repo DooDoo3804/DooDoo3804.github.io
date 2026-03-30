@@ -28,9 +28,6 @@ layout: default
                     {% include multilingual-sel.html %}
                 {% endif %}
 
-                <!-- Reading Stats -->
-                {% include reading-stats.html %}
-
 				{{ content }}
 
                 <!-- Series Navigation (posts with same primary tag) -->
@@ -82,7 +79,7 @@ layout: default
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
                         Previous<br>
-                        <span>{{page.previous.title | truncate:30}}</span>
+                        <span>{{page.previous.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
@@ -90,14 +87,14 @@ layout: default
                     <li class="next">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
                         Next<br>
-                        <span>{{page.next.title | truncate:30}}</span>
+                        <span>{{page.next.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
                 </ul>
                 <!-- Related Posts -->
                 <div class="related-posts">
-                    <h4>관련 글</h4>
+                    <h4>Related Posts</h4>
                     <div class="related-posts-grid">
                     {% assign related = "" | split: "" %}
                     {% assign seen = "" | split: "" %}
@@ -129,7 +126,7 @@ layout: default
                     </div>
                     {% endfor %}
                     {% if related.size == 0 %}
-                    <p class="related-posts-empty">관련 글이 없습니다.</p>
+                    <p class="related-posts-empty">No related posts found.</p>
                     {% endif %}
                     </div>
                 </div>

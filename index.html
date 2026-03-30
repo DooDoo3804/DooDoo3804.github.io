@@ -1,9 +1,31 @@
 ---
 layout: page
-description: "「SW 개발자」"
+description: "Software Developer"
 header-mask: 0.3
 header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 ---
+
+<!-- Author Hero Section -->
+<div class="author-hero">
+    {% if site.sidebar-avatar %}
+    <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" loading="lazy" />
+    {% endif %}
+    <div class="author-hero-info">
+        <p class="author-hero-tagline">{{ site.sidebar-about-description }}</p>
+        <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
+        <div class="author-hero-links">
+            {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i> GitHub</a>
+            {% endif %}
+            {% if site.linkedin_username %}
+            <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i> LinkedIn</a>
+            {% endif %}
+            {% if site.email_address %}
+            <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 <!-- Category Filter Bar -->
 <div class="category-filter">
