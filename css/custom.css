@@ -641,6 +641,22 @@ pre:hover .copy-btn {
     color: #8b949e;
 }
 
+.error-humor {
+    color: #d2a8ff;
+    font-style: italic;
+}
+
+.error-path {
+    color: #58a6ff;
+}
+
+.error-subtitle {
+    font-size: 15px;
+    color: #777;
+    margin: 0 0 24px;
+    text-align: center;
+}
+
 .cursor {
     display: inline-block;
     animation: blink 1s step-end infinite;
@@ -653,7 +669,7 @@ pre:hover .copy-btn {
 
 .error-actions {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -663,9 +679,10 @@ pre:hover .copy-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 28px;
+    padding: 11px 22px;
     border-radius: 30px;
     font-weight: 600;
+    font-size: 14px;
     text-decoration: none;
     transition: all 0.2s;
 }
@@ -699,13 +716,22 @@ pre:hover .copy-btn {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
+[data-theme="dark"] .error-subtitle {
+    color: #8b949e;
+}
+
 [data-theme="dark"] .error-404-content .btn-home {
     background: #58a6ff;
+    color: #0d1117;
 }
 
 [data-theme="dark"] .error-404-content .btn-archive {
     color: #58a6ff;
     border-color: #58a6ff;
+}
+
+[data-theme="dark"] .error-404-content .btn-archive:hover {
+    background: rgba(88, 166, 255, 0.1);
 }
 
 /* --- Tag Improvements --- */
