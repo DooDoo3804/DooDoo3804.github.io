@@ -100,6 +100,71 @@ html {
     background: rgba(255, 255, 255, 0.02);
 }
 
+/* --- Category Filter Bar --- */
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.category-btn {
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(0, 133, 161, 0.04);
+}
+
+.category-btn.active {
+    background: var(--accent-primary);
+    color: #fff;
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 8px rgba(0, 133, 161, 0.25);
+}
+
+.filter-no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 15px;
+}
+
+[data-theme="dark"] .category-filter {
+    border-bottom-color: #30363d;
+}
+
+[data-theme="dark"] .category-btn {
+    background: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+}
+
+[data-theme="dark"] .category-btn:hover {
+    border-color: #58a6ff;
+    color: #58a6ff;
+    background: rgba(88, 166, 255, 0.08);
+}
+
+[data-theme="dark"] .category-btn.active {
+    background: #58a6ff;
+    color: #0d1117;
+    border-color: #58a6ff;
+    box-shadow: 0 2px 8px rgba(88, 166, 255, 0.25);
+}
+
 /* --- Post Cards (Homepage) --- */
 .post-cards-grid {
     display: grid;
@@ -125,6 +190,7 @@ html {
 .post-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 133, 161, 0.3);
 }
 
 .post-card a {
@@ -628,6 +694,7 @@ pre:hover .copy-btn {
 
 [data-theme="dark"] .post-card:hover {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    border-color: rgba(88, 166, 255, 0.3);
 }
 
 [data-theme="dark"] .post-card .post-subtitle,
