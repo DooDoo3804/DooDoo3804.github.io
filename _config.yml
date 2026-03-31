@@ -78,7 +78,7 @@ netease_comment: false
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "백엔드 개발자를 향한 여정"
 # picture
-sidebar-avatar: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1616137592/noticon/mllppshbmymxfgbm1jod.gif # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar.gif # locally hosted — was previously on tammolo.com CDN
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags

@@ -28,9 +28,6 @@ layout: default
                     {% include multilingual-sel.html %}
                 {% endif %}
 
-                <!-- Reading Stats -->
-                {% include reading-stats.html %}
-
 				{{ content }}
 
                 <!-- Series Navigation (posts with same primary tag) -->
@@ -82,7 +79,7 @@ layout: default
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
                         Previous<br>
-                        <span>{{page.previous.title | truncate:30}}</span>
+                        <span>{{page.previous.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
@@ -90,7 +87,7 @@ layout: default
                     <li class="next">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
                         Next<br>
-                        <span>{{page.next.title | truncate:30}}</span>
+                        <span>{{page.next.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
@@ -100,28 +97,37 @@ layout: default
                     <h4>Related Posts</h4>
                     <div class="related-posts-grid">
                     {% assign related = "" | split: "" %}
-                    {% for p in site.posts %}
-                        {% if p.url != page.url and related.size < 3 %}
-                            {% for tag in page.tags %}
-                                {% if p.tags contains tag %}
-                                    {% assign related = related | push: p %}
-                                    {% break %}
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                    {% assign seen = "" | split: "" %}
+                    {% for tag in page.tags %}
+                        {% for p in site.posts %}
+                            {% if p.url != page.url and related.size < 4 %}
+                                {% unless seen contains p.url %}
+                                    {% if p.tags contains tag %}
+                                        {% assign related = related | push: p %}
+                                        {% assign seen = seen | push: p.url %}
+                                    {% endif %}
+                                {% endunless %}
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                     {% if related.size == 0 %}
                         {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
                     {% endif %}
-                    {% for post in related limit:3 %}
+                    {% for post in related limit:4 %}
                     <div class="related-post-card">
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
                             <div class="rp-title">{{ post.title }}</div>
-                            <div class="rp-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+                            <div class="rp-meta">
+                                <span class="rp-category">{{ post.tags | join: ", " }}</span>
+                                <span class="rp-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                            </div>
                         </a>
                     </div>
                     {% endfor %}
+                    {% if related.size == 0 %}
+                    <p class="related-posts-empty">No related posts found.</p>
+                    {% endif %}
                     </div>
                 </div>
 
