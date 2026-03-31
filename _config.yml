@@ -1,6 +1,6 @@
 # Site settings
 title: DooDoo IT Blog
-SEOTitle: 개발 블로그 | DooDoo IT Blog
+SEOTitle: DooDoo IT Blog | Dev Blog
 # header-img removed - using CSS gradients instead
 email: doodoo3804@gmail.com
 description: "백엔드 개발을 향한 여정. 알고리즘, 자료구조, Kotlin, Java, Spring, React 학습 기록을 공유합니다."
@@ -76,7 +76,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "백엔드 개발자를 향한 여정"
+sidebar-about-description: "Journey towards becoming a Backend Developer"
 # picture
 sidebar-avatar: /img/avatar.gif # locally hosted — was previously on tammolo.com CDN
 
