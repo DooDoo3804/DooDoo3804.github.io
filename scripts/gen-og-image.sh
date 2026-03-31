@@ -50,15 +50,23 @@ wrap_title() {
 
 WRAPPED_TITLE=$(wrap_title "$TITLE")
 
+# Detect font paths (macOS vs Linux)
+FONT_BOLD="/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+FONT_REGULAR="/System/Library/Fonts/Supplemental/Arial.ttf"
+if [ ! -f "$FONT_BOLD" ]; then
+    FONT_BOLD="$(fc-list : file | grep -i 'arial.*bold\.ttf' | head -1 | cut -d: -f1 || echo 'Arial-Bold')"
+    FONT_REGULAR="$(fc-list : file | grep -i 'arial\.ttf' | head -1 | cut -d: -f1 || echo 'Arial')"
+fi
+
 magick -size 1200x630 \
     gradient:'#1a1a2e'-'#16213e' \
-    -fill '#ffffff' -font Helvetica-Bold \
+    -fill '#ffffff' -font "$FONT_BOLD" \
     -gravity North \
     -pointsize 28 -annotate +0+40 "DooDoo IT Blog" \
     -gravity Center \
     -pointsize 56 -interline-spacing 8 -annotate +0-20 "$WRAPPED_TITLE" \
     -gravity South \
-    -fill '#0085a1' -pointsize 24 -annotate +0+50 "$TAGS" \
+    -fill '#0085a1' -font "$FONT_REGULAR" -pointsize 24 -annotate +0+50 "$TAGS" \
     "$OUTPUT"
 
 echo "Generated: $OUTPUT"
