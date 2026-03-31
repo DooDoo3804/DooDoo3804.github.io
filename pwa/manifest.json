@@ -1,7 +1,7 @@
 {
   "name": "DooDoo IT Blog",
   "short_name": "DooDoo Blog",
-  "description": "백엔드 개발자를 향한 여정 - IT 개발 블로그",
+  "description": "A journey towards becoming a backend developer — IT dev blog",
   "icons": [
     {
       "src": "icons/128.png",
@@ -26,6 +26,6 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "lang": "ko",
+  "lang": "en",
   "categories": ["blog", "technology", "education"]
 }

@@ -3,8 +3,8 @@ title: DooDoo IT Blog
 SEOTitle: DooDoo IT Blog | Dev Blog
 # header-img removed - using CSS gradients instead
 email: doodoo3804@gmail.com
-description: "백엔드 개발을 향한 여정. 알고리즘, 자료구조, Kotlin, Java, Spring, React 학습 기록을 공유합니다."
-keyword: "백엔드 개발, 알고리즘, Kotlin, Java, Spring Boot, React, 개발 블로그, DooDoo, 김도윤"
+description: "A journey towards backend development. Sharing notes on algorithms, data structures, Kotlin, Java, Spring, and React."
+keyword: "backend development, algorithms, Kotlin, Java, Spring Boot, React, dev blog, DooDoo, DoYoon Kim, 백엔드 개발, 알고리즘, 개발 블로그, 김도윤"
 url: "https://doodoo3804.github.io/" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -76,7 +76,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "Journey towards becoming a Backend Developer"
+sidebar-about-description: "On a journey to become a backend developer."
 # picture
 sidebar-avatar: /img/avatar.gif # locally hosted — was previously on tammolo.com CDN
 
