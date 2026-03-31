@@ -127,6 +127,23 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
+        <span class="about-section-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> 연락처
+    </h3>
+    <div class="contact-links">
+        <a href="mailto:{{ site.email }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope" aria-hidden="true"></i> {{ site.email }}
+        </a>
+        <a href="https://github.com/{{ site.github_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-github" aria-hidden="true"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+        </a>
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
         <span class="about-section-icon">&#127793;</span> 현재 학습 중
     </h3>
     <div class="currently-learning">

@@ -4393,7 +4393,8 @@ pre { overflow-x: auto; }
 .transitions-enabled table,
 .transitions-enabled th,
 .transitions-enabled td,
-.transitions-enabled hr {
+.transitions-enabled hr,
+.transitions-enabled .contact-link {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
