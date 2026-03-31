@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-results'),
         json: '/search.json',
-        searchResultTemplate: '<div class="search-result-item" data-url="{url}"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><div class="search-result-meta"><span class="search-tags">{tags}</span><span class="search-date">{date}</span></div><p class="search-excerpt">{excerpt}</p></a></div>',
+        searchResultTemplate: '<div class="search-result-item" data-url="{url}"><a href="{url}"><h2 class="post-title">{title}</h2><p class="search-excerpt">{excerpt}</p><div class="search-result-meta"><span class="search-date">{date}</span><span class="search-tags">{tags}</span></div></a></div>',
         noResultsText: '',
         limit: 50,
         fuzzy: false,

@@ -51,6 +51,16 @@
                 setTheme(current === 'dark' ? 'light' : 'dark');
             }
         });
+
+        // Follow OS theme changes when user hasn't set a manual preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem(THEME_KEY)) {
+                var newTheme = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                updateToggleIcon(newTheme);
+                updateUtterancesTheme(newTheme);
+            }
+        });
     }
 
     /* --- Back to Top --- */

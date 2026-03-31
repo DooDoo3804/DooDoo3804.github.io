@@ -98,7 +98,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <div class="post-cards-grid">
 {% for post in paginator.posts %}
 {% if paginator.page == 1 and forloop.first %}{% continue %}{% endif %}
-<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
+<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}" data-excerpt="{{ post.content | strip_html | strip_newlines | truncate: 100 | escape }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
         <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');"></div>
@@ -121,6 +121,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <p class="post-card-excerpt">
                 {{ post.content | strip_html | truncate:120 }}
             </p>
+            <div class="post-card-hover-excerpt"></div>
             <div class="post-card-meta">
                 <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
                 {% if post.last_modified_at %}
@@ -144,20 +145,50 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
     </div>
 </div>
 
-<!-- Pager -->
+<!-- Pagination -->
 {% if paginator.total_pages > 1 %}
-<ul class="pager">
+<nav class="pagination" aria-label="Blog pagination">
     {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="pagination-btn pagination-prev" aria-label="Newer posts">&larr; Newer</a>
+    {% else %}
+    <span class="pagination-btn pagination-prev pagination-disabled" aria-disabled="true">&larr; Newer</span>
     {% endif %}
+
+    <div class="pagination-numbers">
+        {% if paginator.page > 3 %}
+        <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="pagination-num">1</a>
+        {% if paginator.page > 4 %}<span class="pagination-ellipsis">&hellip;</span>{% endif %}
+        {% endif %}
+
+        {% for p in (1..paginator.total_pages) %}
+            {% if p >= paginator.page | minus: 2 and p <= paginator.page | plus: 2 %}
+                {% if p == paginator.page %}
+                <span class="pagination-num pagination-current" aria-current="page">{{ p }}</span>
+                {% elsif p == 1 %}
+                <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="pagination-num">{{ p }}</a>
+                {% else %}
+                <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', p }}" class="pagination-num">{{ p }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% assign last_visible = paginator.page | plus: 2 %}
+        {% if last_visible < paginator.total_pages %}
+        {% if last_visible < paginator.total_pages | minus: 1 %}<span class="pagination-ellipsis">&hellip;</span>{% endif %}
+        {% if paginator.total_pages == 1 %}
+        <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="pagination-num">{{ paginator.total_pages }}</a>
+        {% else %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', paginator.total_pages }}" class="pagination-num">{{ paginator.total_pages }}</a>
+        {% endif %}
+        {% endif %}
+    </div>
+
     {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="pagination-btn pagination-next" aria-label="Older posts">Older &rarr;</a>
+    {% else %}
+    <span class="pagination-btn pagination-next pagination-disabled" aria-disabled="true">Older &rarr;</span>
     {% endif %}
-</ul>
+</nav>
 {% endif %}
 
 <!-- Category Filter JS -->
@@ -199,6 +230,17 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             if (allBtn) allBtn.click();
         });
     }
+})();
+</script>
+
+<!-- Hover Excerpt JS -->
+<script>
+(function() {
+    document.querySelectorAll('.post-card[data-excerpt]').forEach(function(card) {
+        var excerpt = card.getAttribute('data-excerpt');
+        var el = card.querySelector('.post-card-hover-excerpt');
+        if (el && excerpt) el.textContent = excerpt;
+    });
 })();
 </script>
 
