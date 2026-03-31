@@ -360,6 +360,8 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 12px;
     margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid #f0f0f0;
@@ -3212,6 +3214,58 @@ pre { overflow-x: auto; }
 
 [data-theme="dark"] .series-post-desc {
     color: #8b949e;
+}
+
+/* --- RSS Subscribe CTA --- */
+.rss-cta {
+    margin-bottom: 24px;
+    padding: 12px 20px;
+    background: rgba(0, 133, 161, 0.04);
+    border: 1px solid rgba(0, 133, 161, 0.12);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.rss-cta a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.rss-cta a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color: var(--accent-primary);
+}
+
+.rss-cta a i {
+    font-size: 15px;
+}
+
+[data-theme="dark"] .rss-cta {
+    background: rgba(0, 133, 161, 0.08);
+    border-color: rgba(0, 133, 161, 0.2);
+}
+
+/* --- Post Card Updated Badge --- */
+.post-card-meta .post-updated {
+    font-size: 11.5px;
+    color: #7b2ff7;
+    font-weight: 500;
+}
+
+.post-card-meta .post-updated i {
+    font-size: 10px;
+    margin-right: 2px;
+}
+
+[data-theme="dark"] .post-card-meta .post-updated {
+    color: #a371f7;
 }
 
 /* ========================================
