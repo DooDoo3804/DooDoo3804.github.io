@@ -143,7 +143,6 @@ layout: default
                             <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
                             <div class="rp-title">{{ post.title }}</div>
                             <div class="rp-meta">
-                                <span class="rp-category">{{ post.tags | join: ", " }}</span>
                                 <span class="rp-date">{{ post.date | date: "%Y.%m.%d" }}</span>
                             </div>
                         </a>
@@ -289,10 +288,12 @@ layout: default
         });
     });
 
-    // Close on overlay click
-    overlay.addEventListener('click', function() {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
+    // Close on overlay click (only when clicking backdrop, not the image)
+    overlay.addEventListener('click', function(e) {
+        if (e.target !== lbImg) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 
     // Close on ESC
