@@ -99,6 +99,29 @@
         });
     }
 
+    /* --- Code Block Line Numbers --- */
+    function initLineNumbers() {
+        var codeBlocks = document.querySelectorAll('.post-container pre > code');
+        codeBlocks.forEach(function(code) {
+            // skip if already processed
+            if (code.classList.contains('has-line-numbers')) return;
+            var text = code.textContent;
+            // skip single-line or empty blocks
+            if (!text || text.split('\n').length <= 2) return;
+
+            var lines = text.replace(/\n$/, '').split('\n');
+            code.textContent = '';
+            code.classList.add('has-line-numbers');
+
+            lines.forEach(function(line) {
+                var span = document.createElement('span');
+                span.className = 'code-line';
+                span.textContent = line + '\n';
+                code.appendChild(span);
+            });
+        });
+    }
+
     /* --- Enhanced Copy Button (replaces footer.html version) --- */
     function fallbackCopy(text, btn, orig, onSuccess) {
         var ta = document.createElement("textarea");
@@ -278,5 +301,11 @@
         if (document.querySelector('.mobile-toc-toggle')) {
             document.body.classList.add('has-mobile-toc');
         }
+
+        // Enable dark mode transitions after page load (FOUC prevention)
+        // Small delay ensures initial paint is complete before enabling transitions
+        setTimeout(function() {
+            document.documentElement.classList.add('transitions-enabled');
+        }, 50);
     });
 })();

@@ -25,9 +25,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
             {% endif %}
         </div>
-        {% if site.last_updated %}
-        <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.last_updated }}</p>
-        {% endif %}
+        <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.time | date: "%B %Y" }}</p>
     </div>
 </div>
 
@@ -102,24 +100,34 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 {% if paginator.page == 1 and forloop.first %}{% continue %}{% endif %}
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
-        <div class="post-card-tags">
-            {% for tag in post.tags %}
-            <span>{{ tag }}</span>
-            {% endfor %}
+        {% if post.header-img or post.thumbnail %}
+        <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');" loading="lazy"></div>
+        {% else %}
+        {% assign first_tag = post.tags | first | downcase %}
+        <div class="post-card-thumb post-card-thumb--gradient{% if first_tag == 'algorithm' %} post-card-thumb--algorithm{% elsif first_tag == 'kotlin' %} post-card-thumb--kotlin{% elsif first_tag == 'react' %} post-card-thumb--react{% endif %}">
+            <span class="post-card-thumb-label">{{ post.tags | first }}</span>
         </div>
-        <h2 class="post-title">{{ post.title }}</h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
         {% endif %}
-        <p class="post-card-excerpt">
-            {{ post.content | strip_html | truncate:120 }}
-        </p>
-        <div class="post-card-meta">
-            <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
-            {% if post.last_modified_at %}
-            <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa fa-refresh"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+        <div class="post-card-body">
+            <div class="post-card-tags">
+                {% for tag in post.tags %}
+                <span>{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <h2 class="post-title">{{ post.title }}</h2>
+            {% if post.subtitle %}
+            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
             {% endif %}
-            <span class="read-time">{% assign chars = post.content | strip_html | size %}{% assign words = post.content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
+            <p class="post-card-excerpt">
+                {{ post.content | strip_html | truncate:120 }}
+            </p>
+            <div class="post-card-meta">
+                <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
+                {% if post.last_modified_at %}
+                <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa fa-refresh"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+                {% endif %}
+                <span class="read-time">{% assign chars = post.content | strip_html | size %}{% assign words = post.content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
+            </div>
         </div>
     </a>
 </div>
@@ -128,9 +136,12 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
 <!-- No Results Message -->
 <div class="filter-no-results" style="display:none;">
-    <i class="fa fa-search" aria-hidden="true"></i>
-    <p>No posts found for this category.</p>
-    <p class="filter-no-results-hint">Try selecting <strong>All</strong> to see every post.</p>
+    <div class="filter-no-results-card">
+        <i class="fa fa-pen-to-square" aria-hidden="true"></i>
+        <h4>No posts in this category yet</h4>
+        <p class="filter-no-results-hint">There are no posts matching this filter.</p>
+        <button class="filter-no-results-reset" id="filter-reset-btn">Browse all posts &rarr;</button>
+    </div>
 </div>
 
 <!-- Pager -->
@@ -179,6 +190,15 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             }
         });
     });
+
+    // "Browse all posts" reset button
+    var resetBtn = document.getElementById('filter-reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            var allBtn = document.querySelector('.category-btn[data-filter="all"]');
+            if (allBtn) allBtn.click();
+        });
+    }
 })();
 </script>
 
