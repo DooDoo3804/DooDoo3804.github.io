@@ -6,7 +6,6 @@
     <meta name="description" content="{% if page.layout == 'post' or page.path contains '_posts/' %}{{ page.excerpt | strip_html | truncate:160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{ site.keyword }}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
-    {% if site.last_updated %}<meta name="last-modified" content="2026-03">{% endif %}
 
     <!-- Open Graph -->
     {% case page.layout %}
@@ -30,8 +29,12 @@
     <meta property="og:description"
         content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     {% endcase %}
+    {% capture og_per_post %}/assets/img/og/{{ page.slug }}.png{% endcapture %}
+    {% assign og_per_post_path = og_per_post | remove_first: "/" %}
     {% if page.thumbnail %}
     <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.thumbnail }}">
+    {% elsif og_per_post_path and site.static_files | where: "path", og_per_post | first %}
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ og_per_post }}">
     {% elsif page.header-img %}
     <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.header-img }}">
     {% else %}
@@ -54,6 +57,8 @@
     {% endif %}
     {% if page.thumbnail %}
     <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.thumbnail }}">
+    {% elsif og_per_post_path and site.static_files | where: "path", og_per_post | first %}
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ og_per_post }}">
     {% elsif page.header-img %}
     <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.header-img }}">
     {% else %}

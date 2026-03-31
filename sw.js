@@ -11,7 +11,8 @@
 // A namespace can prevent potential name conflicts and mis-deletion.
 const CACHE_NAMESPACE = 'main-'
 
-const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
+const CACHE_VERSION = 'v8';
+const CACHE = CACHE_NAMESPACE + 'precache-' + CACHE_VERSION;
 const PRECACHE_LIST = [
   "./",
   "./offline.html",
@@ -19,8 +20,7 @@ const PRECACHE_LIST = [
   "./js/bootstrap.min.js",
   "./js/hux-blog.min.js",
   "./js/snackbar.js",
-  "./img/home-bg.jpg",
-  "./img/404-bg.jpg",
+  "./js/custom.js",
   "./css/hux-blog.min.css",
   "./css/bootstrap.min.css",
   "./css/custom.css"
@@ -29,7 +29,7 @@ const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "cdnjs.cloudflare.com"
 ]
-const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime']
+const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime', 'main-precache-then-runtime']
 
 // Image extensions for cache-first strategy
 const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|ico)(\?.*)?$/i;

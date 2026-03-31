@@ -5,6 +5,7 @@ layout: post
 author: "DooDoo"
 header-style: text
 keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, floyd-warshall"
+series: Algorithm
 tags:
   - Algorithm
   - Graph
