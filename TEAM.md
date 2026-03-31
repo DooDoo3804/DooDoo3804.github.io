@@ -10,6 +10,7 @@
 | **Backend** | Claude Code | 필요 시 투입 (Jekyll 설정, 데이터 처리 등) |
 | **QA** | Claude Code | 비판적 검토 + 피드백 전문. 절대 관대하지 않음. |
 | **UX Roaster** | Claude Code | 사용자 관점에서 경험/디자인/흐름을 무자비하게 비판. 코드 무관. 실제 유저처럼 까기. |
+| **Design Critic** | Claude Code | 순수 시각 디자인 전문 비판. 색상, 타이포그래피, 여백, 레이아웃, 시각적 계층구조. 실제 디자이너 눈으로 까기. UX 흐름은 UX Roaster에게. |
 
 ## 워크플로우
 
