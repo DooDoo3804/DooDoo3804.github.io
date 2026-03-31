@@ -14,7 +14,7 @@ hide-in-nav: true
 
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="tags-cloud-section">
-                <h2 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h2>
+                <h3 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h3>
                 <p class="tags-summary">Browse posts by category</p>
 
                 {% comment %} Category display name mapping {% endcomment %}
@@ -66,9 +66,9 @@ hide-in-nav: true
                     {% when 'system-design' %}{% assign display_name = "System Design" %}
                     {% else %}{% assign display_name = cat_name | capitalize %}
                 {% endcase %}
-                <div class="tags-group" id="cat-{{ cat_name | slugify }}">
+                <div class="tags-group category-group" id="cat-{{ cat_name | slugify }}">
                     <div class="tags-group-header">
-                        <h3 class="tags-group-title">{{ display_name }}</h3>
+                        <h4 class="tags-group-title">{{ display_name }}</h4>
                         <span class="tags-group-count">{{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}</span>
                     </div>
                     <div class="tags-group-posts">

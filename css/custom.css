@@ -10,15 +10,22 @@
     --accent-gradient: linear-gradient(135deg, #0085a1, #00b4d8);
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --text-primary: #333;
     --text-muted: #6c757d;
     --text-secondary: #888;
+    --bg-surface: #fff;
+    --bg-surface-raised: #fff;
     --border-light: #e8e8e8;
     --border-medium: #dee2e6;
 }
 [data-theme="dark"] {
+    --accent-primary: #58a6ff;
+    --text-primary: #e6edf3;
     --text-muted: #9aa0a6;
     --text-secondary: #8b949e;
-    --border-light: #333;
+    --bg-surface: #0d1117;
+    --bg-surface-raised: #161b22;
+    --border-light: #30363d;
     --border-medium: #444;
 }
 
@@ -1224,14 +1231,7 @@ code.has-line-numbers .code-line::before {
 /* ========================================
    DARK MODE
    ======================================== */
-[data-theme="dark"] {
-    --bg: #0d1117;
-    --bg-secondary: #161b22;
-    --text: #c9d1d9;
-    --border: #30363d;
-    --accent: #58a6ff;
-    --card-bg: #161b22;
-}
+/* Dark mode token overrides are consolidated in :root [data-theme="dark"] block above */
 
 [data-theme="dark"] body {
     background-color: #0d1117;
@@ -1930,7 +1930,7 @@ code, kbd, pre, samp, .code-lang-label {
 .tags-section-title {
     font-size: 18px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -1959,7 +1959,7 @@ code, kbd, pre, samp, .code-lang-label {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-muted);
-    background: #fff;
+    background: var(--bg-surface-raised);
     cursor: pointer;
     transition: all 0.2s;
     text-decoration: none;
@@ -2001,7 +2001,7 @@ code, kbd, pre, samp, .code-lang-label {
     padding: 24px;
     border-radius: 12px;
     border: 1px solid var(--border-light);
-    background: #fff;
+    background: var(--bg-surface);
     transition: box-shadow 0.3s, border-color 0.3s;
 }
 
@@ -2078,7 +2078,7 @@ code, kbd, pre, samp, .code-lang-label {
 .tags-post-title {
     font-size: 16px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     line-height: 1.4;
     transition: color 0.2s;
 }
@@ -2110,36 +2110,19 @@ code, kbd, pre, samp, .code-lang-label {
     }
 }
 
-/* Tags page dark mode */
-[data-theme="dark"] .tags-section-title {
-    color: #e6edf3;
+/* Categories page visual differentiator */
+.category-group {
+    border-left: 3px solid var(--accent-primary);
 }
 
-[data-theme="dark"] .tags-section-title i {
-    color: #58a6ff;
-}
-
-[data-theme="dark"] .tags-pill {
-    background: #161b22;
-    border-color: #30363d;
-    color: #c9d1d9;
-}
-
+/* Tags page dark mode — most overrides eliminated via design tokens */
 [data-theme="dark"] .tags-pill:hover,
 [data-theme="dark"] .tags-pill:focus {
-    background: #58a6ff;
-    border-color: #58a6ff;
-    color: #0d1117;
+    color: var(--bg-surface);
     box-shadow: 0 4px 10px rgba(88, 166, 255, 0.25);
 }
 
-[data-theme="dark"] .tags-group {
-    background: #0d1117;
-    border-color: #30363d;
-}
-
 [data-theme="dark"] .tags-group--highlight {
-    border-color: #58a6ff;
     box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.15);
 }
 
@@ -2147,37 +2130,12 @@ code, kbd, pre, samp, .code-lang-label {
     border-bottom-color: #21262d;
 }
 
-[data-theme="dark"] .tags-group-title {
-    color: #58a6ff;
-}
-
 [data-theme="dark"] .tags-group-count {
-    color: #8b949e;
     background: rgba(255, 255, 255, 0.06);
 }
 
 [data-theme="dark"] .tags-post-item:hover {
     background: rgba(88, 166, 255, 0.06);
-}
-
-[data-theme="dark"] .tags-post-category {
-    color: #58a6ff;
-}
-
-[data-theme="dark"] .tags-post-date {
-    color: #8b949e;
-}
-
-[data-theme="dark"] .tags-post-title {
-    color: #e6edf3;
-}
-
-[data-theme="dark"] .tags-post-item:hover .tags-post-title {
-    color: #58a6ff;
-}
-
-[data-theme="dark"] .tags-post-subtitle {
-    color: #8b949e;
 }
 
 /* ========================================
