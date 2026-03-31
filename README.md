@@ -31,6 +31,30 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - SEO optimized (Open Graph, Twitter Card, JSON-LD structured data)
 - Back-to-top button
 
+## Password-Protected Pages
+
+Specific pages can be password-protected using [StatiCrypt](https://github.com/robinmoisson/staticrypt). This encrypts the page content client-side so a password prompt appears before the content is shown.
+
+**How to protect a page:** Add `protected: true` to the page's front matter:
+
+```yaml
+---
+layout: page
+title: My Secret Page
+protected: true
+---
+```
+
+**How to build with encryption:**
+
+```bash
+PASSWORD=mypassword make build
+```
+
+This runs `jekyll build` then encrypts all pages marked `protected: true` in `_site/`.
+
+> **Note:** This is client-side encryption. It protects against casual access but not determined attackers who inspect the page source. Do not use it for highly sensitive data.
+
 ## Local Development
 
 ```bash
