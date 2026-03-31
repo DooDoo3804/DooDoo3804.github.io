@@ -335,8 +335,8 @@ html {
     padding: 24px 28px 28px;
 }
 
-/* Hide tag pills when thumbnail is present (avoids duplication with thumb label) */
-.post-card-thumb + .post-card-body .post-card-tags {
+/* Hide tag pills when gradient thumbnail is present (avoids duplication with thumb label) */
+.post-card-thumb--gradient + .post-card-body .post-card-tags {
     display: none;
 }
 

@@ -25,6 +25,9 @@ if [ -z "$SLUG" ]; then
     SLUG="untitled"
 fi
 
+# Escape double quotes in title for valid YAML
+TITLE_SAFE=$(echo "$TITLE" | sed 's/"/\\"/g')
+
 FILENAME="_posts/${DATE}-${SLUG}.md"
 
 # Build tags block
@@ -43,7 +46,7 @@ fi
 
 cat > "$FILENAME" << EOF
 ---
-title: "${TITLE}"
+title: "${TITLE_SAFE}"
 subtitle: ""
 layout: post
 author: "DooDoo"
