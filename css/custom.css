@@ -497,6 +497,35 @@ pre:hover .copy-btn {
     opacity: 1 !important;
 }
 
+/* --- Code Block Line Numbers --- */
+code.has-line-numbers {
+    counter-reset: line;
+    padding-left: 3.5em !important;
+}
+
+code.has-line-numbers .code-line {
+    display: block;
+    position: relative;
+}
+
+code.has-line-numbers .code-line::before {
+    counter-increment: line;
+    content: counter(line);
+    position: absolute;
+    left: -3em;
+    width: 2.5em;
+    text-align: right;
+    color: #636d83;
+    font-size: 0.85em;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+[data-theme="dark"] code.has-line-numbers .code-line::before {
+    color: #495162;
+}
+
 /* --- Read Time Enhancement --- */
 .meta-read-time {
     font-weight: 600;

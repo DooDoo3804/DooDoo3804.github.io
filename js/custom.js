@@ -292,6 +292,7 @@
         initBackToTop();
         initReadingProgress();
         initCodeLabels();
+        initLineNumbers();
         initCopyButtons();
         initLazyImages();
         initShareButtons();
