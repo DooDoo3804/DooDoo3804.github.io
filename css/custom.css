@@ -4059,8 +4059,8 @@ pre { overflow-x: auto; }
 }
 
 /* Exclude elements that should not transition */
-.transitions-enabled .reading-progress-bar,
-.transitions-enabled .reading-progress-bar *,
+.transitions-enabled #reading-progress-bar,
+.transitions-enabled #reading-progress-bar *,
 .transitions-enabled input,
 .transitions-enabled textarea {
     transition: none !important;

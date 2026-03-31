@@ -101,7 +101,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
-        <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');" loading="lazy"></div>
+        <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');"></div>
         {% else %}
         {% assign first_tag = post.tags | first | downcase %}
         <div class="post-card-thumb post-card-thumb--gradient{% if first_tag == 'algorithm' %} post-card-thumb--algorithm{% elsif first_tag == 'kotlin' %} post-card-thumb--kotlin{% elsif first_tag == 'react' %} post-card-thumb--react{% endif %}">
