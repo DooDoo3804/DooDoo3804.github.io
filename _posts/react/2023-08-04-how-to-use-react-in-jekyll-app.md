@@ -12,7 +12,7 @@ How to Use React in Jekyll
 ----
 
 ### Create react app
-Create reat app in base directory that your Jekyll project.  
+Create react app in base directory that your Jekyll project.  
 Use below code
 ```
 npx create-react-app dev-react-pages

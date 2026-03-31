@@ -7,7 +7,7 @@ header-style: text
 catalog: true
 series: System Design
 tags:
-  - SystemDesign
+  - System Design
   - Backend
   - Redis
 description: "캐싱 전략 비교 가이드. Cache-Aside, Write-Through, Write-Behind 패턴의 동작 원리와 Redis 구현 예제, 실무 선택 기준을 정리합니다."
