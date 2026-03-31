@@ -202,6 +202,65 @@
         });
     }
 
+    /* --- Mobile Floating Share Bar --- */
+    function initMobileShareBar() {
+        var bar = document.getElementById('mobile-share-bar');
+        if (!bar) return;
+
+        var copyBtn = bar.querySelector('.mobile-share-copy');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var url = this.getAttribute('data-url');
+                var btn = this;
+                var icon = btn.querySelector('i');
+                function onSuccess() {
+                    icon.className = 'fa fa-check';
+                    btn.classList.add('mobile-share-btn--copied');
+                    setTimeout(function() {
+                        icon.className = 'fa fa-link';
+                        btn.classList.remove('mobile-share-btn--copied');
+                    }, 1500);
+                }
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(url).then(onSuccess).catch(function() {
+                        fallbackCopy(url, btn, '', onSuccess);
+                    });
+                } else {
+                    fallbackCopy(url, btn, '', onSuccess);
+                }
+            });
+        }
+
+        var ticking = false;
+        var footer = document.querySelector('.site-footer') || document.querySelector('footer');
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    var scrollY = window.scrollY || window.pageYOffset;
+                    var docHeight = document.documentElement.scrollHeight;
+                    var viewportHeight = window.innerHeight;
+                    var scrollPct = docHeight > viewportHeight ? scrollY / (docHeight - viewportHeight) : 0;
+
+                    var nearFooter = false;
+                    if (footer) {
+                        var footerRect = footer.getBoundingClientRect();
+                        nearFooter = footerRect.top < viewportHeight + 60;
+                    }
+
+                    if (scrollPct >= 0.5 && !nearFooter) {
+                        bar.classList.add('visible');
+                    } else {
+                        bar.classList.remove('visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -213,6 +272,7 @@
         initCopyButtons();
         initLazyImages();
         initShareButtons();
+        initMobileShareBar();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {

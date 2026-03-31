@@ -2456,28 +2456,22 @@ code, kbd, pre, samp, .code-lang-label {
     color: #8b949e;
 }
 
-/* --- GitHub Stats Section --- */
-.github-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+/* --- GitHub Profile Link --- */
+.github-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-primary);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: opacity 0.2s;
 }
 
-.github-stats-card {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-@media (max-width: 767px) {
-    .github-stats-card {
-        width: 100%;
-    }
-}
-
-[data-theme="dark"] .github-stats-card {
-    filter: invert(0.88) hue-rotate(180deg);
+.github-profile-link:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color: var(--accent-primary);
 }
 
 /* ========================================
@@ -3416,39 +3410,89 @@ pre { overflow-x: auto; }
 }
 
 /* --- RSS Subscribe CTA --- */
-.rss-cta {
+/* --- Start Here Section --- */
+.start-here {
     margin-bottom: 24px;
-    padding: 12px 20px;
+    padding: 16px 20px;
     background: rgba(0, 133, 161, 0.04);
     border: 1px solid rgba(0, 133, 161, 0.12);
-    border-radius: 8px;
-    text-align: center;
+    border-radius: 10px;
 }
 
-.rss-cta a {
+.start-here-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--accent-primary);
-    text-decoration: none;
-    font-size: 13.5px;
-    font-weight: 500;
-    display: inline-flex;
+    margin: 0 0 12px 0;
+}
+
+.start-here-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.start-here-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    transition: opacity 0.2s;
+    gap: 4px;
+    padding: 12px 8px;
+    border-radius: 8px;
+    background: rgba(0, 133, 161, 0.06);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
 }
 
-.rss-cta a:hover {
-    opacity: 0.7;
+.start-here-card:hover {
+    background: rgba(0, 133, 161, 0.12);
+    transform: translateY(-2px);
     text-decoration: none;
+}
+
+.start-here-card i {
+    font-size: 18px;
     color: var(--accent-primary);
 }
 
-.rss-cta a i {
-    font-size: 15px;
+.start-here-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
 }
 
-[data-theme="dark"] .rss-cta {
+.start-here-desc {
+    font-size: 11px;
+    color: #888;
+}
+
+[data-theme="dark"] .start-here {
     background: rgba(0, 133, 161, 0.08);
     border-color: rgba(0, 133, 161, 0.2);
+}
+
+[data-theme="dark"] .start-here-card {
+    background: rgba(0, 133, 161, 0.1);
+}
+
+[data-theme="dark"] .start-here-card:hover {
+    background: rgba(0, 133, 161, 0.18);
+}
+
+[data-theme="dark"] .start-here-label {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .start-here-desc {
+    color: #8b949e;
+}
+
+@media (max-width: 480px) {
+    .start-here-cards {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- Post Card Updated Badge --- */
@@ -3761,6 +3805,121 @@ pre { overflow-x: auto; }
 
 .tags-group {
     margin-bottom: 0;
+}
+
+/* ========================================
+   LAST UPDATED SIGNAL
+   ======================================== */
+.author-hero-updated {
+    font-size: 12.5px;
+    color: #8b949e;
+    margin: 10px 0 0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.author-hero-updated i {
+    font-size: 11px;
+    margin-right: 4px;
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .author-hero-updated {
+    color: #6e7681;
+}
+
+/* ========================================
+   TAGS PAGE SUMMARY
+   ======================================== */
+.tags-summary {
+    font-size: 14px;
+    color: #8b949e;
+    margin: -4px 0 16px;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .tags-summary {
+    color: #6e7681;
+}
+
+/* ========================================
+   MOBILE FLOATING SHARE BAR
+   ======================================== */
+.mobile-share-bar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-share-bar {
+        display: flex;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 28px;
+        padding: 8px 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-share-bar.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-share-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        color: #333;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .mobile-share-btn:hover,
+    .mobile-share-btn:active {
+        background: var(--accent-primary);
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .mobile-share-btn--copied {
+        background: #28a745 !important;
+        color: #fff !important;
+    }
+
+    [data-theme="dark"] .mobile-share-bar {
+        background: rgba(22, 27, 34, 0.95);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] .mobile-share-btn {
+        background: rgba(255, 255, 255, 0.08);
+        color: #c9d1d9;
+    }
+
+    [data-theme="dark"] .mobile-share-btn:hover,
+    [data-theme="dark"] .mobile-share-btn:active {
+        background: #58a6ff;
+        color: #0d1117;
+    }
 }
 
 /* ========================================

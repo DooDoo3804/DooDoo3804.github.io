@@ -122,10 +122,7 @@
     <h3 class="about-section-title">
         <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHub Activity
     </h3>
-    <div class="github-stats">
-        <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" width="495" height="195" loading="lazy">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DooDoo3804&layout=compact&hide_border=true&bg_color=00000000&title_color=0085a1&text_color=555" alt="Top Languages" class="github-stats-card" width="495" height="195" loading="lazy">
-    </div>
+    <a href="https://github.com/DooDoo3804" class="github-profile-link" target="_blank" rel="noopener noreferrer">&rarr; View my GitHub profile</a>
 </div>
 
 <div class="about-section">

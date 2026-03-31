@@ -195,6 +195,16 @@ layout: default
     </div>
 </article>
 
+<!-- Mobile Floating Share Bar -->
+<div class="mobile-share-bar" id="mobile-share-bar">
+    <button class="mobile-share-btn mobile-share-copy" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}" aria-label="Copy link">
+        <i class="fa fa-link"></i>
+    </button>
+    <a class="mobile-share-btn mobile-share-twitter" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X/Twitter">
+        <i class="fa-brands fa-x-twitter"></i>
+    </a>
+</div>
+
 <!-- add support for mathjax by voleking-->
 {% if page.mathjax %}
   {% include mathjax_support.html %}

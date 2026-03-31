@@ -88,6 +88,9 @@ featured-condition-size: 1 # A tag will be featured if the size of it is more th
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
+# Last updated signal (displayed on homepage)
+last_updated: "March 2026"
+
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 

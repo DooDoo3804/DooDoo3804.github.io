@@ -25,15 +25,32 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
             {% endif %}
         </div>
+        {% if site.last_updated %}
+        <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.last_updated }}</p>
+        {% endif %}
     </div>
 </div>
 
-<!-- RSS Subscribe CTA -->
-<div class="rss-cta">
-    <a href="{{ site.baseurl }}{{ site.RSS }}" target="_blank" rel="noopener noreferrer">
-        <i class="fa fa-rss"></i>
-        <span>Subscribe via RSS to get new posts delivered to your reader</span>
-    </a>
+<!-- Start Here -->
+<div class="start-here">
+    <h3 class="start-here-title">Where to Begin</h3>
+    <div class="start-here-cards">
+        <a href="{{ site.baseurl }}/archive/?tag=algorithm" class="start-here-card">
+            <i class="fa fa-code"></i>
+            <span class="start-here-label">Algorithms</span>
+            <span class="start-here-desc">Most popular posts</span>
+        </a>
+        <a href="{{ site.baseurl }}/archive/?tag=kotlin" class="start-here-card">
+            <i class="fa fa-book"></i>
+            <span class="start-here-label">Kotlin Series</span>
+            <span class="start-here-desc">From basics to JVM</span>
+        </a>
+        <a href="{{ site.baseurl }}/about/" class="start-here-card">
+            <i class="fa fa-user"></i>
+            <span class="start-here-label">About Me</span>
+            <span class="start-here-desc">Background & projects</span>
+        </a>
+    </div>
 </div>
 
 <!-- Featured Post Hero -->

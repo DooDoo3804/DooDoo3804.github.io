@@ -15,6 +15,7 @@ no-catalog: true
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="tags-cloud-section">
                 <h3 class="tags-section-title"><i class="fa fa-tags"></i> All Tags</h3>
+                <p class="tags-summary">Showing {{ site.posts | size }} posts across {{ site.tags | size }} tags</p>
 
                 {% comment %} Build tags sorted by frequency (most used first) {% endcomment %}
                 {% capture tags_with_count %}{% for tag in site.tags %}{{ tag[1].size | prepend: "0000" | slice: -4, 4 }}::{{ tag[0] }}{% unless forloop.last %}|||{% endunless %}{% endfor %}{% endcapture %}
