@@ -1,17 +1,36 @@
 <!-- Footer -->
-<footer>
+<footer class="site-footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <!-- SNS Link -->
-                {% include sns-links.html center=true %}
+                <!-- Social Links -->
+                <div class="footer-social">
+                    {% if site.github_username %}
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    {% endif %}
+                    {% if site.linkedin_username %}
+                    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    {% endif %}
+                    {% if site.email_address %}
+                    <a href="mailto:{{ site.email_address }}" class="footer-social-link" aria-label="Email">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                    {% endif %}
+                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="footer-social-link" aria-label="RSS Feed">
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </div>
+
+                <p class="footer-attribution">
+                    Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> & ❤️
+                </p>
 
                 <p class="copyright text-muted">
                     &copy; {{ site.time | date: '%Y' }} {{ site.title }}
-                    &nbsp;&middot;&nbsp;
-                    Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
-                    &nbsp;&middot;&nbsp;
-                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
                 </p>
             </div>
         </div>
@@ -285,7 +304,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function htmlDecode(input) {
         var e = document.createElement('textarea');
         e.innerHTML = input;
-        // handle case of empty input
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
@@ -300,12 +318,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return safe.replace(re, '<mark class="search-highlight">$1</mark>');
     }
 
+    // Track result count for keyboard nav
+    var _searchResultCount = 0;
+    var _searchActiveIdx = -1;
+
     var searchInstance = SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('search-results'),
         json: '/search.json',
-        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><p class="search-excerpt">{excerpt}</p><span class="search-date">{date}</span><hr></a></div>',
-        noResultsText: '<div class="no-results">No results found</div>',
+        searchResultTemplate: '<div class="search-result-item" data-url="{url}"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><div class="search-result-meta"><span class="search-tags">{tags}</span><span class="search-date">{date}</span></div><p class="search-excerpt">{excerpt}</p></a></div>',
+        noResultsText: '',
         limit: 50,
         fuzzy: false,
         templateMiddleware: function (prop, value, template) {
@@ -317,6 +339,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (prop === 'excerpt') {
                 return highlightMatch(htmlDecode(value), query);
             }
+            if (prop === 'tags') {
+                if (!value || !value.trim()) return '';
+                var tags = value.split(',').map(function(t) {
+                    return '<span class="search-tag-pill">' + t.trim() + '</span>';
+                }).join('');
+                return tags;
+            }
         }
     });
 
@@ -326,6 +355,64 @@ document.addEventListener('DOMContentLoaded', function() {
         var $searchClose = $('.search-icon-close');
         var $searchInput = $('#search-input');
         var $body = $('body');
+        var $resultCount = $('#search-result-count');
+        var $emptyState = $('#search-empty-state');
+        var $resultsContainer = $('#search-results');
+
+        // Update result count and empty state
+        function updateSearchMeta() {
+            var query = $searchInput.val().trim();
+            var items = $resultsContainer.find('.search-result-item');
+            _searchResultCount = items.length;
+            _searchActiveIdx = -1;
+
+            // Add staggered animation
+            items.each(function(i) {
+                var el = $(this);
+                el.css({'animation-delay': (i * 0.04) + 's'});
+                el.addClass('search-result-animate');
+            });
+
+            if (query.length === 0) {
+                $resultCount.text('').hide();
+                $emptyState.hide();
+            } else if (_searchResultCount > 0) {
+                $resultCount.text(_searchResultCount + ' result' + (_searchResultCount !== 1 ? 's' : '') + ' found').show();
+                $emptyState.hide();
+            } else {
+                $resultCount.text('').hide();
+                $emptyState.find('.search-empty-text').text('No results for "' + query + '" \u2014 try broader terms');
+                $emptyState.show();
+            }
+        }
+
+        // Debounced search meta update
+        var _searchMetaTimer;
+        $searchInput.on('input', function() {
+            clearTimeout(_searchMetaTimer);
+            _searchMetaTimer = setTimeout(updateSearchMeta, 150);
+        });
+
+        // Keyboard navigation for results
+        function setActiveResult(idx) {
+            var items = $resultsContainer.find('.search-result-item');
+            items.removeClass('search-result-active');
+            if (idx >= 0 && idx < items.length) {
+                _searchActiveIdx = idx;
+                var active = items.eq(idx);
+                active.addClass('search-result-active');
+                // Scroll into view
+                var container = $resultsContainer[0];
+                var el = active[0];
+                if (el.offsetTop < container.scrollTop) {
+                    container.scrollTop = el.offsetTop - 8;
+                } else if (el.offsetTop + el.offsetHeight > container.scrollTop + container.clientHeight) {
+                    container.scrollTop = el.offsetTop + el.offsetHeight - container.clientHeight + 8;
+                }
+            } else {
+                _searchActiveIdx = -1;
+            }
+        }
 
         function openSearch() {
             if ($searchPage.hasClass('search-active')) return;
@@ -340,11 +427,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeSearch(prevClasses);
             });
             $searchInput.focus();
+            _searchActiveIdx = -1;
         }
 
         function closeSearch(prevClasses) {
             $searchPage.removeClass('search-active');
             $body.attr('class', prevClasses || '');
+            $searchInput.val('');
+            $resultsContainer.html('');
+            $resultCount.text('').hide();
+            $emptyState.hide();
+            _searchActiveIdx = -1;
         }
 
         $searchOpen.on('click', function (e) {
@@ -352,18 +445,42 @@ document.addEventListener('DOMContentLoaded', function() {
             openSearch();
         });
 
-        // Keyboard shortcut: / to open search, Esc to close
+        // Keyboard: / to open, Esc to close, ↑↓ to navigate, Enter to open
         $(document).on('keydown', function (e) {
             var tag = (e.target.tagName || '').toLowerCase();
             var isInput = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;
+            var searchActive = $searchPage.hasClass('search-active');
 
             if (e.key === '/' && !isInput) {
                 e.preventDefault();
                 openSearch();
+                return;
             }
-            if (e.key === 'Escape' && $searchPage.hasClass('search-active')) {
+            if (e.key === 'Escape' && searchActive) {
                 e.preventDefault();
                 closeSearch($body.data('prevClasses'));
+                return;
+            }
+
+            // Arrow nav only when search is open
+            if (!searchActive) return;
+            var items = $resultsContainer.find('.search-result-item');
+            if (items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                var next = _searchActiveIdx + 1;
+                if (next >= items.length) next = 0;
+                setActiveResult(next);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                var prev = _searchActiveIdx - 1;
+                if (prev < 0) prev = items.length - 1;
+                setActiveResult(prev);
+            } else if (e.key === 'Enter' && _searchActiveIdx >= 0) {
+                e.preventDefault();
+                var url = items.eq(_searchActiveIdx).attr('data-url');
+                if (url) window.location.href = url;
             }
         });
     });

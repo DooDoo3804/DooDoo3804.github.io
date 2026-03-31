@@ -8,9 +8,22 @@
   <div class="search-main container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <input type="text" id="search-input" placeholder="Search posts... (press / to focus)" autocomplete="off" spellcheck="false" aria-label="Search posts">
-        <div class="search-hint">Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to close</div>
+        <div class="search-input-wrapper">
+          <i class="fa fa-search search-input-icon" aria-hidden="true"></i>
+          <input type="text" id="search-input" placeholder="Search posts..." autocomplete="off" spellcheck="false" aria-label="Search posts">
+        </div>
+        <div class="search-hint">Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to close, <kbd>↑↓</kbd> to navigate</div>
+        <div id="search-result-count" class="search-result-count" aria-live="polite"></div>
         <div id="search-results" class="mini-post-list"></div>
+        <div id="search-empty-state" class="search-empty-state" style="display:none;">
+          <div class="search-empty-icon"><i class="fa fa-search"></i></div>
+          <p class="search-empty-text"></p>
+          <div class="search-empty-suggestions">
+            <span>Try:</span>
+            <a href="{{ site.baseurl }}/tags/" class="search-suggestion-link">Browse by tags</a>
+            <a href="{{ site.baseurl }}/archive/" class="search-suggestion-link">View all posts</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

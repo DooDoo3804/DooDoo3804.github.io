@@ -2483,6 +2483,43 @@ code, kbd, pre, samp, .code-lang-label {
 /* ========================================
    SEARCH UX IMPROVEMENTS
    ======================================== */
+
+/* Search input wrapper */
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-icon {
+    position: absolute;
+    left: 0;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+#search-input {
+    padding-left: 36px !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+    transition: border-color 0.3s ease !important;
+}
+
+#search-input:focus {
+    border-bottom-color: var(--accent-primary) !important;
+}
+
+#search-input:focus ~ .search-input-icon,
+.search-input-wrapper:focus-within .search-input-icon {
+    color: var(--accent-primary);
+}
+
+@media only screen and (min-width: 768px) {
+    .search-input-icon { left: 20px; }
+    #search-input { padding-left: 56px !important; }
+}
+
 .search-hint {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
@@ -2499,6 +2536,73 @@ code, kbd, pre, samp, .code-lang-label {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
+}
+
+/* Result count */
+.search-result-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Search result items */
+.search-result-item {
+    padding: 16px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.search-result-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.search-result-item:hover,
+.search-result-item.search-result-active {
+    background: rgba(0, 133, 161, 0.08);
+}
+
+/* Staggered fade-in animation */
+@keyframes searchResultFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.search-result-animate {
+    animation: searchResultFadeIn 0.25s ease forwards;
+    opacity: 0;
+}
+
+/* Result meta row (tags + date) */
+.search-result-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.search-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.search-tag-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(0, 133, 161, 0.12);
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .search-highlight {
@@ -2522,15 +2626,86 @@ code, kbd, pre, samp, .code-lang-label {
     font-weight: 500;
 }
 
-.no-results {
+/* Empty state */
+.search-empty-state {
     text-align: center;
-    color: #888;
-    padding: 40px 0;
-    font-size: 15px;
+    padding: 50px 20px;
+    animation: searchResultFadeIn 0.3s ease forwards;
 }
 
+.search-empty-icon {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.15);
+    margin-bottom: 16px;
+}
+
+.search-empty-text {
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.search-empty-suggestions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #888;
+}
+
+.search-suggestion-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 12px;
+    border: 1px solid var(--accent-primary);
+    border-radius: 16px;
+    transition: all 0.2s;
+}
+
+.search-suggestion-link:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Search dark mode extras */
 [data-theme="dark"] .search-highlight {
     background: rgba(88, 166, 255, 0.3);
+}
+
+[data-theme="dark"] .search-result-item:hover,
+[data-theme="dark"] .search-result-item.search-result-active {
+    background: rgba(88, 166, 255, 0.08);
+}
+
+[data-theme="dark"] .search-result-item {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .search-result-count {
+    color: #58a6ff;
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .search-tag-pill {
+    background: rgba(88, 166, 255, 0.12);
+    color: #58a6ff;
+}
+
+[data-theme="dark"] .search-empty-icon {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .search-suggestion-link {
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+[data-theme="dark"] .search-suggestion-link:hover {
+    background: #58a6ff;
+    color: #0d1117;
 }
 
 /* ========================================
@@ -2640,11 +2815,35 @@ code, kbd, pre, samp, .code-lang-label {
 :focus-visible { outline: 2px solid #0085a1; outline-offset: 2px; }
 
 /* ========================================
-   SEARCH HINT - Light Mode Fix
+   SEARCH - Light Mode Fixes
    ======================================== */
 html:not([data-theme="dark"]) .search-hint,
 html:not([data-theme="dark"]) .search-hint kbd {
     color: rgba(0,0,0,0.4);
+}
+
+html:not([data-theme="dark"]) .search-input-icon {
+    color: rgba(0,0,0,0.3);
+}
+
+html:not([data-theme="dark"]) #search-input {
+    border-bottom-color: rgba(0,0,0,0.12) !important;
+}
+
+html:not([data-theme="dark"]) .search-result-count {
+    border-bottom-color: rgba(0,0,0,0.08);
+}
+
+html:not([data-theme="dark"]) .search-result-item {
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+html:not([data-theme="dark"]) .search-empty-icon {
+    color: rgba(0,0,0,0.15);
+}
+
+html:not([data-theme="dark"]) .search-empty-suggestions {
+    color: #666;
 }
 
 /* ========================================
@@ -3472,6 +3671,99 @@ pre { overflow-x: auto; }
 }
 
 /* ========================================
+   FOOTER UPGRADE
+   ======================================== */
+.site-footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 40px 0 50px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+    color: #555;
+    font-size: 18px;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.footer-attribution {
+    font-size: 13px;
+    text-align: center;
+    color: #999;
+    margin-bottom: 6px;
+}
+
+.footer-attribution a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.footer-attribution a:hover {
+    text-decoration: underline;
+}
+
+/* Footer dark mode */
+[data-theme="dark"] .site-footer {
+    border-top-color: #30363d;
+    background: #0d1117;
+}
+
+[data-theme="dark"] .footer-social-link {
+    background: rgba(255, 255, 255, 0.06);
+    color: #8b949e;
+}
+
+[data-theme="dark"] .footer-social-link:hover {
+    background: #58a6ff;
+    color: #0d1117;
+}
+
+[data-theme="dark"] .footer-attribution {
+    color: #8b949e;
+}
+
+[data-theme="dark"] .footer-attribution a {
+    color: #58a6ff;
+}
+
+/* ========================================
+   TAGS PAGE - Divider Polish
+   ======================================== */
+.tags-group + .tags-group {
+    border-top: none;
+}
+
+.tags-posts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tags-group {
+    margin-bottom: 0;
+}
+
+/* ========================================
    MOBILE BREAKPOINTS
    ======================================== */
 @media (max-width: 768px) {
@@ -3489,4 +3781,7 @@ pre { overflow-x: auto; }
     .featured-post-title { font-size: 22px; }
     .featured-post-excerpt { font-size: 14px; }
     .featured-post-meta { flex-wrap: wrap; gap: 8px; }
+    .footer-social { gap: 12px; }
+    .footer-social-link { width: 36px; height: 36px; font-size: 16px; }
+    .search-empty-suggestions { flex-direction: column; gap: 8px; }
 }
