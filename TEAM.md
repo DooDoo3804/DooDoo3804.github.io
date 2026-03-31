@@ -9,6 +9,7 @@
 | **Frontend B** | Claude Code | 기능/인터랙션 담당 |
 | **Backend** | Claude Code | 필요 시 투입 (Jekyll 설정, 데이터 처리 등) |
 | **QA** | Claude Code | 비판적 검토 + 피드백 전문. 절대 관대하지 않음. |
+| **UX Roaster** | Claude Code | 사용자 관점에서 경험/디자인/흐름을 무자비하게 비판. 코드 무관. 실제 유저처럼 까기. |
 
 ## 워크플로우
 
@@ -17,12 +18,14 @@ PM → 태스크 분배
   ↓
 개발팀 (Frontend A, B / Backend) → 구현
   ↓
-QA → 비판적 검토 + 피드백
+QA → 코드/버그 비판적 검토 + 피드백
+  ↓
+UX Roaster → 사용자 경험/디자인/흐름 무자비 비판 (병렬 가능)
   ↓
 개발팀 → 수정
   ↓
 PM → 검증 + 주인님께 완료 보고
-  ↑ (QA 통과할 때까지 반복)
+  ↑ (QA + UX Roaster 통과할 때까지 반복)
 ```
 
 ## 규칙

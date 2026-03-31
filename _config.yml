@@ -1,10 +1,10 @@
 # Site settings
 title: DooDoo IT Blog
-SEOTitle: DooDoo IT Blog | Dev Blog
+SEOTitle: DooDoo IT Blog | Backend Dev Blog by DoYoon Kim
 # header-img removed - using CSS gradients instead
 email: doodoo3804@gmail.com
-description: "A journey towards backend development. Sharing notes on algorithms, data structures, Kotlin, Java, Spring, and React."
-keyword: "backend development, algorithms, Kotlin, Java, Spring Boot, React, dev blog, DooDoo, DoYoon Kim, 백엔드 개발, 알고리즘, 개발 블로그, 김도윤"
+description: "Backend development blog by DoYoon Kim. Notes on algorithms, data structures, Kotlin, Java, Spring Boot, and system design. | 백엔드 개발 블로그 — 알고리즘, 자료구조, Kotlin, Java, Spring Boot 학습 기록."
+keyword: "backend development, algorithms, data structures, Kotlin, Java, Spring Boot, JPA, REST API, system design, Docker, dev blog, DoYoon Kim, DooDoo, 백엔드 개발, 알고리즘, 자료구조, 개발 블로그, 김도윤"
 url: "https://doodoo3804.github.io/" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 

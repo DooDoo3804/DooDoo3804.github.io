@@ -27,26 +27,3 @@ multilingual: true
     {{ about_ja | markdownify }}
 </div>
 
-<script>
-(function() {
-    var bars = document.querySelectorAll('.skill-bar');
-    bars.forEach(function(bar) {
-        bar.style.setProperty('--bar-width', bar.getAttribute('data-level') + '%');
-    });
-
-    if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        bars.forEach(function(bar) { observer.observe(bar); });
-    } else {
-        bars.forEach(function(bar) { bar.classList.add('animated'); });
-    }
-})();
-</script>

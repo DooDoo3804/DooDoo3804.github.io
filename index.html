@@ -28,6 +28,14 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
     </div>
 </div>
 
+<!-- RSS Subscribe CTA -->
+<div class="rss-cta">
+    <a href="{{ site.baseurl }}{{ site.RSS }}" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa-rss"></i>
+        <span>Subscribe via RSS to get new posts delivered to your reader</span>
+    </a>
+</div>
+
 <!-- Category Filter Bar -->
 <div class="category-filter">
     <button class="category-btn active" data-filter="all">All</button>
@@ -62,7 +70,10 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             {{ post.content | strip_html | truncate:120 }}
         </p>
         <div class="post-card-meta">
-            <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+            <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.last_modified_at %}
+            <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa fa-refresh"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+            {% endif %}
             <span class="read-time">{% assign chars = post.content | strip_html | size %}{% assign words = post.content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
         </div>
     </a>
@@ -122,6 +133,38 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
                 noResults.style.display = visibleCount === 0 ? 'block' : 'none';
             }
         });
+    });
+})();
+</script>
+
+<!-- Relative Date JS -->
+<script>
+(function() {
+    function timeAgo(dateStr) {
+        var now = new Date();
+        var date = new Date(dateStr);
+        var seconds = Math.floor((now - date) / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
+        var months = Math.floor(days / 30);
+        var years = Math.floor(days / 365);
+
+        if (years > 0) return years === 1 ? '1 year ago' : years + ' years ago';
+        if (months > 0) return months === 1 ? '1 month ago' : months + ' months ago';
+        if (days > 0) return days === 1 ? '1 day ago' : days + ' days ago';
+        if (hours > 0) return hours === 1 ? '1 hour ago' : hours + ' hours ago';
+        return 'just now';
+    }
+
+    document.querySelectorAll('.post-date[data-date]').forEach(function(el) {
+        var iso = el.getAttribute('data-date');
+        el.textContent = timeAgo(iso);
+    });
+
+    document.querySelectorAll('.post-updated[data-date]').forEach(function(el) {
+        var iso = el.getAttribute('data-date');
+        el.innerHTML = '<i class="fa fa-refresh"></i> Updated ' + timeAgo(iso);
     });
 })();
 </script>
