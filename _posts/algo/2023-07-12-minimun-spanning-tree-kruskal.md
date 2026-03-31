@@ -1,5 +1,5 @@
 ---
-title: "Minimun Spanning Tree"
+title: "Minimum Spanning Tree"
 subtitle: "Implement a MST"
 layout: post
 author: "DooDoo"
@@ -37,7 +37,7 @@ struct Edge {
 };
 
 // 노드 x의 부모를 찾는 함수
-int find(vector<int &parent, int x) {
+int find(vector<int>& parent, int x) {
     if (parent[x] != x) {
         parent[x] = find(parent, parent[x]);
     }
@@ -64,7 +64,7 @@ vector<Edge> kruskal() {
     vector<int>parent(V);
     vector<int>rank(V);
 
-    for(int = 0; i < V; ++i) {
+    for(int i = 0; i < V; ++i) {
         // 맨 처음 부모는 자기 자신으로 초기화
         parent[i] = i;
         rank[i] = 1;
@@ -74,13 +74,13 @@ vector<Edge> kruskal() {
     }
     // 가중치를 기준으로 정렬
     sort(edges.begin(), edges.end(), [](Edge x, Edge y) {
-        retrun x.weight < y.weight;
-    })
+        return x.weight < y.weight;
+    });
 
     // 간선을 하나씩 선택하며, 그루스칼 알고리즘 적용
     vector<Edge> result;
     for (auto& edge : edges) {
-        int u = edge.src, v = edge,deset, weight = edge.weight;
+        int u = edge.src, v = edge.dest, weight = edge.weight;
         if (find(parent, u) != find(parent, v)) {
             merge(parent, rank, u, v);
             result.push_back(edge);

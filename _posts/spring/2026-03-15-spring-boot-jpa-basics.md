@@ -10,6 +10,7 @@ tags:
   - Spring
   - Backend
   - Java
+description: "Spring Boot와 JPA로 REST API를 만드는 방법. Entity, Repository, Service, Controller 4계층 패턴으로 CRUD API를 단계별로 구현합니다."
 ---
 
 ## 들어가며

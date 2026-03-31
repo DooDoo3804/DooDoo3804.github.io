@@ -5,6 +5,7 @@ layout: post
 author: "DooDoo"
 header-style: text
 catalog: true
+series: Database
 tags:
   - PostgreSQL
   - Database

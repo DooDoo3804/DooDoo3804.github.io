@@ -87,12 +87,12 @@ fun main() {
         user2 = User("B")
     }
     val selectUser = user.filter {it.name == "A"}
-    println("Selected user is ${selectUser.joinToString(seperator = ", ") { it.name }}")
+    println("Selected user is ${selectUser.joinToString(separator = ", ") { it.name }}")
 }
 // 2
-people.mayBy(Person::age)
-people.mayBy(p -> p.age)
-people.mayBy(it.age)
+people.maxBy(Person::age)
+people.maxBy(p -> p.age)
+people.maxBy(it.age)
 ```
 
 ### NPE(NullPointException)
@@ -141,14 +141,14 @@ kotlin
 \- 코틀린은 @(Annotation)이 내장되어 있어 Lombok을 사용하지 않습니다. `var`를 통해 선언하는 것으로 DTO로 사용할 수 있습니다.
 ```kotlin
 class User(
-    var name,
+    var name: String,
     var lastName : String? = "NO LASTNAME",
 )
 ```
 
 Conclusion
 ---
-자바와 코틀린은 완벽 호환이 되다고는 하지만 많은 부분 코틀린이 더 간결한 방식으로 다릅니다. 위에서 다 다루지 못한 내용들이 많이 있지만 다음 글들을 통해서 확인하면 좋습니다.  
+자바와 코틀린은 완벽 호환이 된다고는 하지만 많은 부분 코틀린이 더 간결한 방식으로 다릅니다. 위에서 다 다루지 못한 내용들이 많이 있지만 다음 글들을 통해서 확인하면 좋습니다.  
 [「Kotlin 기본 문법」](https://doodoo3804.github.io/2023/06/20/kotlin-%EA%B8%B0%EB%B3%B8/)
 <!-- [「Kotlin 고급 문법」](https://doodoo3804.github.io/2023/06/20/kotlin-%EA%B8%B0%EB%B3%B8/) -->
 

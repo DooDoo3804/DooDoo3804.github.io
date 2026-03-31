@@ -5,10 +5,12 @@ layout: post
 author: "DooDoo"
 header-style: text
 catalog: true
+series: Infra
 tags:
   - Docker
   - DevOps
   - Backend
+description: "Docker 입문 가이드. Dockerfile 작성, Multi-stage Build, Docker Compose로 Spring Boot + PostgreSQL 개발 환경을 구성하는 방법을 정리합니다."
 ---
 
 ## Docker를 왜 쓰는가
