@@ -130,8 +130,8 @@
         <span class="about-section-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> お問い合わせ
     </h3>
     <div class="contact-links">
-        <a href="mailto:{{ site.email }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-envelope" aria-hidden="true"></i> {{ site.email }}
+        <a href="mailto:{{ site.email_address }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope" aria-hidden="true"></i> {{ site.email_address }}
         </a>
         <a href="https://github.com/{{ site.github_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
             <i class="fa fa-github" aria-hidden="true"></i> GitHub

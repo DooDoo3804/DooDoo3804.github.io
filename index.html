@@ -98,7 +98,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <div class="post-cards-grid">
 {% for post in paginator.posts %}
 {% if paginator.page == 1 and forloop.first %}{% continue %}{% endif %}
-<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}" data-excerpt="{{ post.content | strip_html | strip_newlines | truncate: 100 | escape }}">
+<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}" data-excerpt="{{ post.content | strip_html | strip_newlines | truncate: 250 | escape }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
         <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');"></div>
