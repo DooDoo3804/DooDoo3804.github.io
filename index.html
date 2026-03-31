@@ -50,7 +50,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         <h2 class="featured-post-title">{{ featured.title }}</h2>
         <p class="featured-post-excerpt">{{ featured.content | strip_html | truncate: 200 }}</p>
         <div class="featured-post-meta">
-            <span class="featured-post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
+            <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
             <span class="featured-post-readtime">{% assign f_chars = featured.content | strip_html | size %}{% assign f_words = featured.content | number_of_words %}{% assign f_by_char = f_chars | divided_by: 500 %}{% assign f_by_word = f_words | divided_by: 200 %}{% if f_by_char > f_by_word %}{% assign f_mins = f_by_char %}{% else %}{% assign f_mins = f_by_word %}{% endif %}{% if f_mins < 1 %}1{% else %}{{ f_mins }}{% endif %} min read</span>
         </div>
         <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta">Read Post &rarr;</a>
@@ -59,7 +59,9 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 {% endif %}
 
 <!-- More Posts heading -->
+{% if paginator.posts.size > 1 or paginator.page != 1 %}
 <h3 class="more-posts-heading">More Posts</h3>
+{% endif %}
 
 <!-- Category Filter Bar -->
 <div class="category-filter">
@@ -80,6 +82,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
 <div class="post-cards-grid">
 {% for post in paginator.posts %}
+{% if paginator.page == 1 and forloop.first %}{% continue %}{% endif %}
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <div class="post-card-tags">

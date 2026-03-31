@@ -333,8 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
         templateMiddleware: function (prop, value, template) {
             var query = document.getElementById('search-input').value;
             if (prop === 'subtitle' || prop === 'title') {
-                var decoded = value.indexOf("code") !== -1 ? htmlDecode(value) : value;
-                return highlightMatch(decoded, query);
+                return highlightMatch(htmlDecode(value), query);
             }
             if (prop === 'excerpt') {
                 return highlightMatch(htmlDecode(value), query);

@@ -59,7 +59,7 @@
             <div class="project-tags">
                 <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
             </div>
-            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link">GitHub &rarr;</a>
+            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
@@ -70,7 +70,7 @@
             <div class="project-tags">
                 <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
             </div>
-            <a href="https://github.com/DooDoo3804" class="project-link">GitHub &rarr;</a>
+            <a href="https://github.com/DooDoo3804" class="project-link" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
         </div>
         <div class="project-card">
             <div class="project-card-header">
