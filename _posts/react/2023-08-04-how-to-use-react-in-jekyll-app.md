@@ -5,7 +5,7 @@ layout: post
 author: "DooDoo"
 keywords: "jekyll, react"
 tags:
-    react
+    - React
 ---
 
 How to Use React in Jekyll

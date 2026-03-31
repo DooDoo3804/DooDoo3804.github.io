@@ -133,11 +133,10 @@
         <span class="about-section-icon">&#127793;</span> 현재 학습 중
     </h3>
     <div class="currently-learning">
-        <span class="learning-pill"><i class="fa fa-leaf" aria-hidden="true"></i> Spring Boot</span>
-        <span class="learning-pill"><i class="fa fa-database" aria-hidden="true"></i> PostgreSQL</span>
-        <span class="learning-pill"><i class="fa fa-cube" aria-hidden="true"></i> Docker</span>
-        <span class="learning-pill"><i class="fa fa-bolt" aria-hidden="true"></i> Redis</span>
         <span class="learning-pill"><i class="fa fa-sitemap" aria-hidden="true"></i> System Design</span>
+        <span class="learning-pill"><i class="fa fa-cloud" aria-hidden="true"></i> Cloud Architecture</span>
+        <span class="learning-pill"><i class="fa fa-code-fork" aria-hidden="true"></i> CI/CD Pipelines</span>
+        <span class="learning-pill"><i class="fa fa-line-chart" aria-hidden="true"></i> Performance Tuning</span>
     </div>
 </div>
 

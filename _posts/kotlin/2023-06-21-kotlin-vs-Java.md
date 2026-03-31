@@ -7,8 +7,8 @@ header-bg-css: "linear-gradient(135deg, #7b2ff7 0%, #9b59b6 100%)"
 header-mask: 0.4
 keywords: "kotlin, java, difference"
 tags:
-    kotlin
-    java
+    - Kotlin
+    - Java
 # hidden: true
 ---
 
