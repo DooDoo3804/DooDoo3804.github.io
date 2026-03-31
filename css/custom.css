@@ -523,7 +523,7 @@ code.has-line-numbers .code-line::before {
 }
 
 [data-theme="dark"] code.has-line-numbers .code-line::before {
-    color: #495162;
+    color: #5a6270;
 }
 
 /* --- Read Time Enhancement --- */
@@ -1409,10 +1409,10 @@ code.has-line-numbers .code-line::before {
     background: linear-gradient(90deg, #7b2ff7, #f107a3);
 }
 .post-card[data-tag="algorithm"]::before {
-    background: linear-gradient(90deg, #0f2027, #2c5364);
+    background: linear-gradient(90deg, #1a73e8, #4fc3f7);
 }
 .post-card[data-tag="react"]::before {
-    background: linear-gradient(90deg, #1a1a2e, #0f3460);
+    background: linear-gradient(90deg, #00b4d8, #61dafb);
 }
 
 /* ========================================
@@ -4023,9 +4023,24 @@ pre { overflow-x: auto; }
     text-decoration: underline;
 }
 
+.post-breadcrumb li:last-child {
+    min-width: 0;
+}
+
 .post-breadcrumb li:last-child strong {
     color: #333;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+    display: inline-block;
+}
+
+@media (max-width: 480px) {
+    .post-breadcrumb li:last-child strong {
+        max-width: 180px;
+    }
 }
 
 [data-theme="dark"] .post-breadcrumb {
@@ -4050,20 +4065,48 @@ pre { overflow-x: auto; }
 
 /* ========================================
    DARK MODE TRANSITION (FOUC-safe)
+   Targeted selectors instead of wildcard * to avoid
+   forcing transitions on every DOM node (perf)
    ======================================== */
-.transitions-enabled,
-.transitions-enabled *,
-.transitions-enabled *::before,
-.transitions-enabled *::after {
+.transitions-enabled body,
+.transitions-enabled .navbar-custom,
+.transitions-enabled .navbar-custom .nav li a,
+.transitions-enabled .intro-header,
+.transitions-enabled .post-container,
+.transitions-enabled .post-card,
+.transitions-enabled .post-card-body,
+.transitions-enabled .post-card-tags span,
+.transitions-enabled .post-card-meta,
+.transitions-enabled .post-card-excerpt,
+.transitions-enabled .post-card .post-title,
+.transitions-enabled .post-card .post-subtitle,
+.transitions-enabled .post-breadcrumb,
+.transitions-enabled .post-breadcrumb a,
+.transitions-enabled .post-breadcrumb li,
+.transitions-enabled .series-nav,
+.transitions-enabled .related-post-card,
+.transitions-enabled .filter-no-results-card,
+.transitions-enabled .start-here,
+.transitions-enabled .start-here-card,
+.transitions-enabled .featured-post-hero,
+.transitions-enabled .category-btn,
+.transitions-enabled .post-share .share-btn,
+.transitions-enabled footer,
+.transitions-enabled .side-catalog,
+.transitions-enabled .mobile-share-bar,
+.transitions-enabled .code-lang-label,
+.transitions-enabled .copy-btn,
+.transitions-enabled .author-hero,
+.transitions-enabled .search-page,
+.transitions-enabled .archive-container,
+.transitions-enabled pre,
+.transitions-enabled code,
+.transitions-enabled blockquote,
+.transitions-enabled table,
+.transitions-enabled th,
+.transitions-enabled td,
+.transitions-enabled hr {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-/* Exclude elements that should not transition */
-.transitions-enabled #reading-progress-bar,
-.transitions-enabled #reading-progress-bar *,
-.transitions-enabled input,
-.transitions-enabled textarea {
-    transition: none !important;
 }
 
 /* ========================================
