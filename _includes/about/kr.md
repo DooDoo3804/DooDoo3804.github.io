@@ -123,8 +123,21 @@
         <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHub 활동
     </h3>
     <div class="github-stats">
-        <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" loading="lazy">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DooDoo3804&layout=compact&hide_border=true&bg_color=00000000&title_color=0085a1&text_color=555" alt="Top Languages" class="github-stats-card" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api?username=DooDoo3804&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=0085a1&icon_color=0085a1&text_color=555" alt="GitHub Stats" class="github-stats-card" width="495" height="195" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DooDoo3804&layout=compact&hide_border=true&bg_color=00000000&title_color=0085a1&text_color=555" alt="Top Languages" class="github-stats-card" width="495" height="195" loading="lazy">
+    </div>
+</div>
+
+<div class="about-section">
+    <h3 class="about-section-title">
+        <span class="about-section-icon">&#127793;</span> 현재 학습 중
+    </h3>
+    <div class="currently-learning">
+        <span class="learning-pill"><i class="fa fa-leaf" aria-hidden="true"></i> Spring Boot</span>
+        <span class="learning-pill"><i class="fa fa-database" aria-hidden="true"></i> PostgreSQL</span>
+        <span class="learning-pill"><i class="fa fa-cube" aria-hidden="true"></i> Docker</span>
+        <span class="learning-pill"><i class="fa fa-bolt" aria-hidden="true"></i> Redis</span>
+        <span class="learning-pill"><i class="fa fa-sitemap" aria-hidden="true"></i> System Design</span>
     </div>
 </div>
 
