@@ -249,7 +249,7 @@
                         nearFooter = footerRect.top < viewportHeight + 60;
                     }
 
-                    if (scrollPct >= 0.5 && !nearFooter) {
+                    if (scrollPct >= 0.15 && !nearFooter) {
                         bar.classList.add('visible');
                     } else {
                         bar.classList.remove('visible');

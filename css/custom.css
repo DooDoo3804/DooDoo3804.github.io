@@ -1726,6 +1726,10 @@ code, kbd, pre, samp, .code-lang-label {
     font-weight: 600;
 }
 
+.tags-pill[data-count="1"] .tags-pill-count {
+    display: none;
+}
+
 .tags-pill:hover .tags-pill-count {
     background: rgba(255, 255, 255, 0.25);
 }
