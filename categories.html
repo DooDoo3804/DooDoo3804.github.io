@@ -1,0 +1,114 @@
+---
+title: Categories
+layout: default
+description: "Browse all posts by category"
+header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+no-catalog: true
+---
+
+{% include intro-header.html type='page' short=true %}
+
+<div class="container tags-page-container">
+    <div class="row">
+
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="tags-cloud-section">
+                <h3 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h3>
+                <p class="tags-summary">Browse posts by category</p>
+
+                {% comment %} Category display name mapping {% endcomment %}
+                {% comment %} Build categories sorted by frequency (most posts first) {% endcomment %}
+                {% capture cats_with_count %}
+                  {% for cat in site.categories %}
+                    {{ cat[1].size | prepend: "0000" | slice: -4, 4 }}::{{ cat[0] }}{% unless forloop.last %}|||{% endunless %}
+                  {% endfor %}
+                {% endcapture %}
+                {% assign sorted_cat_items = cats_with_count | split: "|||" | sort | reverse %}
+
+                <div class="tags-cloud">
+                    {% for item in sorted_cat_items %}
+                    {% assign parts = item | split: "::" %}
+                    {% assign cat_name = parts[1] | strip %}
+                    {% assign cat_posts = site.categories[cat_name] %}
+                    {% comment %} Display name mapping {% endcomment %}
+                    {% case cat_name %}
+                        {% when 'algo' %}{% assign display_name = "Algorithm" %}
+                        {% when 'db' %}{% assign display_name = "Database" %}
+                        {% when 'infra' %}{% assign display_name = "Infrastructure" %}
+                        {% when 'kotlin' %}{% assign display_name = "Kotlin" %}
+                        {% when 'react' %}{% assign display_name = "React" %}
+                        {% when 'spring' %}{% assign display_name = "Spring" %}
+                        {% when 'system-design' %}{% assign display_name = "System Design" %}
+                        {% else %}{% assign display_name = cat_name | capitalize %}
+                    {% endcase %}
+                    <a href="#cat-{{ cat_name | slugify }}" class="tags-pill" data-count="{{ cat_posts.size }}">
+                        {{ display_name }}
+                        <span class="tags-pill-count">{{ cat_posts.size }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Posts grouped by category (sorted by frequency) -->
+            <div class="tags-posts-section">
+                {% for item in sorted_cat_items %}
+                {% assign parts = item | split: "::" %}
+                {% assign cat_name = parts[1] | strip %}
+                {% assign cat_posts = site.categories[cat_name] %}
+                {% case cat_name %}
+                    {% when 'algo' %}{% assign display_name = "Algorithm" %}
+                    {% when 'db' %}{% assign display_name = "Database" %}
+                    {% when 'infra' %}{% assign display_name = "Infrastructure" %}
+                    {% when 'kotlin' %}{% assign display_name = "Kotlin" %}
+                    {% when 'react' %}{% assign display_name = "React" %}
+                    {% when 'spring' %}{% assign display_name = "Spring" %}
+                    {% when 'system-design' %}{% assign display_name = "System Design" %}
+                    {% else %}{% assign display_name = cat_name | capitalize %}
+                {% endcase %}
+                <div class="tags-group" id="cat-{{ cat_name | slugify }}">
+                    <div class="tags-group-header">
+                        <h4 class="tags-group-title">{{ display_name }}</h4>
+                        <span class="tags-group-count">{{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}</span>
+                    </div>
+                    <div class="tags-group-posts">
+                        {% assign sorted_posts = cat_posts | sort: "date" | reverse %}
+                        {% for post in sorted_posts %}
+                        <a href="{{ post.url | prepend: site.baseurl }}" class="tags-post-item">
+                            <div class="tags-post-meta">
+                                <span class="tags-post-category">{{ post.tags | first }}</span>
+                                <span class="tags-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                            </div>
+                            <div class="tags-post-title">{{ post.title }}</div>
+                            {% if post.subtitle %}
+                            <div class="tags-post-subtitle">{{ post.subtitle }}</div>
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+// Smooth scroll to category section when clicking a pill
+document.querySelectorAll('.tags-pill').forEach(function(pill) {
+    pill.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            var offset = 80;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+
+            target.classList.add('tags-group--highlight');
+            setTimeout(function() {
+                target.classList.remove('tags-group--highlight');
+            }, 1500);
+        }
+    });
+});
+</script>
