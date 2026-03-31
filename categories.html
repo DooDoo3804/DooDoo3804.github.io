@@ -25,6 +25,7 @@ hide-in-nav: true
                   {% endfor %}
                 {% endcapture %}
                 {% assign sorted_cat_items = cats_with_count | split: "|||" | sort | reverse %}
+                {% assign sorted_cat_items = sorted_cat_items | where_exp: "item", "item != ''" %}
 
                 <div class="tags-cloud">
                     {% for item in sorted_cat_items %}
