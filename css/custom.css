@@ -1437,10 +1437,6 @@ code.has-line-numbers .code-line::before {
     color: #e6edf3;
 }
 
-[data-theme="dark"] .error-404-content .btn-home {
-    background: #58a6ff;
-}
-
 [data-theme="dark"] .search-page {
     background: rgba(13, 17, 23, 0.97);
 }
