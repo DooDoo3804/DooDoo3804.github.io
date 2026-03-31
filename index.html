@@ -98,7 +98,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <div class="post-cards-grid">
 {% for post in paginator.posts %}
 {% if paginator.page == 1 and forloop.first %}{% continue %}{% endif %}
-<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}" data-excerpt="{{ post.content | strip_html | strip_newlines | truncate: 250 | escape }}">
+<div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
         <div class="post-card-thumb" style="background-image: url('{{ post.thumbnail | default: post.header-img | prepend: site.baseurl }}');"></div>
@@ -121,7 +121,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <p class="post-card-excerpt">
                 {{ post.content | strip_html | truncate:120 }}
             </p>
-            <div class="post-card-hover-excerpt"></div>
+
             <div class="post-card-meta">
                 <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
                 {% if post.last_modified_at %}
@@ -230,17 +230,6 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             if (allBtn) allBtn.click();
         });
     }
-})();
-</script>
-
-<!-- Hover Excerpt JS -->
-<script>
-(function() {
-    document.querySelectorAll('.post-card[data-excerpt]').forEach(function(card) {
-        var excerpt = card.getAttribute('data-excerpt');
-        var el = card.querySelector('.post-card-hover-excerpt');
-        if (el && excerpt) el.textContent = excerpt;
-    });
 })();
 </script>
 

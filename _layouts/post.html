@@ -112,9 +112,19 @@ layout: default
                     <div class="related-posts-grid">
                     {% assign related = "" | split: "" %}
                     {% assign seen = "" | split: "" %}
+                    {% comment %}Prioritize same-series posts{% endcomment %}
+                    {% if page.series %}
+                        {% for p in site.posts %}
+                            {% if p.url != page.url and related.size < 3 and p.series == page.series %}
+                                {% assign related = related | push: p %}
+                                {% assign seen = seen | push: p.url %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% comment %}Fill remaining slots with same-tag posts{% endcomment %}
                     {% for tag in page.tags %}
                         {% for p in site.posts %}
-                            {% if p.url != page.url and related.size < 4 %}
+                            {% if p.url != page.url and related.size < 3 %}
                                 {% unless seen contains p.url %}
                                     {% if p.tags contains tag %}
                                         {% assign related = related | push: p %}
@@ -127,7 +137,7 @@ layout: default
                     {% if related.size == 0 %}
                         {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
                     {% endif %}
-                    {% for post in related limit:4 %}
+                    {% for post in related limit:3 %}
                     <div class="related-post-card">
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
@@ -218,6 +228,82 @@ layout: default
         <i class="fa-brands fa-x-twitter"></i>
     </a>
 </div>
+
+<!-- Image Lightbox -->
+<div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+<style>
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.lightbox-overlay.active {
+    display: flex;
+}
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+.lightbox-caption {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
+    max-width: 80vw;
+}
+.lightbox-caption:empty {
+    display: none;
+}
+</style>
+<script>
+(function() {
+    var overlay = document.getElementById('lightbox-overlay');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbCaption = document.getElementById('lightbox-caption');
+    if (!overlay) return;
+
+    // Attach click to article images
+    var article = document.querySelector('article');
+    if (!article) return;
+    article.querySelectorAll('.post-container img').forEach(function(img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            lbImg.src = this.src;
+            lbImg.alt = this.alt || '';
+            lbCaption.textContent = this.alt || '';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close on overlay click
+    overlay.addEventListener('click', function() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+})();
+</script>
 
 <!-- add support for mathjax by voleking-->
 {% if page.mathjax %}

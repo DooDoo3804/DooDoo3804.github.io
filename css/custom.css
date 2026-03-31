@@ -380,40 +380,6 @@ html {
     margin: 0;
 }
 
-/* --- Hover Excerpt Preview (desktop only) --- */
-.post-card-hover-excerpt {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    border-top: 1px solid transparent;
-    margin-top: 0;
-    padding: 0;
-}
-
-@media (hover: hover) {
-    .post-card:hover .post-card-hover-excerpt {
-        max-height: 80px;
-        opacity: 1;
-        border-top-color: #f0f0f0;
-        margin-top: 12px;
-        padding-top: 10px;
-    }
-}
-
-[data-theme="dark"] .post-card-hover-excerpt {
-    color: #8b949e;
-}
-
-@media (hover: hover) {
-    [data-theme="dark"] .post-card:hover .post-card-hover-excerpt {
-        border-top-color: #30363d;
-    }
-}
-
 .post-card-meta {
     display: flex;
     justify-content: space-between;
@@ -735,7 +701,7 @@ code.has-line-numbers .code-line::before {
 
 @media (min-width: 992px) {
     .related-posts-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -4360,7 +4326,6 @@ pre { overflow-x: auto; }
 .transitions-enabled .post-card-tags span,
 .transitions-enabled .post-card-meta,
 .transitions-enabled .post-card-excerpt,
-.transitions-enabled .post-card-hover-excerpt,
 .transitions-enabled .post-card .post-title,
 .transitions-enabled .post-card .post-subtitle,
 .transitions-enabled .post-breadcrumb,
