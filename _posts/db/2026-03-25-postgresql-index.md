@@ -10,6 +10,7 @@ tags:
   - PostgreSQL
   - Database
   - Backend
+description: "PostgreSQL 인덱스 완전 정리. B-Tree 인덱스 원리, EXPLAIN ANALYZE 쿼리 분석, 복합 인덱스 컬럼 순서 전략과 실무 팁을 다룹니다."
 ---
 
 ## 인덱스가 왜 필요한가
