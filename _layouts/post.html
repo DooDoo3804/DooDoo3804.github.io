@@ -23,16 +23,18 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <!-- Breadcrumb Navigation -->
-                {% assign primary_tag = page.tags | first %}
-                {% if primary_tag %}
+                <!-- Breadcrumb Navigation (only for series with 2+ posts) -->
+                {% if page.series %}
+                {% assign series_posts = site.posts | where: "series", page.series %}
+                {% if series_posts.size >= 2 %}
                 <nav class="post-breadcrumb" aria-label="Breadcrumb">
                     <ol>
                         <li><a href="{{ site.baseurl }}/">Blog</a></li>
-                        <li><a href="{{ site.baseurl }}/archive/?tag={{ primary_tag | url_encode }}">{{ primary_tag }}</a></li>
+                        <li><a href="{{ site.baseurl }}/archive/?tag={{ page.series | url_encode }}">{{ page.series }}</a></li>
                         <li aria-current="page"><strong>{{ page.title }}</strong></li>
                     </ol>
                 </nav>
+                {% endif %}
                 {% endif %}
 
                 <!-- Multi-Lingual -->

@@ -55,6 +55,9 @@ dev-react-pages/build/
 # Binary files
 *.exe
 
+# Lighthouse reports
+reports/
+
 # Development source files (use .min versions only)
 js/jquery.js
 js/bootstrap.js
