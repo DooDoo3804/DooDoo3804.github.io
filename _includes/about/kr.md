@@ -81,7 +81,7 @@
             <div class="project-tags">
                 <span>Kotlin</span><span>Java</span><span>JVM</span>
             </div>
-            <a href="/archive/?tag=kotlin" class="project-link">시리즈 보기 &rarr;</a>
+            <a href="/archive/?tag=Kotlin" class="project-link">시리즈 보기 &rarr;</a>
         </div>
     </div>
 </div>
