@@ -9,12 +9,11 @@
     {% if site.last_updated %}<meta name="last-modified" content="2026-03">{% endif %}
 
     <!-- Open Graph -->
-    <meta property="og:title"
-        content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
     {% case page.layout %}
     {% when 'post' %}
+    <meta property="og:title" content="{{ page.title }}">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="{{ page.excerpt | strip_html | truncate:200 }}">
+    <meta property="og:description" content="{{ page.excerpt | strip_html | truncate:150 }}">
     {% if page.date %}
     <meta property="article:published_time" content="{{ page.date | date: "%Y-%m-%dT%H:%M:%SZ" }}">
     {% endif %}
@@ -25,6 +24,8 @@
     <meta property="article:tag" content="{{ tag }}">
     {% endfor %}
     {% else %}
+    <meta property="og:title"
+        content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.SEOTitle }}{% endif %}">
     <meta property="og:type" content="website">
     <meta property="og:description"
         content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
@@ -44,8 +45,13 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
-    <meta name="twitter:description" content="{% if page.layout == 'post' or page.path contains '_posts/' %}{{ page.excerpt | strip_html | truncate:160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    {% if page.layout == 'post' %}
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.excerpt | strip_html | truncate:150 }}">
+    {% else %}
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.SEOTitle }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    {% endif %}
     {% if page.thumbnail %}
     <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{{ page.thumbnail }}">
     {% elsif page.header-img %}

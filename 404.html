@@ -37,6 +37,30 @@ permalink: /404.html
                     </div>
                 </div>
 
+                <!-- Search -->
+                <div class="error-search">
+                    <div class="error-search-wrapper">
+                        <i class="fa fa-search error-search-icon" aria-hidden="true"></i>
+                        <input type="text" id="error-search-input" placeholder="Search posts..." autocomplete="off" spellcheck="false" aria-label="Search posts">
+                    </div>
+                    <div id="error-search-results" class="error-search-results"></div>
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="error-recent-posts">
+                    <h4 class="error-recent-title"><i class="fa fa-clock-o"></i> Recent Posts</h4>
+                    <ul class="error-recent-list">
+                        {% for post in site.posts limit:3 %}
+                        <li>
+                            <a href="{{ post.url | prepend: site.baseurl }}">
+                                <span class="error-recent-post-title">{{ post.title }}</span>
+                                <span class="error-recent-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <p class="error-subtitle">Lost? Don't worry — there's plenty of good stuff to explore.</p>
 
                 <div class="error-actions">
@@ -64,4 +88,24 @@ permalink: /404.html
     var el = document.getElementById('error-path');
     if (el) el.textContent = path;
 })();
+</script>
+
+<!-- 404 Search Instance (separate from main search) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof SimpleJekyllSearch === 'undefined') return;
+
+    var searchInput = document.getElementById('error-search-input');
+    var resultsContainer = document.getElementById('error-search-results');
+
+    SimpleJekyllSearch({
+        searchInput: searchInput,
+        resultsContainer: resultsContainer,
+        json: '{{ site.baseurl }}/search.json',
+        searchResultTemplate: '<a class="error-search-result-item" href="{url}"><span class="error-search-result-title">{title}</span><span class="error-search-result-date">{date}</span></a>',
+        noResultsText: '<p class="error-search-no-results">No results found.</p>',
+        limit: 5,
+        fuzzy: false
+    });
+});
 </script>
