@@ -936,6 +936,26 @@ pre:hover .copy-btn {
     top: 80px !important;
 }
 
+/* Active TOC link — left border accent */
+.side-catalog .catalog-body li a {
+    transition: color 0.2s, border-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.side-catalog .catalog-body .active a {
+    border-left: 3px solid #0085a1;
+    color: #0085a1 !important;
+    background: transparent;
+}
+
+.side-catalog .catalog-body .active {
+    background-color: transparent;
+}
+
+[data-theme="dark"] .side-catalog .catalog-body .active a {
+    border-left-color: #58a6ff;
+}
+
 /* ========================================
    DARK MODE
    ======================================== */
@@ -3352,111 +3372,6 @@ pre { overflow-x: auto; }
 
 [data-theme="dark"] .series-post-desc {
     color: #8b949e;
-}
-
-/* ========================================
-   READING STATS WIDGET
-   ======================================== */
-.reading-stats {
-    background: rgba(0, 133, 161, 0.04);
-    border: 1px solid rgba(0, 133, 161, 0.12);
-    border-radius: 10px;
-    padding: 16px 24px;
-    margin-bottom: 28px;
-}
-
-.reading-stats-items {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.reading-stats-item {
-    text-align: center;
-}
-
-.reading-stats-item.reading-stats-tags {
-    flex: 1;
-    text-align: left;
-    min-width: 0;
-}
-
-.reading-stats-value {
-    display: block;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent-primary);
-    line-height: 1.2;
-}
-
-.reading-stats-label {
-    display: block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #8b949e;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.reading-stats-divider {
-    width: 1px;
-    height: 32px;
-    background: rgba(0, 133, 161, 0.15);
-}
-
-.reading-stats-tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.reading-stats-tag {
-    display: inline-block;
-    background: rgba(0, 133, 161, 0.08);
-    color: var(--accent-primary);
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.reading-stats-tag:hover {
-    background: var(--accent-primary);
-    color: #fff;
-    text-decoration: none;
-}
-
-.reading-stats-tag sup {
-    font-size: 10px;
-    margin-left: 2px;
-}
-
-/* Reading Stats - Dark mode */
-[data-theme="dark"] .reading-stats {
-    background: rgba(88, 166, 255, 0.04);
-    border-color: rgba(88, 166, 255, 0.12);
-}
-
-[data-theme="dark"] .reading-stats-value {
-    color: #58a6ff;
-}
-
-[data-theme="dark"] .reading-stats-divider {
-    background: rgba(88, 166, 255, 0.15);
-}
-
-[data-theme="dark"] .reading-stats-tag {
-    background: rgba(88, 166, 255, 0.1);
-    color: #58a6ff;
-}
-
-[data-theme="dark"] .reading-stats-tag:hover {
-    background: #58a6ff;
-    color: #0d1117;
 }
 
 /* ========================================

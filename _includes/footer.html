@@ -19,7 +19,7 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}" defer></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}" defer></script>
@@ -78,7 +78,7 @@
         obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
     }
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
         var $chart = document.querySelector("#chart");
         $chart.onload = function () {
             resizeIframe($chart)
@@ -86,7 +86,7 @@
         window.addEventListener("resize", () => {
             resizeIframe($chart)
         });
-    })
+    });
 </script>
 {% endif %}
 
@@ -158,31 +158,33 @@
         return true;
     }
 
-    generateCatalog(".catalog-body");
+    document.addEventListener('DOMContentLoaded', function () {
+        generateCatalog(".catalog-body");
 
-    // toggle side catalog
-    $(".catalog-toggle").click((function (e) {
-        e.preventDefault();
-        $('.side-catalog').toggleClass("fold")
-    }))
+        // toggle side catalog
+        $(".catalog-toggle").click((function (e) {
+            e.preventDefault();
+            $('.side-catalog').toggleClass("fold")
+        }))
 
-    /*
-     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
-     * Fork by Hux to support padding
-     */
-    async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {
-        $('.catalog-body').onePageNav({
-            currentClass: "active",
-            changeHash: !1,
-            easing: "swing",
-            filter: "",
-            scrollSpeed: 700,
-            scrollOffset: 0,
-            scrollThreshold: .2,
-            begin: null,
-            end: null,
-            scrollChange: null,
-            padding: 80
+        /*
+         * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+         * Fork by Hux to support padding
+         */
+        async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {
+            $('.catalog-body').onePageNav({
+                currentClass: "active",
+                changeHash: !1,
+                easing: "swing",
+                filter: "",
+                scrollSpeed: 700,
+                scrollOffset: 0,
+                scrollThreshold: .2,
+                begin: null,
+                end: null,
+                scrollChange: null,
+                padding: 80
+            });
         });
     });
 </script>
@@ -190,7 +192,7 @@
 
 <!-- Mobile TOC -->
 <script>
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     var $toggle = $('.mobile-toc-toggle');
     var $panel = $('.mobile-toc-panel');
     if ($toggle.length && $panel.length) {
@@ -272,8 +274,8 @@ $(document).ready(function() {
         setLang(lang)
     }
 
-    // init
-    _render();
+    // init — deferred so jQuery is available (loaded with defer)
+    document.addEventListener('DOMContentLoaded', function () { _render(); });
 </script>
 {% endif %}
 
@@ -318,7 +320,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
         var $searchPage = $('.search-page');
         var $searchOpen = $('.search-icon');
         var $searchClose = $('.search-icon-close');
