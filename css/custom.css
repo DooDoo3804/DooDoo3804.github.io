@@ -1508,11 +1508,6 @@ code.has-line-numbers .code-line::before {
     background: rgba(88, 166, 255, 0.1);
 }
 
-/* --- Disqus dark mode --- */
-[data-theme="dark"] .comment {
-    filter: invert(0.88) hue-rotate(180deg);
-}
-
 /* ========================================
    READING PROGRESS BAR
    ======================================== */
@@ -4154,7 +4149,7 @@ pre { overflow-x: auto; }
    LAST UPDATED SIGNAL
    ======================================== */
 .author-hero-updated {
-    font-size: 12.5px;
+    font-size: 13px;
     color: #8b949e;
     margin: 10px 0 0;
     font-weight: 500;
@@ -4446,7 +4441,7 @@ pre { overflow-x: auto; }
     background: var(--accent-primary);
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -4490,7 +4485,7 @@ pre { overflow-x: auto; }
    MOBILE BREAKPOINTS
    ======================================== */
 @media (max-width: 768px) {
-    .about-hero { padding: 40px 20px; }
+    .about-hero { padding: 20px 20px; }
     .about-name { font-size: 24px; }
     .timeline { padding-left: 20px; }
     .series-nav { flex-direction: column; }
@@ -4511,6 +4506,7 @@ pre { overflow-x: auto; }
     .post-breadcrumb li:not(:last-child)::after { margin: 0 6px; }
     .filter-no-results-card { padding: 32px 24px; }
     .pagination { gap: 8px; }
+    .post-card-body { padding: 16px 20px 20px; }
     .pagination-btn { font-size: 13px; padding: 8px 14px; }
     .pagination-num { width: 34px; height: 34px; font-size: 13px; }
     .pagination-ellipsis { font-size: 13px; }
