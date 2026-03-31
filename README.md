@@ -9,7 +9,7 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - **Static Site Generator:** Jekyll (kramdown, jekyll-paginate)
 - **Styling:** Bootstrap 3, Less, custom CSS (4400+ lines)
 - **JavaScript:** jQuery, Simple Jekyll Search, custom modules
-- **Hosting:** GitHub Pages
+- **Hosting:** GitHub Pages (via GitHub Actions CI/CD)
 - **Comments:** Utterances (GitHub Issues-backed)
 - **Fonts:** Inter, JetBrains Mono (Google Fonts)
 - **Icons:** Font Awesome 6
@@ -54,6 +54,24 @@ PASSWORD=mypassword make build
 This runs `jekyll build` then encrypts all pages marked `protected: true` in `_site/`.
 
 > **Note:** This is client-side encryption. It protects against casual access but not determined attackers who inspect the page source. Do not use it for highly sensitive data.
+
+## Deployment
+
+The site is automatically built and deployed via GitHub Actions on every push to `master`. The workflow builds Jekyll, encrypts protected pages with StatiCrypt, and deploys to GitHub Pages.
+
+### Initial Setup
+
+1. **Set GitHub Pages source to Actions:**
+   Go to repo `Settings → Pages → Source` and select **GitHub Actions**.
+
+2. **Configure the encryption password (optional):**
+   Go to repo `Settings → Secrets and variables → Actions → New repository secret`.
+   Name: `PAGE_PASSWORD`, Value: your desired password.
+
+3. **Verify deployment:**
+   Check the `Actions` tab in the repo to see build/deploy status.
+
+If `PAGE_PASSWORD` is not set, protected pages will be deployed without encryption.
 
 ## Local Development
 

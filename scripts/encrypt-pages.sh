@@ -7,12 +7,12 @@
 
 set -euo pipefail
 
-PASSWORD="${1:-}"
+PASSWORD="${1:-${PAGE_PASSWORD:-}}"
 
 if [ -z "$PASSWORD" ]; then
-  echo "Error: No password provided."
-  echo "Usage: bash scripts/encrypt-pages.sh \"your-password\""
-  exit 1
+  echo "Warning: No password provided. Skipping encryption."
+  echo "Set PAGE_PASSWORD env var or pass as argument: bash scripts/encrypt-pages.sh \"your-password\""
+  exit 0
 fi
 
 SITE_DIR="_site"
