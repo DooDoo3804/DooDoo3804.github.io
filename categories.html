@@ -13,11 +13,10 @@ hide-in-nav: true
     <div class="row">
 
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="tags-cloud-section">
+            <div class="cat-grid-section">
                 <h3 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h3>
                 <p class="tags-summary">Browse posts by category</p>
 
-                {% comment %} Category display name mapping {% endcomment %}
                 {% comment %} Build categories sorted by frequency (most posts first) {% endcomment %}
                 {% capture cats_with_count %}
                   {% for cat in site.categories %}
@@ -27,25 +26,55 @@ hide-in-nav: true
                 {% assign cats_with_count_clean = cats_with_count | strip_newlines | strip %}
                 {% assign sorted_cat_items = cats_with_count_clean | split: "|||" | sort | reverse %}
 
-                <div class="tags-cloud">
+                <div class="cat-card-grid">
                     {% for item in sorted_cat_items %}
                     {% assign parts = item | split: "::" %}
                     {% assign cat_name = parts[1] | strip %}
+                    {% if cat_name == "" %}{% continue %}{% endif %}
                     {% assign cat_posts = site.categories[cat_name] %}
-                    {% comment %} Display name mapping {% endcomment %}
+                    {% comment %} Display name and icon mapping {% endcomment %}
                     {% case cat_name %}
-                        {% when 'algo' %}{% assign display_name = "Algorithm" %}
-                        {% when 'db' %}{% assign display_name = "Database" %}
-                        {% when 'infra' %}{% assign display_name = "Infrastructure" %}
-                        {% when 'kotlin' %}{% assign display_name = "Kotlin" %}
-                        {% when 'react' %}{% assign display_name = "React" %}
-                        {% when 'spring' %}{% assign display_name = "Spring" %}
-                        {% when 'system-design' %}{% assign display_name = "System Design" %}
-                        {% else %}{% assign display_name = cat_name | capitalize %}
+                        {% when 'algo' %}
+                            {% assign display_name = "Algorithm" %}
+                            {% assign cat_icon = "fa-solid fa-code" %}
+                        {% when 'db' %}
+                            {% assign display_name = "Database" %}
+                            {% assign cat_icon = "fa-solid fa-database" %}
+                        {% when 'infra' %}
+                            {% assign display_name = "Infrastructure" %}
+                            {% assign cat_icon = "fa-solid fa-server" %}
+                        {% when 'kotlin' %}
+                            {% assign display_name = "Kotlin" %}
+                            {% assign cat_icon = "fa-solid fa-mug-hot" %}
+                        {% when 'react' %}
+                            {% assign display_name = "React" %}
+                            {% assign cat_icon = "fa-brands fa-react" %}
+                        {% when 'spring' %}
+                            {% assign display_name = "Spring" %}
+                            {% assign cat_icon = "fa-solid fa-leaf" %}
+                        {% when 'system-design' %}
+                            {% assign display_name = "System Design" %}
+                            {% assign cat_icon = "fa-solid fa-sitemap" %}
+                        {% else %}
+                            {% assign display_name = cat_name | capitalize %}
+                            {% assign cat_icon = "fa-solid fa-folder" %}
                     {% endcase %}
-                    <a href="#cat-{{ cat_name | slugify }}" class="tags-pill" data-count="{{ cat_posts.size }}">
-                        {{ display_name }}
-                        <span class="tags-pill-count">{{ cat_posts.size }}</span>
+                    <a href="#cat-{{ cat_name | slugify }}" class="cat-card">
+                        <div class="cat-card-icon">
+                            <i class="{{ cat_icon }}"></i>
+                        </div>
+                        <div class="cat-card-body">
+                            <div class="cat-card-header">
+                                <h4 class="cat-card-name">{{ display_name }}</h4>
+                                <span class="cat-card-count">{{ cat_posts.size }}</span>
+                            </div>
+                            <ul class="cat-card-posts">
+                                {% assign sorted_posts = cat_posts | sort: "date" | reverse %}
+                                {% for post in sorted_posts limit:3 %}
+                                <li>{{ post.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </a>
                     {% endfor %}
                 </div>
@@ -56,6 +85,7 @@ hide-in-nav: true
                 {% for item in sorted_cat_items %}
                 {% assign parts = item | split: "::" %}
                 {% assign cat_name = parts[1] | strip %}
+                {% if cat_name == "" %}{% continue %}{% endif %}
                 {% assign cat_posts = site.categories[cat_name] %}
                 {% case cat_name %}
                     {% when 'algo' %}{% assign display_name = "Algorithm" %}
@@ -96,9 +126,9 @@ hide-in-nav: true
 </div>
 
 <script>
-// Smooth scroll to category section when clicking a pill
-document.querySelectorAll('.tags-pill').forEach(function(pill) {
-    pill.addEventListener('click', function(e) {
+// Smooth scroll to category section when clicking a card
+document.querySelectorAll('.cat-card').forEach(function(card) {
+    card.addEventListener('click', function(e) {
         e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));
         if (target) {
