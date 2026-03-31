@@ -11,6 +11,8 @@
 | **QA** | Claude Code | 비판적 검토 + 피드백 전문. 절대 관대하지 않음. |
 | **UX Roaster** | Claude Code | 사용자 관점에서 경험/디자인/흐름을 무자비하게 비판. 코드 무관. 실제 유저처럼 까기. |
 | **Design Critic** | Claude Code | 순수 시각 디자인 전문 비판. 색상, 타이포그래피, 여백, 레이아웃, 시각적 계층구조. 실제 디자이너 눈으로 까기. UX 흐름은 UX Roaster에게. |
+| **SEO Specialist** | Claude Code | 검색 노출 전문. meta 태그, JSON-LD 구조화 데이터, 키워드, 내부 링크, Core Web Vitals. Google 노출 관점으로 분석/수정. |
+| **Content Editor** | Claude Code | 포스트 품질 전문. 맞춤법, 구성, 독자 타겟, 제목 매력도, 코드 예제 품질 비판. 글 리뷰 전담. |
 
 ## 워크플로우
 
@@ -19,14 +21,17 @@ PM → 태스크 분배
   ↓
 개발팀 (Frontend A, B / Backend) → 구현
   ↓
-QA → 코드/버그 비판적 검토 + 피드백
+리뷰팀 5인 동시 투입 (병렬)
+  ├── QA → 코드/버그 비판적 검토
+  ├── UX Roaster → 사용자 경험/흐름 무자비 비판
+  ├── Design Critic → 색상/타이포/여백/레이아웃 비판
+  ├── SEO Specialist → 검색 노출/메타/구조화 데이터 분석
+  └── Content Editor → 포스트 품질/맞춤법/구성/제목 검토
   ↓
-UX Roaster → 사용자 경험/디자인/흐름 무자비 비판 (병렬 가능)
-  ↓
-개발팀 → 수정
+개발팀 → 피드백 반영 수정
   ↓
 PM → 검증 + 주인님께 완료 보고
-  ↑ (QA + UX Roaster 통과할 때까지 반복)
+  ↑ (리뷰팀 전원 통과할 때까지 반복)
 ```
 
 ## 규칙
