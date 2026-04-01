@@ -2142,6 +2142,7 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 .cat-card {
+    cursor: pointer;
     display: flex;
     gap: 14px;
     padding: 20px;
@@ -2236,6 +2237,16 @@ code, kbd, pre, samp, .code-lang-label {
     margin-right: 5px;
     color: var(--text-muted);
     font-weight: 700;
+}
+
+.cat-card-posts li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cat-card-posts li a:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
 }
 
 [data-theme="dark"] .cat-card {

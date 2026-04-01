@@ -1,7 +1,7 @@
 ---
 title: Categories
 layout: default
-description: "Browse all posts by category"
+description: "Browse algorithm, Spring Boot, Kotlin, system design, and more — organized by category with latest posts."
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 no-catalog: true
 hide-in-nav: true
@@ -26,6 +26,10 @@ hide-in-nav: true
                 {% assign cats_with_count_clean = cats_with_count | strip_newlines | strip %}
                 {% assign sorted_cat_items = cats_with_count_clean | split: "|||" | sort | reverse %}
 
+                {% comment %} Category display name mapping (single source of truth) {% endcomment %}
+                {% assign cat_map = "algo:Algorithm|db:Database|infra:Infrastructure|kotlin:Kotlin|react:React|spring:Spring|system-design:System Design" %}
+                {% assign cat_map_entries = cat_map | split: "|" %}
+
                 <div class="cat-card-grid">
                     {% for item in sorted_cat_items %}
                     {% assign parts = item | split: "::" %}
@@ -45,7 +49,7 @@ hide-in-nav: true
                             {% assign cat_icon = "fa-solid fa-server" %}
                         {% when 'kotlin' %}
                             {% assign display_name = "Kotlin" %}
-                            {% assign cat_icon = "fa-solid fa-mug-hot" %}
+                            {% assign cat_icon = "fa-solid fa-code" %}
                         {% when 'react' %}
                             {% assign display_name = "React" %}
                             {% assign cat_icon = "fa-brands fa-react" %}
@@ -59,23 +63,23 @@ hide-in-nav: true
                             {% assign display_name = cat_name | capitalize %}
                             {% assign cat_icon = "fa-solid fa-folder" %}
                     {% endcase %}
-                    <a href="#cat-{{ cat_name | slugify }}" class="cat-card">
+                    <div class="cat-card" data-target="#cat-{{ cat_name | slugify }}">
                         <div class="cat-card-icon">
                             <i class="{{ cat_icon }}"></i>
                         </div>
                         <div class="cat-card-body">
                             <div class="cat-card-header">
                                 <h4 class="cat-card-name">{{ display_name }}</h4>
-                                <span class="cat-card-count">{{ cat_posts.size }}</span>
+                                <span class="cat-card-count">{{ cat_posts.size }} posts</span>
                             </div>
                             <ul class="cat-card-posts">
                                 {% assign sorted_posts = cat_posts | sort: "date" | reverse %}
                                 {% for post in sorted_posts limit:3 %}
-                                <li>{{ post.title }}</li>
+                                <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
-                    </a>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
@@ -127,10 +131,10 @@ hide-in-nav: true
 
 <script>
 // Smooth scroll to category section when clicking a card
-document.querySelectorAll('.cat-card').forEach(function(card) {
+document.querySelectorAll('.cat-card[data-target]').forEach(function(card) {
     card.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
+        if (e.target.closest('a')) return;
+        var target = document.querySelector(this.dataset.target);
         if (target) {
             var offset = 80;
             var top = target.getBoundingClientRect().top + window.scrollY - offset;
