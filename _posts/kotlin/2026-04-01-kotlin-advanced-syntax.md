@@ -4,10 +4,11 @@ subtitle: "Advanced Kotlin Syntax"
 layout: post
 date: "2026-04-01"
 author: "DooDoo"
-header-img: "img/post-bg-kotlin.png"
-header-mask: 0.4
+header-style: text
+header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kotlin, advanced, lambda, coroutine, extension"
+description: "Kotlin 고급 문법 정리 — 람다, 고차 함수, 확장 함수, 코루틴, 스코프 함수 등 실무와 코딩 테스트에서 자주 쓰이는 패턴을 예제와 함께 설명합니다."
 series: Kotlin
 tags:
   - Kotlin
@@ -18,7 +19,7 @@ categories:
 Kotlin 고급 문법
 ---
 
-Kotlin의 기본 문법에 이어, 실무와 코딩 테스트에서 자주 활용되는 고급 문법을 정리한다.
+Kotlin의 [기본 문법]({% post_url kotlin/2023-06-20-kotlin-기본-문법 %})에 이어, 실무와 코딩 테스트에서 자주 활용되는 고급 문법을 정리한다.
 
 <br>
 

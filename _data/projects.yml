@@ -22,7 +22,7 @@
     - PostgreSQL
     - Redis
     - Docker
-  github: "https://github.com/DooDoo3804/"
+  github: "https://github.com/DooDoo3804/spring-boot-api-server"
   icon: "fa-server"
   featured: true
   status: active
@@ -36,7 +36,7 @@
     - Redis
     - Kafka
     - AWS
-  github: "https://github.com/DooDoo3804/"
+  github: "https://github.com/DooDoo3804/system-design-study"
   icon: "fa-sitemap"
   featured: false
   status: active
@@ -49,7 +49,7 @@
     - Kotlin
     - Java
     - Algorithm
-  github: "https://github.com/DooDoo3804/"
+  github: "https://github.com/DooDoo3804/algorithm-study"
   icon: "fa-code"
   featured: true
   status: completed
@@ -63,7 +63,7 @@
     - Kubernetes
     - Helm
     - Prometheus
-  github: "https://github.com/DooDoo3804/"
+  github: "https://github.com/DooDoo3804/infra-practice"
   icon: "fa-cube"
   featured: false
   status: active
