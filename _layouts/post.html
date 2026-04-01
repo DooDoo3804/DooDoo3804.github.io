@@ -274,6 +274,13 @@ layout: default
 })();
 </script>
 
+<!-- Lazy load post images -->
+<script>
+document.querySelectorAll(".post-container img").forEach(function(img) {
+    if (!img.hasAttribute("loading")) img.setAttribute("loading", "lazy");
+});
+</script>
+
 <!-- add support for mathjax by voleking-->
 {% if page.mathjax %}
   {% include mathjax_support.html %}
