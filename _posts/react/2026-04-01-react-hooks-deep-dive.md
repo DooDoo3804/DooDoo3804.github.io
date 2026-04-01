@@ -243,7 +243,7 @@ useEffect(() => {
 
 ```jsx
 const sortedList = useMemo(() => {
-  return items.sort((a, b) => a.price - b.price);
+  return [...items].sort((a, b) => a.price - b.price);
 }, [items]);
 ```
 
@@ -464,6 +464,7 @@ function useDebounce(value, delay) {
 // 사용: 검색 입력 디바운스
 function SearchBar() {
   const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
   const debouncedQuery = useDebounce(query, 300);
 
   useEffect(() => {
