@@ -5,7 +5,7 @@ layout: post
 author: "DooDoo"
 header-style: text
 catalog: true
-series: Spring
+series: "Spring Boot"
 tags:
   - Spring
   - Backend

@@ -15,34 +15,29 @@ hide-in-nav: true
 
             <div class="series-index">
             {% comment %}
-                Build a list of "series" = tags that have more than 1 post.
-                Each tag with 2+ posts is considered a series.
+                Group posts by their "series" front matter field.
+                Only posts with series: defined are included.
             {% endcomment %}
 
-            {% assign tag_names = "" | split: "" %}
-            {% for tag in site.tags %}
-                {% if tag[1].size > 1 %}
-                    {% assign tag_names = tag_names | push: tag[0] %}
-                {% endif %}
-            {% endfor %}
-            {% assign tag_names = tag_names | sort %}
+            {% assign series_posts = site.posts | where_exp: "post", "post.series" %}
+            {% assign series_names = series_posts | map: "series" | uniq | sort %}
 
-            {% if tag_names.size == 0 %}
+            {% if series_names.size == 0 %}
             <div class="series-empty">
                 <i class="fa fa-layer-group"></i>
-                <p>No series yet. A series is created when 2 or more posts share the same tag.</p>
+                <p>No series yet. Add <code>series: "Name"</code> to a post's front matter to start one.</p>
             </div>
             {% endif %}
 
-            {% for tag_name in tag_names %}
-                {% assign posts = site.tags[tag_name] | sort: "date" %}
+            {% for name in series_names %}
+                {% assign posts = series_posts | where: "series", name | sort: "date" %}
                 {% assign first_post = posts | first %}
                 {% assign last_post = posts | last %}
                 <div class="series-card">
                     <div class="series-card-header">
                         <h3 class="series-card-title">
                             <i class="fa fa-layer-group"></i>
-                            {{ tag_name }}
+                            {{ name }}
                         </h3>
                         <span class="series-card-count">{{ posts.size }} posts</span>
                     </div>

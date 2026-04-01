@@ -5,7 +5,7 @@ layout: post
 author: "DooDoo"
 header-style: text
 catalog: true
-series: Infra
+series: "Container & Infra"
 tags:
   - Docker
   - DevOps

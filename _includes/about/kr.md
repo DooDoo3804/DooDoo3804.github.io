@@ -1,7 +1,8 @@
 <div class="about-hero">
     <h2 class="about-name">김도윤 <span class="about-name-en">DoYoon Kim</span></h2>
-    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
+    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot · PostgreSQL · Docker · K8s</p>
     <p class="about-intro">안녕하세요! 견고한 백엔드 시스템을 만드는 것에 열정을 가진 개발자입니다. 알고리즘 문제 풀이와 시스템 설계를 즐기며, 배운 것들을 블로그에 기록하고 있습니다.</p>
+    <p class="about-intro">이 블로그는 백엔드 개발 학습 과정에서 배운 내용을 체계적으로 정리하고 공유하기 위해 운영하고 있습니다. Spring Boot, JPA, 컨테이너 기술, 알고리즘 등 실무에 필요한 핵심 지식을 시리즈별로 정리합니다.</p>
     <div class="about-links">
         <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
         <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
@@ -38,6 +39,7 @@
             <div class="skill-category-label">도구 & 인프라</div>
             <div class="skill-badges">
                 <span class="skill-badge skill-badge--default">Docker</span>
+                <span class="skill-badge skill-badge--default">Kubernetes</span>
                 <span class="skill-badge skill-badge--default">Git</span>
                 <span class="skill-badge skill-badge--default">GitHub Actions</span>
             </div>

@@ -8,7 +8,7 @@ header-style: text
 catalog: true
 keywords: "data representation, integer, binary, twos complement, computer science"
 description: "정수의 데이터 표현 방식을 정리합니다. 부호 없는 정수, 2의 보수, 고정소수점 등 컴퓨터가 정수를 인코딩하는 방법을 C 예제와 함께 설명합니다."
-series: Algorithm
+series: "CS Fundamentals"
 tags:
   - CS
   - CS Fundamentals
