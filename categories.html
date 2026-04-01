@@ -133,7 +133,7 @@ document.querySelectorAll('.cat-card').forEach(function(card) {
         var target = document.querySelector(this.getAttribute('href'));
         if (target) {
             var offset = 80;
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top: top, behavior: 'smooth' });
 
             target.classList.add('tags-group--highlight');

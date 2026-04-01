@@ -2007,7 +2007,7 @@ code, kbd, pre, samp, .code-lang-label {
 
 .tags-group--highlight {
     border-color: var(--accent-primary);
-    box-shadow: 0 0 0 2px rgba(0, 133, 161, 0.15);
+    box-shadow: 0 0 0 2px rgba(0, 133, 161, 0.5);
 }
 
 .tags-group-header {
@@ -2171,7 +2171,7 @@ code, kbd, pre, samp, .code-lang-label {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background: rgba(0, 133, 161, 0.08);
+    background: rgba(0, 133, 161, 0.14);
     color: var(--accent-primary);
     font-size: 18px;
 }
@@ -2193,7 +2193,7 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 .cat-card-name {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
@@ -2202,8 +2202,8 @@ code, kbd, pre, samp, .code-lang-label {
 
 .cat-card-count {
     flex-shrink: 0;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     color: var(--accent-primary);
     background: rgba(0, 133, 161, 0.1);
     padding: 2px 8px;
@@ -2238,12 +2238,9 @@ code, kbd, pre, samp, .code-lang-label {
     font-weight: 700;
 }
 
-.cat-card:hover .cat-card-name {
-    color: var(--accent-primary);
-}
-
 [data-theme="dark"] .cat-card {
     border-color: var(--border-medium);
+    background: var(--bg-surface-raised);
 }
 
 [data-theme="dark"] .cat-card:hover {
@@ -2258,7 +2255,7 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 [data-theme="dark"] .tags-group--highlight {
-    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.15);
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.5);
 }
 
 [data-theme="dark"] .tags-group-header {
