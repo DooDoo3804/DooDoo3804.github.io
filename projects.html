@@ -37,6 +37,10 @@ nav-style: invert
                 <i class="fa {{ project.icon }}" aria-hidden="true"></i>
             </div>
             <div class="projects-card-body">
+                <div class="projects-card-meta">
+                    <span class="projects-status-badge projects-status-badge--{{ project.status }}">{{ project.status }}</span>
+                    {% if project.year %}<span class="projects-card-year">{{ project.year }}</span>{% endif %}
+                </div>
                 <h3 class="projects-card-title">{{ project.title }}</h3>
                 <p class="projects-card-desc">{{ project.description }}</p>
                 <div class="projects-card-techs">

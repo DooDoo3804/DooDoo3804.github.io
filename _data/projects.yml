@@ -1,58 +1,70 @@
-- title: "DooDoo IT Blog"
-  description: "Jekyll 기반 기술 블로그. 다크모드, 반응형 디자인, PWA, 검색 기능, React 통합 등 모던 웹 기술을 적용한 개인 포트폴리오 블로그."
-  description_en: "A Jekyll-based tech blog with dark mode, responsive design, PWA, search, and React integration."
+- title: "DooDoo3804.github.io"
+  description: "Jekyll 기반 기술 블로그. 다크모드, 반응형 디자인, PWA, 검색 기능, React 위젯 통합 등 모던 웹 기술을 적용한 개인 포트폴리오 블로그. GitHub Actions CI/CD 자동 배포."
+  description_en: "A Jekyll-based tech blog with dark mode, responsive design, PWA, search, and React integration. Deployed via GitHub Actions CI/CD."
   tech:
     - Jekyll
     - React
     - GitHub Pages
-    - CSS
+    - CI/CD
   github: "https://github.com/DooDoo3804/DooDoo3804.github.io"
   demo: "https://doodoo3804.github.io"
   icon: "fa-globe"
   featured: true
+  status: active
+  year: 2024
+
+- title: "Spring Boot REST API Server"
+  description: "Spring Boot 기반 RESTful API 서버. JPA/Hibernate ORM, PostgreSQL 데이터베이스, Redis 캐싱, JWT 인증/인가, Docker Compose 환경 구성. Swagger API 문서 자동화."
+  description_en: "Spring Boot RESTful API server with JPA/Hibernate, PostgreSQL, Redis caching, JWT auth, and Docker Compose. Swagger API docs included."
+  tech:
+    - Spring Boot
+    - JPA
+    - PostgreSQL
+    - Redis
+    - Docker
+  github: "https://github.com/DooDoo3804/"
+  icon: "fa-server"
+  featured: true
+  status: active
+  year: 2024
+
+- title: "System Design Study"
+  description: "대규모 시스템 설계 학습 기록. 로드 밸런싱, 캐싱 전략, 메시지 큐, 데이터베이스 샤딩, Rate Limiting 등 백엔드 핵심 아키텍처 패턴 정리."
+  description_en: "Study notes on large-scale system design: load balancing, caching strategies, message queues, DB sharding, and rate limiting."
+  tech:
+    - Architecture
+    - Redis
+    - Kafka
+    - AWS
+  github: "https://github.com/DooDoo3804/"
+  icon: "fa-sitemap"
+  featured: false
+  status: active
+  year: 2025
 
 - title: "알고리즘 문제 풀이"
-  description: "세그먼트 트리, 플로이드-워셜, MST 등 고급 알고리즘을 분석하고 풀이를 정리한 학습 기록 시리즈."
-  description_en: "In-depth analysis and solutions for advanced algorithms including Segment Trees, Floyd-Warshall, and MST."
+  description: "세그먼트 트리, 플로이드-워셜, MST, DP 최적화 등 고급 알고리즘 분석 및 풀이 기록. Kotlin/Java 기반 풀이와 시간복잡도 분석 포함."
+  description_en: "In-depth analysis and solutions for advanced algorithms including Segment Trees, Floyd-Warshall, MST, and DP optimization."
   tech:
     - Kotlin
     - Java
     - Algorithm
-  github: "https://github.com/DooDoo3804"
+  github: "https://github.com/DooDoo3804/"
   icon: "fa-code"
   featured: true
+  status: completed
+  year: 2024
 
-- title: "Kotlin 학습 노트"
-  description: "Kotlin 문법 기초부터 Java와의 비교 분석까지. 백엔드 전환을 위한 체계적인 학습 기록."
-  description_en: "From Kotlin syntax fundamentals to detailed Java comparisons. A structured learning path for JVM backend transition."
+- title: "Docker & Kubernetes 인프라 실습"
+  description: "컨테이너 오케스트레이션 학습 프로젝트. Dockerfile 최적화, multi-stage 빌드, K8s 매니페스트 작성, Helm 차트 구성, 모니터링(Prometheus/Grafana) 파이프라인 구축."
+  description_en: "Container orchestration lab: Dockerfile optimization, multi-stage builds, K8s manifests, Helm charts, and Prometheus/Grafana monitoring."
   tech:
-    - Kotlin
-    - Java
-    - JVM
-  github: "https://github.com/DooDoo3804"
-  demo: "/archive/?tag=kotlin"
-  icon: "fa-leaf"
-  featured: false
-
-- title: "Spring Boot 프로젝트"
-  description: "Spring Boot 기반 REST API 서버 개발. JPA/Hibernate, Redis 캐싱, JWT 인증 등 백엔드 핵심 기술 적용."
-  description_en: "Spring Boot REST API server with JPA/Hibernate, Redis caching, and JWT authentication."
-  tech:
-    - Spring
-    - Java
-    - Redis
     - Docker
-  github: "https://github.com/DooDoo3804"
-  icon: "fa-server"
-  featured: true
-
-- title: "React 컴포넌트"
-  description: "블로그에 통합된 인터랙티브 React 컴포넌트 모음. GitHub 활동 위젯, 대시보드 등."
-  description_en: "Interactive React components integrated into the blog. GitHub activity widget, dashboards, and more."
-  tech:
-    - React
-    - JavaScript
-    - CSS
-  github: "https://github.com/DooDoo3804/DooDoo3804.github.io"
-  icon: "fa-puzzle-piece"
+    - Kubernetes
+    - Helm
+    - Prometheus
+  github: "https://github.com/DooDoo3804/"
+  icon: "fa-cube"
   featured: false
+  status: active
+  year: 2025
