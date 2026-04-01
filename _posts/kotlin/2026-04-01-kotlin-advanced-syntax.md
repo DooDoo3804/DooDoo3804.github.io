@@ -134,6 +134,12 @@ Kotlin은 객체의 컨텍스트 내에서 코드 블록을 실행하는 5개의
 | `also` | `it` | 객체 자체 | 부수 효과 (로깅 등) |
 
 ```kotlin
+data class Person(
+    var name: String = "",
+    var age: Int = 0,
+    var email: String = ""
+)
+
 // let: null-safe 처리
 val name: String? = "Kotlin"
 name?.let {
@@ -299,6 +305,40 @@ suspend fun loadData() = coroutineScope {
     // 둘 다 완료될 때까지 대기
     processData(users.await(), posts.await())
 }
+```
+
+#### Dispatchers
+
+```kotlin
+// Dispatchers 종류
+launch(Dispatchers.Main) { /* UI 작업 */ }
+launch(Dispatchers.IO) { /* 네트워크, DB I/O */ }
+launch(Dispatchers.Default) { /* CPU 집약 작업 */ }
+```
+
+#### Exception Handling
+
+```kotlin
+val handler = CoroutineExceptionHandler { _, exception ->
+    println("예외 처리: $exception")
+}
+val job = CoroutineScope(Dispatchers.IO + handler).launch {
+    throw RuntimeException("에러 발생")
+}
+```
+
+#### Flow 기초
+
+```kotlin
+fun numberFlow(): Flow<Int> = flow {
+    for (i in 1..5) {
+        delay(100)
+        emit(i)
+    }
+}
+
+// collect
+numberFlow().collect { value -> println(value) }
 ```
 
 <br>

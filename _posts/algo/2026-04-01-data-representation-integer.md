@@ -7,12 +7,13 @@ author: "DooDoo"
 header-style: text
 catalog: true
 keywords: "data representation, integer, binary, twos complement, computer science"
+description: "정수의 데이터 표현 방식을 정리합니다. 부호 없는 정수, 2의 보수, 고정소수점 등 컴퓨터가 정수를 인코딩하는 방법을 C 예제와 함께 설명합니다."
 series: Algorithm
 tags:
-  - Algorithm
+  - CS
   - CS Fundamentals
 categories:
-  - algo
+  - cs
 ---
 
 Integers, or _whole number_ from elemental mathematics, are the most common and
@@ -79,16 +80,16 @@ Also in [cppreference.com](https://en.cppreference.com/w/c/types/integer)
 #define PRId64    "lld"
 
 // unsigned int (u)
-#define PRIu8     "hhd"
-#define PRIu16    "hd"
-#define PRIu32    "ld"
-#define PRIu64    "lld"
+#define PRIu8     "hhu"
+#define PRIu16    "hu"
+#define PRIu32    "u"
+#define PRIu64    "llu"
 
 // unsigned hex
-#define PRIx8     "hhu"
-#define PRIx16    "hu"
-#define PRIx32    "lu"
-#define PRIx64    "llu"
+#define PRIx8     "hhx"
+#define PRIx16    "hx"
+#define PRIx32    "x"
+#define PRIx64    "llx"
 
 // uintptr_t (64 bit machine word len)
 #define PRIxPTR   "llx"
@@ -287,11 +288,11 @@ uint8_t u8 = 0b10000000; // 128
  int8_t s8 = 0b10000000; // -128
 
 printf("%"PRIu8 "\n", u8);          // 128
-printf("%"PRId8 "\n", u8);          // 128 (UB! but somehow it's got right)
+printf("%"PRId8 "\n", u8);          // 128
 printf("%"PRId8 "\n", (int8_t)u8);  // -128
 
 printf("%"PRId8 "\n", s8);          // -128
-printf("%"PRIu8 "\n", s8);          // 4294967168 (UB!)
+printf("%"PRIu8 "\n", s8);          // 4294967168
 printf("%"PRId8 "\n", (uint8_t)s8); // 128
 
 printf("%"PRIxPTR "\n", s8);             // ffffff80
