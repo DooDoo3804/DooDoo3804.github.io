@@ -409,3 +409,9 @@ References
 - [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
 - [Float Exposed — Interactive IEEE 754 Visualization](https://float.exposed/)
 - [Java BigDecimal — Oracle Docs](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html)
+
+---
+
+## 관련 포스트
+
+- [정수 표현 방식 완전 정복](/cs/2026/04/01/data-representation-integer/)

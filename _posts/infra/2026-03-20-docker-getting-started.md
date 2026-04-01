@@ -170,3 +170,9 @@ build
 | Volume | 데이터 영속성 보장 |
 
 Docker를 익히면 로컬 개발 환경 구축이 편해질 뿐 아니라, CI/CD 파이프라인과 Kubernetes로 나아가는 기반이 된다. 다음에는 GitHub Actions와 Docker를 연동한 CI/CD 파이프라인 구축을 다뤄볼 예정이다.
+
+---
+
+## 관련 포스트
+
+- [Kubernetes 핵심 개념 — Pod부터 Deployment까지](/infra/2026/04/01/kubernetes-basics/)

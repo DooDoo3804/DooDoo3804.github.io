@@ -407,3 +407,9 @@ Kubernetes는 단순한 배포 도구가 아니라 **선언적 인프라 관리 
 4. **ConfigMap/Secret** — 설정과 민감 정보를 코드에서 분리
 
 다음 포스트에서는 Helm Chart를 활용한 패키지 관리와 Ingress를 통한 외부 라우팅을 다룰 예정이다.
+
+---
+
+## 관련 포스트
+
+- [Docker 시작하기](/infra/2026/03/20/docker-getting-started/)

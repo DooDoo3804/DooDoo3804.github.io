@@ -1,15 +1,19 @@
 ---
 title: "Data Representation - Integer"
-subtitle: "「数据表示」整数"
+subtitle: "정수의 데이터 표현 방식"
 layout: post
-author: "Hux"
+date: "2026-04-01"
+author: "DooDoo"
 header-style: text
-hidden: true
+catalog: true
+keywords: "data representation, integer, binary, twos complement, computer science"
+description: "정수의 데이터 표현 방식을 정리합니다. 부호 없는 정수, 2의 보수, 고정소수점 등 컴퓨터가 정수를 인코딩하는 방법을 C 예제와 함께 설명합니다."
+series: "CS Fundamentals"
 tags:
-  - 笔记
-  - 基础
-  - C
-  - C++
+  - CS
+  - CS Fundamentals
+categories:
+  - cs
 ---
 
 Integers, or _whole number_ from elemental mathematics, are the most common and
@@ -76,16 +80,16 @@ Also in [cppreference.com](https://en.cppreference.com/w/c/types/integer)
 #define PRId64    "lld"
 
 // unsigned int (u)
-#define PRIu8     "hhd"
-#define PRIu16    "hd"
-#define PRIu32    "ld"
-#define PRIu64    "lld"
+#define PRIu8     "hhu"
+#define PRIu16    "hu"
+#define PRIu32    "u"
+#define PRIu64    "llu"
 
 // unsigned hex
-#define PRIx8     "hhu"
-#define PRIx16    "hu"
-#define PRIx32    "lu"
-#define PRIx64    "llu"
+#define PRIx8     "hhx"
+#define PRIx16    "hx"
+#define PRIx32    "x"
+#define PRIx64    "llx"
 
 // uintptr_t (64 bit machine word len)
 #define PRIxPTR   "llx"
@@ -118,7 +122,7 @@ to represent both positive and negative integers somehow.
 There are four well-known schemas to encode it, according to
 [signed number representation of wikipedia](https://en.wikipedia.org/wiki/Signed_number_representations).
 
-### Sign magnitude 原码
+### Sign magnitude 원码
 
 It's also called _"sign and magnitude"_. From the name we can see how straightforward it is:
 it's basically put one bit (often the _MSB_) as the _sign bit_ to represent _sign_ and the remaining bits indicating
@@ -138,19 +142,19 @@ It was used in early computer (IBM 7090) and now mainly used in the
 _significand_ part in floating-point number
 
 Pros:
-- simple and nature for human
+- simple and natural for human
 
 Cons:
-- 2 way to represent zeros (`+0` and `-0`)
+- 2 ways to represent zeros (`+0` and `-0`)
 - not as good for machine
   - add/sub/cmp require knowing the sign
     - complicate CPU ALU design; potentially more cycles
 
 
-### [Ones' complement](https://en.wikipedia.org/wiki/Ones%27_complement) 反码
+### [Ones' complement](https://en.wikipedia.org/wiki/Ones%27_complement) 반码
 
-It form a negative integers by applying a _bitwise NOT_
-i.e. _complement_ of its positive counterparts.
+It forms a negative integer by applying a _bitwise NOT_
+i.e. _complement_ of its positive counterpart.
 
 ```cpp
   binary   |  1s comp  |  unsigned
@@ -192,16 +196,16 @@ back to get the correct result.
 ```
 
 Pros:
-- Arithmetics on machien are fast.
+- Arithmetics on machine are fast.
 
 Cons:
 - still 2 zeros!
 
 
-### [Twos' complement](https://en.wikipedia.org/wiki/Two%27s_complement) 补码
+### [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 보码
 
 Most of the current architecture adopted this, including x86, MIPS, ARM, etc.
-It differed with one's complement by one.
+It differs from one's complement by one.
 
 ```cpp
   binary   |  2s comp  |  unsigned
@@ -219,11 +223,11 @@ It differed with one's complement by one.
 
 N.B. _MSB_ can still be signified by MSB.
 
-It's referred to as _twos'_ complement because the negative can be formed
+It's referred to as _two's_ complement because the negative can be formed
 by subtracting the positive **from** `2 ** N` (congruent to `0000 0000 (+0)`),
 where `N` is the number of bits.
 
-E.g., for a `uint8_t`, the _sum_ of any number and it's twos' complement would
+E.g., for a `uint8_t`, the _sum_ of any number and its two's complement would
 be `256 (1 0000 0000)`:
 
 ```cpp
@@ -233,24 +237,24 @@ be `256 (1 0000 0000)`:
   1000 0001      -127
 ```
 
-Becuase of this, arithmetics becomes really easier, for any number `x` e.g. `127`
-we can get its twos' complement by:
+Because of this, arithmetics become really easier, for any number `x` e.g. `127`
+we can get its two's complement by:
 
 1. `~x => 1000 0000` bitwise NOT (like ones' complement)
 2. `+1 => 1000 0001` add 1 (the one differed from ones' complement)
 
-Cons:
-- bad named?
-
 Pros:
-- fast machine arithmatics.
-- only 1 zeros!
+- fast machine arithmetics
+- only 1 zero!
 - the minimal negative is `-128`
 
+Cons:
+- asymmetric range: `-128` to `127` for 8-bit
 
-### [Offset binary](https://en.wikipedia.org/wiki/Offset_binary) 移码
 
-It's also called _excess-K_ (偏移 K) or _biased representation_, where `K` is
+### [Offset binary](https://en.wikipedia.org/wiki/Offset_binary) 이동码
+
+It's also called _excess-K_ or _biased representation_, where `K` is
 the _biasing value_ (the new `0`), e.g. in _excess-128_:
 
 ```cpp
@@ -269,7 +273,7 @@ the _biasing value_ (the new `0`), e.g. in _excess-128_:
 It's now mainly used for the _exponent_ part of floating-point number.
 
 
-Type Conversion & `Printf`
+Type Conversion & `printf`
 ----------------------------------------------
 
 This might be a little bit off topic, but I want to note down what I observed
@@ -284,11 +288,11 @@ uint8_t u8 = 0b10000000; // 128
  int8_t s8 = 0b10000000; // -128
 
 printf("%"PRIu8 "\n", u8);          // 128
-printf("%"PRId8 "\n", u8);          // 128 (UB! but somehow it's got right)
+printf("%"PRId8 "\n", u8);          // 128
 printf("%"PRId8 "\n", (int8_t)u8);  // -128
 
 printf("%"PRId8 "\n", s8);          // -128
-printf("%"PRIu8 "\n", s8);          // 4294967168 (UB!)
+printf("%"PRIu8 "\n", s8);          // 4294967168
 printf("%"PRId8 "\n", (uint8_t)s8); // 128
 
 printf("%"PRIxPTR "\n", s8);             // ffffff80
@@ -309,7 +313,7 @@ it for future posts dedicated for char and string representation.
 So how is a `char` different with a _byte_?
 
 Well, the answer is whether a `char` is a `signed char` (backed by `int8_t`)
-or a `unsigned char` (backed by `uint8_t`) is... _implementaton-defined_.
+or a `unsigned char` (backed by `uint8_t`) is... _implementation-defined_.
 And most systems made it _signed_ since most types (e.g. `int`) were signed
 by default.
 
@@ -323,11 +327,17 @@ typedef unsigned char Byte_t;
 typedef uint8_t byte_t;
 ```
 
-to emphysize the nature of byte should be just plain, unsigned, bits.
+to emphasize the nature of byte should be just plain, unsigned, bits.
 
 
 References
 ----------
 
-- <https://en.wikipedia.org/wiki/Integer_(computer_science)>
-- <https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html>
+- [Wikipedia - Integer (computer science)](https://en.wikipedia.org/wiki/Integer_(computer_science))
+- [NTU - Data Representation](https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html)
+
+---
+
+## 관련 포스트
+
+- [부동소수점 IEEE 754 완전 정복](/cs/2026/04/01/data-representation-float/)

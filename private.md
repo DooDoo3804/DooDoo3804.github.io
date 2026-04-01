@@ -3,6 +3,8 @@ layout: page
 title: Private
 protected: true
 description: "Password-protected private content."
+sitemap: false
+robots: noindex
 ---
 
 ## Private Content

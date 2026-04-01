@@ -225,3 +225,9 @@ Client → Controller → Service → Repository → Database
 ## 마무리
 
 이번 글에서는 Spring Boot + JPA의 가장 기본적인 패턴을 다뤘다. 실무에서는 여기에 **DTO 변환**, **예외 처리(@ControllerAdvice)**, **Validation**, **페이징 처리** 등이 추가된다. 다음 글에서는 이 API에 Spring Security를 적용하는 방법을 알아보겠다.
+
+---
+
+## 관련 포스트
+
+- [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)

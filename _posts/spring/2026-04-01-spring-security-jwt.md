@@ -665,3 +665,9 @@ References
 - [RFC 7519 — JSON Web Token](https://datatracker.ietf.org/doc/html/rfc7519)
 - [JJWT GitHub](https://github.com/jwtk/jjwt)
 - [OWASP — JWT Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
+
+---
+
+## 관련 포스트
+
+- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
