@@ -89,6 +89,12 @@ bundle exec jekyll serve
 # Site will be available at http://localhost:4000
 ```
 
+## TODO (나중에 직접 처리)
+
+- [ ] **Giscus repo_id / category_id 교체** — `_config.yml`에 플레이스홀더 상태. [giscus.app](https://giscus.app) 에서 값 발급 후 교체 필요
+
+---
+
 ## Giscus 댓글 설정
 
 댓글 기능 활성화를 위해 `_config.yml`의 `giscus` 섹션에 실제 값을 입력해야 합니다.
