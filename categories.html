@@ -14,7 +14,7 @@ hide-in-nav: true
 
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="cat-grid-section">
-                <h3 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h3>
+                <h1 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h1>
                 <p class="tags-summary">Browse posts by category</p>
 
                 {% comment %} Build categories sorted by frequency (most posts first) {% endcomment %}
@@ -27,7 +27,7 @@ hide-in-nav: true
                 {% assign sorted_cat_items = cats_with_count_clean | split: "|||" | sort | reverse %}
 
                 {% comment %} Category display name mapping (single source of truth) {% endcomment %}
-                {% assign cat_map = "algo:Algorithm|db:Database|infra:Infrastructure|kotlin:Kotlin|react:React|spring:Spring|system-design:System Design" %}
+                {% assign cat_map = "algo:Algorithm|backend:Backend|db:Database|infra:Infrastructure|kotlin:Kotlin|react:React|spring:Spring|system-design:System Design" %}
                 {% assign cat_map_entries = cat_map | split: "|" %}
 
                 <div class="cat-card-grid">
@@ -70,12 +70,16 @@ hide-in-nav: true
                             {% assign display_name = "System Design" %}
                             {% assign cat_icon = "fa-solid fa-sitemap" %}
                             {% assign cat_desc = "Scalability, caching, messaging, and distributed systems" %}
+                        {% when 'backend' %}
+                            {% assign display_name = "Backend" %}
+                            {% assign cat_icon = "fa-solid fa-server" %}
+                            {% assign cat_desc = "Backend architecture, caching, messaging, and server-side patterns" %}
                         {% else %}
                             {% assign display_name = cat_name | capitalize %}
                             {% assign cat_icon = "fa-solid fa-folder" %}
                             {% assign cat_desc = "" %}
                     {% endcase %}
-                    <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}">
+                    <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}" tabindex="0" role="button" aria-label="{{ display_name }} — {{ cat_posts.size }} posts">
                         <div class="cat-card-accent"></div>
                         <div class="cat-card-icon">
                             <i class="{{ cat_icon }}"></i>
@@ -116,6 +120,7 @@ hide-in-nav: true
                     {% when 'react' %}{% assign display_name = "React" %}
                     {% when 'spring' %}{% assign display_name = "Spring" %}
                     {% when 'system-design' %}{% assign display_name = "System Design" %}
+                    {% when 'backend' %}{% assign display_name = "Backend" %}
                     {% else %}{% assign display_name = cat_name | capitalize %}
                 {% endcase %}
                 <div class="tags-group category-group cat-group--{{ cat_name }}" id="cat-{{ cat_name | slugify }}">
@@ -149,9 +154,8 @@ hide-in-nav: true
 <script>
 // Smooth scroll to category section when clicking a card
 document.querySelectorAll('.cat-card[data-target]').forEach(function(card) {
-    card.addEventListener('click', function(e) {
-        if (e.target.closest('a')) return;
-        var target = document.querySelector(this.dataset.target);
+    function scrollToTarget(card) {
+        var target = document.querySelector(card.dataset.target);
         if (target) {
             var offset = 80;
             var top = target.getBoundingClientRect().top + window.scrollY - offset;
@@ -161,6 +165,16 @@ document.querySelectorAll('.cat-card[data-target]').forEach(function(card) {
             setTimeout(function() {
                 target.classList.remove('tags-group--highlight');
             }, 1500);
+        }
+    }
+    card.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        scrollToTarget(this);
+    });
+    card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            scrollToTarget(this);
         }
     });
 });

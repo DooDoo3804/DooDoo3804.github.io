@@ -45,7 +45,7 @@ Redis 캐싱 전략 완전 정복
 public User getUser(String userId) {
     // 1. 캐시 조회
     String cacheKey = "user:" + userId;
-    User cached = redisTemplate.opsForValue().get(cacheKey);
+    User cached = (User) redisTemplate.opsForValue().get(cacheKey);
     if (cached != null) {
         return cached; // Cache Hit
     }
@@ -220,7 +220,7 @@ public User getUserWithLock(String userId) {
 ```java
 public User getUserWithEarlyExpire(String userId) {
     String cacheKey = "user:" + userId;
-    CacheEntry<User> entry = redisTemplate.opsForValue().get(cacheKey);
+    CacheEntry<User> entry = (CacheEntry<User>) redisTemplate.opsForValue().get(cacheKey);
 
     if (entry != null) {
         long ttlRemaining = redisTemplate.getExpire(cacheKey, TimeUnit.SECONDS);

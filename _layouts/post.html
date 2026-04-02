@@ -215,7 +215,7 @@ layout: default
 
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
-    <span class="lightbox-close" aria-label="Close">&times;</span>
+    <button class="lightbox-close" aria-label="Close">&times;</button>
     <img class="lightbox-img" id="lightbox-img" src="" alt="" />
     <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
@@ -224,35 +224,47 @@ layout: default
     var overlay = document.getElementById('lightbox-overlay');
     var lbImg = document.getElementById('lightbox-img');
     var lbCaption = document.getElementById('lightbox-caption');
+    var closeBtn = overlay ? overlay.querySelector('.lightbox-close') : null;
+    var triggerImg = null;
     if (!overlay) return;
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.classList.remove('lightbox-open');
+        if (triggerImg) {
+            triggerImg.focus();
+            triggerImg = null;
+        }
+    }
 
     // Attach click to article images
     var article = document.querySelector('article');
     if (!article) return;
     article.querySelectorAll('.post-container img').forEach(function(img) {
+        img.setAttribute('tabindex', '0');
         img.addEventListener('click', function(e) {
             e.preventDefault();
+            triggerImg = this;
             lbImg.src = this.src;
             lbImg.alt = this.alt || '';
             lbCaption.textContent = this.alt || '';
             overlay.classList.add('active');
             document.body.classList.add('lightbox-open');
+            if (closeBtn) closeBtn.focus();
         });
     });
 
     // Close on overlay click (only when clicking backdrop, not the image)
     overlay.addEventListener('click', function(e) {
         if (e.target !== lbImg) {
-            overlay.classList.remove('active');
-            document.body.classList.remove('lightbox-open');
+            closeLightbox();
         }
     });
 
     // Close on ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && overlay.classList.contains('active')) {
-            overlay.classList.remove('active');
-            document.body.classList.remove('lightbox-open');
+            closeLightbox();
         }
     });
 })();

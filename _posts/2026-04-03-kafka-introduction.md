@@ -138,7 +138,7 @@ props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
         StringDeserializer.class.getName());
 props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
         StringDeserializer.class.getName());
-props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false"); // 수동 커밋
+props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false); // 수동 커밋
 
 KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 consumer.subscribe(List.of("order-events"));
@@ -229,7 +229,7 @@ public void processOrder(OrderEvent event) {
 
 ```java
 // Producer: 트랜잭션 설정
-props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
 props.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "order-tx-1");
 
 KafkaProducer<String, String> producer = new KafkaProducer<>(props);
@@ -365,6 +365,9 @@ public class OrderEventConsumer {
 @Configuration
 public class KafkaConfig {
 
+    @Autowired
+    private KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, OrderEvent>
             kafkaListenerContainerFactory(
@@ -380,7 +383,7 @@ public class KafkaConfig {
         // 에러 핸들러 + DLQ
         factory.setCommonErrorHandler(
                 new DefaultErrorHandler(
-                        new DeadLetterPublishingRecoverer(kafkaTemplate()),
+                        new DeadLetterPublishingRecoverer(kafkaTemplate),
                         new FixedBackOff(1000L, 3) // 1초 간격, 3번 재시도
                 ));
 
