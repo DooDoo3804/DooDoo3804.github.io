@@ -8,8 +8,8 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "redis, caching, backend, performance"
-description: "Redis 캐싱 전략 완전 정복. Cache-Aside, Write-Through, Write-Behind, Read-Through 비교, TTL 설계, Cache Stampede 해결, Redis 자료구조 활용, Spring Boot 연동까지 코드 예제와 함께 정리합니다."
-series: Backend
+description: "Redis 캐싱 전략 비교와 Cache Stampede 해결, Spring Boot 연동 정리."
+series: "백엔드 심화"
 tags:
   - Redis
   - Caching
@@ -17,9 +17,6 @@ tags:
   - Performance
 categories:
   - backend
----
-
-Redis 캐싱 전략 완전 정복
 ---
 
 캐싱은 백엔드 성능 최적화의 핵심이다. 이 글에서는 Redis를 활용한 캐싱 전략을 패턴별로 비교하고, 실전에서 마주치는 문제와 해결책을 정리한다.
@@ -581,3 +578,15 @@ public void onUserChange(ConsumerRecord<String, String> record) {
 | Cache Invalidation | 삭제 + 짧은 TTL이 실용적, 대규모는 CDC |
 
 캐싱은 단순히 "Redis에 저장"이 아니라, **데이터 특성에 맞는 전략을 선택하고 일관성과 성능 사이의 트레이드오프를 관리**하는 것이다.
+
+<br>
+
+References
+----------
+
+- [Redis Documentation](https://redis.io/docs/)
+- [Redis Caching — Redis Best Practices](https://redis.io/docs/latest/develop/use/client-side-caching/)
+- [Redis Data Types](https://redis.io/docs/latest/develop/data-types/)
+- [Spring Data Redis — Reference Documentation](https://docs.spring.io/spring-data/redis/reference/)
+- [Cache Abstraction — Spring Framework Documentation](https://docs.spring.io/spring-framework/reference/integration/cache.html)
+- [Optimal Probabilistic Cache Stampede Prevention — XFetch Paper](https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf)

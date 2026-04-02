@@ -8,8 +8,8 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kafka, message-queue, event-streaming, backend"
-description: "Apache Kafka 입문부터 실전까지. Topic, Partition, Consumer Group, 메시지 보장 수준, Spring Boot 연동, Dead Letter Queue, 이벤트 소싱과 CQRS까지 코드 예제와 함께 정리합니다."
-series: Backend
+description: "Kafka 핵심 개념, 메시지 보장, Spring Boot 연동을 코드로 정리합니다."
+series: "백엔드 심화"
 tags:
   - Kafka
   - MessageQueue
@@ -17,9 +17,6 @@ tags:
   - Backend
 categories:
   - backend
----
-
-Apache Kafka 입문부터 실전까지
 ---
 
 Apache Kafka는 **분산 이벤트 스트리밍 플랫폼**이다. 단순한 메시지 큐를 넘어서 실시간 데이터 파이프라인과 이벤트 기반 아키텍처의 중심에 있다. 이 글에서는 핵심 개념부터 실전 패턴까지 정리한다.
@@ -664,3 +661,16 @@ public class OrderQueryController {
 | Event Sourcing + CQRS | Kafka를 중심으로 한 이벤트 기반 아키텍처 |
 
 Kafka는 단순한 메시지 전달이 아니라, **이벤트 기반 시스템의 근간**이다. 메시지 보장 수준과 장애 처리 전략을 올바르게 설계하는 것이 안정적인 시스템의 핵심이다.
+
+<br>
+
+References
+----------
+
+- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+- [Kafka: The Definitive Guide — Confluent](https://www.confluent.io/resources/kafka-the-definitive-guide-v2/)
+- [Spring for Apache Kafka — Reference Documentation](https://docs.spring.io/spring-kafka/reference/)
+- [Kafka Consumers — Confluent Documentation](https://docs.confluent.io/platform/current/clients/consumer.html)
+- [Error Handling & Dead Letter Queue — Spring Kafka](https://docs.spring.io/spring-kafka/reference/kafka/annotation-error-handling.html)
+- [Event Sourcing pattern — Microsoft Azure Architecture](https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing)
+- [CQRS pattern — Microsoft Azure Architecture](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs)

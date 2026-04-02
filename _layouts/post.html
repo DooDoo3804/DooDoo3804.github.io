@@ -216,6 +216,7 @@ layout: default
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
     <button class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-spinner" id="lightbox-spinner"></div>
     <img class="lightbox-img" id="lightbox-img" src="" alt="" />
     <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
@@ -224,6 +225,7 @@ layout: default
     var overlay = document.getElementById('lightbox-overlay');
     var lbImg = document.getElementById('lightbox-img');
     var lbCaption = document.getElementById('lightbox-caption');
+    var lbSpinner = document.getElementById('lightbox-spinner');
     var closeBtn = overlay ? overlay.querySelector('.lightbox-close') : null;
     var triggerImg = null;
     if (!overlay) return;
@@ -231,11 +233,19 @@ layout: default
     function closeLightbox() {
         overlay.classList.remove('active');
         document.body.classList.remove('lightbox-open');
+        lbImg.style.visibility = 'visible';
+        if (lbSpinner) lbSpinner.style.display = 'none';
         if (triggerImg) {
             triggerImg.focus();
             triggerImg = null;
         }
     }
+
+    // Hide spinner once image loads
+    lbImg.addEventListener('load', function() {
+        lbImg.style.visibility = 'visible';
+        if (lbSpinner) lbSpinner.style.display = 'none';
+    });
 
     // Attach click to article images
     var article = document.querySelector('article');
@@ -245,6 +255,9 @@ layout: default
         img.addEventListener('click', function(e) {
             e.preventDefault();
             triggerImg = this;
+            // Show spinner, hide image until loaded
+            lbImg.style.visibility = 'hidden';
+            if (lbSpinner) lbSpinner.style.display = 'block';
             lbImg.src = this.src;
             lbImg.alt = this.alt || '';
             lbCaption.textContent = this.alt || '';
@@ -267,6 +280,26 @@ layout: default
             closeLightbox();
         }
     });
+
+    // Touch: swipe down to close
+    var touchStartY = 0;
+    var touchStartX = 0;
+    overlay.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+        }
+    }, { passive: true });
+    overlay.addEventListener('touchend', function(e) {
+        if (e.changedTouches.length === 1) {
+            var dy = e.changedTouches[0].clientY - touchStartY;
+            var dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+            // Swipe down: vertical distance > 80px and mostly vertical
+            if (dy > 80 && dy > dx) {
+                closeLightbox();
+            }
+        }
+    }, { passive: true });
 })();
 </script>
 

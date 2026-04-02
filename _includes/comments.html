@@ -1,6 +1,13 @@
 <!-- Giscus Comments -->
 {% if site.giscus.repo %}
 <div class="giscus-container" id="giscus-container">
+    <div class="giscus-placeholder" id="giscus-placeholder">
+        <span class="giscus-placeholder-spinner"></span>
+        댓글을 불러오는 중...
+    </div>
+    <div class="giscus-error" id="giscus-error" style="display:none;">
+        댓글을 불러올 수 없습니다. 잠시 후 다시 시도해주세요.
+    </div>
     <script>
     (function() {
         var theme = document.documentElement.getAttribute('data-theme') === 'dark'
@@ -22,6 +29,26 @@
         s.setAttribute('crossorigin', 'anonymous');
         s.async = true;
         document.getElementById('giscus-container').appendChild(s);
+
+        var placeholder = document.getElementById('giscus-placeholder');
+        var errorMsg = document.getElementById('giscus-error');
+        var loaded = false;
+
+        // Listen for giscus iframe load via message event
+        window.addEventListener('message', function(e) {
+            if (e.origin === 'https://giscus.app' && !loaded) {
+                loaded = true;
+                placeholder.style.display = 'none';
+            }
+        });
+
+        // Timeout fallback: show error if not loaded in 5s
+        setTimeout(function() {
+            if (!loaded) {
+                placeholder.style.display = 'none';
+                errorMsg.style.display = 'block';
+            }
+        }, 5000);
     })();
     </script>
 </div>
