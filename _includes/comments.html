@@ -37,10 +37,12 @@
 
         // Listen for giscus iframe load via message event
         window.addEventListener('message', function(e) {
-            if (e.origin === 'https://giscus.app' && !loaded) {
-                loaded = true;
-                placeholder.style.display = 'none';
-            }
+            if (e.origin !== 'https://giscus.app' || loaded) return;
+            if (!e.data || typeof e.data !== 'object' || !e.data.giscus) return;
+            // Treat error responses as not-loaded so timeout fallback can show error UI
+            if (e.data.giscus.error) return;
+            loaded = true;
+            placeholder.style.display = 'none';
         });
 
         // Timeout fallback: show error if not loaded in 5s
