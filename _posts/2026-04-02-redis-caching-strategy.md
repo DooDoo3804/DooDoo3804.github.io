@@ -148,7 +148,7 @@ redisTemplate.opsForValue().set(key, value, Duration.ofSeconds(baseTtl + jitter)
 // Sliding TTL — 접근할 때마다 TTL 갱신
 public User getUser(String userId) {
     String cacheKey = "user:" + userId;
-    User cached = redisTemplate.opsForValue().get(cacheKey);
+    User cached = (User) redisTemplate.opsForValue().get(cacheKey);
     if (cached != null) {
         // 접근 시 TTL 리셋
         redisTemplate.expire(cacheKey, Duration.ofMinutes(30));
@@ -184,7 +184,7 @@ public User getUserWithLock(String userId) {
     String cacheKey = "user:" + userId;
     String lockKey = "lock:" + cacheKey;
 
-    User cached = redisTemplate.opsForValue().get(cacheKey);
+    User cached = (User) redisTemplate.opsForValue().get(cacheKey);
     if (cached != null) {
         return cached;
     }

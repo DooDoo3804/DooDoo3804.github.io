@@ -234,6 +234,7 @@ layout: default
         overlay.classList.remove('active');
         document.body.classList.remove('lightbox-open');
         lbImg.style.visibility = 'visible';
+        lbImg.src = '';
         if (lbSpinner) lbSpinner.style.display = 'none';
         if (triggerImg) {
             triggerImg.focus();
