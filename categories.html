@@ -41,29 +41,42 @@ hide-in-nav: true
                         {% when 'algo' %}
                             {% assign display_name = "Algorithm" %}
                             {% assign cat_icon = "fa-solid fa-code" %}
+                            {% assign cat_desc = "Data structures, sorting, graphs, and problem solving" %}
+                        {% when 'cs' %}
+                            {% assign display_name = "Computer Science" %}
+                            {% assign cat_icon = "fa-solid fa-microchip" %}
+                            {% assign cat_desc = "OS, networks, and CS fundamentals" %}
                         {% when 'db' %}
                             {% assign display_name = "Database" %}
                             {% assign cat_icon = "fa-solid fa-database" %}
+                            {% assign cat_desc = "SQL, NoSQL, indexing, and query optimization" %}
                         {% when 'infra' %}
                             {% assign display_name = "Infrastructure" %}
                             {% assign cat_icon = "fa-solid fa-server" %}
+                            {% assign cat_desc = "Docker, Kubernetes, CI/CD, and cloud ops" %}
                         {% when 'kotlin' %}
                             {% assign display_name = "Kotlin" %}
                             {% assign cat_icon = "fa-solid fa-code" %}
+                            {% assign cat_desc = "Coroutines, idioms, and Kotlin best practices" %}
                         {% when 'react' %}
                             {% assign display_name = "React" %}
                             {% assign cat_icon = "fa-brands fa-react" %}
+                            {% assign cat_desc = "Hooks, state management, and frontend patterns" %}
                         {% when 'spring' %}
                             {% assign display_name = "Spring" %}
                             {% assign cat_icon = "fa-solid fa-leaf" %}
+                            {% assign cat_desc = "Spring Boot, JPA, security, and backend architecture" %}
                         {% when 'system-design' %}
                             {% assign display_name = "System Design" %}
                             {% assign cat_icon = "fa-solid fa-sitemap" %}
+                            {% assign cat_desc = "Scalability, caching, messaging, and distributed systems" %}
                         {% else %}
                             {% assign display_name = cat_name | capitalize %}
                             {% assign cat_icon = "fa-solid fa-folder" %}
+                            {% assign cat_desc = "" %}
                     {% endcase %}
-                    <div class="cat-card" data-target="#cat-{{ cat_name | slugify }}">
+                    <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}">
+                        <div class="cat-card-accent"></div>
                         <div class="cat-card-icon">
                             <i class="{{ cat_icon }}"></i>
                         </div>
@@ -72,6 +85,9 @@ hide-in-nav: true
                                 <h4 class="cat-card-name">{{ display_name }}</h4>
                                 <span class="cat-card-count">{{ cat_posts.size }} posts</span>
                             </div>
+                            {% if cat_desc != "" %}
+                            <p class="cat-card-desc">{{ cat_desc }}</p>
+                            {% endif %}
                             <ul class="cat-card-posts">
                                 {% assign sorted_posts = cat_posts | sort: "date" | reverse %}
                                 {% for post in sorted_posts limit:3 %}
@@ -93,6 +109,7 @@ hide-in-nav: true
                 {% assign cat_posts = site.categories[cat_name] %}
                 {% case cat_name %}
                     {% when 'algo' %}{% assign display_name = "Algorithm" %}
+                    {% when 'cs' %}{% assign display_name = "Computer Science" %}
                     {% when 'db' %}{% assign display_name = "Database" %}
                     {% when 'infra' %}{% assign display_name = "Infrastructure" %}
                     {% when 'kotlin' %}{% assign display_name = "Kotlin" %}
@@ -101,7 +118,7 @@ hide-in-nav: true
                     {% when 'system-design' %}{% assign display_name = "System Design" %}
                     {% else %}{% assign display_name = cat_name | capitalize %}
                 {% endcase %}
-                <div class="tags-group category-group" id="cat-{{ cat_name | slugify }}">
+                <div class="tags-group category-group cat-group--{{ cat_name }}" id="cat-{{ cat_name | slugify }}">
                     <div class="tags-group-header">
                         <h4 class="tags-group-title">{{ display_name }}</h4>
                         <span class="tags-group-count">{{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}</span>

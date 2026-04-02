@@ -93,6 +93,16 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
+# Giscus Comments
+giscus:
+  repo: "DooDoo3804/DooDoo3804.github.io"
+  repo_id: "REPLACE_WITH_REPO_ID"
+  category: "Announcements"
+  category_id: "REPLACE_WITH_CATEGORY_ID"
+  mapping: "pathname"
+  theme_light: "light"
+  theme_dark: "transparent_dark"
+
 # Friends
 # friends:
 #   [

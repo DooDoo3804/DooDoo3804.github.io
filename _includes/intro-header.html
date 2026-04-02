@@ -14,7 +14,7 @@
         {% elsif page.header-img %}
         background-image: url('{{ site.baseurl }}/{{ page.header-img }}');
         {% else %}
-        background: linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%);
+        background: linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, var(--accent-primary) 100%);
         {% endif %}
     }
 

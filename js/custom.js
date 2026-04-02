@@ -18,16 +18,16 @@
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
         updateToggleIcon(theme);
-        updateUtterancesTheme(theme);
+        updateGiscusTheme(theme);
     }
 
-    function updateUtterancesTheme(theme) {
-        var utterancesFrame = document.querySelector('.utterances-frame');
-        if (!utterancesFrame) return;
-        var utterancesTheme = theme === 'dark' ? 'github-dark' : 'github-light';
-        utterancesFrame.contentWindow.postMessage(
-            { type: 'set-theme', theme: utterancesTheme },
-            'https://utteranc.es'
+    function updateGiscusTheme(theme) {
+        var giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (!giscusFrame) return;
+        var giscusTheme = theme === 'dark' ? 'transparent_dark' : 'light';
+        giscusFrame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: giscusTheme } } },
+            'https://giscus.app'
         );
     }
 

@@ -11,7 +11,7 @@
 // A namespace can prevent potential name conflicts and mis-deletion.
 const CACHE_NAMESPACE = 'main-'
 
-const CACHE_VERSION = 'v12';
+const CACHE_VERSION = 'v13';
 const CACHE = CACHE_NAMESPACE + 'precache-' + CACHE_VERSION;
 const PRECACHE_LIST = [
   "./",

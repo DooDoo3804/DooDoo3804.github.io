@@ -10,7 +10,7 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - **Styling:** Bootstrap 3, Less, custom CSS (4400+ lines)
 - **JavaScript:** jQuery, Simple Jekyll Search, custom modules
 - **Hosting:** GitHub Pages (via GitHub Actions CI/CD)
-- **Comments:** Utterances (GitHub Issues-backed)
+- **Comments:** Giscus (GitHub Discussions-backed)
 - **Fonts:** Inter, JetBrains Mono (Google Fonts)
 - **Icons:** Font Awesome 6
 
@@ -30,6 +30,10 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - Mobile floating share bar and mobile TOC
 - SEO optimized (Open Graph, Twitter Card, JSON-LD structured data)
 - Back-to-top button
+- Giscus comment system (GitHub Discussions-backed, dark mode sync)
+- Category page with unique color accent per category
+- RSS feed with full content and author metadata
+- CSS color token system (`--color-accent`, `--color-link`, etc.) for consistent theming
 
 ## Password-Protected Pages
 
@@ -84,6 +88,26 @@ bundle exec jekyll serve
 
 # Site will be available at http://localhost:4000
 ```
+
+## Giscus 댓글 설정
+
+댓글 기능 활성화를 위해 `_config.yml`의 `giscus` 섹션에 실제 값을 입력해야 합니다.
+
+1. [giscus.app](https://giscus.app) 에서 레포 연동 후 `repo_id`, `category_id` 발급
+2. `_config.yml` 수정:
+
+```yaml
+giscus:
+  repo: "DooDoo3804/DooDoo3804.github.io"
+  repo_id: "REPLACE_WITH_REPO_ID"         # ← 여기 교체
+  category: "Announcements"
+  category_id: "REPLACE_WITH_CATEGORY_ID" # ← 여기 교체
+  mapping: "pathname"
+  theme_light: "light"
+  theme_dark: "transparent_dark"
+```
+
+> GitHub 레포 Settings → Discussions 탭이 활성화되어 있어야 합니다.
 
 ## License
 

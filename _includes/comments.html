@@ -1,0 +1,28 @@
+<!-- Giscus Comments -->
+{% if site.giscus.repo %}
+<div class="giscus-container" id="giscus-container">
+    <script>
+    (function() {
+        var theme = document.documentElement.getAttribute('data-theme') === 'dark'
+            ? '{{ site.giscus.theme_dark | default: "transparent_dark" }}'
+            : '{{ site.giscus.theme_light | default: "light" }}';
+        var s = document.createElement('script');
+        s.src = 'https://giscus.app/client.js';
+        s.setAttribute('data-repo', '{{ site.giscus.repo }}');
+        s.setAttribute('data-repo-id', '{{ site.giscus.repo_id }}');
+        s.setAttribute('data-category', '{{ site.giscus.category | default: "Announcements" }}');
+        s.setAttribute('data-category-id', '{{ site.giscus.category_id }}');
+        s.setAttribute('data-mapping', '{{ site.giscus.mapping | default: "pathname" }}');
+        s.setAttribute('data-strict', '0');
+        s.setAttribute('data-reactions-enabled', '1');
+        s.setAttribute('data-emit-metadata', '0');
+        s.setAttribute('data-input-position', 'top');
+        s.setAttribute('data-theme', theme);
+        s.setAttribute('data-lang', 'ko');
+        s.setAttribute('crossorigin', 'anonymous');
+        s.async = true;
+        document.getElementById('giscus-container').appendChild(s);
+    })();
+    </script>
+</div>
+{% endif %}
