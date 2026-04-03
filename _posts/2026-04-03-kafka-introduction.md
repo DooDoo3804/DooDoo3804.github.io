@@ -3,7 +3,7 @@ title: "Apache Kafka 입문부터 실전까지"
 subtitle: "핵심 개념, 메시지 보장, Spring Boot 연동, Dead Letter Queue까지"
 layout: post
 date: "2026-04-03"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
@@ -660,7 +660,7 @@ public class OrderQueryController {
 | Dead Letter Queue | 실패 메시지 격리로 안정성 확보 |
 | Event Sourcing + CQRS | Kafka를 중심으로 한 이벤트 기반 아키텍처 |
 
-Kafka는 단순한 메시지 전달이 아니라, **이벤트 기반 시스템의 근간**이다. 메시지 보장 수준과 장애 처리 전략을 올바르게 설계하는 것이 안정적인 시스템의 핵심이다.
+Kafka는 단순한 메시지 전달이 아니라, **이벤트 기반 시스템의 근간**이다. 메시지 보장 수준과 장애 처리 전략을 올바르게 설계하는 것이 안정적인 시스템의 핵심이다. Kafka와 함께 자주 논의되는 시스템 안정성 주제로 [API Rate Limiting](/system-design/2026/04/01/api-rate-limiting/)도 참고하자.
 
 <br>
 

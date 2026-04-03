@@ -462,4 +462,4 @@ X-Rate-Limit-Reset: 1714531200
 
 ## 정리
 
-Rate Limiting은 API 서비스의 안정성과 공정성을 보장하는 핵심 메커니즘이다. Token Bucket이 가장 범용적으로 쓰이지만, 요구사항에 따라 Sliding Window Counter도 좋은 선택이다. 분산 환경에서는 Redis가 사실상 표준이며, Spring Boot에서는 Bucket4j 라이브러리나 커스텀 어노테이션 기반 AOP로 깔끔하게 구현할 수 있다. 무엇보다 중요한 것은 클라이언트에게 명확한 Rate Limit 정보를 제공해 협력적인 트래픽 관리를 유도하는 것이다.
+Rate Limiting은 API 서비스의 안정성과 공정성을 보장하는 핵심 메커니즘이다. 대규모 트래픽을 비동기로 처리하려면 [Apache Kafka](/backend/2026/04/03/kafka-introduction/)와 조합하는 것도 효과적인 전략이다. Token Bucket이 가장 범용적으로 쓰이지만, 요구사항에 따라 Sliding Window Counter도 좋은 선택이다. 분산 환경에서는 Redis가 사실상 표준이며, Spring Boot에서는 Bucket4j 라이브러리나 커스텀 어노테이션 기반 AOP로 깔끔하게 구현할 수 있다. 무엇보다 중요한 것은 클라이언트에게 명확한 Rate Limit 정보를 제공해 협력적인 트래픽 관리를 유도하는 것이다.

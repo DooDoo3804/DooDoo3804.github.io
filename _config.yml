@@ -44,7 +44,7 @@ timezone: Asia/Seoul
 # from PR#40, to support local preview for Jekyll 3.0
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
-plugins: [jekyll-sitemap]
+plugins: []
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -88,7 +88,10 @@ featured-condition-size: 1 # A tag will be featured if the size of it is more th
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
-# Last updated signal is now auto-generated via site.time in index.html
+# Last updated signal is now auto-generated via site.posts.first.date in index.html
+
+# Featured Post — set slug to pin a specific post, or leave blank for latest
+# featured_post_slug: "2026-04-06-database-transaction-isolation"
 
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false

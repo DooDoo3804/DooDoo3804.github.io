@@ -3,7 +3,7 @@ title: "데이터베이스 트랜잭션과 격리 수준"
 subtitle: "ACID부터 격리 수준 4단계, 데드락, 낙관적/비관적 락까지 실무 완전 정리"
 layout: post
 date: "2026-04-06"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
@@ -164,7 +164,7 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
 ## PostgreSQL 격리 수준 실제 동작
 
-PostgreSQL은 내부적으로 **MVCC(Multi-Version Concurrency Control)** 를 사용한다. 각 트랜잭션에 스냅샷을 할당하여 락 없이도 격리성을 제공한다.
+PostgreSQL은 내부적으로 **MVCC(Multi-Version Concurrency Control)** 를 사용한다. PostgreSQL의 쿼리 성능 최적화가 필요하다면 [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)도 함께 참고하자. 각 트랜잭션에 스냅샷을 할당하여 락 없이도 격리성을 제공한다.
 
 ### PostgreSQL의 특이점
 

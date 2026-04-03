@@ -3,7 +3,7 @@ title: "JPA N+1 문제 완전 정복"
 subtitle: "발생 원인부터 Fetch Join, @EntityGraph, Batch Size, QueryDSL까지 해결 전략 총정리"
 layout: post
 date: "2026-04-04"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
@@ -22,7 +22,7 @@ categories:
 
 ## 들어가며
 
-JPA를 실무에서 사용하다 보면 반드시 만나게 되는 문제가 있다. 바로 **N+1 문제**다. 엔티티 하나를 조회했을 뿐인데 연관된 엔티티를 가져오기 위해 추가 쿼리가 N번 더 나가는 현상이다.
+[Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다면, 실무에서 반드시 만나게 되는 문제가 있다. 바로 **N+1 문제**다. 엔티티 하나를 조회했을 뿐인데 연관된 엔티티를 가져오기 위해 추가 쿼리가 N번 더 나가는 현상이다.
 
 개발 단계에서는 데이터가 적어 문제를 인지하지 못하다가, 운영 환경에서 데이터가 쌓이면 성능이 급격히 떨어진다. 이 글에서는 N+1 문제의 원인을 정확히 이해하고, 상황에 맞는 해결 전략을 코드와 함께 정리한다.
 

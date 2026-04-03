@@ -2,7 +2,7 @@
 title: "Spring Boot + JPA로 REST API 만들기"
 subtitle: "Entity, Repository, Service, Controller 패턴으로 CRUD API 구축하기"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 catalog: true
 series: "Spring Boot"
@@ -10,6 +10,7 @@ tags:
   - Spring
   - Backend
   - Java
+categories: [spring]
 description: "Spring Boot와 JPA로 REST API를 만드는 방법. Entity, Repository, Service, Controller 4계층 패턴으로 CRUD API를 단계별로 구현합니다."
 ---
 
@@ -224,7 +225,7 @@ Client → Controller → Service → Repository → Database
 
 ## 마무리
 
-이번 글에서는 Spring Boot + JPA의 가장 기본적인 패턴을 다뤘다. 실무에서는 여기에 **DTO 변환**, **예외 처리(@ControllerAdvice)**, **Validation**, **페이징 처리** 등이 추가된다. 다음 글에서는 이 API에 Spring Security를 적용하는 방법을 알아보겠다.
+이번 글에서는 Spring Boot + JPA의 가장 기본적인 패턴을 다뤘다. 실무에서는 여기에 **DTO 변환**, **예외 처리(@ControllerAdvice)**, **Validation**, **페이징 처리** 등이 추가된다. 또한 연관 관계가 복잡해지면 [JPA N+1 문제](/spring/2026/04/04/jpa-n-plus-one-problem/)를 반드시 이해해야 한다. 다음 글에서는 이 API에 Spring Security를 적용하는 방법을 알아보겠다.
 
 ---
 

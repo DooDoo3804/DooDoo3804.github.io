@@ -3,7 +3,7 @@ title: "Redis 캐싱 전략 완전 정복"
 subtitle: "캐시 패턴 비교부터 Cache Stampede 해결, Spring Boot 연동까지"
 layout: post
 date: "2026-04-02"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
@@ -19,7 +19,7 @@ categories:
   - backend
 ---
 
-캐싱은 백엔드 성능 최적화의 핵심이다. 이 글에서는 Redis를 활용한 캐싱 전략을 패턴별로 비교하고, 실전에서 마주치는 문제와 해결책을 정리한다.
+캐싱은 백엔드 성능 최적화의 핵심이다. [캐싱 전략 기초](/system-design/2026/03/28/caching-strategy/)에서 Cache-Aside, Write-Through, Write-Behind 패턴의 개념을 다뤘다면, 이 글에서는 Redis를 활용한 구체적인 구현과 실전에서 마주치는 문제, 해결책을 정리한다.
 
 <br>
 

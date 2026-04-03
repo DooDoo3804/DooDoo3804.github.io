@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
 series: "Database"
-categories: db
+categories: database
 tags:
   - MySQL
   - PostgreSQL

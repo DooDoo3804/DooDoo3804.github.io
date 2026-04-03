@@ -14,9 +14,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         {% endif %}
         <div class="author-hero-info">
             <h2 class="author-hero-name">DoYoon Kim</h2>
-            <p class="author-hero-typing">
-                <span class="typing-text"></span><span class="typing-cursor">|</span>
-            </p>
+            <p class="author-hero-subtitle">Backend Developer</p>
             <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
             <div class="author-hero-links">
                 {% if site.github_username %}
@@ -29,7 +27,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
                 <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
                 {% endif %}
             </div>
-            <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.time | date: "%B %Y" }}</p>
+            <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
     </div>
 </div>
@@ -57,7 +55,12 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 </div>
 
 <!-- Featured Post Hero -->
-{% assign featured = site.posts.first %}
+{% if site.featured_post_slug %}
+  {% assign featured = site.posts | where: "slug", site.featured_post_slug | first %}
+  {% unless featured %}{% assign featured = site.posts.first %}{% endunless %}
+{% else %}
+  {% assign featured = site.posts.first %}
+{% endif %}
 {% if featured %}
 <div class="featured-post-hero" {% if featured.header-img %}style="background-image: linear-gradient(160deg, rgba(10,10,26,0.85) 0%, rgba(26,26,62,0.75) 40%, rgba(0,133,161,0.65) 100%), url('{{ featured.header-img | prepend: site.baseurl }}');"{% endif %}>
     <div class="featured-post-content">
@@ -78,14 +81,6 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 </div>
 {% endif %}
 
-<!-- Scroll Down Indicator -->
-<div class="scroll-indicator" aria-hidden="true">
-    <span class="scroll-indicator-text">Scroll</span>
-    <div class="scroll-indicator-arrow">
-        <i class="fa fa-angle-down"></i>
-    </div>
-</div>
-
 <!-- More Posts heading -->
 {% if site.posts.size > 1 %}
 <h3 class="more-posts-heading">More Posts</h3>
@@ -104,13 +99,20 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         {% endfor %}
     {% endfor %}
     {% for tag in all_tags %}
-    <button class="category-btn" data-filter="{{ tag }}">{{ tag | capitalize }}</button>
+    {% assign tag_count = 0 %}
+    {% for p in site.posts %}
+      {% for ptag in p.tags %}
+        {% assign ptag_lower = ptag | downcase %}
+        {% if ptag_lower == tag %}{% assign tag_count = tag_count | plus: 1 %}{% break %}{% endif %}
+      {% endfor %}
+    {% endfor %}
+    <button class="category-btn" data-filter="{{ tag }}">{{ tag | replace: "-", " " | capitalize }} <span class="tag-count">{{ tag_count }}</span></button>
     {% endfor %}
 </div>
 
 <div class="post-cards-grid">
 {% for post in site.posts %}
-{% if forloop.first %}{% continue %}{% endif %}
+{% if post.url == featured.url %}{% continue %}{% endif %}
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
@@ -196,44 +198,6 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         resetBtn.addEventListener('click', function() {
             var allBtn = document.querySelector('.category-btn[data-filter="all"]');
             if (allBtn) allBtn.click();
-        });
-    }
-})();
-</script>
-
-<!-- Typing Animation JS -->
-<script>
-(function() {
-    var phrases = [
-        'Backend Developer',
-        'Kotlin & Java Enthusiast',
-        'Spring Boot Architect',
-        'Algorithm Problem Solver'
-    ];
-    var el = document.querySelector('.typing-text');
-    if (!el) return;
-    var phraseIdx = 0, charIdx = 0, deleting = false;
-    function tick() {
-        var current = phrases[phraseIdx];
-        if (deleting) {
-            el.textContent = current.substring(0, charIdx--);
-            if (charIdx < 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(tick, 400); return; }
-            setTimeout(tick, 35);
-        } else {
-            el.textContent = current.substring(0, charIdx++);
-            if (charIdx > current.length) { deleting = true; setTimeout(tick, 2000); return; }
-            setTimeout(tick, 80);
-        }
-    }
-    tick();
-
-    // Hide scroll indicator on scroll
-    var indicator = document.querySelector('.scroll-indicator');
-    if (indicator) {
-        var hidden = false;
-        window.addEventListener('scroll', function() {
-            if (!hidden && window.scrollY > 100) { indicator.style.opacity = '0'; hidden = true; }
-            else if (hidden && window.scrollY <= 100) { indicator.style.opacity = '1'; hidden = false; }
         });
     }
 })();

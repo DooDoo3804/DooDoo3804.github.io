@@ -2,7 +2,7 @@
 title: "Kotlin vs Java"
 subtitle: "What is difference between Kotlin and Java"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-bg-css: "linear-gradient(135deg, #7b2ff7 0%, #9b59b6 100%)"
 header-mask: 0.4
 keywords: "kotlin, java, difference"
@@ -10,6 +10,8 @@ series: Kotlin
 tags:
     - Kotlin
     - Java
+categories: [kotlin]
+description: "Kotlin과 Java의 핵심 차이점을 코드로 비교합니다. 변수 선언, 객체 초기화, 람다 표현식, NPE 방지, 생성자 패턴 등에서 Kotlin이 가진 간결성과 안전성을 분석합니다."
 # hidden: true
 ---
 
@@ -28,7 +30,7 @@ Why we should learn kotlin?
 
 Kotlin vs Java
 ---
-![](https://kruschecompany.com/wp-content/uploads/2022/01/overview-2048x1603.png)
+![Kotlin vs Java 기능 비교](https://kruschecompany.com/wp-content/uploads/2022/01/overview-2048x1603.png)
 ### 변수 상수
 
 Java  

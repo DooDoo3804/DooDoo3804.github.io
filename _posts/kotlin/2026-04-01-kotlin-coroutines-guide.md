@@ -3,7 +3,7 @@ title: "Kotlin Coroutines 실전 가이드"
 subtitle: "suspend, launch, async부터 Flow와 예외 처리까지"
 layout: post
 date: "2026-04-01"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true

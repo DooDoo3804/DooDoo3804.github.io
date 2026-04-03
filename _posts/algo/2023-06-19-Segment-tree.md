@@ -2,13 +2,15 @@
 title: "Segment tree"
 subtitle: "Implement a segment tree"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, segment"
 series: Algorithm
 tags:
   - Algorithm
   - Tree
+categories: [algorithm]
+description: "세그먼트 트리의 개념, 크기 계산, C++ 구현 방법을 정리합니다. 배열 기반 풀 바이너리 트리에서 초기화, 값 갱신, 구간 합 쿼리를 처리하는 과정을 코드와 함께 단계별로 설명합니다."
 ---
 
 세그먼트 트리란
@@ -84,3 +86,9 @@ long long sum(vector<long long> &tree, int node, int start, int end, int left, i
     return sum(tree, node * 2, start, mid, left, right) + sum(tree, node * 2 + 1, mid + 1, left, right);
 }
 ```
+
+---
+
+## 관련 포스트
+
+- [Trie 자료구조 — 문자열 검색에 최적화된 트리 구조](/algorithm/2026/04/01/trie/)

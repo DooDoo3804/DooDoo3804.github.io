@@ -2,13 +2,15 @@
 title: "Minimum Spanning Tree"
 subtitle: "Implement a MST"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, MST"
 series: Algorithm
 tags:
   - Algorithm
   - Graph
+categories: [algorithm]
+description: "최소 신장 트리(MST) 개념과 크루스칼 알고리즘 C++ 구현을 다룹니다. 그리디 기반 간선 선택, Union-Find 자료구조를 활용한 사이클 판별 과정을 코드와 함께 설명합니다."
 ---
 
 MST 최소 신장 트리

@@ -2,13 +2,15 @@
 title: "Floyd Warshall"
 subtitle: "Implement a Floyd Warshall"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, floyd-warshall"
 series: Algorithm
 tags:
   - Algorithm
   - Graph
+categories: [algorithm]
+description: "플로이드-워셜 알고리즘의 개념과 C++ 구현을 정리합니다. DP 기반으로 모든 노드 쌍의 최단 경로를 구하는 원리와 음수 가중치 그래프에서의 동작 방식을 코드 예제와 함께 설명합니다."
 ---
 
 플로이드-워셜 알고리즘이란

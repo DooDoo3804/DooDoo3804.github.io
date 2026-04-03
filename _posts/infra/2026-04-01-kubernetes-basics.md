@@ -15,6 +15,7 @@ tags:
   - DevOps
 categories:
   - infra
+description: "Kubernetes 핵심 개념 정리. Pod, Deployment, Service, ConfigMap의 역할과 구조를 이해하고, Spring Boot 앱을 k8s에 배포하는 실전 예제를 단계별로 설명합니다."
 ---
 
 ## 왜 Kubernetes인가

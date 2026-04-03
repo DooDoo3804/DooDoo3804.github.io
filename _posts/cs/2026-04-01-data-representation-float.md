@@ -13,9 +13,10 @@ tags:
   - CS Fundamentals
 categories:
   - cs
+description: "IEEE 754 부동소수점 표현 완전 정복. 단정도·배정도 구조, 변환 예제, 특수 값(NaN, Infinity), 0.1+0.2≠0.3 함정과 BigDecimal 등 백엔드 실무 가이드를 정리합니다."
 ---
 
-[이전 글(Data Representation - Integer)](/2026/04/01/data-representation-integer/)에서 정수의 표현 방식을 알아보았다. 정수는 _fixed-point_(고정소수점)으로 표현된다고 했는데, 이번에는 실수를 표현하는 방식인 **부동소수점(floating-point)** 을 다룬다.
+[이전 글(Data Representation - Integer)](/cs/2026/04/01/data-representation-integer/)에서 정수의 표현 방식을 알아보았다. 정수는 _fixed-point_(고정소수점)으로 표현된다고 했는데, 이번에는 실수를 표현하는 방식인 **부동소수점(floating-point)** 을 다룬다.
 
 핵심 주제는 현대 거의 모든 하드웨어가 채택한 **IEEE 754** 표준이다.
 

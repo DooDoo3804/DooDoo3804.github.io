@@ -23,19 +23,22 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <!-- Breadcrumb Navigation (only for series with 2+ posts) -->
-                {% if page.series %}
-                {% assign series_posts = site.posts | where: "series", page.series %}
-                {% if series_posts.size >= 2 %}
+                <!-- Breadcrumb Navigation -->
                 <nav class="post-breadcrumb" aria-label="Breadcrumb">
                     <ol>
                         <li><a href="{{ site.baseurl }}/">Blog</a></li>
+                        {% if page.series %}
                         <li><a href="{{ site.baseurl }}/archive/?tag={{ page.series | url_encode }}">{{ page.series }}</a></li>
+                        {% elsif page.categories.size > 0 %}
+                        {% assign bc_cat = page.categories | first %}
+                        <li><a href="{{ site.baseurl }}/archive/?tag={{ bc_cat | url_encode }}">{{ bc_cat }}</a></li>
+                        {% elsif page.tags.size > 0 %}
+                        {% assign bc_tag = page.tags | first %}
+                        <li><a href="{{ site.baseurl }}/archive/?tag={{ bc_tag | url_encode }}">{{ bc_tag }}</a></li>
+                        {% endif %}
                         <li aria-current="page"><strong>{{ page.title }}</strong></li>
                     </ol>
                 </nav>
-                {% endif %}
-                {% endif %}
 
                 <!-- Multi-Lingual -->
                 {% if page.multilingual %}
@@ -73,6 +76,10 @@ layout: default
                 {% endif %}
                 {% endif %}
 
+                {% include related-posts.html %}
+
+                {% include subscribe-cta.html %}
+
                 <!-- Share Buttons -->
                 <div class="post-share">
                     <span class="post-share-label">Share</span>
@@ -106,7 +113,6 @@ layout: default
                     </li>
                     {% endif %}
                 </ul>
-                {% include related-posts.html %}
 
                 <hr class="spacer-hidden">
 

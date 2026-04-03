@@ -3,7 +3,7 @@ title: "Kotlin 고급 문법"
 subtitle: "Advanced Kotlin Syntax"
 layout: post
 date: "2026-04-01"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true

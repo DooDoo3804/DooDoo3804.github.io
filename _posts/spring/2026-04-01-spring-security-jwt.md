@@ -15,11 +15,12 @@ tags:
   - Backend
 categories:
   - spring
+description: "Spring Security 6 + JWT 인증 구현 실전 가이드. SecurityFilterChain 설정, JwtTokenProvider 구현, Refresh Token 갱신 전략, 토큰 저장 보안까지 상세히 다룹니다."
 ---
 
 ## 들어가며
 
-[이전 글(Spring Boot + JPA로 REST API 만들기)](/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다. 이번에는 이 API에 **인증(Authentication)** 을 적용한다. 세션 기반 인증 대신 **JWT(JSON Web Token)** 를 사용해서 stateless한 인증 시스템을 만들 것이다.
+[이전 글(Spring Boot + JPA로 REST API 만들기)](/spring/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다. 이번에는 이 API에 **인증(Authentication)** 을 적용한다. 세션 기반 인증 대신 **JWT(JSON Web Token)** 를 사용해서 stateless한 인증 시스템을 만들 것이다.
 
 Spring Security 6.x + Spring Boot 3.x 기준으로 작성했다. Spring Security 5.x 이하와 설정 방식이 상당히 다르니 주의하자.
 
@@ -27,7 +28,7 @@ Spring Security 6.x + Spring Boot 3.x 기준으로 작성했다. Spring Security
 
 ## Spring Security 아키텍처 개요
 
-Spring Security는 **서블릿 필터 체인** 기반으로 동작한다. 요청이 Controller에 도달하기 전에 여러 보안 필터를 거치게 된다.
+Spring Security는 **서블릿 필터 체인** 기반으로 동작한다. 요청이 Controller에 도달하기 전에 여러 보안 필터를 거치게 된다. 아키텍처를 더 깊이 이해하려면 [Spring Security 아키텍처 완전 이해](/spring/2026/04/05/spring-security-architecture/)를 참고하자.
 
 ```
 HTTP Request

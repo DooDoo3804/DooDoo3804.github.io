@@ -3,7 +3,7 @@ title: "Spring Security 아키텍처 완전 이해"
 subtitle: "필터 체인 구조부터 JWT 인증, Method Security, CSRF/CORS 설정까지"
 layout: post
 date: "2026-04-05"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
@@ -312,6 +312,8 @@ AuthenticationFilter
 ---
 
 ## JWT 기반 인증 구현
+
+실제 JWT 인증의 전체 구현 코드와 Refresh Token 전략은 [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)에서 다룬다.
 
 ### JWT 유틸리티 클래스
 

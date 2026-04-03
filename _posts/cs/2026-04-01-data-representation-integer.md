@@ -3,7 +3,7 @@ title: "Data Representation - Integer"
 subtitle: "정수의 데이터 표현 방식"
 layout: post
 date: "2026-04-01"
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 catalog: true
 keywords: "data representation, integer, binary, twos complement, computer science"

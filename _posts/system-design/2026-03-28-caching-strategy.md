@@ -2,7 +2,7 @@
 title: "시스템 디자인: 캐싱 전략 (Cache-Aside, Write-Through, Write-Behind)"
 subtitle: "Redis 기반 캐싱 패턴 비교와 실무 선택 기준"
 layout: post
-author: "DooDoo"
+author: "DoYoon Kim"
 header-style: text
 catalog: true
 series: System Design
@@ -10,6 +10,7 @@ tags:
   - System Design
   - Backend
   - Redis
+categories: [system-design]
 description: "캐싱 전략 비교 가이드. Cache-Aside, Write-Through, Write-Behind 패턴의 동작 원리와 Redis 구현 예제, 실무 선택 기준을 정리합니다."
 ---
 
@@ -17,7 +18,7 @@ description: "캐싱 전략 비교 가이드. Cache-Aside, Write-Through, Write-
 
 데이터베이스는 신뢰성과 일관성에 최적화된 저장소다. 하지만 모든 요청이 DB까지 도달하면 응답 지연이 발생하고, 트래픽이 몰리면 DB가 병목이 된다. **캐시**는 자주 접근하는 데이터를 메모리에 올려두어 응답 속도를 높이고 DB 부하를 줄이는 역할을 한다.
 
-대표적인 인메모리 캐시 솔루션으로 **Redis**가 많이 사용된다.
+대표적인 인메모리 캐시 솔루션으로 **Redis**가 많이 사용된다. Redis를 활용한 구체적인 캐싱 패턴과 Cache Stampede 해결책은 [Redis 캐싱 전략 완전 정복](/backend/2026/04/02/redis-caching-strategy/)에서 상세히 다룬다.
 
 ---
 
@@ -197,7 +198,7 @@ public void flushToDatabase() {
 ## 실무에서 흔히 하는 실수
 
 1. **TTL 설정 누락** — 캐시가 영원히 남아 메모리가 부족해진다
-2. **Cache Stampede** — 인기 키의 TTL이 동시에 만료되어 DB에 요청이 몰린다 → TTL에 랜덤 값을 추가하자
+2. **Cache Stampede** — 인기 키의 TTL이 동시에 만료되어 DB에 요청이 몰린다 → TTL에 랜덤 값을 추가하자 (자세한 해결 전략은 [Redis 캐싱 전략](/backend/2026/04/02/redis-caching-strategy/) 참고)
 3. **캐시 무효화 순서 실수** — 캐시 삭제 후 DB 업데이트 vs DB 업데이트 후 캐시 삭제. 후자가 안전하다
 4. **직렬화 비용 무시** — 큰 객체를 매번 JSON 직렬화/역직렬화하면 오히려 느려질 수 있다
 

@@ -14,6 +14,7 @@ tags:
   - Frontend
 categories:
   - react
+description: "React Hooks 완전 정복. useState 비동기 업데이트, useEffect 의존성 배열 함정, useMemo 남용 경계, Custom Hook 설계 원칙까지 실전 패턴과 주의사항을 정리합니다."
 ---
 
 ## Class에서 Hooks로
