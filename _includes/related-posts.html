@@ -1,0 +1,102 @@
+{% comment %}
+  Related Posts Component
+  Shows up to 3 related posts based on tag overlap, category match, then recency.
+  Priority: same series > most tag overlap > same category > newest
+  Single-pass collection with bucket sorting for performance.
+{% endcomment %}
+
+{% assign maxRelated = 3 %}
+{% assign currentCat = page.categories | first %}
+{% assign series_matches = "" | split: "" %}
+{% assign tag2_matches = "" | split: "" %}
+{% assign tag1_matches = "" | split: "" %}
+{% assign cat_matches = "" | split: "" %}
+
+{% for p in site.posts %}
+  {% if p.url == page.url %}{% continue %}{% endif %}
+
+  {% comment %} Bucket: same series (highest priority) {% endcomment %}
+  {% if page.series and p.series == page.series %}
+    {% assign series_matches = series_matches | push: p %}
+    {% continue %}
+  {% endif %}
+
+  {% comment %} Count common tags {% endcomment %}
+  {% assign commonTags = 0 %}
+  {% for tag in page.tags %}
+    {% if p.tags contains tag %}
+      {% assign commonTags = commonTags | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if commonTags >= 2 %}
+    {% assign tag2_matches = tag2_matches | push: p %}
+  {% elsif commonTags == 1 %}
+    {% assign tag1_matches = tag1_matches | push: p %}
+  {% elsif currentCat %}
+    {% assign pCat = p.categories | first %}
+    {% if pCat == currentCat %}
+      {% assign cat_matches = cat_matches | push: p %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Merge buckets in priority order {% endcomment %}
+{% assign related = "" | split: "" %}
+{% for p in series_matches %}
+  {% if related.size < maxRelated %}
+    {% assign related = related | push: p %}
+  {% endif %}
+{% endfor %}
+{% for p in tag2_matches %}
+  {% if related.size < maxRelated %}
+    {% assign related = related | push: p %}
+  {% endif %}
+{% endfor %}
+{% for p in tag1_matches %}
+  {% if related.size < maxRelated %}
+    {% assign related = related | push: p %}
+  {% endif %}
+{% endfor %}
+{% for p in cat_matches %}
+  {% if related.size < maxRelated %}
+    {% assign related = related | push: p %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Only render if we have at least 1 related post {% endcomment %}
+{% if related.size > 0 %}
+<section class="related-posts" aria-label="Related posts">
+    <h4>Related Posts</h4>
+    <div class="related-posts-grid">
+    {% for post in related limit:3 %}
+        <div class="related-post-card" data-url="{{ post.url | prepend: site.baseurl }}">
+            <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
+            <h5 class="rp-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
+            {% assign excerpt_text = post.excerpt | strip_html | strip | truncate: 80 %}
+            {% if excerpt_text != "" %}
+            <div class="rp-excerpt">{{ excerpt_text }}</div>
+            {% endif %}
+            <div class="rp-meta">
+                <span class="rp-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                {% if post.categories.size > 0 %}
+                <span class="rp-category">{{ post.categories | first }}</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</section>
+<script>
+(function() {
+    var cards = document.querySelectorAll('.related-post-card[data-url]');
+    cards.forEach(function(card) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('a')) return;
+            window.location.href = card.getAttribute('data-url');
+        });
+    });
+})();
+</script>
+{% endif %}

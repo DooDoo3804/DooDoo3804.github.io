@@ -87,7 +87,7 @@ layout: default
                     </a>
                 </div>
 
-                <hr style="visibility: hidden;">
+                <hr class="spacer-hidden">
                 <ul class="pager">
                     {% if page.previous.url %}
                     <li class="previous">
@@ -106,55 +106,9 @@ layout: default
                     </li>
                     {% endif %}
                 </ul>
-                <!-- Related Posts -->
-                <div class="related-posts">
-                    <h4>Related Posts</h4>
-                    <div class="related-posts-grid">
-                    {% assign related = "" | split: "" %}
-                    {% assign seen = "" | split: "" %}
-                    {% comment %}Prioritize same-series posts{% endcomment %}
-                    {% if page.series %}
-                        {% for p in site.posts %}
-                            {% if p.url != page.url and related.size < 3 and p.series == page.series %}
-                                {% assign related = related | push: p %}
-                                {% assign seen = seen | push: p.url %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    {% comment %}Fill remaining slots with same-tag posts{% endcomment %}
-                    {% for tag in page.tags %}
-                        {% for p in site.posts %}
-                            {% if p.url != page.url and related.size < 3 %}
-                                {% unless seen contains p.url %}
-                                    {% if p.tags contains tag %}
-                                        {% assign related = related | push: p %}
-                                        {% assign seen = seen | push: p.url %}
-                                    {% endif %}
-                                {% endunless %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-                    {% if related.size == 0 %}
-                        {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
-                    {% endif %}
-                    {% for post in related limit:3 %}
-                    <div class="related-post-card">
-                        <a href="{{ post.url | prepend: site.baseurl }}">
-                            <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
-                            <div class="rp-title">{{ post.title }}</div>
-                            <div class="rp-meta">
-                                <span class="rp-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-                    {% if related.size == 0 %}
-                    <p class="related-posts-empty">No related posts found.</p>
-                    {% endif %}
-                    </div>
-                </div>
+                {% include related-posts.html %}
 
-                <hr style="visibility: hidden;">
+                <hr class="spacer-hidden">
 
                 {% include comments.html %}
             </div>  
@@ -177,7 +131,7 @@ layout: default
 
             <!-- Mobile TOC Toggle -->
             <div class="mobile-toc-wrapper visible-xs visible-sm visible-md">
-                <button class="btn btn-default mobile-toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">
+                <button class="mobile-toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">
                     <i class="fa fa-list"></i>
                 </button>
                 <div class="mobile-toc-panel">
@@ -323,13 +277,6 @@ layout: default
 })();
 </script>
 
-<!-- Lazy load post images -->
-<script>
-document.querySelectorAll(".post-container img").forEach(function(img) {
-    if (!img.hasAttribute("loading")) img.setAttribute("loading", "lazy");
-});
-</script>
-
 <!-- add support for mathjax by voleking-->
 {% if page.mathjax %}
   {% include mathjax_support.html %}
@@ -340,7 +287,7 @@ document.querySelectorAll(".post-container img").forEach(function(img) {
 {% if site.anchorjs %}
 <!-- async load function -->
 <script>
-    function async(u, c) {
+    function loadScript(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -351,7 +298,7 @@ document.querySelectorAll(".post-container img").forEach(function(img) {
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/5.0.0/anchor.min.js",function(){
+    loadScript("//cdnjs.cloudflare.com/ajax/libs/anchor-js/5.0.0/anchor.min.js",function(){
         anchors.options = {
           visible: 'hover',
           placement: 'right',

@@ -22,3 +22,21 @@ giscus:
 4. 커밋 & 푸시
 
 ---
+
+## GoatCounter 방문자 통계 활성화
+
+`_config.yml`에 GoatCounter 설정이 비활성 상태로 준비되어 있음. 실제 통계 수집하려면 설정 필요.
+
+**순서:**
+1. [GoatCounter](https://www.goatcounter.com) 가입 → 사이트 코드 발급 (예: `doodoo-blog`)
+2. `_config.yml` 수정:
+
+```yaml
+goatcounter:
+  enabled: true
+  code: "doodoo-blog"  # 발급받은 코드로 교체
+```
+
+3. 커밋 & 푸시 → `https://doodoo-blog.goatcounter.com` 에서 통계 확인
+
+---

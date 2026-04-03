@@ -39,14 +39,18 @@
 
     function initDarkMode() {
         // Theme is already applied by inline script in head.html (FOUC prevention)
-        // Only update toggle icon and bind click handler here
-        var theme = getPreferredTheme();
-        updateToggleIcon(theme);
+        // updateToggleIcon deferred to DOMContentLoaded to ensure toggle button exists
 
         document.addEventListener('click', function(e) {
             var toggle = e.target.closest('.dark-mode-toggle');
             if (toggle) {
                 e.preventDefault();
+                // Spin animation on toggle
+                toggle.classList.add('toggling');
+                toggle.addEventListener('animationend', function handler() {
+                    toggle.classList.remove('toggling');
+                    toggle.removeEventListener('animationend', handler);
+                }, { once: true });
                 var current = document.documentElement.getAttribute('data-theme');
                 setTheme(current === 'dark' ? 'light' : 'dark');
             }
@@ -58,7 +62,7 @@
                 var newTheme = e.matches ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 updateToggleIcon(newTheme);
-                updateUtterancesTheme(newTheme);
+                updateGiscusTheme(newTheme);
             }
         });
     }
@@ -103,7 +107,6 @@
                 var label = document.createElement('span');
                 label.className = 'code-lang-label';
                 label.textContent = lang;
-                pre.style.position = 'relative';
                 pre.insertBefore(label, pre.firstChild);
             }
         });
@@ -133,11 +136,15 @@
     }
 
     /* --- Enhanced Copy Button (replaces footer.html version) --- */
-    function fallbackCopy(text, btn, orig, onSuccess) {
+    function fallbackCopy(text, onSuccess, onFail) {
         var ta = document.createElement("textarea");
         ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
         document.body.appendChild(ta); ta.focus(); ta.select();
-        try { if (document.execCommand("copy")) onSuccess(); } catch(e) {}
+        try {
+            if (document.execCommand("copy")) { onSuccess(); } else if (onFail) { onFail(); }
+        } catch(e) {
+            if (onFail) onFail();
+        }
         document.body.removeChild(ta);
     }
 
@@ -146,14 +153,19 @@
         function onSuccess() {
             btn.innerHTML = "\u2713 Copied!";
             btn.classList.add('copy-btn--success');
-            setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copy-btn--success'); }, 1500);
+            btn.setAttribute('aria-label', 'Copied!');
+            setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, 1500);
+        }
+        function onFail() {
+            btn.textContent = "Failed";
+            setTimeout(function() { btn.innerHTML = orig; }, 1500);
         }
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
-                fallbackCopy(text, btn, orig, onSuccess);
+                fallbackCopy(text, onSuccess, onFail);
             });
         } else {
-            fallbackCopy(text, btn, orig, onSuccess);
+            fallbackCopy(text, onSuccess, onFail);
         }
     }
 
@@ -163,15 +175,23 @@
             // skip if already has copy button
             if (pre.querySelector('.copy-btn')) return;
 
-            pre.style.position = 'relative';
             var btn = document.createElement('button');
             btn.className = 'copy-btn';
             btn.textContent = 'Copy';
+            btn.setAttribute('aria-label', 'Copy code to clipboard');
             pre.appendChild(btn);
 
             btn.addEventListener('click', function() {
                 var code = pre.querySelector('code');
-                var text = code ? code.textContent : pre.textContent;
+                var text;
+                if (code) {
+                    text = code.textContent;
+                } else {
+                    var copyBtn = pre.querySelector('.copy-btn');
+                    if (copyBtn) copyBtn.hidden = true;
+                    text = pre.textContent;
+                    if (copyBtn) copyBtn.hidden = false;
+                }
                 copyToClipboard(text, btn);
             });
         });
@@ -227,10 +247,10 @@
             }
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(url).then(onSuccess).catch(function() {
-                    fallbackCopy(url, btn, origHTML, onSuccess);
+                    fallbackCopy(url, onSuccess);
                 });
             } else {
-                fallbackCopy(url, btn, origHTML, onSuccess);
+                fallbackCopy(url, onSuccess);
             }
         });
     }
@@ -257,10 +277,10 @@
                 }
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(url).then(onSuccess).catch(function() {
-                        fallbackCopy(url, btn, '', onSuccess);
+                        fallbackCopy(url, onSuccess);
                     });
                 } else {
-                    fallbackCopy(url, btn, '', onSuccess);
+                    fallbackCopy(url, onSuccess);
                 }
             });
         }
@@ -299,6 +319,7 @@
     initDarkMode();
 
     document.addEventListener('DOMContentLoaded', function() {
+        updateToggleIcon(getPreferredTheme());
         initBackToTop();
         initReadingProgress();
         initCodeLabels();

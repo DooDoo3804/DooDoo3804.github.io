@@ -7,25 +7,30 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
 <!-- Author Hero Section -->
 <div class="author-hero">
-    {% if site.sidebar-avatar %}
-    <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" width="80" height="80" loading="lazy" />
-    {% endif %}
-    <div class="author-hero-info">
-        <h2 class="author-hero-name">DoYoon Kim</h2>
-        <p class="author-hero-tagline">Backend Developer — building robust systems with Kotlin, Java &amp; Spring</p>
-        <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
-        <div class="author-hero-links">
-            {% if site.github_username %}
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i> GitHub</a>
-            {% endif %}
-            {% if site.linkedin_username %}
-            <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i> LinkedIn</a>
-            {% endif %}
-            {% if site.email_address %}
-            <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
-            {% endif %}
+    <div class="author-hero-mesh"></div>
+    <div class="author-hero-inner">
+        {% if site.sidebar-avatar %}
+        <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" width="80" height="80" loading="lazy" />
+        {% endif %}
+        <div class="author-hero-info">
+            <h2 class="author-hero-name">DoYoon Kim</h2>
+            <p class="author-hero-typing">
+                <span class="typing-text"></span><span class="typing-cursor">|</span>
+            </p>
+            <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
+            <div class="author-hero-links">
+                {% if site.github_username %}
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i> GitHub</a>
+                {% endif %}
+                {% if site.linkedin_username %}
+                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                {% endif %}
+                {% if site.email_address %}
+                <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
+                {% endif %}
+            </div>
+            <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.time | date: "%B %Y" }}</p>
         </div>
-        <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.time | date: "%B %Y" }}</p>
     </div>
 </div>
 
@@ -68,10 +73,18 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
             <span class="featured-post-readtime">{% assign f_chars = featured.content | strip_html | size %}{% assign f_words = featured.content | number_of_words %}{% assign f_by_char = f_chars | divided_by: 500 %}{% assign f_by_word = f_words | divided_by: 200 %}{% if f_by_char > f_by_word %}{% assign f_mins = f_by_char %}{% else %}{% assign f_mins = f_by_word %}{% endif %}{% if f_mins < 1 %}1{% else %}{{ f_mins }}{% endif %} min read</span>
         </div>
-        <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta">Read Post &rarr;</a>
+        <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta"><span>Read Post &rarr;</span></a>
     </div>
 </div>
 {% endif %}
+
+<!-- Scroll Down Indicator -->
+<div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-indicator-text">Scroll</span>
+    <div class="scroll-indicator-arrow">
+        <i class="fa fa-angle-down"></i>
+    </div>
+</div>
 
 <!-- More Posts heading -->
 {% if site.posts.size > 1 %}
@@ -183,6 +196,44 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         resetBtn.addEventListener('click', function() {
             var allBtn = document.querySelector('.category-btn[data-filter="all"]');
             if (allBtn) allBtn.click();
+        });
+    }
+})();
+</script>
+
+<!-- Typing Animation JS -->
+<script>
+(function() {
+    var phrases = [
+        'Backend Developer',
+        'Kotlin & Java Enthusiast',
+        'Spring Boot Architect',
+        'Algorithm Problem Solver'
+    ];
+    var el = document.querySelector('.typing-text');
+    if (!el) return;
+    var phraseIdx = 0, charIdx = 0, deleting = false;
+    function tick() {
+        var current = phrases[phraseIdx];
+        if (deleting) {
+            el.textContent = current.substring(0, charIdx--);
+            if (charIdx < 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(tick, 400); return; }
+            setTimeout(tick, 35);
+        } else {
+            el.textContent = current.substring(0, charIdx++);
+            if (charIdx > current.length) { deleting = true; setTimeout(tick, 2000); return; }
+            setTimeout(tick, 80);
+        }
+    }
+    tick();
+
+    // Hide scroll indicator on scroll
+    var indicator = document.querySelector('.scroll-indicator');
+    if (indicator) {
+        var hidden = false;
+        window.addEventListener('scroll', function() {
+            if (!hidden && window.scrollY > 100) { indicator.style.opacity = '0'; hidden = true; }
+            else if (hidden && window.scrollY <= 100) { indicator.style.opacity = '1'; hidden = false; }
         });
     }
 })();

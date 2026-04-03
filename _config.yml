@@ -103,6 +103,11 @@ giscus:
   theme_light: "light"
   theme_dark: "transparent_dark"
 
+# GoatCounter Analytics
+goatcounter:
+  enabled: false
+  code: "REPLACE_WITH_YOUR_CODE"
+
 # Friends
 # friends:
 #   [
