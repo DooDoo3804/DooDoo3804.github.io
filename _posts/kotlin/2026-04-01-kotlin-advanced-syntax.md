@@ -9,7 +9,7 @@ header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kotlin, advanced, lambda, coroutine, extension"
 description: "Kotlin 고급 문법 정리 — 람다, 고차 함수, 확장 함수, 코루틴, 스코프 함수 등 실무와 코딩 테스트에서 자주 쓰이는 패턴을 예제와 함께 설명합니다."
-series: Kotlin
+series: "Kotlin 마스터"
 tags:
   - Kotlin
 categories:

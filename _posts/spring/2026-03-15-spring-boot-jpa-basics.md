@@ -5,7 +5,7 @@ layout: post
 author: "DoYoon Kim"
 header-style: text
 catalog: true
-series: "Spring Boot"
+series: "Spring 심화"
 tags:
   - Spring
   - Backend

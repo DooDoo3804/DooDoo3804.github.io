@@ -297,10 +297,11 @@
             } else {
                 $resultCount.text('').hide();
                 var hint;
+                var safeQuery = query.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
                 if (query.length <= 2) {
                     hint = 'Try a longer search term for better results';
                 } else {
-                    hint = '"' + query + '" \u2014 check spelling or try different keywords';
+                    hint = '"' + safeQuery + '" \u2014 check spelling or try different keywords';
                 }
                 $emptyState.find('.search-empty-text').html(
                     '<strong>No results found</strong><br><span style="font-size:14px;opacity:0.7">' + hint + '</span>'

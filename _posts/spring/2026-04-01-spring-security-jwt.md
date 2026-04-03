@@ -7,7 +7,7 @@ author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
-series: "Spring Boot"
+series: "Spring 심화"
 tags:
   - Spring
   - Spring Security

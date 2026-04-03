@@ -5,7 +5,7 @@ layout: post
 author: "DoYoon Kim"
 header-style: text
 catalog: true
-series: Database
+series: "Database"
 tags:
   - PostgreSQL
   - Database

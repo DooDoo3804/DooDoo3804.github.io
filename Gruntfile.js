@@ -28,6 +28,13 @@ module.exports = function(grunt) {
                 }
             }
         },
+        cssmin: {
+            custom: {
+                files: {
+                    'css/custom.min.css': ['css/custom.css']
+                }
+            }
+        },
         banner: '/*!\n' +
             ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
@@ -58,16 +65,24 @@ module.exports = function(grunt) {
                     spawn: false,
                 }
             },
+            custom_css: {
+                files: ['css/custom.css'],
+                tasks: ['cssmin'],
+                options: {
+                    spawn: false,
+                }
+            },
         },
     });
 
     // Load the plugins.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
+    grunt.registerTask('default', ['uglify', 'less', 'cssmin', 'usebanner']);
 
 };

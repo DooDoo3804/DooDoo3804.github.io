@@ -5,7 +5,7 @@ layout: post
 author: "DoYoon Kim"
 header-style: text
 catalog: true
-series: System Design
+series: "System Design"
 tags:
   - System Design
   - Backend

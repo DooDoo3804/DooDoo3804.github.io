@@ -8,15 +8,23 @@
     /* --- Dark Mode --- */
     var THEME_KEY = 'doodoo-blog-theme';
 
+    function getStoredTheme() {
+        try { return localStorage.getItem(THEME_KEY); } catch(e) { return null; }
+    }
+
+    function storeTheme(theme) {
+        try { localStorage.setItem(THEME_KEY, theme); } catch(e) { /* silent */ }
+    }
+
     function getPreferredTheme() {
-        var stored = localStorage.getItem(THEME_KEY);
+        var stored = getStoredTheme();
         if (stored) return stored;
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem(THEME_KEY, theme);
+        storeTheme(theme);
         updateToggleIcon(theme);
         updateGiscusTheme(theme);
     }
@@ -47,9 +55,10 @@
                 e.preventDefault();
                 // Spin animation on toggle
                 toggle.classList.add('toggling');
-                toggle.addEventListener('animationend', function handler() {
+                var fallback = setTimeout(function() { toggle.classList.remove('toggling'); }, 600);
+                toggle.addEventListener('animationend', function() {
+                    clearTimeout(fallback);
                     toggle.classList.remove('toggling');
-                    toggle.removeEventListener('animationend', handler);
                 }, { once: true });
                 var current = document.documentElement.getAttribute('data-theme');
                 setTheme(current === 'dark' ? 'light' : 'dark');
@@ -58,7 +67,7 @@
 
         // Follow OS theme changes when user hasn't set a manual preference
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-            if (!localStorage.getItem(THEME_KEY)) {
+            if (!getStoredTheme()) {
                 var newTheme = e.matches ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 updateToggleIcon(newTheme);
@@ -208,6 +217,7 @@
                 window.requestAnimationFrame(function() {
                     var scrollTop = window.scrollY || document.documentElement.scrollTop;
                     var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    if (docHeight < 50) { bar.style.display = "none"; return; }
                     var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
                     bar.style.width = pct + '%';
                     ticking = false;

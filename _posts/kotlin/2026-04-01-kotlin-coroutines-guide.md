@@ -9,7 +9,7 @@ header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kotlin, coroutines, async, concurrency"
 description: "Kotlin Coroutines 핵심 개념과 실전 패턴을 코드 예제로 정리합니다."
-series: Kotlin
+series: "Kotlin 마스터"
 tags:
   - Kotlin
   - Coroutines

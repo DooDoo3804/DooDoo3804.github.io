@@ -7,6 +7,7 @@ keywords: "jekyll, react"
 tags:
     - React
 categories: [react]
+series: "React"
 description: "Jekyll 블로그에 React 앱을 통합하는 방법을 안내합니다. Create React App 생성, 빌드 설정, 배포 스크립트 작성까지 Jekyll과 React를 함께 사용하는 전체 과정을 다룹니다."
 ---
 

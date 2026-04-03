@@ -7,7 +7,7 @@ layout: default
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Reading Progress Bar -->
-<div id="reading-progress-bar"></div>
+<div id="reading-progress-bar" aria-hidden="true"></div>
 
 <!-- Post Header -->
 {% include intro-header.html type='post' %}
@@ -47,20 +47,25 @@ layout: default
 
 				{{ content }}
 
-                <!-- Series Navigation (posts with same primary tag) -->
-                {% assign current_tag = page.tags | first %}
-                {% if current_tag %}
+                <!-- Series Navigation (posts with same series frontmatter) -->
+                {% if page.series %}
                 {% assign series_posts = "" | split: "" %}
                 {% for p in site.posts %}
-                    {% if p.tags contains current_tag %}
+                    {% if p.series == page.series %}
                         {% assign series_posts = series_posts | push: p %}
                     {% endif %}
                 {% endfor %}
                 {% if series_posts.size > 1 %}
-                <div class="series-nav">
-                    <h4 class="series-nav-title"><i class="fa fa-layer-group"></i> {{ current_tag }} Series <span class="series-count">{{ series_posts.size }} posts</span></h4>
+                {% assign reversed_series = series_posts | reverse %}
+                {% assign current_index = 0 %}
+                {% for p in reversed_series %}
+                    {% if p.url == page.url %}
+                        {% assign current_index = forloop.index %}
+                    {% endif %}
+                {% endfor %}
+                <nav class="series-nav" aria-label="Series navigation">
+                    <h4 class="series-nav-title"><i class="fa fa-layer-group"></i> {{ page.series }} <span class="series-count">{{ reversed_series.size }}편 중 {{ current_index }}편</span></h4>
                     <ol class="series-list">
-                    {% assign reversed_series = series_posts | reverse %}
                     {% for p in reversed_series %}
                         <li class="series-item{% if p.url == page.url %} series-item--current{% endif %}">
                             {% if p.url == page.url %}
@@ -72,7 +77,7 @@ layout: default
                         </li>
                     {% endfor %}
                     </ol>
-                </div>
+                </nav>
                 {% endif %}
                 {% endif %}
 
@@ -213,6 +218,14 @@ layout: default
     if (!article) return;
     article.querySelectorAll('.post-container img').forEach(function(img) {
         img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', (img.alt || 'Image') + ' — 클릭하여 크게 보기');
+        img.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
         img.addEventListener('click', function(e) {
             e.preventDefault();
             triggerImg = this;
