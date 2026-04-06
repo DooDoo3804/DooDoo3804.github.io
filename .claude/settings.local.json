@@ -29,7 +29,32 @@
       "Bash(find /c/Users/HOME/Desktop/Git_Hub/Git-Blog/img -type f -exec ls -lh {})",
       "Bash(2)",
       "Bash(grep -r header-img /c/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts --include=*.md --include=*.markdown)",
-      "Bash(find C:/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts -type f -name *.md)"
+      "Bash(find C:/Users/HOME/Desktop/Git_Hub/Git-Blog/_posts -type f -name *.md)",
+      "Bash(find /Users/stclab/Desktop/project/DooDoo3804.github.io -name sitemap* -o -name robots.txt -o -name .htaccess)",
+      "Bash(wc:*)",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(grep -rn '\\\\$\\(' --include='*.js')",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(bundle exec:*)",
+      "Bash(jekyll build:*)",
+      "Bash(cat _sass/*.scss)",
+      "Bash(do echo:*)",
+      "Read(//Users/stclab/Desktop/project/DooDoo3804.github.io/**)",
+      "Bash(echo \"1. Line 329-331: [data-theme=\"\"dark\"\"] .category-filter border-bottom-color\")",
+      "Bash(echo \"2. Lines 754-758: [data-theme=\"\"dark\"\"] .series-nav\")",
+      "Bash(echo \"3. Lines 760-762: [data-theme=\"\"dark\"\"] .series-nav-title\")",
+      "Bash(echo \"4. Lines 764-766: [data-theme=\"\"dark\"\"] .series-nav-title .fa\")",
+      "Bash(echo \"5. Lines 781-783: [data-theme=\"\"dark\"\"] .series-item a:hover\")",
+      "Bash(echo \"   Dark override used same var\\(--border-light\\) -> REDUNDANT OK\")",
+      "Bash(echo \"   Dark override used same vars -> REDUNDANT OK\")",
+      "Bash(echo \"   Light: color: var\\(--text-primary\\) -> auto-resolves -> REDUNDANT OK\")",
+      "Bash(echo \"   Light: color: var\\(--accent-primary\\) -> auto-resolves -> REDUNDANT OK\")",
+      "Bash(echo \"   Already defined in _cards.scss -> REDUNDANT DUPLICATE OK\")",
+      "Skill(keybindings-help)",
+      "Bash(gh auth:*)"
     ]
   }
 }

@@ -54,7 +54,7 @@
     </nav>
 
     <script>
-        // Drop Bootstarp low-performance Navbar
+        // Drop Bootstrap low-performance Navbar
         // Use customize navbar with high-quality material design animation
         // in high-perf jank-free CSS3 implementation
         var $body = document.body;
@@ -64,24 +64,23 @@
 
         var __HuxNav__ = {
             close: function () {
-                $navbar.className = " ";
+                $navbar.classList.remove('in');
                 // wait until animation end.
                 setTimeout(function () {
-                    // prevent frequently toggle
-                    if ($navbar.className.indexOf('in') < 0) {
+                    if (!$navbar.classList.contains('in')) {
                         $collapse.style.height = "0px"
                     }
                 }, 400)
             },
             open: function () {
                 $collapse.style.height = "auto"
-                $navbar.className += " in";
+                $navbar.classList.add('in');
             }
         }
 
         // Bind Event
         $toggle.addEventListener('click', function (e) {
-            if ($navbar.className.indexOf('in') > 0) {
+            if ($navbar.classList.contains('in')) {
                 __HuxNav__.close()
             } else {
                 __HuxNav__.open()
@@ -101,7 +100,7 @@
          */
         document.addEventListener('click', function (e) {
             if (e.target == $toggle) return;
-            if (e.target.className == 'icon-bar') return;
+            if (e.target.classList.contains('icon-bar')) return;
             __HuxNav__.close();
         })
     </script>

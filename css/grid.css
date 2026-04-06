@@ -1,0 +1,370 @@
+/*! grid.css — Minimal Bootstrap 3 replacement for DooDoo Blog
+ *  Drop-in classes extracted from Bootstrap 3.4.1
+ *  Breakpoints: xs(<768) sm(768+) md(992+) lg(1200+)
+ *  ~4KB minified — replaces 117KB bootstrap.min.css
+ */
+
+/* ========================================
+   1. Box Model Reset
+   ======================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   2. Container
+   ======================================== */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px)  { .container { width: 750px;  } }
+@media (min-width: 992px)  { .container { width: 970px;  } }
+@media (min-width: 1200px) { .container { width: 1170px; } }
+
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* ========================================
+   3. Grid — Row & Columns
+   ======================================== */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* shared column base */
+[class*="col-"] {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* xs columns (default — no media query) */
+.col-xs-12 { width: 100%; }
+
+/* sm columns */
+@media (min-width: 768px) {
+  .col-sm-12 { width: 100%; }
+}
+
+/* md columns */
+@media (min-width: 992px) {
+  .col-md-3  { width: 25%;       }
+  .col-md-4  { width: 33.33333%; }
+  .col-md-8  { width: 66.66667%; }
+  .col-md-10 { width: 83.33333%; }
+
+  .col-md-offset-0 { margin-left: 0; }
+  .col-md-offset-1 { margin-left: 8.33333%; }
+}
+
+/* lg columns */
+@media (min-width: 1200px) {
+  .col-lg-2  { width: 16.66667%; }
+  .col-lg-3  { width: 25%;       }
+  .col-lg-8  { width: 66.66667%; }
+  .col-lg-9  { width: 75%;       }
+
+  .col-lg-offset-0 { margin-left: 0; }
+  .col-lg-offset-1 { margin-left: 8.33333%; }
+  .col-lg-offset-2 { margin-left: 16.66667%; }
+}
+
+/* ========================================
+   4. Navbar
+   ======================================== */
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0;
+}
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+.navbar-header {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .navbar-header {
+    float: left;
+  }
+}
+.navbar-brand {
+  display: inline-block;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+  text-decoration: none;
+}
+.navbar-toggle {
+  display: none;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .navbar-toggle {
+    display: block;
+  }
+}
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #fff;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+/* Navbar collapse: visible on desktop, collapsed on mobile */
+.navbar-collapse {
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    overflow: visible;
+  }
+}
+
+/* Nav list */
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav > li {
+  display: inline-block;
+}
+.nav > li > a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+.navbar-nav {
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+}
+.navbar-right {
+  float: right !important;
+}
+@media (max-width: 767px) {
+  .navbar-right {
+    float: none !important;
+  }
+  .navbar-nav > li {
+    display: block;
+  }
+}
+
+/* ========================================
+   5. Visibility Utilities
+   ======================================== */
+.visible-lg-block,
+.visible-xs,
+.visible-sm,
+.visible-md {
+  display: none !important;
+}
+@media (min-width: 1200px) {
+  .visible-lg-block { display: block !important; }
+}
+@media (max-width: 767px) {
+  .visible-xs { display: block !important; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm { display: block !important; }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .visible-md { display: block !important; }
+}
+
+.hidden-xs,
+.hidden-sm {
+  /* visible by default */
+}
+@media (max-width: 767px) {
+  .hidden-xs { display: none !important; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm { display: none !important; }
+}
+
+/* ========================================
+   6. Pager
+   ======================================== */
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  list-style: none;
+  text-align: center;
+}
+.pager::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.pager li {
+  display: inline;
+}
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  text-decoration: none;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+/* ========================================
+   7. Table
+   ======================================== */
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td {
+  padding: 8px;
+  line-height: 1.42857;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+@media (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+}
+
+/* ========================================
+   8. Responsive Embed
+   ======================================== */
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+
+/* ========================================
+   9. Screen Reader Only
+   ======================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   10. Typography & Utility Classes
+   ======================================== */
+.text-center { text-align: center; }
+.text-muted  { color: #777; }
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* ========================================
+   11. Display Utility
+   ======================================== */
+.d-none { display: none !important; }

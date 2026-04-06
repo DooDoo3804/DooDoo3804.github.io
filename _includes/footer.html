@@ -37,13 +37,7 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}" defer></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}" defer></script>
-
-<!-- Custom Theme JavaScript -->
+<!-- Custom Theme JavaScript (vanilla JS — no jQuery/Bootstrap dependency) -->
 <script src="{{ "/js/hux-blog.min.js" | prepend: site.baseurl }}" defer></script>
 
 <!-- Simple Jekyll Search -->
@@ -90,7 +84,7 @@
 
 
 {% if page.plchart %}
-<!-- jquery.tagcloud.js -->
+<!-- Chart resize handler -->
 <script>
     // https://stackoverflow.com/questions/9975810/make-iframe-automatically-adjust-height-according-to-the-contents-without-using
     function resizeIframe(obj) {
@@ -98,12 +92,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        var $chart = document.querySelector("#chart");
-        $chart.onload = function () {
-            resizeIframe($chart)
-        }
-        window.addEventListener("resize", () => {
-            resizeIframe($chart)
+        var chartEl = document.querySelector("#chart");
+        chartEl.onload = function () {
+            resizeIframe(chartEl);
+        };
+        window.addEventListener("resize", function() {
+            resizeIframe(chartEl);
         });
     });
 </script>
@@ -209,7 +203,7 @@
         setLang(lang)
     }
 
-    // init — deferred so jQuery is available (loaded with defer)
+    // init — deferred so DOM is available (loaded with defer)
     document.addEventListener('DOMContentLoaded', function () { _render(); });
 </script>
 {% endif %}
@@ -234,68 +228,70 @@
         return safe.replace(re, '<mark class="search-highlight">$1</mark>');
     }
 
-    // Track result count for keyboard nav
-    var _searchResultCount = 0;
-    var _searchActiveIdx = -1;
-
-    var searchInstance = SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-results'),
-        json: '/search.json',
-        searchResultTemplate: '<div class="search-result-item" data-url="{url}"><a href="{url}"><h2 class="post-title">{title}</h2><p class="search-excerpt">{excerpt}</p><div class="search-result-meta"><span class="search-date">{date}</span><span class="search-tags">{tags}</span></div></a></div>',
-        noResultsText: '',
-        limit: 50,
-        fuzzy: false,
-        templateMiddleware: function (prop, value, template) {
-            var query = document.getElementById('search-input').value;
-            if (prop === 'subtitle' || prop === 'title') {
-                return highlightMatch(htmlDecode(value), query);
-            }
-            if (prop === 'excerpt') {
-                return highlightMatch(htmlDecode(value), query);
-            }
-            if (prop === 'tags') {
-                if (!value || !value.trim()) return '';
-                var tags = value.split(',').map(function(t) {
-                    return '<span class="search-tag-pill">' + t.trim() + '</span>';
-                }).join('');
-                return tags;
-            }
-        }
-    });
-
     document.addEventListener('DOMContentLoaded', function () {
-        var $searchPage = $('.search-page');
-        var $searchOpen = $('.search-icon');
-        var $searchClose = $('.search-icon-close');
-        var $searchInput = $('#search-input');
-        var $body = $('body');
-        var $resultCount = $('#search-result-count');
-        var $emptyState = $('#search-empty-state');
-        var $resultsContainer = $('#search-results');
+        // Track result count for keyboard nav
+        var _searchResultCount = 0;
+        var _searchActiveIdx = -1;
+
+        var searchInstance = SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('search-results'),
+            json: '/search.json',
+            searchResultTemplate: '<div class="search-result-item" data-url="{url}"><a href="{url}"><h2 class="post-title">{title}</h2><p class="search-excerpt">{excerpt}</p><div class="search-result-meta"><span class="search-date">{date}</span><span class="search-tags">{tags}</span></div></a></div>',
+            noResultsText: '',
+            limit: 50,
+            fuzzy: false,
+            templateMiddleware: function (prop, value, template) {
+                var query = document.getElementById('search-input').value;
+                if (prop === 'subtitle' || prop === 'title') {
+                    return highlightMatch(htmlDecode(value), query);
+                }
+                if (prop === 'excerpt') {
+                    return highlightMatch(htmlDecode(value), query);
+                }
+                if (prop === 'tags') {
+                    if (!value || !value.trim()) return '';
+                    var tags = value.split(',').map(function(t) {
+                        return '<span class="search-tag-pill">' + t.trim() + '</span>';
+                    }).join('');
+                    return tags;
+                }
+            }
+        });
+
+        var searchPage = document.querySelector('.search-page');
+        var searchOpenBtns = document.querySelectorAll('.search-icon');
+        var searchCloseBtn = document.querySelector('.search-icon-close');
+        var searchInput = document.getElementById('search-input');
+        var bodyEl = document.body;
+        var resultCount = document.getElementById('search-result-count');
+        var emptyState = document.getElementById('search-empty-state');
+        var resultsContainer = document.getElementById('search-results');
 
         // Update result count and empty state
         function updateSearchMeta() {
-            var query = $searchInput.val().trim();
-            var items = $resultsContainer.find('.search-result-item');
+            var query = (searchInput.value || '').trim();
+            var items = resultsContainer.querySelectorAll('.search-result-item');
             _searchResultCount = items.length;
             _searchActiveIdx = -1;
 
             // Add staggered animation
-            items.each(function(i) {
-                var el = $(this);
-                el.css({'animation-delay': (i * 0.04) + 's'});
-                el.addClass('search-result-animate');
+            items.forEach(function(el, i) {
+                el.style.animationDelay = (i * 0.04) + 's';
+                el.classList.add('search-result-animate');
             });
 
             if (query.length === 0) {
-                $resultCount.text('').hide();
-                $emptyState.hide();
+                resultCount.textContent = '';
+                resultCount.style.display = 'none';
+                emptyState.style.display = 'none';
             } else if (_searchResultCount > 0) {
-                $resultCount.text(_searchResultCount + ' result' + (_searchResultCount !== 1 ? 's' : '') + ' found').show();
-                $emptyState.hide();
+                resultCount.textContent = _searchResultCount + ' result' + (_searchResultCount !== 1 ? 's' : '') + ' found';
+                resultCount.style.display = '';
+                emptyState.style.display = 'none';
             } else {
-                $resultCount.text('').hide();
+                resultCount.textContent = '';
+                resultCount.style.display = 'none';
                 var hint;
                 var safeQuery = query.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
                 if (query.length <= 2) {
@@ -303,35 +299,37 @@
                 } else {
                     hint = '"' + safeQuery + '" \u2014 check spelling or try different keywords';
                 }
-                $emptyState.find('.search-empty-text').html(
-                    '<strong>No results found</strong><br><span style="font-size:14px;opacity:0.7">' + hint + '</span>'
-                );
-                $emptyState.show();
+                var emptyText = emptyState.querySelector('.search-empty-text');
+                if (emptyText) {
+                    emptyText.innerHTML =
+                        '<strong>No results found</strong><br><span style="font-size:14px;opacity:0.7">' + hint + '</span>';
+                }
+                emptyState.style.display = '';
             }
         }
 
         // Debounced search meta update
         var _searchMetaTimer;
-        $searchInput.on('input', function() {
-            clearTimeout(_searchMetaTimer);
-            _searchMetaTimer = setTimeout(updateSearchMeta, 150);
-        });
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                clearTimeout(_searchMetaTimer);
+                _searchMetaTimer = setTimeout(updateSearchMeta, 150);
+            });
+        }
 
         // Keyboard navigation for results
         function setActiveResult(idx) {
-            var items = $resultsContainer.find('.search-result-item');
-            items.removeClass('search-result-active');
+            var items = resultsContainer.querySelectorAll('.search-result-item');
+            items.forEach(function(el) { el.classList.remove('search-result-active'); });
             if (idx >= 0 && idx < items.length) {
                 _searchActiveIdx = idx;
-                var active = items.eq(idx);
-                active.addClass('search-result-active');
+                var active = items[idx];
+                active.classList.add('search-result-active');
                 // Scroll into view
-                var container = $resultsContainer[0];
-                var el = active[0];
-                if (el.offsetTop < container.scrollTop) {
-                    container.scrollTop = el.offsetTop - 8;
-                } else if (el.offsetTop + el.offsetHeight > container.scrollTop + container.clientHeight) {
-                    container.scrollTop = el.offsetTop + el.offsetHeight - container.clientHeight + 8;
+                if (active.offsetTop < resultsContainer.scrollTop) {
+                    resultsContainer.scrollTop = active.offsetTop - 8;
+                } else if (active.offsetTop + active.offsetHeight > resultsContainer.scrollTop + resultsContainer.clientHeight) {
+                    resultsContainer.scrollTop = active.offsetTop + active.offsetHeight - resultsContainer.clientHeight + 8;
                 }
             } else {
                 _searchActiveIdx = -1;
@@ -339,50 +337,60 @@
         }
 
         function openSearch() {
-            if ($searchPage.hasClass('search-active')) return;
-            $searchPage.addClass('search-active');
-            var prevClasses = $body.attr('class') || '';
-            $body.data('prevClasses', prevClasses);
+            if (!searchPage || searchPage.classList.contains('search-active')) return;
+            searchPage.classList.add('search-active');
             setTimeout(function () {
-                $body.addClass('no-scroll');
+                bodyEl.classList.add('no-scroll');
             }, 400);
-            $searchClose.off('click.search').on('click.search', function (e) {
+            if (searchInput) searchInput.focus();
+            _searchActiveIdx = -1;
+        }
+
+        function closeSearch() {
+            if (!searchPage) return;
+            searchPage.classList.remove('search-active');
+            bodyEl.classList.remove('no-scroll');
+            if (searchInput) searchInput.value = '';
+            resultsContainer.innerHTML = '';
+            resultCount.textContent = '';
+            resultCount.style.display = 'none';
+            emptyState.style.display = 'none';
+            _searchActiveIdx = -1;
+        }
+
+        searchOpenBtns.forEach(function(btn) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
-                closeSearch(prevClasses);
+                openSearch();
             });
-            $searchInput.focus();
-            _searchActiveIdx = -1;
-        }
-
-        function closeSearch(prevClasses) {
-            $searchPage.removeClass('search-active');
-            $body.attr('class', prevClasses || '');
-            $searchInput.val('');
-            $resultsContainer.html('');
-            $resultCount.text('').hide();
-            $emptyState.hide();
-            _searchActiveIdx = -1;
-        }
-
-        $searchOpen.on('click', function (e) {
-            e.preventDefault();
-            openSearch();
         });
 
-        // Clear search button in empty state
-        $emptyState.on('click', '.search-clear-btn', function (e) {
-            e.preventDefault();
-            $searchInput.val('').focus();
-            $resultsContainer.html('');
-            $resultCount.text('').hide();
-            $emptyState.hide();
-        });
+        if (searchCloseBtn) {
+            searchCloseBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                closeSearch();
+            });
+        }
 
-        // Keyboard: / to open, Esc to close, ↑↓ to navigate, Enter to open
-        $(document).on('keydown', function (e) {
+        // Clear search button in empty state (delegated)
+        if (emptyState) {
+            emptyState.addEventListener('click', function (e) {
+                var clearBtn = e.target.closest('.search-clear-btn');
+                if (!clearBtn) return;
+                e.preventDefault();
+                if (searchInput) { searchInput.value = ''; searchInput.focus(); }
+                resultsContainer.innerHTML = '';
+                resultCount.textContent = '';
+                resultCount.style.display = 'none';
+                emptyState.style.display = 'none';
+            });
+        }
+
+        // Keyboard: / to open, Esc to close, arrow keys to navigate, Enter to open
+        document.addEventListener('keydown', function (e) {
             var tag = (e.target.tagName || '').toLowerCase();
             var isInput = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;
-            var searchActive = $searchPage.hasClass('search-active');
+            var searchActive = searchPage && searchPage.classList.contains('search-active');
 
             if (e.key === '/' && !isInput) {
                 e.preventDefault();
@@ -391,13 +399,13 @@
             }
             if (e.key === 'Escape' && searchActive) {
                 e.preventDefault();
-                closeSearch($body.data('prevClasses'));
+                closeSearch();
                 return;
             }
 
             // Arrow nav only when search is open
             if (!searchActive) return;
-            var items = $resultsContainer.find('.search-result-item');
+            var items = resultsContainer.querySelectorAll('.search-result-item');
             if (items.length === 0) return;
 
             if (e.key === 'ArrowDown') {
@@ -412,7 +420,7 @@
                 setActiveResult(prev);
             } else if (e.key === 'Enter' && _searchActiveIdx >= 0) {
                 e.preventDefault();
-                var url = items.eq(_searchActiveIdx).attr('data-url');
+                var url = items[_searchActiveIdx].getAttribute('data-url');
                 if (url) window.location.href = url;
             }
         });

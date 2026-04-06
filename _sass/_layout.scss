@@ -1,0 +1,261 @@
+/* ========================================
+   INTRO HEADER - Gradient Support
+   ======================================== */
+.intro-header {
+    background-color: var(--bg-body);
+}
+
+.intro-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat;
+    opacity: 0.025;
+    pointer-events: none;
+}
+
+/* ========================================
+   NAVBAR - Glassmorphism
+   ======================================== */
+.navbar-custom.is-fixed {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+
+[data-theme="dark"] .navbar-custom.is-fixed {
+    background: rgba(13, 17, 23, 0.92) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ========================================
+   POST CARDS - Gradient Accent Bar
+   ======================================== */
+.post-card {
+    position: relative;
+}
+
+/* Post card accent bar removed — Sprint 15 M5 */
+
+/* ========================================
+   CODE - Monospace Font
+   ======================================== */
+code, kbd, pre, samp, .code-lang-label {
+    font-family: var(--font-mono) !important;
+}
+
+/* ========================================
+   FOOTER UPGRADE
+   ======================================== */
+.site-footer {
+    border-top: 1px solid var(--border-light);
+    padding: 40px 0 50px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-tertiary);
+    font-size: 18px;
+    transition: color 0.2s, background-color 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.footer-attribution {
+    font-size: 13px;
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.footer-attribution a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.footer-attribution a:hover {
+    text-decoration: underline;
+}
+
+/* Footer dark mode */
+[data-theme="dark"] .site-footer {
+    border-top-color: var(--border-light);
+    background: var(--bg-surface);
+}
+
+[data-theme="dark"] .footer-social-link {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footer-social-link:hover {
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+}
+
+[data-theme="dark"] .footer-attribution {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footer-attribution a {
+    color: var(--accent-primary);
+}
+
+/* ========================================
+   BREADCRUMB NAVIGATION
+   ======================================== */
+.post-breadcrumb {
+    margin-bottom: var(--space-6);
+    padding: 10px var(--space-4);
+    background: rgba(var(--accent-color-raw), 0.04);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.post-breadcrumb ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.post-breadcrumb li {
+    display: flex;
+    align-items: center;
+    color: var(--text-tertiary);
+    line-height: 1.4;
+}
+
+.post-breadcrumb li:not(:last-child)::after {
+    content: "\203A";
+    margin: 0 10px;
+    color: var(--text-muted);
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.post-breadcrumb a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.post-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.post-breadcrumb li:last-child {
+    min-width: 0;
+}
+
+.post-breadcrumb li:last-child strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+    display: inline-block;
+}
+
+@media (max-width: 480px) {
+    .post-breadcrumb li:last-child strong {
+        max-width: 180px;
+    }
+}
+
+[data-theme="dark"] .post-breadcrumb {
+    background: rgba(var(--accent-color-raw), 0.06);
+}
+
+[data-theme="dark"] .post-breadcrumb li {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-breadcrumb li:not(:last-child)::after {
+    color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .post-breadcrumb a {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .post-breadcrumb li:last-child strong {
+    color: var(--text-primary);
+}
+
+/* ========================================
+   TAGS PAGE - Divider Polish
+   ======================================== */
+.tags-group + .tags-group {
+    border-top: none;
+}
+
+.tags-posts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tags-group {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   LAST UPDATED SIGNAL
+   ======================================== */
+.author-hero-updated {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 10px 0 0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.author-hero-updated i {
+    font-size: 11px;
+    margin-right: 4px;
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .author-hero-updated {
+    color: var(--text-tertiary);
+}
+
+/* ========================================
+   TAGS PAGE SUMMARY
+   ======================================== */
+.tags-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: -4px 0 16px;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .tags-summary {
+    color: var(--text-tertiary);
+}

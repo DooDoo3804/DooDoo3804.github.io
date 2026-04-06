@@ -1,0 +1,91 @@
+/* --- Typography --- */
+
+body {
+    font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.post-container {
+    line-height: 1.7;
+    font-size: 16.5px;
+}
+
+.post-container p {
+    margin-bottom: 1.5em;
+}
+
+.post-container h1, .post-container h2, .post-container h3, .post-container h4 {
+    letter-spacing: -0.02em;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+.post-container h1 { font-size: 2rem; }
+.post-container h2 { font-size: 1.625rem; }
+.post-container h3 { font-size: 1.375rem; }
+.post-container h4 { font-size: 1.125rem; }
+
+/* --- Blockquote --- */
+.post-container blockquote {
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.04);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 20px;
+    margin: 1.5em 0;
+    color: var(--text-muted);
+}
+
+.post-container blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .post-container blockquote {
+    background: rgba(var(--accent-color-raw), 0.06);
+    border-left-color: var(--accent-primary);
+    color: var(--text-secondary);
+}
+
+/* --- Smooth Scroll --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Post Content - Tables --- */
+.post-container table {
+    width: 100%;
+    margin: 1.5em 0;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.post-container table th {
+    background: rgba(var(--accent-color-raw), 0.06);
+    color: var(--text-primary);
+    font-weight: 700;
+    padding: 10px 14px;
+    border: 1px solid var(--border-subtle);
+    text-align: left;
+}
+
+.post-container table td {
+    padding: 9px 14px;
+    border: 1px solid var(--border-subtle);
+    vertical-align: top;
+}
+
+.post-container table tr:nth-child(even) td {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+[data-theme="dark"] .post-container table th {
+    background: rgba(var(--accent-color-raw), 0.08);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .post-container table td {
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .post-container table tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02);
+}

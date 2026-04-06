@@ -11,25 +11,24 @@
 // A namespace can prevent potential name conflicts and mis-deletion.
 const CACHE_NAMESPACE = 'main-'
 
-const CACHE_VERSION = 'v13';
+const CACHE_VERSION = 'v15';
 const CACHE = CACHE_NAMESPACE + 'precache-' + CACHE_VERSION;
 const PRECACHE_LIST = [
   "./",
   "./offline.html",
-  "./js/jquery.min.js",
-  "./js/bootstrap.min.js",
   "./js/hux-blog.min.js",
   "./js/snackbar.js",
   "./js/custom.js",
   "./css/hux-blog.min.css",
-  "./css/bootstrap.min.css",
-  "./css/custom.css"
+  "./css/grid.css",
+  "./css/main.css"
 ]
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "cdnjs.cloudflare.com"
 ]
-const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime', 'main-precache-then-runtime']
+// Old cache names are cleaned up automatically in the activate handler
+// by matching any cache starting with CACHE_NAMESPACE that isn't current.
 
 // Image extensions for cache-first strategy
 const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|ico)(\?.*)?$/i;
@@ -117,14 +116,16 @@ self.addEventListener('install', e => {
  *  waitUntil(): activating ====> activated
  */
 self.addEventListener('activate', event => {
-  // delete old deprecated caches.
-  caches.keys().then(cacheNames => Promise.all(
-    cacheNames
-      .filter(cacheName => DEPRECATED_CACHES.includes(cacheName))
-      .map(cacheName => caches.delete(cacheName))
-  ))
-  console.log('service worker activated.')
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames
+        .filter(cacheName => cacheName.startsWith(CACHE_NAMESPACE) && cacheName !== CACHE)
+        .map(cacheName => caches.delete(cacheName))
+    )).then(() => {
+      console.log('service worker activated.');
+      return self.clients.claim();
+    })
+  );
 });
 
 

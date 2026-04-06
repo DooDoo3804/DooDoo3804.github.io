@@ -144,6 +144,12 @@
         });
     }
 
+    /* --- Screen Reader Announcement --- */
+    function announceToSR(msg) {
+        var el = document.getElementById("sr-status");
+        if (el) { el.textContent = msg; setTimeout(function(){ el.textContent = ""; }, 2000); }
+    }
+
     /* --- Enhanced Copy Button (replaces footer.html version) --- */
     function fallbackCopy(text, onSuccess, onFail) {
         var ta = document.createElement("textarea");
@@ -163,6 +169,7 @@
             btn.innerHTML = "\u2713 Copied!";
             btn.classList.add('copy-btn--success');
             btn.setAttribute('aria-label', 'Copied!');
+            announceToSR("클립보드에 복사됐습니다");
             setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, 1500);
         }
         function onFail() {
@@ -250,6 +257,7 @@
             function onSuccess() {
                 btn.innerHTML = '<i class="fa fa-check"></i> Copied!';
                 btn.classList.add('share-btn--copied');
+                announceToSR("클립보드에 복사됐습니다");
                 setTimeout(function() {
                     btn.innerHTML = origHTML;
                     btn.classList.remove('share-btn--copied');
@@ -280,6 +288,7 @@
                 function onSuccess() {
                     icon.className = 'fa fa-check';
                     btn.classList.add('mobile-share-btn--copied');
+                    announceToSR("클립보드에 복사됐습니다");
                     setTimeout(function() {
                         icon.className = 'fa fa-link';
                         btn.classList.remove('mobile-share-btn--copied');

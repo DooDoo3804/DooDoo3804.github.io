@@ -1,0 +1,180 @@
+/* ========================================
+   POST SHARE BUTTONS
+   ======================================== */
+.post-share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    flex-wrap: wrap;
+}
+
+.post-share-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-right: 4px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-2xl);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-surface);
+    color: var(--text-tertiary);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.share-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.share-btn--copy:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    border-color: var(--accent-primary);
+}
+
+.share-btn--copied {
+    background: var(--color-success) !important;
+    color: #fff !important;
+    border-color: var(--color-success) !important;
+}
+
+.share-btn--twitter:hover {
+    background: #0f1419;
+    color: #fff;
+    border-color: #0f1419;
+}
+
+.share-btn--linkedin:hover {
+    background: #0a66c2;
+    color: #fff;
+    border-color: #0a66c2;
+}
+
+[data-theme="dark"] .post-share {
+    border-top-color: var(--border-light);
+}
+
+[data-theme="dark"] .share-btn {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .share-btn:hover {
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .share-btn--copy:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: var(--text-on-accent);
+}
+
+[data-theme="dark"] .share-btn--twitter:hover {
+    background: var(--text-primary);
+    color: #0f1419;
+    border-color: var(--text-primary);
+}
+
+[data-theme="dark"] .share-btn--linkedin:hover {
+    background: #378fe9;
+    border-color: #378fe9;
+}
+
+/* ========================================
+   MOBILE FLOATING SHARE BAR
+   ======================================== */
+.mobile-share-bar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-share-bar {
+        display: flex;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: var(--radius-full);
+        padding: 8px 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-share-bar.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-share-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--text-primary);
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .mobile-share-btn:hover,
+    .mobile-share-btn:active {
+        background: var(--accent-primary);
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .mobile-share-btn--copied {
+        background: var(--color-success) !important;
+        color: #fff !important;
+    }
+
+    [data-theme="dark"] .mobile-share-bar {
+        background: rgba(22, 27, 34, 0.95);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] .mobile-share-btn {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-base);
+    }
+
+    [data-theme="dark"] .mobile-share-btn:hover,
+    [data-theme="dark"] .mobile-share-btn:active {
+        background: var(--accent-primary);
+        color: var(--text-on-accent);
+    }
+}

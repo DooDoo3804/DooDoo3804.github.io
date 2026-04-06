@@ -1,0 +1,130 @@
+/* ========================================
+   Print Stylesheet
+   ======================================== */
+@media print {
+    /* Hide non-content elements */
+    .navbar,
+    .navbar-default,
+    .sidebar-container,
+    .side-catalog,
+    .catalog-container,
+    #back-to-top,
+    .mobile-toc-panel,
+    .mobile-toc-toggle,
+    .share-section,
+    .mobile-share-bar,
+    .share-btn,
+    .sns-links,
+    .giscus-wrapper,
+    .comments-section,
+    .footer-col,
+    footer .container,
+    .featured-tags,
+    .search-overlay,
+    .copy-btn,
+    .code-lang-label,
+    .lightbox-overlay,
+    .category-filter,
+    .series-nav,
+    .related-posts,
+    #disqus_thread {
+        display: none !important;
+    }
+
+    /* Reset colors for print */
+    body,
+    .post-container,
+    .post-container p,
+    .post-container li,
+    .post-container td,
+    .post-container th,
+    .post-container h1,
+    .post-container h2,
+    .post-container h3,
+    .post-container h4,
+    .post-container blockquote {
+        color: #000 !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* Font sizing for print */
+    body {
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+
+    .post-container {
+        font-size: 11pt;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .post-container h1 { font-size: 20pt; }
+    .post-container h2 { font-size: 16pt; }
+    .post-container h3 { font-size: 13pt; }
+
+    /* Code blocks: border instead of background */
+    .post-container pre,
+    .post-container code {
+        background: transparent !important;
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+        font-size: 9pt;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .post-container code {
+        border: none !important;
+        padding: 0 2px;
+    }
+
+    /* Show URLs after links */
+    .post-container a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #555;
+        word-break: break-all;
+    }
+
+    /* Don't show URL for anchor links or javascript */
+    .post-container a[href^="#"]::after,
+    .post-container a[href^="javascript"]::after {
+        content: "";
+    }
+
+    /* Page break control */
+    h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .post-container img {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        max-width: 100% !important;
+    }
+
+    .post-container table {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .post-container blockquote {
+        border-left: 3px solid #000 !important;
+        padding-left: 12px;
+    }
+
+    /* Full width for main content */
+    .container,
+    .row,
+    .col-lg-8,
+    .col-lg-offset-2 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}

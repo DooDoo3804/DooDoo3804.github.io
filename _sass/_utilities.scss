@@ -1,0 +1,279 @@
+/* ========================================
+   FOCUS VISIBLE
+   ======================================== */
+:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+
+/* ========================================
+   MOBILE COPY BUTTON VISIBILITY
+   ======================================== */
+@media (hover: none) {
+    pre .copy-btn { opacity: 1; }
+}
+
+/* ========================================
+   TOUCH TARGETS
+   ======================================== */
+.category-btn { min-height: 44px; padding: 10px 18px; }
+.post-share a, .post-share button { min-height: 44px; min-width: 44px; }
+
+/* ========================================
+   OVERFLOW FIXES
+   ======================================== */
+pre { overflow-x: auto; }
+.post-container table { display: block; overflow-x: auto; max-width: 100%; }
+.post-container { overflow-wrap: break-word; word-break: break-word; }
+
+/* ========================================
+   DARK MODE TRANSITION (FOUC-safe)
+   Targeted selectors instead of wildcard * to avoid
+   forcing transitions on every DOM node (perf)
+   ======================================== */
+.transitions-enabled body,
+.transitions-enabled .navbar-custom,
+.transitions-enabled .navbar-custom .nav li a,
+.transitions-enabled .intro-header,
+.transitions-enabled .post-container,
+.transitions-enabled .post-card,
+.transitions-enabled .post-card-body,
+.transitions-enabled .post-card-tags span,
+.transitions-enabled .post-card-meta,
+.transitions-enabled .post-card-excerpt,
+.transitions-enabled .post-card .post-title,
+.transitions-enabled .post-card .post-subtitle,
+.transitions-enabled .post-breadcrumb,
+.transitions-enabled .post-breadcrumb a,
+.transitions-enabled .post-breadcrumb li,
+.transitions-enabled .series-nav,
+.transitions-enabled .related-post-card,
+.transitions-enabled .filter-no-results-card,
+.transitions-enabled .start-here,
+.transitions-enabled .start-here-card,
+.transitions-enabled .featured-post-hero,
+.transitions-enabled .category-btn,
+.transitions-enabled .post-share .share-btn,
+.transitions-enabled footer,
+.transitions-enabled .side-catalog,
+.transitions-enabled .mobile-share-bar,
+.transitions-enabled .code-lang-label,
+.transitions-enabled .copy-btn,
+.transitions-enabled .author-hero,
+.transitions-enabled .author-hero-mesh,
+.transitions-enabled .search-page,
+.transitions-enabled .archive-container,
+.transitions-enabled pre,
+.transitions-enabled code,
+.transitions-enabled blockquote,
+.transitions-enabled table,
+.transitions-enabled th,
+.transitions-enabled td,
+.transitions-enabled hr,
+.transitions-enabled .contact-link,
+.transitions-enabled .dark-mode-toggle,
+.transitions-enabled .post-card-thumb {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* ========================================
+   EMPTY STATE CARD
+   ======================================== */
+.filter-no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 15px;
+    animation: emptyFadeIn 0.4s ease;
+}
+
+.filter-no-results i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--accent-primary);
+    opacity: 0.5;
+}
+
+.filter-no-results-hint {
+    font-size: 13px;
+    color: #bbb;
+    margin-top: 8px;
+}
+
+.filter-no-results-card {
+    display: inline-block;
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    max-width: 400px;
+}
+
+.filter-no-results-card h4 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.filter-no-results-reset {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 8px 24px;
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-2xl);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.filter-no-results-reset:hover {
+    background: #006b85;
+    color: #fff;
+    text-decoration: none;
+}
+
+@keyframes emptyFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+[data-theme="dark"] .filter-no-results-card {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .filter-no-results-card h4 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .filter-no-results i {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .filter-no-results-reset {
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+}
+
+[data-theme="dark"] .filter-no-results-reset:hover {
+    background: #79b8ff;
+}
+
+/* ========================================
+   MOBILE BREAKPOINTS
+   ======================================== */
+@media (max-width: 768px) {
+    .about-hero { padding: 20px 20px; }
+    .about-name { font-size: 24px; }
+    .timeline { padding-left: 20px; }
+    .series-nav { flex-direction: column; }
+    .post-share { flex-wrap: wrap; }
+    .category-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .projects-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 12px; }
+    .projects-card-body { padding: 14px 20px; }
+    .projects-card-icon { padding: 20px 20px 0; }
+    .projects-card-links { padding: 14px 20px 20px; }
+    .featured-post-hero { padding: 32px 24px; }
+    .featured-post-title { font-size: 22px; }
+    .featured-post-excerpt { font-size: 14px; }
+    .featured-post-meta { flex-wrap: wrap; gap: 8px; }
+    .footer-social { gap: 12px; }
+    .footer-social-link { width: 36px; height: 36px; font-size: 16px; }
+    .search-empty-suggestions { flex-direction: column; gap: 8px; }
+    .post-breadcrumb { font-size: 12px; padding: 8px 12px; }
+    .post-breadcrumb li:not(:last-child)::after { margin: 0 6px; }
+    .filter-no-results-card { padding: 32px 24px; }
+    .post-card-body { padding: 16px 20px 20px; }
+}
+
+/* --- Utility Classes --- */
+.spacer-hidden {
+    visibility: hidden;
+}
+
+
+/* --- Subscribe CTA --- */
+.subscribe-cta {
+    text-align: center;
+    margin: 36px 0;
+    padding: 28px 24px;
+    border: 1px dashed var(--border-medium);
+    border-radius: var(--radius-lg);
+    background: rgba(var(--accent-color-raw), 0.03);
+}
+
+.subscribe-cta-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 14px;
+}
+
+.subscribe-cta-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.subscribe-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    min-height: 44px;
+    border-radius: var(--radius-2xl);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-surface);
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.subscribe-cta-btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.subscribe-cta-rss:hover {
+    background: #f26522;
+    color: #fff;
+    border-color: #f26522;
+}
+
+.subscribe-cta-github:hover {
+    background: #24292e;
+    color: #fff;
+    border-color: #24292e;
+}
+
+[data-theme="dark"] .subscribe-cta {
+    border-color: var(--border-light);
+    background: rgba(var(--accent-color-raw), 0.05);
+}
+
+[data-theme="dark"] .subscribe-cta-btn {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .subscribe-cta-github:hover {
+    background: var(--text-primary);
+    color: var(--bg-body);
+    border-color: var(--text-primary);
+}
+
+/* --- Accessibility: Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

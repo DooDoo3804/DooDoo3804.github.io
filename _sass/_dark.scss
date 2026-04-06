@@ -1,0 +1,277 @@
+/* ========================================
+   DARK MODE — Global overrides
+   ======================================== */
+/* Dark mode token overrides are consolidated in :root [data-theme="dark"] block in _variables.scss */
+
+/* Smooth dark mode transitions for major components */
+.transitions-enabled .post-card,
+.transitions-enabled .post-container pre,
+.transitions-enabled .post-container code,
+.transitions-enabled .post-container blockquote,
+.transitions-enabled .related-post-card,
+.transitions-enabled .series-nav,
+.transitions-enabled .side-catalog,
+.transitions-enabled .mobile-toc-panel,
+.transitions-enabled .mobile-toc-toggle,
+.transitions-enabled .navbar-custom,
+.transitions-enabled .category-btn,
+.transitions-enabled #back-to-top,
+.transitions-enabled footer {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-body);
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .navbar-custom {
+    background: rgba(13, 17, 23, 0.95);
+    border-bottom: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .navbar-custom .navbar-brand,
+[data-theme="dark"] .navbar-custom .nav a {
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .navbar-custom.is-fixed {
+    background: rgba(13, 17, 23, 0.97);
+}
+
+[data-theme="dark"] footer {
+    background: var(--bg-surface);
+}
+
+[data-theme="dark"] footer .copyright {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-card {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+}
+
+/* REDUNDANT removed: [data-theme="dark"] .post-card:hover
+   — already defined in _cards.scss */
+
+[data-theme="dark"] .post-card .post-subtitle,
+[data-theme="dark"] .post-card-excerpt {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-card-meta {
+    border-top-color: var(--border-light);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-card-tags span {
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.1);
+}
+
+/* REDUNDANT removed: [data-theme="dark"] .post-card-meta .read-time
+   — color: var(--accent-primary) same as light rule */
+
+[data-theme="dark"] .post-card-thumb {
+    border-bottom-color: var(--border-light);
+}
+
+[data-theme="dark"] .post-container {
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .post-container h1,
+[data-theme="dark"] .post-container h2,
+[data-theme="dark"] .post-container h3,
+[data-theme="dark"] .post-container h4 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-container a {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .post-container blockquote {
+    border-left-color: var(--accent-primary);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-container pre {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    border-left-color: var(--border-medium);
+}
+
+[data-theme="dark"] .post-container code {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border: none;
+}
+
+[data-theme="dark"] .post-container pre code {
+    background: transparent;
+}
+
+[data-theme="dark"] .code-lang-label {
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .copy-btn {
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .post-container table th,
+[data-theme="dark"] .post-container table td {
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .post-container table th {
+    background: var(--bg-surface-raised);
+}
+
+[data-theme="dark"] .post-container hr {
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .header-mask {
+    background: rgba(0, 0, 0, 0.65) !important;
+}
+
+[data-theme="dark"] .sidebar-container {
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .sidebar-container h5 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .side-catalog {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .side-catalog a {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .side-catalog a.active {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .pager li > a {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .pager li > a:hover {
+    background: var(--bg-surface-hover);
+}
+
+[data-theme="dark"] .related-posts {
+    border-top-color: var(--border-light);
+}
+
+[data-theme="dark"] .related-post-card {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .related-post-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .related-post-card .rp-title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .related-post-card .rp-excerpt {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .related-post-card .rp-tag {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .post-preview a .post-title,
+[data-theme="dark"] .post-preview a .post-subtitle {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-preview .post-meta {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] hr {
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .intro-header .post-heading h1,
+[data-theme="dark"] .intro-header .post-heading .subheading,
+[data-theme="dark"] .intro-header .site-heading h1,
+[data-theme="dark"] .intro-header .site-heading .subheading {
+    color: #fff;
+}
+
+/* REDUNDANT removed: [data-theme="dark"] #back-to-top
+   — background: var(--accent-primary) same as light rule
+   — box-shadow: var(--shadow-md) same as light rule */
+
+/* REDUNDANT removed: [data-theme="dark"] #back-to-top:hover
+   — background: var(--accent-hover) same as light rule
+   — box-shadow: var(--shadow-lg) same as light rule */
+
+[data-theme="dark"] .error-404-content .error-msg {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .search-page {
+    background: rgba(13, 17, 23, 0.97);
+}
+
+[data-theme="dark"] #search-input {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .search-page .post-title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .search-page .post-subtitle {
+    color: var(--text-secondary);
+}
+
+/* dark mode toggle button in nav */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(20deg) scale(1.15);
+}
+
+.dark-mode-toggle.toggling i {
+    animation: toggleSpin 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes toggleSpin {
+    0%   { transform: rotate(0deg) scale(1); }
+    40%  { transform: rotate(180deg) scale(0.7); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+[data-theme="dark"] .featured-tags .tag-item a {
+    color: var(--text-base);
+}
+
+[data-theme="dark"] .featured-tags .tag-item a:hover {
+    background: rgba(var(--accent-color-raw), 0.1);
+}
