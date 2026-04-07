@@ -110,13 +110,13 @@
 }
 
 .post-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
     border-color: var(--accent-primary);
 }
 
 [data-theme="dark"] .post-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
     border-color: var(--accent-primary);
 }
 
@@ -282,7 +282,7 @@
     margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid var(--border-light);
-    font-size: 12.5px;
+    font-size: 13px;
     color: var(--text-secondary);
 }
 
@@ -393,8 +393,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 36px;
-    height: 36px;
+    min-width: 40px;
+    height: 40px;
     padding: 0 10px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-medium);
@@ -446,12 +446,12 @@
 }
 
 /* Pagination responsive */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .pagination-item a,
     .pagination-item span {
-        min-width: 32px;
-        height: 32px;
-        padding: 0 8px;
-        font-size: 12px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0 12px;
+        font-size: 14px;
     }
 }

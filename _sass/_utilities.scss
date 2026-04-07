@@ -61,13 +61,6 @@
 :focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 
 /* ========================================
-   MOBILE COPY BUTTON VISIBILITY
-   ======================================== */
-@media (hover: none) {
-    pre .copy-btn { opacity: 1; }
-}
-
-/* ========================================
    TOUCH TARGETS
    ======================================== */
 .category-btn { min-height: 44px; padding: 10px 18px; }
