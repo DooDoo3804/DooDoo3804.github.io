@@ -44,7 +44,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.SEOTitle }}">
-    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale" content="{{ page.lang | default: 'ko_KR' }}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -66,7 +66,7 @@
     {% endif %}
     {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
-    <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} | {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
     <!-- JSON-LD Structured Data -->
     {% if page.layout == 'post' %}
@@ -216,8 +216,7 @@
     <!-- Grid CSS (minimal Bootstrap 3 replacement) -->
     <link rel="stylesheet" href="{{ "/css/grid.css" | prepend: site.baseurl }}">
 
-    <!-- Custom CSS (hux-blog base + Jekyll-compiled SCSS) -->
-    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}">
+    <!-- Custom CSS (all styles compiled via Jekyll SASS) -->
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
     <!-- Prevent dark mode flash -->

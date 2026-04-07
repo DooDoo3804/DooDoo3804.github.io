@@ -158,9 +158,26 @@
     box-shadow: var(--shadow-lg);
 }
 
-/* offset for post pages with mobile TOC */
+/* Stack fixed bottom-right buttons on mobile to prevent overlap:
+   Layer 1 (bottom):  mobile share bar — centered, bottom: 24px (in _share.scss)
+   Layer 2:           mobile TOC toggle — right: 20px, bottom: 20px
+   Layer 3 (top):     back-to-top — right: 30px, bottom: 80px (shifted up)
+   On post pages with TOC, shift both TOC & back-to-top above share bar. */
 body.has-mobile-toc #back-to-top {
     bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    /* When mobile share bar could be visible, shift TOC toggle above it */
+    body.has-mobile-toc .mobile-toc-wrapper {
+        bottom: 76px;
+    }
+    body.has-mobile-toc .mobile-toc-panel {
+        bottom: 130px;
+    }
+    body.has-mobile-toc #back-to-top {
+        bottom: 132px;
+    }
 }
 
 /* --- Code Block Enhancements --- */

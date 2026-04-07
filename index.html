@@ -18,16 +18,16 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
             <div class="author-hero-links">
                 {% if site.github_username %}
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i> GitHub</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
                 {% endif %}
                 {% if site.linkedin_username %}
-                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                 {% endif %}
                 {% if site.email_address %}
-                <a href="mailto:{{ site.email_address }}"><i class="fa fa-envelope"></i> Email</a>
+                <a href="mailto:{{ site.email_address }}"><i class="fa-regular fa-envelope"></i> Email</a>
                 {% endif %}
             </div>
-            <p class="author-hero-updated"><i class="fa fa-refresh"></i> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
+            <p class="author-hero-updated"><i class="fa-solid fa-arrows-rotate"></i> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
     </div>
 </div>
@@ -37,17 +37,17 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
     <h3 class="start-here-title">Quick Links</h3>
     <div class="start-here-cards">
         <a href="{{ site.baseurl }}/archive/?tag=Algorithm" class="start-here-card">
-            <i class="fa fa-code"></i>
+            <i class="fa-solid fa-code"></i>
             <span class="start-here-label">Algorithms</span>
             <span class="start-here-desc">Trees, graphs & more</span>
         </a>
         <a href="{{ site.baseurl }}/archive/?tag=Kotlin" class="start-here-card">
-            <i class="fa fa-book"></i>
+            <i class="fa-solid fa-book"></i>
             <span class="start-here-label">Kotlin</span>
             <span class="start-here-desc">Syntax & Java comparison</span>
         </a>
         <a href="{{ site.baseurl }}/about/" class="start-here-card">
-            <i class="fa fa-user"></i>
+            <i class="fa-solid fa-user"></i>
             <span class="start-here-label">About Me</span>
             <span class="start-here-desc">Background & projects</span>
         </a>
@@ -111,7 +111,8 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 </div>
 
 <div class="post-cards-grid">
-{% for post in site.posts %}
+{% assign post_list = paginator.posts | default: site.posts %}
+{% for post in post_list %}
 {% if post.url == featured.url %}{% continue %}{% endif %}
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
@@ -140,7 +141,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <div class="post-card-meta">
                 <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
                 {% if post.last_modified_at %}
-                <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa fa-refresh"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+                <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
                 {% endif %}
                 <span class="read-time">{% assign chars = post.content | strip_html | size %}{% assign words = post.content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
             </div>
@@ -153,12 +154,55 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <!-- No Results Message -->
 <div class="filter-no-results" style="display:none;">
     <div class="filter-no-results-card">
-        <i class="fa fa-pen-to-square" aria-hidden="true"></i>
+        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
         <h4>No posts in this category yet</h4>
         <p class="filter-no-results-hint">There are no posts matching this filter.</p>
         <button class="filter-no-results-reset" id="filter-reset-btn">Browse all posts &rarr;</button>
     </div>
 </div>
+
+<!-- Pagination -->
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="Page navigation">
+    <ul class="pagination-list">
+        {% if paginator.previous_page %}
+        <li class="pagination-item pagination-prev">
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Previous page">&laquo; Prev</a>
+        </li>
+        {% else %}
+        <li class="pagination-item pagination-prev pagination-disabled" aria-hidden="true">
+            <span>&laquo; Prev</span>
+        </li>
+        {% endif %}
+
+        {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+        <li class="pagination-item pagination-active" aria-current="page">
+            <span>{{ page }}</span>
+        </li>
+        {% elsif page == 1 %}
+        <li class="pagination-item">
+            <a href="{{ site.baseurl }}/">{{ page }}</a>
+        </li>
+        {% else %}
+        <li class="pagination-item">
+            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <li class="pagination-item pagination-next">
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Next page">Next &raquo;</a>
+        </li>
+        {% else %}
+        <li class="pagination-item pagination-next pagination-disabled" aria-hidden="true">
+            <span>Next &raquo;</span>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
 
 
 <!-- Category Filter JS -->
@@ -176,12 +220,17 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             this.classList.add('active');
 
             var visibleCount = 0;
-            cards.forEach(function(card) {
+            cards.forEach(function(card, i) {
                 var tags = (card.getAttribute('data-tags') || '').split(',');
                 if (filter === 'all' || tags.indexOf(filter) !== -1) {
                     card.style.display = '';
+                    card.classList.remove('filter-hidden');
+                    card.style.animationDelay = (visibleCount * 0.04) + 's';
+                    card.classList.add('filter-enter');
                     visibleCount++;
                 } else {
+                    card.classList.add('filter-hidden');
+                    card.classList.remove('filter-enter');
                     card.style.display = 'none';
                 }
             });
@@ -230,7 +279,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 
     document.querySelectorAll('.post-updated[data-date]').forEach(function(el) {
         var iso = el.getAttribute('data-date');
-        el.innerHTML = '<i class="fa fa-refresh"></i> Updated ' + timeAgo(iso);
+        el.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Updated ' + timeAgo(iso);
     });
 })();
 </script>

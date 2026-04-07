@@ -25,7 +25,6 @@ highlighter: rouge
 permalink: pretty
 exclude:
   [
-    "less",
     "node_modules",
     "Gruntfile.js",
     "package.json",
@@ -45,11 +44,14 @@ sass:
   sass_dir: _sass
   style: compressed
 
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-# make sure you have this gem installed
-# `$ gem install jekyll-paginate`
-plugins: []
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# Pagination
+paginate: 10
+paginate_path: "/page/:num/"
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -65,19 +67,9 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-# Disqus settings
-disqus_username: https-doodoo3804-github-io
-
-# Netease settings
-netease_comment: false
-
 # Analytics settings
-# Baidu Analytics
-# ba_track_id: [your track id]
-
-# Google Analytics
-# ga_track_id: "UA-49627206-1" # Format: UA-xxxxxx-xx
-# ga_domain: huangxuan.me
+# Google Analytics (uncomment and set to enable)
+# ga_track_id: "UA-xxxxxx-xx"
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
@@ -119,5 +111,5 @@ goatcounter:
 # Friends
 # friends:
 #   [
-#     { title: "乱序（Midare）", href: "http://mida.re/" },
+#     { title: "Example", href: "https://example.com" },
 #   ]

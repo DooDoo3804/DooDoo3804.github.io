@@ -1,57 +1,49 @@
 <!-- Navigation -->
-{% if page.nav-style == "invert" or page.header-style == "text" %}
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
-    {% else %}
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        {% endif %}
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" aria-expanded="false" aria-controls="huxblog_navbar" aria-label="Toggle navigation">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div id="huxblog_navbar">
-                <div class="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ site.baseurl }}/">Home</a>
-                        </li>
-                        {% for page in site.pages %}
-                        {% if page.title and page.hide-in-nav != true %}
-                        <li>
-                            <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-                        <li>
-                            <a href="{{ site.baseurl }}{{ site.RSS }}" target="_blank" rel="noopener noreferrer" title="RSS Feed">
-                                <i class="fa fa-rss" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="search-icon">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark-mode-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
-                                <i class="fa fa-moon-o" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /.navbar-collapse -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top{% if page.nav-style == 'invert' or page.header-style == 'text' %} invert{% endif %}" role="navigation" aria-label="Main navigation">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" aria-expanded="false" aria-controls="huxblog_navbar" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
         </div>
-        <!-- /.container -->
-    </nav>
+
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ site.baseurl }}/">Home</a>
+                    </li>
+                    {% for page in site.pages %}
+                    {% if page.title and page.hide-in-nav != true and page.protected != true %}
+                    <li>
+                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    <li>
+                        <a href="{{ site.baseurl }}{{ site.RSS }}" target="_blank" rel="noopener noreferrer" aria-label="RSS Feed">
+                            <i class="fa-solid fa-rss" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="search-icon">
+                        <a href="javascript:void(0)" aria-label="Search">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                            <i class="fa-regular fa-moon" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
 
     <script>
         // Drop Bootstrap low-performance Navbar

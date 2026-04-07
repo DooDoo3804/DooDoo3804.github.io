@@ -2,6 +2,7 @@
 # Main stylesheet — compiled by Jekyll's built-in SASS processor
 ---
 @import "variables";
+@import "hux-blog";
 @import "base";
 @import "layout";
 @import "components";

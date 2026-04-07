@@ -3,9 +3,9 @@
     <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
     <p class="about-intro">Hi! I'm a developer passionate about building robust backend systems. I enjoy algorithmic problem-solving and system design, and I document my learning journey on this blog.</p>
     <div class="about-links">
-        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
         <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
 </div>
 
@@ -120,21 +120,21 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa fa-github" aria-hidden="true"></i></span> GitHub Activity
+        <span class="about-section-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span> GitHub Activity
     </h3>
     <a href="https://github.com/DooDoo3804" class="github-profile-link" target="_blank" rel="noopener noreferrer">&rarr; View my GitHub profile</a>
 </div>
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> Contact
+        <span class="about-section-icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span> Contact
     </h3>
     <div class="contact-links">
         <a href="mailto:{{ site.email_address }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-envelope" aria-hidden="true"></i> {{ site.email_address }}
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i> {{ site.email_address }}
         </a>
         <a href="https://github.com/{{ site.github_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-github" aria-hidden="true"></i> GitHub
+            <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
         </a>
         <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
@@ -147,10 +147,10 @@
         <span class="about-section-icon">&#127793;</span> Currently Learning
     </h3>
     <div class="currently-learning">
-        <span class="learning-pill"><i class="fa fa-sitemap" aria-hidden="true"></i> System Design</span>
-        <span class="learning-pill"><i class="fa fa-cloud" aria-hidden="true"></i> Cloud Architecture</span>
-        <span class="learning-pill"><i class="fa fa-code-fork" aria-hidden="true"></i> CI/CD Pipelines</span>
-        <span class="learning-pill"><i class="fa fa-line-chart" aria-hidden="true"></i> Performance Tuning</span>
+        <span class="learning-pill"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> System Design</span>
+        <span class="learning-pill"><i class="fa-solid fa-cloud" aria-hidden="true"></i> Cloud Architecture</span>
+        <span class="learning-pill"><i class="fa-solid fa-code-fork" aria-hidden="true"></i> CI/CD Pipelines</span>
+        <span class="learning-pill"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Performance Tuning</span>
     </div>
 </div>
 

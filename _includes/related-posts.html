@@ -70,7 +70,7 @@
     <h4>Related Posts</h4>
     <div class="related-posts-grid">
     {% for post in related limit:3 %}
-        <div class="related-post-card" data-url="{{ post.url | prepend: site.baseurl }}">
+        <article class="related-post-card" tabindex="0" role="link" data-url="{{ post.url | prepend: site.baseurl }}" aria-label="{{ post.title }}">
             <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
             <h5 class="rp-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
             {% assign excerpt_text = post.excerpt | strip_html | strip | truncate: 80 %}
@@ -83,7 +83,7 @@
                 <span class="rp-category">{{ post.categories | first }}</span>
                 {% endif %}
             </div>
-        </div>
+        </article>
     {% endfor %}
     </div>
 </section>
@@ -95,6 +95,12 @@
         card.addEventListener('click', function(e) {
             if (e.target.closest('a')) return;
             window.location.href = card.getAttribute('data-url');
+        });
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.location.href = card.getAttribute('data-url');
+            }
         });
     });
 })();

@@ -11,7 +11,7 @@
 // A namespace can prevent potential name conflicts and mis-deletion.
 const CACHE_NAMESPACE = 'main-'
 
-const CACHE_VERSION = 'v15';
+const CACHE_VERSION = 'v16';
 const CACHE = CACHE_NAMESPACE + 'precache-' + CACHE_VERSION;
 const PRECACHE_LIST = [
   "./",
@@ -19,7 +19,6 @@ const PRECACHE_LIST = [
   "./js/hux-blog.min.js",
   "./js/snackbar.js",
   "./js/custom.js",
-  "./css/hux-blog.min.css",
   "./css/grid.css",
   "./css/main.css"
 ]
@@ -37,7 +36,7 @@ const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg|ico)(\?.*)?$/i;
 // The Util Function to hack URLs of intercepted requests
 const getCacheBustingUrl = (req) => {
   var now = Date.now();
-  url = new URL(req.url)
+  const url = new URL(req.url)
 
   // 1. fixed http URL
   // Just keep syncing with location.protocol
@@ -58,7 +57,7 @@ const getCacheBustingUrl = (req) => {
 // request.mode of 'navigate' is unfortunately not supported in Chrome
 // versions older than 49, so we need to include a less precise fallback,
 // which checks for a GET request with an Accept: text/html header.
-const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')))
+const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && (req.headers.get('accept') || '').includes('text/html')))
 
 // The Util Function to detect if a req is end with extension
 // Accordin to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
@@ -84,7 +83,7 @@ const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathna
 // `${url}/` would mis-add "/" in the end of query, so we use URL object.
 // P.P.S. Always trust url.pathname instead of the whole url string.
 const getRedirectUrl = (req) => {
-  url = new URL(req.url)
+  const url = new URL(req.url)
   url.pathname += "/"
   return url.href
 }
@@ -102,7 +101,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE).then(cache => {
       return cache.addAll(PRECACHE_LIST)
-        .then(self.skipWaiting())
+        .then(() => self.skipWaiting())
         .catch(err => console.log(err))
     })
   )

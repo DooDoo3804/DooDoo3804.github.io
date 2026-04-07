@@ -42,7 +42,7 @@
     function updateToggleIcon(theme) {
         var btn = document.querySelector('.dark-mode-toggle i');
         if (!btn) return;
-        btn.className = theme === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
+        btn.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
     }
 
     function initDarkMode() {
@@ -125,22 +125,21 @@
     function initLineNumbers() {
         var codeBlocks = document.querySelectorAll('.post-container pre > code');
         codeBlocks.forEach(function(code) {
-            // skip if already processed
             if (code.classList.contains('has-line-numbers')) return;
             var text = code.textContent;
-            // skip single-line or empty blocks
             if (!text || text.split('\n').length <= 2) return;
 
-            var lines = text.replace(/\n$/, '').split('\n');
-            code.textContent = '';
-            code.classList.add('has-line-numbers');
+            // Preserve syntax highlighting: split innerHTML on newlines,
+            // wrap each line in a span (keeps Rouge <span> tags intact)
+            var html = code.innerHTML;
+            // Remove trailing newline to avoid empty last line
+            html = html.replace(/\n$/, '');
+            var lineHtmls = html.split('\n');
 
-            lines.forEach(function(line) {
-                var span = document.createElement('span');
-                span.className = 'code-line';
-                span.textContent = line + '\n';
-                code.appendChild(span);
-            });
+            code.innerHTML = lineHtmls.map(function(lineHtml) {
+                return '<span class="code-line">' + lineHtml + '\n</span>';
+            }).join('');
+            code.classList.add('has-line-numbers');
         });
     }
 
@@ -234,11 +233,19 @@
         });
     }
 
-    /* --- Image Lazy Loading (skip first 3 above-the-fold) --- */
+    /* --- Image Lazy Loading --- */
     function initLazyImages() {
+        var postContainer = document.querySelector('.post-container');
         var imgs = document.querySelectorAll('img:not([loading])');
         imgs.forEach(function(img, i) {
-            if (i >= 3) img.setAttribute('loading', 'lazy');
+            var inPost = postContainer && postContainer.contains(img);
+            // Skip first image in post content (likely above the fold)
+            if (inPost && i === 0) {
+                img.setAttribute('decoding', 'async');
+                return;
+            }
+            img.setAttribute('loading', 'lazy');
+            img.setAttribute('decoding', 'async');
         });
     }
 
@@ -255,7 +262,7 @@
             var url = btn.getAttribute('data-url');
             var origHTML = btn._origHTML || btn.innerHTML;
             function onSuccess() {
-                btn.innerHTML = '<i class="fa fa-check"></i> Copied!';
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
                 btn.classList.add('share-btn--copied');
                 announceToSR("클립보드에 복사됐습니다");
                 setTimeout(function() {
@@ -286,11 +293,11 @@
                 var btn = this;
                 var icon = btn.querySelector('i');
                 function onSuccess() {
-                    icon.className = 'fa fa-check';
+                    icon.className = 'fa-solid fa-check';
                     btn.classList.add('mobile-share-btn--copied');
                     announceToSR("클립보드에 복사됐습니다");
                     setTimeout(function() {
-                        icon.className = 'fa fa-link';
+                        icon.className = 'fa-solid fa-link';
                         btn.classList.remove('mobile-share-btn--copied');
                     }, 1500);
                 }

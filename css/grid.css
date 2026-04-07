@@ -141,7 +141,7 @@
   width: 22px;
   height: 2px;
   border-radius: 1px;
-  background-color: #fff;
+  background-color: var(--text-primary, #fff);
 }
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
@@ -250,15 +250,16 @@
 .pager li > span {
   display: inline-block;
   padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--bg-surface, #fff);
+  border: 1px solid var(--border-light, #ddd);
   border-radius: 15px;
   text-decoration: none;
+  color: var(--text-primary, #333);
 }
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: var(--bg-surface-hover, #eee);
 }
 .pager .next > a,
 .pager .next > span {
@@ -285,11 +286,11 @@
   padding: 8px;
   line-height: 1.42857;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border-light, #ddd);
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--border-light, #ddd);
 }
 .table-responsive {
   min-height: .01%;
@@ -351,7 +352,7 @@
    10. Typography & Utility Classes
    ======================================== */
 .text-center { text-align: center; }
-.text-muted  { color: #777; }
+.text-muted  { color: var(--text-muted, #777); }
 
 .list-inline {
   padding-left: 0;
