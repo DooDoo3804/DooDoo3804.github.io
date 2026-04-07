@@ -2,16 +2,19 @@
 layout: post
 title: "Spring AOP 내부 동작 원리"
 subtitle: "프록시 기반 AOP의 동작 방식부터 Self-invocation 함정까지"
-date: 2026-04-03 09:00:00 +0900
+date: "2026-04-03"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
 series: "Spring 심화"
+keywords: "spring, aop, proxy, cglib, jdk dynamic proxy, transactional"
 tags:
   - Spring
+  - AOP
   - Backend
   - Java
-categories: [spring]
+categories:
+  - spring
 description: "Spring AOP의 내부 동작 원리를 파헤칩니다. JDK Dynamic Proxy와 CGLIB의 차이, @Transactional이 AOP로 동작하는 메커니즘, Self-invocation 문제와 해결법까지 다룹니다."
 ---
 

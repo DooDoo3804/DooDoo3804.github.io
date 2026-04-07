@@ -2,14 +2,17 @@
 title: "Segment tree"
 subtitle: "Implement a segment tree"
 layout: post
+date: "2023-06-19"
 author: "DoYoon Kim"
 header-style: text
-keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, segment"
+catalog: true
+keywords: "algorithm, segment tree, data structure, binary tree"
 series: "알고리즘"
 tags:
   - Algorithm
   - Tree
-categories: [algorithm]
+categories:
+  - algorithm
 description: "세그먼트 트리의 개념, 크기 계산, C++ 구현 방법을 정리합니다. 배열 기반 풀 바이너리 트리에서 초기화, 값 갱신, 구간 합 쿼리를 처리하는 과정을 코드와 함께 단계별로 설명합니다."
 ---
 

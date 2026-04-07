@@ -361,6 +361,13 @@ fun main() {
 
 <br>
 
+관련 포스트
+---
+
+- [Kotlin 기본 문법](/kotlin/2023/06/20/kotlin-기본-문법/)
+- [Kotlin vs Java — 핵심 차이점 비교](/kotlin/2023/06/21/kotlin-vs-Java/)
+- [Kotlin Coroutines 실전 가이드](/kotlin/2026/04/01/kotlin-coroutines-guide/)
+
 References
 ---
 

@@ -2,16 +2,19 @@
 layout: post
 title: "Spring 트랜잭션 전파 레벨 완전 정복"
 subtitle: "REQUIRED부터 NESTED까지 — 7가지 전파 레벨의 실제 동작과 함정"
-date: 2026-04-04 09:00:00 +0900
+date: "2026-04-04"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
 series: "Spring 심화"
+keywords: "spring, transaction, propagation, required, nested, rollback"
 tags:
   - Spring
+  - Transaction
   - Backend
   - Java
-categories: [spring]
+categories:
+  - spring
 description: "Spring 트랜잭션 전파(Propagation) 7가지 레벨의 실제 동작을 코드와 ASCII 다이어그램으로 설명합니다. 체크드 예외와 롤백 규칙 등 실수하기 쉬운 케이스도 다룹니다."
 ---
 
@@ -323,3 +326,4 @@ public class ServiceA {
 - [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
 - [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
 - [Spring Bean 라이프사이클 완전 정복](/spring/2026/04/05/spring-bean-lifecycle/)
+- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)

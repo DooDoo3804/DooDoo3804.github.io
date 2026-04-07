@@ -2,15 +2,18 @@
 title: "시스템 디자인: 캐싱 전략 (Cache-Aside, Write-Through, Write-Behind)"
 subtitle: "Redis 기반 캐싱 패턴 비교와 실무 선택 기준"
 layout: post
+date: "2026-03-28"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
+keywords: "caching, cache-aside, write-through, write-behind, redis, system design"
 series: "System Design"
 tags:
   - System Design
   - Backend
   - Redis
-categories: [system-design]
+categories:
+  - system-design
 description: "캐싱 전략 비교 가이드. Cache-Aside, Write-Through, Write-Behind 패턴의 동작 원리와 Redis 구현 예제, 실무 선택 기준을 정리합니다."
 ---
 

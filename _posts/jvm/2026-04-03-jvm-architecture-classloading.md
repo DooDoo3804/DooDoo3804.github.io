@@ -1,11 +1,19 @@
 ---
 layout: post
 title: "JVM 아키텍처와 클래스 로딩 완벽 가이드"
-date: 2026-04-03 09:00:00 +0900
-author: DoYoon Kim
-categories: [jvm]
-tags: [JVM, Java, Backend]
+subtitle: "Class Loader, Runtime Data Areas, Execution Engine의 구조와 동작 원리"
+date: "2026-04-03"
+author: "DoYoon Kim"
+header-style: text
+catalog: true
+keywords: "jvm, classloader, runtime data areas, execution engine, java"
 series: "JVM 완전 정복"
+tags:
+  - JVM
+  - Java
+  - Backend
+categories:
+  - jvm
 description: "JVM 아키텍처의 3대 구성 요소와 클래스 로딩 과정을 실전 예제와 함께 정리합니다. 커스텀 ClassLoader 구현까지 다루는 백엔드 개발자 필수 가이드."
 ---
 

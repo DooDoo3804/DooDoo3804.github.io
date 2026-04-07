@@ -2,18 +2,19 @@
 layout: post
 title: "MSA 핵심 패턴 — Circuit Breaker, API Gateway, Service Discovery, Saga"
 subtitle: "마이크로서비스 아키텍처의 안정성을 위한 4가지 필수 패턴과 실전 구현"
-date: 2026-04-03
+date: "2026-04-03"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
 series: "System Design"
+keywords: "msa, circuit breaker, api gateway, service discovery, saga, resilience4j"
 tags:
   - MSA
-  - CircuitBreaker
+  - Circuit Breaker
   - Resilience4j
   - Spring Cloud
-  - SystemDesign
+  - System Design
 categories:
   - system-design
 description: "MSA 핵심 패턴 4가지 정리. Circuit Breaker(Resilience4j), API Gateway, Service Discovery, Saga 패턴의 개념과 Spring Boot 실전 코드를 다룹니다."

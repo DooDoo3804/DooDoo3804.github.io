@@ -1,11 +1,20 @@
 ---
 layout: post
 title: "GC 종류와 튜닝 전략 — 실전에서 바로 쓰는 JVM 가비지 컬렉션 가이드"
-date: 2026-04-04 09:00:00 +0900
-author: DoYoon Kim
-categories: [jvm]
-tags: [JVM, Java, Backend, GC]
+subtitle: "Serial부터 ZGC까지 비교하고 운영 환경 JVM 튜닝 옵션 정리"
+date: "2026-04-04"
+author: "DoYoon Kim"
+header-style: text
+catalog: true
+keywords: "jvm, garbage collection, gc tuning, zgc, g1gc, java"
 series: "JVM 완전 정복"
+tags:
+  - JVM
+  - Java
+  - Backend
+  - GC
+categories:
+  - jvm
 description: "Serial부터 ZGC까지 GC 종류를 비교하고, GC 로그 분석법과 실전 JVM 튜닝 옵션을 정리합니다. 운영 환경에서 바로 적용할 수 있는 가이드."
 ---
 

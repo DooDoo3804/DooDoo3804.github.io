@@ -17,7 +17,7 @@ tags:
   - PostgreSQL
   - Backend
 categories:
-  - backend
+  - database
 ---
 
 ## 들어가며
@@ -606,3 +606,12 @@ public class ProductService {
 5. Spring의 `@Transactional`은 **프록시 기반**임을 잊지 말고, 내부 호출 시 트랜잭션이 적용되지 않는 함정을 주의하자.
 
 항상 `spring.jpa.show-sql=true`와 로그 레벨 설정을 통해 실제 실행되는 SQL과 트랜잭션 경계를 확인하는 습관을 들이자.
+
+---
+
+## 관련 포스트
+
+- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
+- [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)
+- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
+- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/database/2026/04/01/mysql-vs-postgresql/)

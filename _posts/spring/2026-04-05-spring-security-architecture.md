@@ -691,3 +691,11 @@ Spring Security의 핵심 아키텍처를 정리하면:
 5. **Method Security**: URL 패턴뿐 아니라 메서드 레벨에서도 세밀한 권한 제어가 가능하다.
 
 이 구조를 이해하면 Spring Security의 어떤 기능을 쓰더라도 "왜 이렇게 동작하는지" 설명할 수 있다. 복사-붙여넣기 설정에서 벗어나 **자신만의 보안 설계**를 할 수 있게 된다.
+
+---
+
+## 관련 포스트
+
+- [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)
+- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
+- [Spring Bean 라이프사이클 완전 정복](/spring/2026/04/05/spring-bean-lifecycle/)

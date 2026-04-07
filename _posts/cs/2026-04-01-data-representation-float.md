@@ -2,12 +2,13 @@
 layout: post
 title: "부동소수점(Floating Point) 표현 — IEEE 754 완전 정복"
 subtitle: "IEEE 754 단정도/배정도 구조와 백엔드 개발자가 알아야 할 함정들"
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 series: "CS Fundamentals"
+keywords: "ieee 754, floating point, single precision, double precision, NaN"
 tags:
   - CS
   - CS Fundamentals

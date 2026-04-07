@@ -2,13 +2,15 @@
 title: "MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이"
 subtitle: "라이선스, 아키텍처, 성능 차이부터 실무 선택 기준까지"
 layout: post
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
 series: "Database"
-categories: database
+keywords: "mysql, postgresql, database, comparison, backend"
+categories:
+  - database
 tags:
   - MySQL
   - PostgreSQL
@@ -327,3 +329,11 @@ spring:
 ## 정리
 
 MySQL과 PostgreSQL은 모두 검증된 RDBMS이며, "어느 것이 더 좋다"는 단정은 무의미하다. 중요한 것은 프로젝트의 요구사항, 팀의 숙련도, 기존 인프라를 종합적으로 고려해 선택하는 것이다. 최근 업계 트렌드로는 PostgreSQL의 채택이 빠르게 늘고 있지만, MySQL이 여전히 거대한 생태계를 가지고 있다는 점도 무시할 수 없다.
+
+---
+
+## 관련 포스트
+
+- [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)
+- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)
+- [Spring Boot + JPA로 REST API 만들기](/spring/2026/03/15/spring-boot-jpa-basics/)

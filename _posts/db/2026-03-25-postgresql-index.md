@@ -2,15 +2,18 @@
 title: "PostgreSQL 인덱스 제대로 이해하기"
 subtitle: "B-Tree 인덱스, EXPLAIN ANALYZE, 복합 인덱스 전략까지"
 layout: post
+date: "2026-03-25"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
+keywords: "postgresql, index, b-tree, explain analyze, database"
 series: "Database"
 tags:
   - PostgreSQL
   - Database
   - Backend
-categories: [database]
+categories:
+  - database
 description: "PostgreSQL 인덱스 완전 정리. B-Tree 인덱스 원리, EXPLAIN ANALYZE 쿼리 분석, 복합 인덱스 컬럼 순서 전략과 실무 팁을 다룹니다."
 ---
 
@@ -137,7 +140,7 @@ WHERE status = 'PAID' AND created_at > '2026-01-01'
 
 인덱스는 만능이 아니다. 오히려 성능을 떨어뜨리는 경우도 있다:
 
-- **쓰기가 매우 빈번한 테이블**: INSERT/UPDATE/DELETE 시 인덱스도 함께 갱신되므로 오버헤드 발생. 동시 쓰기가 많다면 [트랜잭션 격리 수준](/backend/2026/04/06/database-transaction-isolation/)도 함께 고려해야 한다
+- **쓰기가 매우 빈번한 테이블**: INSERT/UPDATE/DELETE 시 인덱스도 함께 갱신되므로 오버헤드 발생. 동시 쓰기가 많다면 [트랜잭션 격리 수준](/database/2026/04/06/database-transaction-isolation/)도 함께 고려해야 한다
 - **카디널리티가 극단적으로 낮은 컬럼**: `gender`처럼 값이 2~3개뿐이면 Full Scan이 더 빠를 수 있음
 - **테이블 크기가 작은 경우**: 수천 건 이하라면 Seq Scan이 충분히 빠름
 
@@ -169,3 +172,11 @@ SELECT pg_size_pretty(pg_total_relation_size('orders'));
 2. **EXPLAIN ANALYZE**로 항상 실제 실행 계획을 확인하자
 3. 복합 인덱스는 **컬럼 순서**가 핵심이다
 4. 불필요한 인덱스는 정리하자 — 인덱스도 디스크와 메모리를 소비한다
+
+---
+
+## 관련 포스트
+
+- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)
+- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/database/2026/04/01/mysql-vs-postgresql/)
+- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)

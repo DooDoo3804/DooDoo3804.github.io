@@ -6,9 +6,9 @@
 
 /* --- Design System Variables --- */
 :root {
-    --accent-primary: #0085a1;
-    --accent-gradient: linear-gradient(135deg, #0085a1, #00b4d8);
-    --accent-color-raw: 0, 133, 161;
+    --accent-primary: #0ea5e9;
+    --accent-gradient: linear-gradient(135deg, #0ea5e9, #38bdf8);
+    --accent-color-raw: 14, 165, 233;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --text-primary: #333;
@@ -26,7 +26,7 @@
     --bg-body: #fff;
     --text-base: #1a1a2e;
     --color-success: #2ea043;
-    --accent-hover: #006d85;
+    --accent-hover: #0284c7;
     --bg-surface-hover: #f5f5f5;
 
     /* Spacing tokens */

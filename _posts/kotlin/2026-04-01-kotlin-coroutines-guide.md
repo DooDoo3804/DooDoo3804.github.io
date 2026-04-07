@@ -500,6 +500,12 @@ when (result) {
 
 <br>
 
+관련 포스트
+----------
+
+- [Kotlin 기본 문법](/kotlin/2023/06/20/kotlin-기본-문법/)
+- [Kotlin 고급 문법 — 람다, 확장 함수, 스코프 함수](/kotlin/2026/04/01/kotlin-advanced-syntax/)
+
 References
 ----------
 

@@ -3,35 +3,64 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <!-- Social Links -->
-                <div class="footer-social">
-                    {% if site.github_username %}
-                    <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
-                    </a>
-                    {% endif %}
-                    {% if site.linkedin_username %}
-                    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
-                    </a>
-                    {% endif %}
-                    {% if site.email_address %}
-                    <a href="mailto:{{ site.email_address }}" class="footer-social-link" aria-label="Email">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg>
-                    </a>
-                    {% endif %}
-                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="footer-social-link" aria-label="RSS Feed">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-rss"/></svg>
-                    </a>
+                <div class="footer-columns">
+                    <!-- Navigation -->
+                    <div class="footer-col">
+                        <h5 class="footer-col-title">Navigate</h5>
+                        <ul class="footer-nav">
+                            <li><a href="{{ site.baseurl }}/">Home</a></li>
+                            {% for nav_page in site.pages %}
+                            {% if nav_page.title and nav_page.hide-in-nav != true and nav_page.protected != true %}
+                            <li><a href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="footer-col">
+                        <h5 class="footer-col-title">Recent Posts</h5>
+                        <ul class="footer-nav">
+                            {% for post in site.posts limit:4 %}
+                            <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | truncate: 40 }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Social + Meta -->
+                    <div class="footer-col">
+                        <h5 class="footer-col-title">Connect</h5>
+                        <div class="footer-social">
+                            {% if site.github_username %}
+                            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
+                            </a>
+                            {% endif %}
+                            {% if site.linkedin_username %}
+                            <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
+                            </a>
+                            {% endif %}
+                            {% if site.email_address %}
+                            <a href="mailto:{{ site.email_address }}" class="footer-social-link" aria-label="Email">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg>
+                            </a>
+                            {% endif %}
+                            <a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="footer-social-link" aria-label="RSS Feed">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-rss"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <p class="footer-attribution">
-                    Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> &amp; <span aria-hidden="true">❤️</span><span class="sr-only">love</span>
-                </p>
-
-                <p class="copyright text-muted">
-                    &copy; 2023&ndash;{{ site.time | date: '%Y' }} {{ site.title }}
-                </p>
+                <div class="footer-bottom">
+                    <p class="footer-attribution">
+                        Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> &amp; <span aria-hidden="true">❤️</span><span class="sr-only">love</span>
+                    </p>
+                    <p class="copyright text-muted">
+                        &copy; 2023&ndash;{{ site.time | date: '%Y' }} {{ site.title }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>

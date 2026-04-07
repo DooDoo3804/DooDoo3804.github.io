@@ -2,15 +2,16 @@
 layout: post
 title: "gRPC 기초 — Protocol Buffers부터 Spring Boot 연동까지"
 subtitle: "REST를 넘어 고성능 서비스 간 통신, gRPC의 핵심 개념과 실전 구현"
-date: 2026-04-03
+date: "2026-04-03"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
+keywords: "grpc, protocol buffers, spring boot, http2, rpc"
 series: "Container & Infra"
 tags:
   - gRPC
-  - ProtocolBuffers
+  - Protocol Buffers
   - Spring Boot
   - Backend
 categories:

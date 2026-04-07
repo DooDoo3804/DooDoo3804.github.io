@@ -2,16 +2,18 @@
 layout: post
 title: "Spring Bean 라이프사이클 완전 정복"
 subtitle: "생성부터 소멸까지 — Bean이 거치는 모든 단계를 코드로 확인하기"
-date: 2026-04-05 09:00:00 +0900
+date: "2026-04-05"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
 series: "Spring 심화"
+keywords: "spring, bean lifecycle, postconstruct, beanpostprocessor, initialization"
 tags:
   - Spring
   - Backend
   - Java
-categories: [spring]
+categories:
+  - spring
 description: "Spring Bean의 생성부터 소멸까지 전체 라이프사이클을 단계별로 설명합니다. @PostConstruct, InitializingBean, BeanPostProcessor의 실행 순서와 활용법을 코드 예제로 다룹니다."
 ---
 

@@ -2,14 +2,17 @@
 title: "Minimum Spanning Tree"
 subtitle: "Implement a MST"
 layout: post
+date: "2023-07-12"
 author: "DoYoon Kim"
 header-style: text
-keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, MST"
+catalog: true
+keywords: "algorithm, MST, kruskal, union-find, graph"
 series: "알고리즘"
 tags:
   - Algorithm
   - Graph
-categories: [algorithm]
+categories:
+  - algorithm
 description: "최소 신장 트리(MST) 개념과 크루스칼 알고리즘 C++ 구현을 다룹니다. 그리디 기반 간선 선택, Union-Find 자료구조를 활용한 사이클 판별 과정을 코드와 함께 설명합니다."
 ---
 
@@ -96,3 +99,11 @@ int main() {
     return 0;
 }
 ```
+
+---
+
+## 관련 포스트
+
+- [Floyd Warshall — 모든 쌍 최단 경로](/algorithm/2023/07/11/floyd-warshall/)
+- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/algorithm/2023/06/19/Segment-tree/)
+- [Trie 자료구조 — 원리와 구현](/algorithm/2026/04/01/trie/)

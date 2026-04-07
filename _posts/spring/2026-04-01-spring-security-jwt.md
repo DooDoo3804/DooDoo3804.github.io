@@ -2,11 +2,12 @@
 layout: post
 title: "Spring Security 6 + JWT 인증 구현"
 subtitle: "SecurityFilterChain부터 토큰 갱신 전략까지 — Spring Boot 3.x 실전 가이드"
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
+keywords: "spring security, jwt, authentication, refresh token, backend"
 series: "Spring 심화"
 tags:
   - Spring
@@ -672,3 +673,5 @@ References
 ## 관련 포스트
 
 - [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
+- [Spring Security 아키텍처 완전 이해](/spring/2026/04/05/spring-security-architecture/)
+- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)

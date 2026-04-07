@@ -2,15 +2,19 @@
 title: "Spring Boot + JPA로 REST API 만들기"
 subtitle: "Entity, Repository, Service, Controller 패턴으로 CRUD API 구축하기"
 layout: post
+date: "2026-03-15"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
+keywords: "spring boot, jpa, rest api, crud, backend"
 series: "Spring 심화"
 tags:
   - Spring
+  - JPA
   - Backend
   - Java
-categories: [spring]
+categories:
+  - spring
 description: "Spring Boot와 JPA로 REST API를 만드는 방법. Entity, Repository, Service, Controller 4계층 패턴으로 CRUD API를 단계별로 구현합니다."
 ---
 
@@ -231,4 +235,7 @@ Client → Controller → Service → Repository → Database
 
 ## 관련 포스트
 
+- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
 - [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)
+- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)

@@ -2,17 +2,20 @@
 title: "Kotlin vs Java"
 subtitle: "What is difference between Kotlin and Java"
 layout: post
+date: "2023-06-21"
 author: "DoYoon Kim"
+header-style: text
 header-bg-css: "linear-gradient(135deg, #7b2ff7 0%, #9b59b6 100%)"
 header-mask: 0.4
-keywords: "kotlin, java, difference"
+catalog: true
+keywords: "kotlin, java, comparison, NPE, lambda"
 series: "Kotlin 마스터"
 tags:
-    - Kotlin
-    - Java
-categories: [kotlin]
+  - Kotlin
+  - Java
+categories:
+  - kotlin
 description: "Kotlin과 Java의 핵심 차이점을 코드로 비교합니다. 변수 선언, 객체 초기화, 람다 표현식, NPE 방지, 생성자 패턴 등에서 Kotlin이 가진 간결성과 안전성을 분석합니다."
-# hidden: true
 ---
 
 > 개발자들은 평생동안 코드를 쓰는 것 보다 읽는 것에 더 많은 시간을 할애한다. 코틀린은 가독성에 초점을 뒀다. 「이사코바」
@@ -151,8 +154,8 @@ class User(
 Conclusion
 ---
 자바와 코틀린은 완벽 호환이 된다고는 하지만 많은 부분 코틀린이 더 간결한 방식으로 다릅니다. 위에서 다 다루지 못한 내용들이 많이 있지만 다음 글들을 통해서 확인하면 좋습니다.  
-[「Kotlin 기본 문법」](https://doodoo3804.github.io/2023/06/20/kotlin-%EA%B8%B0%EB%B3%B8/)
-<!-- [「Kotlin 고급 문법」](https://doodoo3804.github.io/2023/06/20/kotlin-%EA%B8%B0%EB%B3%B8/) -->
+[「Kotlin 기본 문법」](/kotlin/2023/06/20/kotlin-기본-문법/)
+[「Kotlin 고급 문법」](/kotlin/2026/04/01/kotlin-advanced-syntax/)
 
 참고
 --

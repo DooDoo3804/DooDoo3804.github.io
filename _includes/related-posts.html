@@ -1,14 +1,19 @@
 {% comment %}
   Related Posts Component
-  Shows up to 3 related posts based on tag overlap, category match, then recency.
-  Priority: same series > most tag overlap > same category > newest
+  Shows up to 6 related posts with weighted scoring.
+  Priority: same series > tag overlap (3+, 2, 1) × category boost > category-only > recent.
+  Within each bucket, posts are naturally sorted newest-first by Jekyll.
   Single-pass collection with bucket sorting for performance.
 {% endcomment %}
 
-{% assign maxRelated = 3 %}
+{% assign maxRelated = 6 %}
 {% assign currentCat = page.categories | first %}
 {% assign series_matches = "" | split: "" %}
+{% assign tag3_cat_matches = "" | split: "" %}
+{% assign tag3_matches = "" | split: "" %}
+{% assign tag2_cat_matches = "" | split: "" %}
 {% assign tag2_matches = "" | split: "" %}
+{% assign tag1_cat_matches = "" | split: "" %}
 {% assign tag1_matches = "" | split: "" %}
 {% assign cat_matches = "" | split: "" %}
 
@@ -29,39 +34,58 @@
     {% endif %}
   {% endfor %}
 
-  {% if commonTags >= 2 %}
-    {% assign tag2_matches = tag2_matches | push: p %}
-  {% elsif commonTags == 1 %}
-    {% assign tag1_matches = tag1_matches | push: p %}
-  {% elsif currentCat %}
+  {% comment %} Check category match for boost {% endcomment %}
+  {% assign sameCat = false %}
+  {% if currentCat %}
     {% assign pCat = p.categories | first %}
     {% if pCat == currentCat %}
-      {% assign cat_matches = cat_matches | push: p %}
+      {% assign sameCat = true %}
     {% endif %}
+  {% endif %}
+
+  {% comment %} Place into fine-grained bucket: tag count × category boost {% endcomment %}
+  {% if commonTags >= 3 and sameCat %}
+    {% assign tag3_cat_matches = tag3_cat_matches | push: p %}
+  {% elsif commonTags >= 3 %}
+    {% assign tag3_matches = tag3_matches | push: p %}
+  {% elsif commonTags == 2 and sameCat %}
+    {% assign tag2_cat_matches = tag2_cat_matches | push: p %}
+  {% elsif commonTags == 2 %}
+    {% assign tag2_matches = tag2_matches | push: p %}
+  {% elsif commonTags == 1 and sameCat %}
+    {% assign tag1_cat_matches = tag1_cat_matches | push: p %}
+  {% elsif commonTags == 1 %}
+    {% assign tag1_matches = tag1_matches | push: p %}
+  {% elsif sameCat %}
+    {% assign cat_matches = cat_matches | push: p %}
   {% endif %}
 {% endfor %}
 
 {% comment %} Merge buckets in priority order {% endcomment %}
 {% assign related = "" | split: "" %}
 {% for p in series_matches %}
-  {% if related.size < maxRelated %}
-    {% assign related = related | push: p %}
-  {% endif %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
+{% endfor %}
+{% for p in tag3_cat_matches %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
+{% endfor %}
+{% for p in tag3_matches %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
+{% endfor %}
+{% for p in tag2_cat_matches %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
 {% endfor %}
 {% for p in tag2_matches %}
-  {% if related.size < maxRelated %}
-    {% assign related = related | push: p %}
-  {% endif %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
+{% endfor %}
+{% for p in tag1_cat_matches %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
 {% endfor %}
 {% for p in tag1_matches %}
-  {% if related.size < maxRelated %}
-    {% assign related = related | push: p %}
-  {% endif %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
 {% endfor %}
 {% for p in cat_matches %}
-  {% if related.size < maxRelated %}
-    {% assign related = related | push: p %}
-  {% endif %}
+  {% if related.size < maxRelated %}{% assign related = related | push: p %}{% endif %}
 {% endfor %}
 
 {% comment %} Only render if we have at least 1 related post {% endcomment %}
@@ -69,9 +93,15 @@
 <section class="related-posts" aria-label="Related posts">
     <h4>Related Posts</h4>
     <div class="related-posts-grid">
-    {% for post in related limit:3 %}
+    {% for post in related %}
         <article class="related-post-card" tabindex="0" role="link" data-url="{{ post.url | prepend: site.baseurl }}" aria-label="{{ post.title }}">
-            <div class="rp-tag">{% if post.tags.size > 0 %}{{ post.tags | first }}{% endif %}</div>
+            <div class="rp-tag">
+                {% if post.series and post.series == page.series %}
+                <span class="rp-series-badge">{{ post.series }}</span>
+                {% elsif post.tags.size > 0 %}
+                {{ post.tags | first }}
+                {% endif %}
+            </div>
             <h5 class="rp-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
             {% assign excerpt_text = post.excerpt | strip_html | strip | truncate: 80 %}
             {% if excerpt_text != "" %}

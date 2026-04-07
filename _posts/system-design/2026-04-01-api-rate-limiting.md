@@ -2,16 +2,18 @@
 title: "API Rate Limiting — 설계와 구현 전략"
 subtitle: "Token Bucket부터 분산 Redis Rate Limiter까지, Spring Boot 실전 구현"
 layout: post
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
+keywords: "rate limiting, token bucket, sliding window, redis, api"
 series: "System Design"
-categories: system-design
+categories:
+  - system-design
 tags:
-  - RateLimiting
-  - SystemDesign
+  - Rate Limiting
+  - System Design
   - Redis
   - Backend
   - Spring

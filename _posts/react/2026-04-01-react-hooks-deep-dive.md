@@ -2,11 +2,12 @@
 layout: post
 title: "React Hooks 완전 정복 — useState부터 Custom Hook까지"
 subtitle: "useEffect 의존성 배열 함정, useMemo 남용 경계, 커스텀 훅 설계 원칙"
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
+keywords: "react, hooks, usestate, useeffect, custom hook, frontend"
 series: "React"
 tags:
   - React

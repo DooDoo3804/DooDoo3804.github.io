@@ -2,15 +2,18 @@
 title: "Docker 입문: 컨테이너로 개발 환경 통일하기"
 subtitle: "Dockerfile 작성부터 docker-compose까지 한 번에 정리"
 layout: post
+date: "2026-03-20"
 author: "DoYoon Kim"
 header-style: text
 catalog: true
+keywords: "docker, container, dockerfile, docker-compose, devops"
 series: "Container & Infra"
 tags:
   - Docker
   - DevOps
   - Backend
-categories: [infra]
+categories:
+  - infra
 description: "Docker 입문 가이드. Dockerfile 작성, Multi-stage Build, Docker Compose로 Spring Boot + PostgreSQL 개발 환경을 구성하는 방법을 정리합니다."
 ---
 

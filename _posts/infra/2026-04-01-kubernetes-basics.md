@@ -2,11 +2,12 @@
 layout: post
 title: "Kubernetes 핵심 개념 — Pod부터 Deployment까지"
 subtitle: "Docker만으로는 부족할 때 — 쿠버네티스로 컨테이너 오케스트레이션 시작하기"
-date: 2026-04-01
+date: "2026-04-01"
 author: "DoYoon Kim"
 header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
+keywords: "kubernetes, pod, deployment, service, container orchestration, k8s"
 series: "Container & Infra"
 tags:
   - Kubernetes

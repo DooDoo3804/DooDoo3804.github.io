@@ -454,3 +454,12 @@ N+1 문제는 JPA를 쓰는 한 피할 수 없다. 중요한 것은 **문제를 
 4. **복잡한 조건이면**: QueryDSL로 해결한다.
 
 항상 `hibernate.SQL` 로그를 켜두고, 개발 단계에서 쿼리 수를 확인하는 습관을 들이자. 운영에서 터지기 전에 잡을 수 있다.
+
+---
+
+## 관련 포스트
+
+- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
+- [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
+- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)

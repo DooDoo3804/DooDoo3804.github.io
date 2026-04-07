@@ -434,6 +434,18 @@ code.has-line-numbers .code-line::before {
     }
 }
 
+.rp-series-badge {
+    display: inline-block;
+    background: rgba(var(--accent-color-raw), 0.1);
+    color: var(--accent-primary);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
 .related-post-card {
     padding: 20px;
     border-radius: var(--radius-lg);
@@ -634,8 +646,8 @@ code.has-line-numbers .code-line::before {
     top: 0;
     left: 0;
     width: 0%;
-    height: 2px;
-    background: var(--accent-primary);
+    height: 3px;
+    background: var(--accent-gradient);
     z-index: 9999;
     transition: width 0.1s linear;
     pointer-events: none;

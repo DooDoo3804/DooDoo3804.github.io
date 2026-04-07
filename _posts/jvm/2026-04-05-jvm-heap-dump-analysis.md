@@ -1,11 +1,20 @@
 ---
 layout: post
 title: "JVM 힙 덤프 분석으로 메모리 누수 잡기 — OOM 디버깅 실전 가이드"
-date: 2026-04-05 09:00:00 +0900
-author: DoYoon Kim
-categories: [jvm]
-tags: [JVM, Java, Backend, OOM]
+subtitle: "jmap, Eclipse MAT, VisualVM으로 메모리 누수 원인 추적하기"
+date: "2026-04-05"
+author: "DoYoon Kim"
+header-style: text
+catalog: true
+keywords: "jvm, heap dump, oom, memory leak, eclipse mat, visualvm"
 series: "JVM 완전 정복"
+tags:
+  - JVM
+  - Java
+  - Backend
+  - OOM
+categories:
+  - jvm
 description: "jmap과 HeapDumpOnOutOfMemoryError로 힙 덤프를 생성하고, Eclipse MAT과 VisualVM으로 메모리 누수 원인을 분석하는 실전 가이드."
 ---
 

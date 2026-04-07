@@ -2,14 +2,17 @@
 title: "Floyd Warshall"
 subtitle: "Implement a Floyd Warshall"
 layout: post
+date: "2023-07-11"
 author: "DoYoon Kim"
 header-style: text
-keywords: "Jekyll, 블로그, 개발, 알고리즘, algorithm, floyd-warshall"
+catalog: true
+keywords: "algorithm, floyd-warshall, shortest path, graph, dynamic programming"
 series: "알고리즘"
 tags:
   - Algorithm
   - Graph
-categories: [algorithm]
+categories:
+  - algorithm
 description: "플로이드-워셜 알고리즘의 개념과 C++ 구현을 정리합니다. DP 기반으로 모든 노드 쌍의 최단 경로를 구하는 원리와 음수 가중치 그래프에서의 동작 방식을 코드 예제와 함께 설명합니다."
 ---
 
@@ -66,3 +69,11 @@ int main() {
     return 0;
 }
 ```
+
+---
+
+## 관련 포스트
+
+- [Minimum Spanning Tree — 크루스칼 알고리즘](/algorithm/2023/07/12/minimun-spanning-tree-kruskal/)
+- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/algorithm/2023/06/19/Segment-tree/)
+- [Trie 자료구조 — 원리와 구현](/algorithm/2026/04/01/trie/)
