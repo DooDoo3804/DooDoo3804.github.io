@@ -11,13 +11,19 @@ layout: null
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <language>ko</language>
-    <managingEditor>{{ site.email }} ({{ site.title }})</managingEditor>
+    {% if site.email %}<managingEditor>{{ site.email }} ({{ site.title }})</managingEditor>{% endif %}
     <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts %}
+    {% for post in site.posts limit:20 %}
+      {% assign abs_content = post.content
+        | replace: 'src="/', 'src="SITE_URL_PLACEHOLDER/'
+        | replace: "src='/", "src='SITE_URL_PLACEHOLDER/"
+        | replace: 'href="/', 'href="SITE_URL_PLACEHOLDER/'
+        | replace: "href='/", "href='SITE_URL_PLACEHOLDER/"
+        | replace: 'SITE_URL_PLACEHOLDER', site.url %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.excerpt | strip_html | strip | xml_escape }}</description>
-        <content:encoded><![CDATA[{{ post.content | replace: ']]>', ']]]]><![CDATA[>' }}]]></content:encoded>
+        <description>{{ post.excerpt | strip_html | strip | xml_escape | truncate: 300 }}</description>
+        <content:encoded><![CDATA[{{ abs_content | replace: ']]>', ']]]]><![CDATA[>' }}]]></content:encoded>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | absolute_url }}</link>
         <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>

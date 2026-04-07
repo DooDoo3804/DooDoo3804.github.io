@@ -154,7 +154,7 @@ pre { overflow-x: auto; }
 
 .filter-no-results-hint {
     font-size: 13px;
-    color: #bbb;
+    color: var(--text-muted);
     margin-top: 8px;
 }
 
@@ -189,7 +189,7 @@ pre { overflow-x: auto; }
 }
 
 .filter-no-results-reset:hover {
-    background: #006b85;
+    background: var(--accent-hover);
     color: #fff;
     text-decoration: none;
 }
@@ -218,7 +218,7 @@ pre { overflow-x: auto; }
 }
 
 [data-theme="dark"] .filter-no-results-reset:hover {
-    background: #79b8ff;
+    background: var(--accent-hover);
 }
 
 /* ========================================

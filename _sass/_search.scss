@@ -161,7 +161,7 @@ html:not([data-theme="dark"]) .search-excerpt {
 
 .search-date {
     font-size: 11px;
-    color: #888;
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -194,7 +194,7 @@ html:not([data-theme="dark"]) .search-excerpt {
     justify-content: center;
     gap: 12px;
     font-size: 13px;
-    color: #888;
+    color: var(--text-muted);
 }
 
 .search-suggestion-link {

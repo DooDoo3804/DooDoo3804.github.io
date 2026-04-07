@@ -168,7 +168,8 @@
 .nav > li {
   display: inline-block;
 }
-.nav > li > a {
+.nav > li > a,
+.nav > li > button {
   display: block;
   padding: 10px 15px;
   text-decoration: none;

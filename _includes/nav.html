@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top{% if page.nav-style == 'invert' or page.header-style == 'text' %} invert{% endif %}" role="navigation" aria-label="Main navigation">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top{% if page.nav-style == 'invert' or page.header-style == 'text' %} invert{% endif %}" role="navigation" aria-label="Main navigation" data-pagefind-ignore>
     <div class="container-fluid">
         <div class="navbar-header page-scroll">
             <button type="button" class="navbar-toggle" aria-expanded="false" aria-controls="huxblog_navbar" aria-label="Toggle navigation">
@@ -30,14 +30,14 @@
                         </a>
                     </li>
                     <li class="search-icon">
-                        <a href="javascript:void(0)" aria-label="Search">
+                        <button type="button" aria-label="Search">
                             <svg class="icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                        <button type="button" class="dark-mode-toggle" aria-label="Toggle dark mode">
                             <svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -57,6 +57,7 @@
         var __HuxNav__ = {
             close: function () {
                 $navbar.classList.remove('in');
+                $toggle.setAttribute('aria-expanded', 'false');
                 // wait until animation end.
                 setTimeout(function () {
                     if (!$navbar.classList.contains('in')) {
@@ -67,6 +68,7 @@
             open: function () {
                 $collapse.style.height = "auto"
                 $navbar.classList.add('in');
+                $toggle.setAttribute('aria-expanded', 'true');
             }
         }
 

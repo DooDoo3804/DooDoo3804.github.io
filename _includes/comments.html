@@ -7,7 +7,7 @@
     </div>
     <div class="giscus-error" id="giscus-error" style="display:none;">
         댓글을 불러올 수 없습니다. 잠시 후 다시 시도해주세요.
-        <button onclick="location.reload()" class="giscus-retry-btn">다시 시도</button>
+        <button class="giscus-retry-btn" id="giscus-retry-btn">다시 시도</button>
     </div>
     <script>
     (function() {
@@ -44,6 +44,11 @@
             loaded = true;
             placeholder.style.display = 'none';
         });
+
+        var retryBtn = document.getElementById('giscus-retry-btn');
+        if (retryBtn) {
+            retryBtn.addEventListener('click', function() { location.reload(); });
+        }
 
         // Timeout fallback: show error if not loaded in 5s
         setTimeout(function() {

@@ -148,10 +148,10 @@ Rewritten to vanilla JS — Sprint 17
     tagSelect(_tag);
 
     tagsContainer.addEventListener('click', function(e) {
-      var anchor = e.target.closest('a');
-      if (!anchor) return;
+      var btn = e.target.closest('.tag-button, .tag-button--all');
+      if (!btn) return;
       e.preventDefault();
-      tagSelect(anchor.getAttribute('data-encode'), anchor);
+      tagSelect(btn.getAttribute('data-encode'), btn);
     });
 
   });

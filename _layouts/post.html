@@ -17,7 +17,7 @@ layout: default
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
-                post-container">
+                post-container" data-pagefind-body>
 
                 <!-- Breadcrumb Navigation -->
                 <nav class="post-breadcrumb" aria-label="Breadcrumb">
@@ -82,7 +82,7 @@ layout: default
                 {% include subscribe-cta.html %}
 
                 <!-- Share Buttons -->
-                <div class="post-share">
+                <div class="post-share" data-pagefind-ignore>
                     <span class="post-share-label">Share</span>
                     <button class="share-btn share-btn--copy" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}" aria-label="Copy link">
                         <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg> Copy Link
@@ -96,7 +96,7 @@ layout: default
                 </div>
 
                 <hr class="spacer-hidden">
-                <ul class="pager">
+                <ul class="pager" data-pagefind-ignore>
                     {% if page.previous.url %}
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" title="{{page.previous.title}}">
@@ -126,7 +126,7 @@ layout: default
                 col-lg-2 col-lg-offset-0
                 visible-lg-block
                 sidebar-container
-                catalog-container">
+                catalog-container" data-pagefind-ignore>
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
@@ -152,7 +152,7 @@ layout: default
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
-                sidebar-container">
+                sidebar-container" data-pagefind-ignore>
 
                 <!-- Featured Tags -->
                 {% include featured-tags.html bottom=true %}
