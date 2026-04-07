@@ -36,10 +36,22 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Build JS (uglify hux-blog.min.js)
+        run: npx grunt uglify
+
+      - name: Generate OG images for posts
+        run: node scripts/generate-og-images.js
+
       - name: Build Jekyll
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+
+      - name: Stamp sw.js CACHE_VERSION with build timestamp
+        run: sed -i "s/__BUILD_VERSION__/v$(date +%Y%m%d%H%M%S)/" _site/sw.js
+
+      - name: Build Pagefind search index
+        run: npx -y pagefind --site _site --glob "**/*.html"
 
       - name: Encrypt protected pages
         run: bash scripts/encrypt-pages.sh "${{ secrets.PAGE_PASSWORD }}"

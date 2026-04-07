@@ -60,7 +60,7 @@ layout: default
                     {% endif %}
                 {% endfor %}
                 <nav class="series-nav" aria-label="Series navigation">
-                    <h4 class="series-nav-title"><i class="fa-solid fa-layer-group"></i> {{ page.series }} <span class="series-count">{{ reversed_series.size }}편 중 {{ current_index }}편</span></h4>
+                    <h4 class="series-nav-title"><svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg> {{ page.series }} <span class="series-count">{{ reversed_series.size }}편 중 {{ current_index }}편</span></h4>
                     <ol class="series-list">
                     {% for p in reversed_series %}
                         <li class="series-item{% if p.url == page.url %} series-item--current{% endif %}">
@@ -85,13 +85,13 @@ layout: default
                 <div class="post-share">
                     <span class="post-share-label">Share</span>
                     <button class="share-btn share-btn--copy" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}" aria-label="Copy link">
-                        <i class="fa-solid fa-link"></i> Copy Link
+                        <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg> Copy Link
                     </button>
                     <a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X/Twitter">
-                        <i class="fa-brands fa-x-twitter"></i> Post
+                        <svg class="icon" aria-hidden="true"><use href="#icon-x-twitter"/></svg> Post
                     </a>
                     <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i> Share
+                        <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> Share
                     </a>
                 </div>
 
@@ -139,7 +139,7 @@ layout: default
             <!-- Mobile TOC Toggle -->
             <div class="mobile-toc-wrapper visible-xs visible-sm visible-md">
                 <button class="mobile-toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">
-                    <i class="fa-solid fa-list"></i>
+                    <svg class="icon" aria-hidden="true"><use href="#icon-list"/></svg>
                 </button>
                 <div class="mobile-toc-panel">
                     <h5>CATALOG</h5>
@@ -167,10 +167,10 @@ layout: default
 <!-- Mobile Floating Share Bar -->
 <div class="mobile-share-bar" id="mobile-share-bar">
     <button class="mobile-share-btn mobile-share-copy" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}" aria-label="Copy link">
-        <i class="fa-solid fa-link"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
     </button>
     <a class="mobile-share-btn mobile-share-twitter" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | prepend: site.baseurl | prepend: site.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X/Twitter">
-        <i class="fa-brands fa-x-twitter"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-x-twitter"/></svg>
     </a>
 </div>
 

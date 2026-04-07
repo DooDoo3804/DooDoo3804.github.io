@@ -5,6 +5,7 @@
 
 <body>
 
+    {% include icons.svg %}
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     {% include nav.html %}
@@ -16,7 +17,7 @@
 
     <!-- Back to Top -->
     <button id="back-to-top" aria-label="Back to top">
-        <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-chevron-up"/></svg>
     </button>
 
     {% include footer.html %}

@@ -173,9 +173,13 @@ html:not([data-theme="dark"]) .search-excerpt {
 }
 
 .search-empty-icon {
-    font-size: 40px;
     color: rgba(255, 255, 255, 0.15);
     margin-bottom: 16px;
+}
+
+.search-empty-icon .icon {
+    width: 40px;
+    height: 40px;
 }
 
 .search-empty-text {

@@ -40,9 +40,12 @@
     }
 
     function updateToggleIcon(theme) {
-        var btn = document.querySelector('.dark-mode-toggle i');
+        var btn = document.querySelector('.dark-mode-toggle');
         if (!btn) return;
-        btn.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
+        var svg = btn.querySelector('svg.icon');
+        if (!svg) return;
+        var use = svg.querySelector('use');
+        if (use) use.setAttribute('href', theme === 'dark' ? '#icon-sun' : '#icon-moon');
     }
 
     function initDarkMode() {
@@ -262,7 +265,7 @@
             var url = btn.getAttribute('data-url');
             var origHTML = btn._origHTML || btn.innerHTML;
             function onSuccess() {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Copied!';
                 btn.classList.add('share-btn--copied');
                 announceToSR("클립보드에 복사됐습니다");
                 setTimeout(function() {
@@ -291,13 +294,14 @@
                 e.preventDefault();
                 var url = this.getAttribute('data-url');
                 var btn = this;
-                var icon = btn.querySelector('i');
+                var icon = btn.querySelector('svg.icon');
                 function onSuccess() {
-                    icon.className = 'fa-solid fa-check';
+                    var use = icon.querySelector('use');
+                    if (use) use.setAttribute('href', '#icon-check');
                     btn.classList.add('mobile-share-btn--copied');
                     announceToSR("클립보드에 복사됐습니다");
                     setTimeout(function() {
-                        icon.className = 'fa-solid fa-link';
+                        if (use) use.setAttribute('href', '#icon-link');
                         btn.classList.remove('mobile-share-btn--copied');
                     }, 1500);
                 }

@@ -8,7 +8,7 @@
     - CI/CD
   github: "https://github.com/DooDoo3804/DooDoo3804.github.io"
   demo: "https://doodoo3804.github.io"
-  icon: "fa-globe"
+  icon: "icon-globe"
   featured: true
   status: active
   year: 2024
@@ -23,7 +23,7 @@
     - Redis
     - Docker
   github: "https://github.com/DooDoo3804/spring-boot-api-server"
-  icon: "fa-server"
+  icon: "icon-server"
   featured: true
   status: active
   year: 2024
@@ -37,7 +37,7 @@
     - Kafka
     - AWS
   github: "https://github.com/DooDoo3804/system-design-study"
-  icon: "fa-sitemap"
+  icon: "icon-sitemap"
   featured: false
   status: active
   year: 2025
@@ -50,7 +50,7 @@
     - Java
     - Algorithm
   github: "https://github.com/DooDoo3804/algorithm-study"
-  icon: "fa-code"
+  icon: "icon-code"
   featured: true
   status: completed
   year: 2024
@@ -64,7 +64,7 @@
     - Helm
     - Prometheus
   github: "https://github.com/DooDoo3804/infra-practice"
-  icon: "fa-cube"
+  icon: "icon-cube"
   featured: false
   status: active
   year: 2025

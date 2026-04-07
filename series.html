@@ -24,7 +24,7 @@ hide-in-nav: true
 
             {% if series_names.size == 0 %}
             <div class="series-empty">
-                <i class="fa fa-layer-group"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg>
                 <p>No series yet. Add <code>series: "Name"</code> to a post's front matter to start one.</p>
             </div>
             {% endif %}
@@ -36,13 +36,13 @@ hide-in-nav: true
                 <div class="series-card">
                     <div class="series-card-header">
                         <h3 class="series-card-title">
-                            <i class="fa fa-layer-group"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg>
                             {{ name }}
                         </h3>
                         <span class="series-card-count">{{ posts.size }} posts</span>
                     </div>
                     <div class="series-card-dates">
-                        <i class="fa fa-calendar"></i>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
                         {{ first_post.date | date: "%b %-d, %Y" }} — {{ last_post.date | date: "%b %-d, %Y" }}
                     </div>
                     {% if first_post.subtitle %}

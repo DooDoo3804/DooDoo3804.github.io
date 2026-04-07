@@ -13,7 +13,8 @@
         "grunt": ">=1.3.0",
         "grunt-banner": "~0.2.3",
         "grunt-contrib-uglify": "^4.0.1",
-        "grunt-contrib-watch": "^1.1.0"
+        "grunt-contrib-watch": "^1.1.0",
+        "sharp": "^0.34.5"
     },
     "scripts": {
         "build": "grunt",

@@ -3,9 +3,9 @@
     <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
     <p class="about-intro">こんにちは！堅牢なバックエンドシステムの構築に情熱を持つ開発者です。アルゴリズムの問題解決とシステム設計が好きで、学んだことをこのブログに記録しています。</p>
     <div class="about-links">
-        <a href="https://github.com/DooDoo3804" class="about-link-btn"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email</a>
+        <a href="https://github.com/DooDoo3804" class="about-link-btn"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub</a>
+        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn</a>
+        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> Email</a>
     </div>
 </div>
 
@@ -120,24 +120,24 @@
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span> GitHubアクティビティ
+        <span class="about-section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></span> GitHubアクティビティ
     </h3>
     <a href="https://github.com/DooDoo3804" class="github-profile-link" target="_blank" rel="noopener noreferrer">&rarr; GitHubプロフィールを見る</a>
 </div>
 
 <div class="about-section">
     <h3 class="about-section-title">
-        <span class="about-section-icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span> お問い合わせ
+        <span class="about-section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg></span> お問い合わせ
     </h3>
     <div class="contact-links">
         <a href="mailto:{{ site.email_address }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-regular fa-envelope" aria-hidden="true"></i> {{ site.email_address }}
+            <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> {{ site.email_address }}
         </a>
         <a href="https://github.com/{{ site.github_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+            <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub
         </a>
         <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+            <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn
         </a>
     </div>
 </div>
@@ -147,10 +147,10 @@
         <span class="about-section-icon">&#127793;</span> 現在学習中
     </h3>
     <div class="currently-learning">
-        <span class="learning-pill"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> System Design</span>
-        <span class="learning-pill"><i class="fa-solid fa-cloud" aria-hidden="true"></i> Cloud Architecture</span>
-        <span class="learning-pill"><i class="fa-solid fa-code-fork" aria-hidden="true"></i> CI/CD Pipelines</span>
-        <span class="learning-pill"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Performance Tuning</span>
+        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-sitemap"/></svg> System Design</span>
+        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"/></svg> Cloud Architecture</span>
+        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-code-fork"/></svg> CI/CD Pipelines</span>
+        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-chart-line"/></svg> Performance Tuning</span>
     </div>
 </div>
 

@@ -1,4 +1,37 @@
 /* ========================================
+   SVG ICON SYSTEM
+   ======================================== */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* Size variant for larger icons in stacked/social contexts */
+.icon-lg { width: 1.33em; height: 1.33em; }
+
+/* SNS stacked icon circle */
+.sns-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--text-primary, #333);
+    color: #fff;
+    font-size: 18px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.sns-icon-circle:hover {
+    transform: scale(1.1);
+}
+
+/* ========================================
    SKIP LINK
    ======================================== */
 .skip-link {
@@ -108,10 +141,13 @@ pre { overflow-x: auto; }
     animation: emptyFadeIn 0.4s ease;
 }
 
-.filter-no-results i {
-    font-size: 48px;
+.filter-no-results .icon {
+    width: 48px;
+    height: 48px;
     margin-bottom: 20px;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     color: var(--accent-primary);
     opacity: 0.5;
 }
@@ -172,7 +208,7 @@ pre { overflow-x: auto; }
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .filter-no-results i {
+[data-theme="dark"] .filter-no-results .icon {
     color: var(--accent-primary);
 }
 

@@ -67,7 +67,16 @@
       "Bash(npx sass:*)",
       "Bash(do)",
       "Bash(sed -i '' -e 's/class=\"\"fa fa-github\"\"/class=\"\"fa-brands fa-github\"\"/g' -e 's/class=\"\"fa fa-envelope\"\"/class=\"\"fa-regular fa-envelope\"\"/g' -e 's/class=\"\"fa fa-sitemap\"\"/class=\"\"fa-solid fa-sitemap\"\"/g' -e 's/class=\"\"fa fa-cloud\"\"/class=\"\"fa-solid fa-cloud\"\"/g' -e 's/class=\"\"fa fa-code-fork\"\"/class=\"\"fa-solid fa-code-fork\"\"/g' -e 's/class=\"\"fa fa-line-chart\"\"/class=\"\"fa-solid fa-chart-line\"\"/g' \"$f\")",
-      "Bash(echo \"Updated: $f\")"
+      "Bash(echo \"Updated: $f\")",
+      "Bash(chmod:*)",
+      "Bash(bash scripts/gen-og-images-all.sh 2>&1)",
+      "Bash(mv 2026-04-02-redis-caching-strategy.md infra/)",
+      "Bash(mv 2026-04-03-kafka-introduction.md infra/)",
+      "Bash(mv 2026-04-03-jvm-architecture-classloading.md jvm/)",
+      "Bash(mv 2026-04-04-jvm-gc-tuning.md jvm/)",
+      "Bash(mv 2026-04-05-jvm-heap-dump-analysis.md jvm/)",
+      "Bash(magick identify:*)",
+      "Bash(magick:*)"
     ]
   }
 }

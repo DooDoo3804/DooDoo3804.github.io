@@ -1,0 +1,5 @@
+{% comment %}
+  Reading time calculation — single source of truth.
+  Usage: {% include read-time.html content=post.content %}
+  Output: e.g. "3 min read"
+{% endcomment %}{% assign rt_chars = include.content | strip_html | size %}{% assign rt_words = include.content | number_of_words %}{% assign rt_by_char = rt_chars | divided_by: 500 %}{% assign rt_by_word = rt_words | divided_by: 200 %}{% if rt_by_char > rt_by_word %}{% assign rt_mins = rt_by_char %}{% else %}{% assign rt_mins = rt_by_word %}{% endif %}{% if rt_mins < 1 %}1{% else %}{{ rt_mins }}{% endif %} min read

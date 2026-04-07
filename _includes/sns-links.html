@@ -10,60 +10,54 @@
 
   {% if site.RSS %}
   <li>
-    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-solid fa-rss fa-stack-1x fa-inverse"></i>
+    <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-rss"/></svg>
       </span>
     </a>
   </li>
   {% endif %}
   {% if site.email_address %}
   <li>
-    <a target="_blank" rel="noopener noreferrer" href="mailto:{{ site.email_address }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-regular fa-envelope fa-stack-1x fa-inverse"></i>
+    <a target="_blank" rel="noopener noreferrer" href="mailto:{{ site.email_address }}" aria-label="Email">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg>
       </span>
     </a>
   </li>
   {% endif %}
   {% if site.github_username %}
   <li>
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-brands fa-github fa-stack-1x fa-inverse"></i>
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
       </span>
     </a>
   </li>
   {% endif %}
   {% if site.twitter_username %}
   <li>
-    <a href="https://twitter.com/{{ site.twitter_username }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-brands fa-twitter fa-stack-1x fa-inverse"></i>
+    <a href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-twitter"/></svg>
       </span>
     </a>
   </li>
   {% endif %}
   {% if site.linkedin_username %}
   <li>
-    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-brands fa-linkedin fa-stack-1x fa-inverse"></i>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
       </span>
     </a>
   </li>
   {% endif %}
   {% if site.facebook_username %}
   <li>
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/{{ site.facebook_username }}">
-      <span class="fa-stack fa-lg">
-        <i class="fa-solid fa-circle fa-stack-2x"></i>
-        <i class="fa-brands fa-facebook fa-stack-1x fa-inverse"></i>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/{{ site.facebook_username }}" aria-label="Facebook">
+      <span class="sns-icon-circle">
+        <svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
       </span>
     </a>
   </li>

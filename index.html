@@ -18,16 +18,16 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
             <div class="author-hero-links">
                 {% if site.github_username %}
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub</a>
                 {% endif %}
                 {% if site.linkedin_username %}
-                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn</a>
                 {% endif %}
                 {% if site.email_address %}
-                <a href="mailto:{{ site.email_address }}"><i class="fa-regular fa-envelope"></i> Email</a>
+                <a href="mailto:{{ site.email_address }}"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> Email</a>
                 {% endif %}
             </div>
-            <p class="author-hero-updated"><i class="fa-solid fa-arrows-rotate"></i> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
+            <p class="author-hero-updated"><svg class="icon" aria-hidden="true"><use href="#icon-arrows-rotate"/></svg> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
     </div>
 </div>
@@ -37,17 +37,17 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
     <h3 class="start-here-title">Quick Links</h3>
     <div class="start-here-cards">
         <a href="{{ site.baseurl }}/archive/?tag=Algorithm" class="start-here-card">
-            <i class="fa-solid fa-code"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg>
             <span class="start-here-label">Algorithms</span>
             <span class="start-here-desc">Trees, graphs & more</span>
         </a>
         <a href="{{ site.baseurl }}/archive/?tag=Kotlin" class="start-here-card">
-            <i class="fa-solid fa-book"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg>
             <span class="start-here-label">Kotlin</span>
             <span class="start-here-desc">Syntax & Java comparison</span>
         </a>
         <a href="{{ site.baseurl }}/about/" class="start-here-card">
-            <i class="fa-solid fa-user"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>
             <span class="start-here-label">About Me</span>
             <span class="start-here-desc">Background & projects</span>
         </a>
@@ -74,7 +74,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
         <p class="featured-post-excerpt">{{ featured.content | strip_html | truncate: 200 }}</p>
         <div class="featured-post-meta">
             <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
-            <span class="featured-post-readtime">{% assign f_chars = featured.content | strip_html | size %}{% assign f_words = featured.content | number_of_words %}{% assign f_by_char = f_chars | divided_by: 500 %}{% assign f_by_word = f_words | divided_by: 200 %}{% if f_by_char > f_by_word %}{% assign f_mins = f_by_char %}{% else %}{% assign f_mins = f_by_word %}{% endif %}{% if f_mins < 1 %}1{% else %}{{ f_mins }}{% endif %} min read</span>
+            <span class="featured-post-readtime">{% include read-time.html content=featured.content %}</span>
         </div>
         <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta"><span>Read Post &rarr;</span></a>
     </div>
@@ -141,9 +141,9 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
             <div class="post-card-meta">
                 <span class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%B %-d, %Y' }}">{{ post.date | date: "%B %-d, %Y" }}</span>
                 {% if post.last_modified_at %}
-                <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+                <span class="post-updated" data-date="{{ post.last_modified_at | date_to_xmlschema }}" title="Updated {{ post.last_modified_at | date: '%B %-d, %Y' }}"><svg class="icon" aria-hidden="true"><use href="#icon-arrows-rotate"/></svg> Updated {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
                 {% endif %}
-                <span class="read-time">{% assign chars = post.content | strip_html | size %}{% assign words = post.content | number_of_words %}{% assign by_char = chars | divided_by: 500 %}{% assign by_word = words | divided_by: 200 %}{% if by_char > by_word %}{% assign mins = by_char %}{% else %}{% assign mins = by_word %}{% endif %}{% if mins < 1 %}1{% else %}{{ mins }}{% endif %} min read</span>
+                <span class="read-time">{% include read-time.html content=post.content %}</span>
             </div>
         </div>
     </a>
@@ -154,7 +154,7 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 <!-- No Results Message -->
 <div class="filter-no-results" style="display:none;">
     <div class="filter-no-results-card">
-        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-pen-to-square"/></svg>
         <h4>No posts in this category yet</h4>
         <p class="filter-no-results-hint">There are no posts matching this filter.</p>
         <button class="filter-no-results-reset" id="filter-reset-btn">Browse all posts &rarr;</button>
@@ -205,81 +205,5 @@ header-bg-css: "linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0085a1 100%)"
 {% endif %}
 
 
-<!-- Category Filter JS -->
-<script>
-(function() {
-    var buttons = document.querySelectorAll('.category-btn');
-    var cards = document.querySelectorAll('.post-card');
-    var noResults = document.querySelector('.filter-no-results');
-
-    buttons.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var filter = this.getAttribute('data-filter');
-
-            buttons.forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
-
-            var visibleCount = 0;
-            cards.forEach(function(card, i) {
-                var tags = (card.getAttribute('data-tags') || '').split(',');
-                if (filter === 'all' || tags.indexOf(filter) !== -1) {
-                    card.style.display = '';
-                    card.classList.remove('filter-hidden');
-                    card.style.animationDelay = (visibleCount * 0.04) + 's';
-                    card.classList.add('filter-enter');
-                    visibleCount++;
-                } else {
-                    card.classList.add('filter-hidden');
-                    card.classList.remove('filter-enter');
-                    card.style.display = 'none';
-                }
-            });
-
-            if (noResults) {
-                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-            }
-        });
-    });
-
-    // "Browse all posts" reset button
-    var resetBtn = document.getElementById('filter-reset-btn');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            var allBtn = document.querySelector('.category-btn[data-filter="all"]');
-            if (allBtn) allBtn.click();
-        });
-    }
-})();
-</script>
-
-<!-- Relative Date JS -->
-<script>
-(function() {
-    function timeAgo(dateStr) {
-        var now = new Date();
-        var date = new Date(dateStr);
-        var seconds = Math.floor((now - date) / 1000);
-        var minutes = Math.floor(seconds / 60);
-        var hours = Math.floor(minutes / 60);
-        var days = Math.floor(hours / 24);
-        var months = Math.floor(days / 30);
-        var years = Math.floor(days / 365);
-
-        if (years > 0) return years === 1 ? '1 year ago' : years + ' years ago';
-        if (months > 0) return months === 1 ? '1 month ago' : months + ' months ago';
-        if (days > 0) return days === 1 ? '1 day ago' : days + ' days ago';
-        if (hours > 0) return hours === 1 ? '1 hour ago' : hours + ' hours ago';
-        return 'just now';
-    }
-
-    document.querySelectorAll('.post-date[data-date]').forEach(function(el) {
-        var iso = el.getAttribute('data-date');
-        el.textContent = timeAgo(iso);
-    });
-
-    document.querySelectorAll('.post-updated[data-date]').forEach(function(el) {
-        var iso = el.getAttribute('data-date');
-        el.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Updated ' + timeAgo(iso);
-    });
-})();
-</script>
+<!-- Category Filter + Relative Dates -->
+<script src="{{ "/js/index.js" | prepend: site.baseurl }}" defer></script>

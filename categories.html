@@ -14,7 +14,7 @@ hide-in-nav: true
 
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="cat-grid-section">
-                <h1 class="tags-section-title"><i class="fa fa-folder-open"></i> All Categories</h1>
+                <h1 class="tags-section-title"><svg class="icon" aria-hidden="true"><use href="#icon-folder-open"/></svg> All Categories</h1>
                 <p class="tags-summary">Browse posts by category</p>
 
                 {% comment %} Build categories sorted by frequency (most posts first) {% endcomment %}
@@ -40,49 +40,49 @@ hide-in-nav: true
                     {% case cat_name %}
                         {% when 'algo' %}
                             {% assign display_name = "Algorithm" %}
-                            {% assign cat_icon = "fa-solid fa-code" %}
+                            {% assign cat_icon = "icon-code" %}
                             {% assign cat_desc = "Data structures, sorting, graphs, and problem solving" %}
                         {% when 'cs' %}
                             {% assign display_name = "Computer Science" %}
-                            {% assign cat_icon = "fa-solid fa-microchip" %}
+                            {% assign cat_icon = "icon-microchip" %}
                             {% assign cat_desc = "OS, networks, and CS fundamentals" %}
                         {% when 'db' %}
                             {% assign display_name = "Database" %}
-                            {% assign cat_icon = "fa-solid fa-database" %}
+                            {% assign cat_icon = "icon-database" %}
                             {% assign cat_desc = "SQL, NoSQL, indexing, and query optimization" %}
                         {% when 'infra' %}
                             {% assign display_name = "Infrastructure" %}
-                            {% assign cat_icon = "fa-solid fa-server" %}
+                            {% assign cat_icon = "icon-server" %}
                             {% assign cat_desc = "Docker, Kubernetes, CI/CD, and cloud ops" %}
                         {% when 'kotlin' %}
                             {% assign display_name = "Kotlin" %}
-                            {% assign cat_icon = "fa-solid fa-code" %}
+                            {% assign cat_icon = "icon-code" %}
                             {% assign cat_desc = "Coroutines, idioms, and Kotlin best practices" %}
                         {% when 'react' %}
                             {% assign display_name = "React" %}
-                            {% assign cat_icon = "fa-brands fa-react" %}
+                            {% assign cat_icon = "icon-react" %}
                             {% assign cat_desc = "Hooks, state management, and frontend patterns" %}
                         {% when 'spring' %}
                             {% assign display_name = "Spring" %}
-                            {% assign cat_icon = "fa-solid fa-leaf" %}
+                            {% assign cat_icon = "icon-leaf" %}
                             {% assign cat_desc = "Spring Boot, JPA, security, and backend architecture" %}
                         {% when 'system-design' %}
                             {% assign display_name = "System Design" %}
-                            {% assign cat_icon = "fa-solid fa-sitemap" %}
+                            {% assign cat_icon = "icon-sitemap" %}
                             {% assign cat_desc = "Scalability, caching, messaging, and distributed systems" %}
                         {% when 'backend' %}
                             {% assign display_name = "Backend" %}
-                            {% assign cat_icon = "fa-solid fa-server" %}
+                            {% assign cat_icon = "icon-server" %}
                             {% assign cat_desc = "Backend architecture, caching, messaging, and server-side patterns" %}
                         {% else %}
                             {% assign display_name = cat_name | capitalize %}
-                            {% assign cat_icon = "fa-solid fa-folder" %}
+                            {% assign cat_icon = "icon-folder" %}
                             {% assign cat_desc = "" %}
                     {% endcase %}
                     <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}" tabindex="0" role="button" aria-label="{{ display_name }} — {{ cat_posts.size }} posts">
                         <div class="cat-card-accent"></div>
                         <div class="cat-card-icon">
-                            <i class="{{ cat_icon }}"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#{{ cat_icon }}"/></svg>
                         </div>
                         <div class="cat-card-body">
                             <div class="cat-card-header">

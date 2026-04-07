@@ -62,3 +62,6 @@ reports/
 js/jquery.js
 js/bootstrap.js
 css/bootstrap.css
+
+# Pagefind (generated at build time)
+pagefind/

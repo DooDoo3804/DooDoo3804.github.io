@@ -40,7 +40,7 @@ permalink: /404.html
                 <!-- Search -->
                 <div class="error-search">
                     <div class="error-search-wrapper">
-                        <i class="fa fa-search error-search-icon" aria-hidden="true"></i>
+                        <svg class="icon error-search-icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
                         <input type="text" id="error-search-input" placeholder="Search posts..." autocomplete="off" spellcheck="false" aria-label="Search posts">
                     </div>
                     <div id="error-search-results" class="error-search-results"></div>
@@ -48,7 +48,7 @@ permalink: /404.html
 
                 <!-- Recent Posts -->
                 <div class="error-recent-posts">
-                    <h4 class="error-recent-title"><i class="fa fa-clock-o"></i> Recent Posts</h4>
+                    <h4 class="error-recent-title"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> Recent Posts</h4>
                     <ul class="error-recent-list">
                         {% for post in site.posts limit:3 %}
                         <li>
@@ -65,16 +65,16 @@ permalink: /404.html
 
                 <div class="error-actions">
                     <a href="{{ site.baseurl }}/" class="btn-home">
-                        <i class="fa fa-home"></i> Home
+                        <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home
                     </a>
                     <a href="{{ site.baseurl }}/archive" class="btn-archive">
-                        <i class="fa fa-list"></i> Posts
+                        <svg class="icon" aria-hidden="true"><use href="#icon-list"/></svg> Posts
                     </a>
                     <a href="{{ site.baseurl }}/about" class="btn-archive">
-                        <i class="fa fa-user"></i> About
+                        <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg> About
                     </a>
                     <a href="{{ site.baseurl }}/projects" class="btn-archive">
-                        <i class="fa fa-code"></i> Projects
+                        <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg> Projects
                     </a>
                 </div>
             </div>
@@ -90,22 +90,21 @@ permalink: /404.html
 })();
 </script>
 
-<!-- 404 Search Instance (separate from main search) -->
+<!-- 404 Search — opens main Pagefind search overlay -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof SimpleJekyllSearch === 'undefined') return;
-
     var searchInput = document.getElementById('error-search-input');
-    var resultsContainer = document.getElementById('error-search-results');
+    if (!searchInput) return;
 
-    SimpleJekyllSearch({
-        searchInput: searchInput,
-        resultsContainer: resultsContainer,
-        json: '{{ site.baseurl }}/search.json',
-        searchResultTemplate: '<a class="error-search-result-item" href="{url}"><span class="error-search-result-title">{title}</span><span class="error-search-result-date">{date}</span></a>',
-        noResultsText: '<p class="error-search-no-results">No results found.</p>',
-        limit: 5,
-        fuzzy: false
+    searchInput.addEventListener('focus', function() {
+        this.blur();
+        var searchPage = document.querySelector('.search-page');
+        var mainInput = document.getElementById('search-input');
+        if (searchPage) {
+            searchPage.classList.add('search-active');
+            document.body.classList.add('no-scroll');
+            if (mainInput) mainInput.focus();
+        }
     });
 });
 </script>

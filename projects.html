@@ -34,7 +34,7 @@ nav-style: invert
         {% for project in site.data.projects %}
         <div class="projects-card{% if project.featured %} projects-card--featured{% endif %}" data-techs="{{ project.tech | join: ',' }}">
             <div class="projects-card-icon">
-                <i class="fa {{ project.icon }}" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#{{ project.icon }}"/></svg>
             </div>
             <div class="projects-card-body">
                 <div class="projects-card-meta">
@@ -52,12 +52,12 @@ nav-style: invert
             <div class="projects-card-links">
                 {% if project.github %}
                 <a href="{{ project.github }}" class="projects-link-btn" target="_blank" rel="noopener noreferrer">
-                    <i class="fa fa-github" aria-hidden="true"></i> GitHub
+                    <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub
                 </a>
                 {% endif %}
                 {% if project.demo %}
                 <a href="{{ project.demo }}" class="projects-link-btn projects-link-btn--demo" target="_blank" rel="noopener noreferrer">
-                    <i class="fa fa-external-link" aria-hidden="true"></i> Demo
+                    <svg class="icon" aria-hidden="true"><use href="#icon-external-link"/></svg> Demo
                 </a>
                 {% endif %}
             </div>
@@ -67,7 +67,7 @@ nav-style: invert
 
     <!-- No results message -->
     <div class="projects-no-results" style="display: none;">
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
         <p>No projects found for this tech stack.</p>
     </div>
 </div>

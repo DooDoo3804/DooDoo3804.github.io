@@ -165,8 +165,6 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
-    <link rel="dns-prefetch" href="https://ka-f.fontawesome.com">
     <link rel="dns-prefetch" href="https://giscus.app">
     {% if site.goatcounter.enabled and site.goatcounter.code != "REPLACE_WITH_YOUR_CODE" %}
     <link rel="dns-prefetch" href="https://gc.zgo.at">
@@ -186,7 +184,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DooDoo Blog">
-    <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/128.png">
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/192.png">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
@@ -223,9 +221,6 @@
     <script>
         (function(){try{var t=localStorage.getItem('doodoo-blog-theme')}catch(e){}if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();
     </script>
-
-    <!-- Font Awesome (async to avoid render blocking) -->
-    <script src="https://kit.fontawesome.com/13854dfe88.js" crossorigin="anonymous" defer></script>
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">

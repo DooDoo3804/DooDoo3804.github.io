@@ -280,7 +280,7 @@ code.has-line-numbers .code-line::before {
     opacity: 0.9;
 }
 
-.meta-read-time .fa {
+.meta-read-time .icon {
     margin-right: 3px;
 }
 
@@ -309,7 +309,7 @@ code.has-line-numbers .code-line::before {
     gap: 8px;
 }
 
-.series-nav-title .fa {
+.series-nav-title .icon {
     color: var(--accent-primary);
 }
 
@@ -378,7 +378,7 @@ code.has-line-numbers .code-line::before {
    REDUNDANT lines removed:
    - .series-nav background/border (same vars as light)
    - .series-nav-title color (same var)
-   - .series-nav-title .fa color (same var)
+   - .series-nav-title .icon color (same var)
    - .series-item a:hover color (same var)
    - .series-item--current / .series-item-title color (same var)
 */

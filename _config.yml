@@ -22,7 +22,7 @@ linkedin_username: doodoo3804
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
-permalink: pretty
+permalink: /:year/:month/:day/:title/
 exclude:
   [
     "node_modules",
