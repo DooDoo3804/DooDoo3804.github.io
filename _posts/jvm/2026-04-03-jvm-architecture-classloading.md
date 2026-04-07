@@ -237,7 +237,7 @@ java -Xlog:class+load=info -jar myapp.jar
 
 JVM은 **Class Loader → Runtime Data Areas → Execution Engine**의 구조로 바이트코드를 실행한다. 클래스 로딩은 **위임 모델**을 통해 안전하게 이루어지며, 필요에 따라 커스텀 ClassLoader로 확장할 수 있다.
 
-다음 포스트에서는 Runtime Data Areas 중 Heap 영역을 관리하는 핵심 메커니즘인 [Garbage Collection과 튜닝 전략](/jvm/2026/04/04/jvm-gc-tuning/)을 다룬다.
+다음 포스트에서는 Runtime Data Areas 중 Heap 영역을 관리하는 핵심 메커니즘인 [Garbage Collection과 튜닝 전략](/jvm/2026/04/04/jvm-gc-tuning/)을 다룬다. 참고로, Spring 프레임워크에서 Bean이 생성되고 프록시가 만들어지는 과정도 이 클래스 로딩 메커니즘 위에서 동작한다. [Spring Bean 라이프사이클](/spring/2026/04/05/spring-bean-lifecycle/)에서 그 과정을 확인할 수 있다.
 
 ---
 

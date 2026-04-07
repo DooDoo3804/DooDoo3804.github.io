@@ -64,7 +64,7 @@ Spring은 두 가지 방식으로 프록시를 생성한다.
 | **성능** | 리플렉션 사용 (상대적으로 느림) | 바이트코드 조작 (상대적으로 빠름) |
 | **Spring Boot 기본값** | X | **O** (2.0부터 기본) |
 
-Spring Boot 2.0부터는 `spring.aop.proxy-target-class=true`가 기본값이므로 인터페이스 유무와 관계없이 **CGLIB**으로 프록시를 생성한다.
+Spring Boot 2.0부터는 `spring.aop.proxy-target-class=true`가 기본값이므로 인터페이스 유무와 관계없이 **CGLIB**으로 프록시를 생성한다. CGLIB은 런타임에 바이트코드를 조작하여 서브클래스를 생성하는데, 이 과정은 [JVM 클래스 로딩 메커니즘](/jvm/2026/04/03/jvm-architecture-classloading/)의 Application ClassLoader를 통해 이루어진다.
 
 ```java
 // CGLIB 프록시가 생성되는 과정 (개념적 표현)

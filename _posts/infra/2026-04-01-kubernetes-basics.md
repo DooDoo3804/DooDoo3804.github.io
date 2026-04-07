@@ -415,3 +415,5 @@ Kubernetes는 단순한 배포 도구가 아니라 **선언적 인프라 관리 
 ## 관련 포스트
 
 - [Docker 시작하기](/infra/2026/03/20/docker-getting-started/)
+- [MSA 핵심 패턴 — Circuit Breaker, API Gateway, Saga](/system-design/2026/04/03/msa-patterns/)
+- [gRPC 기초 — Spring Boot 연동](/infra/2026/04/03/grpc-spring-boot/)

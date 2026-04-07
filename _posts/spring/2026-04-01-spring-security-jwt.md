@@ -118,7 +118,7 @@ HMACSHA256(
 | **HS256** | 대칭키 (HMAC) | 하나의 secret | 단일 서버, 간단한 구조 |
 | **RS256** | 비대칭키 (RSA) | private/public key pair | MSA, 외부 검증 필요 시 |
 
-HS256은 구현이 간단하지만, 검증하는 쪽도 비밀키를 알아야 한다. MSA 환경에서는 RS256이 더 적합하다 — 발급 서버만 private key를 갖고, 다른 서비스는 public key로 검증만 하면 된다.
+HS256은 구현이 간단하지만, 검증하는 쪽도 비밀키를 알아야 한다. MSA 환경에서는 RS256이 더 적합하다 — 발급 서버만 private key를 갖고, 다른 서비스는 public key로 검증만 하면 된다. [MSA 패턴](/system-design/2026/04/03/msa-patterns/)에서 다루는 API Gateway에서 JWT 검증을 중앙화하면 각 서비스의 인증 부담을 줄일 수 있다.
 
 ---
 

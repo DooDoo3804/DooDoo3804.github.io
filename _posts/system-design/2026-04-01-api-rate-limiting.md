@@ -330,7 +330,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
 
 ### 커스텀 어노테이션 기반 구현
 
-더 세밀한 제어를 위해 어노테이션 기반으로 구현할 수도 있다.
+더 세밀한 제어를 위해 어노테이션 기반으로 구현할 수도 있다. 아래 코드는 [Spring AOP](/spring/2026/04/03/spring-aop-internals/)의 `@Around` Advice를 활용한다.
 
 ```java
 @Target(ElementType.METHOD)

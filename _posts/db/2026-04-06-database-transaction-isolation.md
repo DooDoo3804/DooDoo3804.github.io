@@ -342,7 +342,7 @@ public void processOrder(Long orderId) {
 
 ### 주의: 프록시 기반 동작
 
-Spring의 `@Transactional`은 **AOP 프록시**를 통해 동작한다. 같은 클래스 내부에서 호출하면 프록시를 거치지 않아 트랜잭션이 적용되지 않는다:
+Spring의 `@Transactional`은 **AOP 프록시**를 통해 동작한다 ([Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/) 참고). 같은 클래스 내부에서 호출하면 프록시를 거치지 않아 트랜잭션이 적용되지 않는다:
 
 ```java
 @Service

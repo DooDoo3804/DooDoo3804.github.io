@@ -469,6 +469,8 @@ public class UserService {
         // 모든 users 캐시 삭제
     }
 }
+
+> **주의**: `@Cacheable`도 [Spring AOP 프록시](/spring/2026/04/03/spring-aop-internals/) 기반이므로, 같은 클래스 내부에서 호출하면 캐시가 동작하지 않는다 (Self-invocation 문제).
 ```
 
 <br>
@@ -578,6 +580,16 @@ public void onUserChange(ConsumerRecord<String, String> record) {
 | Cache Invalidation | 삭제 + 짧은 TTL이 실용적, 대규모는 CDC |
 
 캐싱은 단순히 "Redis에 저장"이 아니라, **데이터 특성에 맞는 전략을 선택하고 일관성과 성능 사이의 트레이드오프를 관리**하는 것이다.
+
+<br>
+
+## 관련 포스트
+
+- [캐싱 전략 기초 — Cache-Aside, Write-Through, Write-Behind](/system-design/2026/03/28/caching-strategy/)
+- [Apache Kafka 입문 — CDC 기반 캐시 무효화](/backend/2026/04/03/kafka-introduction/)
+- [Spring AOP 내부 동작 원리 — @Cacheable의 프록시 메커니즘](/spring/2026/04/03/spring-aop-internals/)
+- [API Rate Limiting — Redis 기반 분산 구현](/system-design/2026/04/01/api-rate-limiting/)
+- [JPA N+1 문제 — 캐시 도입 전 먼저 해결할 것](/spring/2026/04/04/jpa-n-plus-one-problem/)
 
 <br>
 

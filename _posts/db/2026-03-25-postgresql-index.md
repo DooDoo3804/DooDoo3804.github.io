@@ -180,3 +180,4 @@ SELECT pg_size_pretty(pg_total_relation_size('orders'));
 - [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)
 - [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/database/2026/04/01/mysql-vs-postgresql/)
 - [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
+- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)

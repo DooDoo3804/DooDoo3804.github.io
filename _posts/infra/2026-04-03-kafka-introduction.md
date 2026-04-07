@@ -660,7 +660,7 @@ public class OrderQueryController {
 | Dead Letter Queue | 실패 메시지 격리로 안정성 확보 |
 | Event Sourcing + CQRS | Kafka를 중심으로 한 이벤트 기반 아키텍처 |
 
-Kafka는 단순한 메시지 전달이 아니라, **이벤트 기반 시스템의 근간**이다. 메시지 보장 수준과 장애 처리 전략을 올바르게 설계하는 것이 안정적인 시스템의 핵심이다. Kafka와 함께 자주 논의되는 시스템 안정성 주제로 [API Rate Limiting](/system-design/2026/04/01/api-rate-limiting/)도 참고하자.
+Kafka는 단순한 메시지 전달이 아니라, **이벤트 기반 시스템의 근간**이다. 메시지 보장 수준과 장애 처리 전략을 올바르게 설계하는 것이 안정적인 시스템의 핵심이다. MSA 환경에서 Kafka는 [Saga 패턴](/system-design/2026/04/03/msa-patterns/)의 이벤트 채널로, [Redis 캐시 무효화](/backend/2026/04/02/redis-caching-strategy/)의 CDC 파이프라인으로 활용된다. Kafka와 함께 자주 논의되는 시스템 안정성 주제로 [API Rate Limiting](/system-design/2026/04/01/api-rate-limiting/)도 참고하자.
 
 <br>
 

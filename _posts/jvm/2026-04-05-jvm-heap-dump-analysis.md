@@ -269,7 +269,7 @@ java -Xms4g -Xmx4g \
 
 힙 덤프 분석은 OOM 문제 해결의 핵심 기술이다. **운영 서버에는 반드시 `HeapDumpOnOutOfMemoryError` 옵션을 설정**하고, MAT과 같은 도구로 분석하는 연습을 해 두자.
 
-이 시리즈에서 다룬 [JVM 아키텍처](/jvm/2026/04/03/jvm-architecture-classloading/), [GC 튜닝](/jvm/2026/04/04/jvm-gc-tuning/), 힙 덤프 분석을 종합하면 대부분의 JVM 메모리 문제에 대응할 수 있다.
+이 시리즈에서 다룬 [JVM 아키텍처](/jvm/2026/04/03/jvm-architecture-classloading/), [GC 튜닝](/jvm/2026/04/04/jvm-gc-tuning/), 힙 덤프 분석을 종합하면 대부분의 JVM 메모리 문제에 대응할 수 있다. Spring Boot 애플리케이션에서 OOM이 빈번하다면 [JPA N+1 문제](/spring/2026/04/04/jpa-n-plus-one-problem/)로 인한 대량 객체 생성이 원인일 수 있으니 함께 점검해 보자. 또한 [Redis 캐싱 전략](/backend/2026/04/02/redis-caching-strategy/)을 도입하면 DB 조회를 줄여 Heap 사용량 자체를 낮출 수 있다.
 
 ---
 

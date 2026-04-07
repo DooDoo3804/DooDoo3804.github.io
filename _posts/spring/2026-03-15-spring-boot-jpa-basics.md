@@ -161,7 +161,7 @@ public class PostService {
 }
 ```
 
-`@Transactional(readOnly = true)`를 클래스 레벨에 걸고, 쓰기 작업에만 `@Transactional`을 따로 붙이는 패턴이 일반적이다. 읽기 전용 트랜잭션은 Hibernate의 플러시 모드를 MANUAL로 설정하기 때문에 성능상 이점이 있다.
+`@Transactional(readOnly = true)`를 클래스 레벨에 걸고, 쓰기 작업에만 `@Transactional`을 따로 붙이는 패턴이 일반적이다. 읽기 전용 트랜잭션은 Hibernate의 플러시 모드를 MANUAL로 설정하기 때문에 성능상 이점이 있다. `@Transactional`의 전파 레벨과 격리 수준을 더 깊이 이해하려면 [Spring 트랜잭션 전파 레벨](/spring/2026/04/04/spring-transaction-propagation/)과 [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)을 참고하자.
 
 ---
 
