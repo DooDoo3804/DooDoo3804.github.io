@@ -337,10 +337,10 @@ pre.highlight {
 
 /* Command palette / terminal style */
 .search-page .search-main {
-    background: #1e1e2e;
+    background: var(--terminal-bg);
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-    border: 1px solid #313244;
+    border: 1px solid var(--terminal-border);
     width: 90%;
     max-width: 640px;
     max-height: 70vh;
@@ -376,7 +376,7 @@ pre.highlight {
 }
 
 .search-page .search-icon-close:hover {
-    color: #cdd6f4;
+    color: var(--terminal-text);
 }
 
 .search-page #search-input {
@@ -388,9 +388,9 @@ pre.highlight {
     width: 100%;
     font-size: 18px;
     font-weight: 600;
-    color: #cdd6f4;
+    color: var(--terminal-text);
     background: transparent;
-    border-bottom: 1px solid #313244;
+    border-bottom: 1px solid var(--terminal-border);
 }
 
 .search-page #search-input::placeholder {
@@ -402,7 +402,7 @@ pre.highlight {
     flex: 1;
     -webkit-overflow-scrolling: touch;
     padding: 8px 12px 16px;
-    color: #cdd6f4;
+    color: var(--terminal-text);
 }
 
 .search-icon a,
@@ -707,9 +707,9 @@ code, kbd, pre, samp {
     .navbar-default .navbar-collapse {
         position: absolute;
         right: 0;
-        border: 1px solid #313244;
-        background: #1e1e2e;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--border-light);
+        background: var(--bg-surface);
+        box-shadow: var(--shadow-lg);
         border-radius: var(--radius-md);
         width: 200px;
     }
@@ -726,20 +726,13 @@ code, kbd, pre, samp {
     #huxblog_navbar button {
         font-size: 13px;
         line-height: 28px;
-        font-family: var(--font-mono);
-        color: #cdd6f4 !important;
-    }
-
-    #huxblog_navbar .navbar-nav > li > a::before {
-        content: '$ ';
-        color: #a6e3a1;
-        font-weight: 400;
+        color: var(--text-primary) !important;
     }
 
     #huxblog_navbar .navbar-nav > li > a:hover,
     #huxblog_navbar .navbar-nav > li > a:focus {
-        color: #89b4fa !important;
-        background: rgba(137, 180, 250, 0.08);
+        color: var(--accent-primary) !important;
+        background: rgba(var(--accent-color-raw), 0.08);
     }
 
     #huxblog_navbar .navbar-collapse {
@@ -1062,8 +1055,8 @@ code, kbd, pre, samp {
 /* --- Post Heading: Terminal Window Style --- */
 .intro-header .post-heading {
     position: relative;
-    background: #1e1e2e;
-    border: 1px solid #313244;
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
     border-radius: var(--radius-xl);
     padding: 52px 32px 32px;
     overflow: hidden;
@@ -1077,8 +1070,8 @@ code, kbd, pre, samp {
     left: 0;
     right: 0;
     height: 36px;
-    background: #181825;
-    border-bottom: 1px solid #313244;
+    background: var(--terminal-header);
+    border-bottom: 1px solid var(--terminal-border);
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
@@ -1091,7 +1084,7 @@ code, kbd, pre, samp {
     font-size: 12px;
     letter-spacing: 4px;
     z-index: 2;
-    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, var(--terminal-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1100,12 +1093,12 @@ code, kbd, pre, samp {
 .intro-header .post-heading h1 {
     font-size: 30px;
     margin-bottom: 24px;
-    color: #cdd6f4;
+    color: var(--terminal-text);
 }
 
 .intro-header .post-heading .tags .tag {
     border-color: #45475a;
-    color: #89b4fa;
+    color: var(--terminal-blue);
     background: rgba(137, 180, 250, 0.08);
 }
 
@@ -1139,7 +1132,7 @@ code, kbd, pre, samp {
 }
 
 .intro-header .post-heading .meta a {
-    color: #89b4fa;
+    color: var(--terminal-blue);
 }
 
 @media only screen and (min-width: 768px) {
@@ -1275,7 +1268,7 @@ footer .copyright a:focus {
     color: var(--accent-primary);
 }
 
-/* --- Pager (Previous/Next) — Terminal Card Style --- */
+/* --- Pager (Previous/Next) --- */
 ul.pager {
     margin: 20px 0 0;
     padding: 0;
@@ -1285,44 +1278,29 @@ ul.pager {
 
 .pager li > a,
 .pager li > span {
-    font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 600;
     padding: 16px 20px;
-    background-color: #1e1e2e;
+    background-color: var(--bg-surface);
     border-radius: var(--radius-md);
-    border: 1px solid #313244;
+    border: 1px solid var(--border-light);
     display: block;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    color: #cdd6f4;
+    color: var(--text-primary);
 }
 
 .pager li > a {
-    color: #cdd6f4;
+    color: var(--text-primary);
     text-decoration: none;
-}
-
-.pager li.previous > a::before {
-    content: 'cd .. ';
-    color: #a6e3a1;
-    font-weight: 400;
-    font-size: 12px;
-}
-
-.pager li.next > a::after {
-    content: ' ./next';
-    color: #a6e3a1;
-    font-weight: 400;
-    font-size: 12px;
 }
 
 .pager li > a:hover,
 .pager li > a:focus {
-    color: #89b4fa;
-    border-color: #89b4fa;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
-    background-color: #1e1e2e;
+    background-color: var(--bg-surface);
 }
 
 .pager li > a > span {
@@ -1330,23 +1308,23 @@ ul.pager {
     font-size: 14px;
     font-weight: 500;
     margin-top: 4px;
-    color: #9399b2;
+    color: var(--text-secondary);
     transition: color 0.2s;
 }
 
 .pager li > a:hover > span,
 .pager li > a:focus > span {
-    color: #cdd6f4;
+    color: var(--text-primary);
 }
 
 .pager .disabled > a,
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-    color: #585b70;
-    background-color: #181825;
+    color: var(--text-tertiary);
+    background-color: var(--bg-surface-raised);
     cursor: not-allowed;
-    border-color: #313244;
+    border-color: var(--border-light);
     box-shadow: none;
     transform: none;
 }

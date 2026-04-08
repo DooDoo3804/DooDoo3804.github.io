@@ -1138,48 +1138,21 @@
    ABOUT PAGE - Portfolio Redesign
    ======================================== */
 
-/* --- Hero Section — Terminal Window Style --- */
+/* --- Hero Section --- */
 .about-hero {
     position: relative;
     text-align: center;
-    padding: 52px 32px 40px; /* top space for terminal header bar */
+    padding: 40px 32px;
     margin-bottom: 10px;
-    background: #1e1e2e;
-    border: 1px solid #313244;
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-xl);
     overflow: hidden;
 }
 
-/* Terminal header bar */
-.about-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 36px;
-    background: #181825;
-    border-bottom: 1px solid #313244;
-    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-}
-
-/* Terminal traffic-light dots */
-.about-hero::after {
-    content: '\25CF  \25CF  \25CF';
-    position: absolute;
-    top: 10px;
-    left: 16px;
-    font-size: 12px;
-    letter-spacing: 4px;
-    z-index: 2;
-    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 [data-theme="dark"] .about-hero {
-    border-color: #45475a;
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
 }
 
 .about-name {
@@ -1187,34 +1160,26 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     margin: 0 0 8px;
-    color: #cdd6f4;
-    font-family: var(--font-mono);
+    color: var(--text-primary);
 }
 
 .about-name-en {
     font-size: 18px;
     font-weight: 400;
-    color: #9399b2;
+    color: var(--text-secondary);
     margin-left: 6px;
 }
 
 .about-tagline {
     font-size: 17px;
-    color: #a6e3a1;
+    color: var(--accent-primary);
     margin: 0 0 12px;
     line-height: 1.6;
-    font-family: var(--font-mono);
-}
-
-.about-tagline::before {
-    content: '$ ';
-    color: #89b4fa;
-    font-weight: 400;
 }
 
 .about-intro {
     font-size: 15px;
-    color: #9399b2;
+    color: var(--text-secondary);
     margin: 0 0 24px;
     line-height: 1.7;
     max-width: 600px;
@@ -1307,9 +1272,9 @@
 
 .skill-category {
     padding: 52px 18px 18px;
-    background: #1e1e2e;
+    background: var(--terminal-bg);
     border-radius: var(--radius-lg);
-    border: 1px solid #313244;
+    border: 1px solid var(--terminal-border);
     position: relative;
     overflow: hidden;
 }
@@ -1322,8 +1287,8 @@
     left: 0;
     right: 0;
     height: 32px;
-    background: #181825;
-    border-bottom: 1px solid #313244;
+    background: var(--terminal-header);
+    border-bottom: 1px solid var(--terminal-border);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
@@ -1336,7 +1301,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     z-index: 2;
-    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, var(--terminal-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1626,8 +1591,8 @@
 
 /* Terminal style is always dark — minimal dark-mode overrides */
 [data-theme="dark"] .skill-category {
-    background: #1e1e2e;
-    border-color: #45475a;
+    background: var(--terminal-bg);
+    border-color: var(--terminal-border);
 }
 
 [data-theme="dark"] .skill-category-label {
@@ -1861,9 +1826,9 @@
 }
 
 .projects-card {
-    background: #1e1e2e;
+    background: var(--terminal-bg);
     border-radius: var(--radius-lg);
-    border: 1px solid #313244;
+    border: 1px solid var(--terminal-border);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1878,8 +1843,8 @@
     padding: 10px 16px;
     font-size: 11px;
     letter-spacing: 3px;
-    background: #181825;
-    border-bottom: 1px solid #313244;
+    background: var(--terminal-header);
+    border-bottom: 1px solid var(--terminal-border);
     color: transparent;
     text-shadow:
         0 0 0 #ff5f57,
@@ -1899,7 +1864,7 @@
 .projects-card-icon {
     padding: 20px 24px 0;
     font-size: 24px;
-    color: #a6e3a1;
+    color: var(--terminal-green);
 }
 
 .projects-card-body {
@@ -1913,7 +1878,7 @@
     font-family: var(--font-mono);
     margin: 0 0 10px;
     letter-spacing: -0.01em;
-    color: #cdd6f4;
+    color: var(--terminal-text);
 }
 
 .projects-card-desc {
@@ -1938,7 +1903,7 @@
     padding: 3px 10px;
     border-radius: var(--radius-md);
     background: rgba(166, 227, 161, 0.1);
-    color: #a6e3a1;
+    color: var(--terminal-green);
     border: 1px solid rgba(166, 227, 161, 0.15);
 }
 
@@ -1946,7 +1911,7 @@
     display: flex;
     gap: 8px;
     padding: 14px 24px 20px;
-    border-top: 1px solid #313244;
+    border-top: 1px solid var(--terminal-border);
     margin-top: auto;
 }
 
@@ -2666,7 +2631,7 @@
     display: none;
 }
 
-/* More Posts heading — terminal ls style */
+/* More Posts heading */
 .more-posts-heading {
     font-size: 20px;
     font-weight: 700;
@@ -2674,20 +2639,10 @@
     margin: 0 0 8px;
     padding-bottom: 0;
     border-bottom: none;
-    font-family: var(--font-mono);
-}
-
-.more-posts-heading::before {
-    content: '$ ls -la ';
-    color: var(--accent-primary);
-    font-weight: 400;
-    font-size: 0.85em;
-    opacity: 0.7;
 }
 
 [data-theme="dark"] .more-posts-heading {
     color: var(--text-base);
-    border-bottom-color: var(--border-light);
 }
 
 /* ========================================
