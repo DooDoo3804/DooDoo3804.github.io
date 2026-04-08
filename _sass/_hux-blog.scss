@@ -223,7 +223,7 @@ pre.highlight {
     font-size: 14px;
     line-height: 1.5;
     color: var(--text-muted);
-    background: 0 0;
+    background: none;
     border: 0;
     margin: 0;
     padding: 0;
@@ -721,7 +721,7 @@ code, kbd, pre, samp {
 }
 
 .navbar-custom {
-    background: 0 0;
+    background: none;
     border: none;
     position: absolute;
     top: 0;
@@ -757,7 +757,7 @@ code, kbd, pre, samp {
 
 @media only screen and (min-width: 768px) {
     .navbar-custom {
-        background: 0 0;
+        background: none;
         border-bottom: 1px solid transparent;
     }
 
@@ -787,7 +787,7 @@ code, kbd, pre, samp {
 
     .navbar-custom .nav li a:active,
     .navbar-custom .nav li button:active {
-        background: 0 0;
+        background: none;
     }
 
     .navbar-custom .nav li.active > a {
@@ -884,7 +884,7 @@ code, kbd, pre, samp {
 }
 
 .intro-header.style-text {
-    background: 0 0;
+    background: none;
 }
 
 .intro-header.style-text .site-heading,
@@ -1209,12 +1209,12 @@ footer .copyright a:focus {
 
 img::selection {
     color: #fff;
-    background: 0 0;
+    background: none;
 }
 
 img::-moz-selection {
     color: #fff;
-    background: 0 0;
+    background: none;
 }
 
 /* --- Utility --- */

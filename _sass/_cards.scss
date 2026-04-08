@@ -70,7 +70,7 @@
 
 [data-theme="dark"] .category-btn.active {
     background: var(--accent-primary);
-    color: var(--text-on-accent);
+    color: #fff;
     border-color: var(--accent-primary);
     box-shadow: var(--shadow-sm);
 }
@@ -394,8 +394,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 40px;
+    min-width: 44px;
+    height: 44px;
     padding: 0 10px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-medium);
@@ -442,7 +442,7 @@
 
 [data-theme="dark"] .pagination-active span {
     background: var(--accent-primary);
-    color: var(--text-on-accent);
+    color: #fff;
     border-color: var(--accent-primary);
 }
 
