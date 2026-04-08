@@ -434,10 +434,14 @@ body {
     line-height: 1.7;
     font-size: 16px;
     color: var(--text-primary);
-    overflow-x: hidden;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* overflow-x on wrapper instead of body — body overflow can break scroll on some browsers */
+.container-fluid, .container {
+    overflow-x: hidden;
 }
 
 p {

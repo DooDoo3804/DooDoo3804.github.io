@@ -81,18 +81,8 @@
                             }
                         }
 
-                        // adjust the appearance of side-catalog
-                        if (catalog) {
-                            if (!catalogInitialized) {
-                                catalog.style.display = '';
-                                catalogInitialized = true;
-                            }
-                            if (currentTop > (bannerHeight + CATALOG_OFFSET)) {
-                                catalog.classList.add('fixed');
-                            } else {
-                                catalog.classList.remove('fixed');
-                            }
-                        }
+                        // side-catalog uses CSS position:sticky — no JS class toggle needed
+                        // (previously toggled .fixed class causing unnecessary reflows)
                     } else {
                         // On narrow screens, reset navbar state
                         navbar.classList.remove('is-visible', 'is-fixed');

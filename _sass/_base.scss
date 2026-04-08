@@ -56,9 +56,8 @@ body {
     color: var(--text-muted);
 }
 
-/* --- Smooth Scroll --- */
+/* --- Scrollbar --- */
 html {
-    scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--border-medium) transparent;
 }

@@ -578,20 +578,7 @@ code.has-line-numbers .code-line::before {
     opacity: 1;
 }
 
-/* --- Page transition --- */
-.page-content {
-    animation: fadeInUp 0.4s ease both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* --- Page transition (disabled: transform causes scroll position issues) --- */
 }
 
 /* ========================================
