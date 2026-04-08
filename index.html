@@ -15,7 +15,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         <div class="author-hero-info">
             <h2 class="author-hero-name">DoYoon Kim</h2>
             <p class="author-hero-subtitle">Backend Developer</p>
-            <p class="author-hero-topics">Writing about Backend Development, Algorithms, Kotlin, Java &amp; Spring</p>
+            <p class="author-hero-topics">Deep dives into JVM internals, Spring ecosystem, and system design patterns</p>
             <div class="author-hero-links">
                 {% if site.github_username %}
                 <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub</a>
@@ -79,17 +79,17 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         <a href="{{ site.baseurl }}/archive/?tag=Algorithm" class="start-here-card">
             <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg>
             <span class="start-here-label">Algorithms</span>
-            <span class="start-here-desc">Trees, graphs & more</span>
+            <span class="start-here-desc">Data structures & problem solving</span>
         </a>
         <a href="{{ site.baseurl }}/archive/?tag=Kotlin" class="start-here-card">
             <svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg>
             <span class="start-here-label">Kotlin</span>
-            <span class="start-here-desc">Syntax & Java comparison</span>
+            <span class="start-here-desc">Coroutines, syntax & interop</span>
         </a>
         <a href="{{ site.baseurl }}/about/" class="start-here-card">
             <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>
             <span class="start-here-label">About Me</span>
-            <span class="start-here-desc">Background & projects</span>
+            <span class="start-here-desc">Skills & journey</span>
         </a>
     </div>
 </div>
@@ -111,7 +111,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
             {% endfor %}
         </div>
         <h2 class="featured-post-title">{{ featured.title }}</h2>
-        <p class="featured-post-excerpt">{{ featured.content | strip_html | truncate: 200 }}</p>
+        <p class="featured-post-excerpt">{{ featured.description | default: featured.content | strip_html | truncate: 160 }}</p>
         <div class="featured-post-meta">
             <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
             <span class="featured-post-readtime">{% include read-time.html content=featured.content %}</span>

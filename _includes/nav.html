@@ -18,19 +18,15 @@
                     <li{% if current_path == '/' %} class="active"{% endif %}>
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li>
-                    {% for nav_page in site.pages %}
-                    {% if nav_page.title and nav_page.hide-in-nav != true and nav_page.protected != true %}
+                    {% assign sorted_pages = site.pages | sort: "nav-order" %}
+                    {% for nav_page in sorted_pages %}
+                    {% if nav_page.title and nav_page.nav-order and nav_page.hide-in-nav != true and nav_page.protected != true %}
                     {% assign nav_path = nav_page.url | remove: 'index.html' %}
                     <li{% if current_path == nav_path %} class="active"{% endif %}>
                         <a href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a>
                     </li>
                     {% endif %}
                     {% endfor %}
-                    <li>
-                        <a href="{{ site.baseurl }}{{ site.RSS }}" target="_blank" rel="noopener noreferrer" aria-label="RSS Feed">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-rss"/></svg>
-                        </a>
-                    </li>
                     <li class="search-icon">
                         <button type="button" aria-label="Search">
                             <svg class="icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
