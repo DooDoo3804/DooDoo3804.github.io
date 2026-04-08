@@ -2445,6 +2445,18 @@
     margin: 0 0 14px;
 }
 
+.featured-post-title::after {
+    content: '|';
+    color: var(--accent-primary);
+    animation: featuredCursorBlink 1s step-end infinite;
+    margin-left: 4px;
+    font-weight: 300;
+}
+
+@keyframes featuredCursorBlink {
+    50% { opacity: 0; }
+}
+
 @media (min-width: 768px) {
     .featured-post-title {
         font-size: 34px;
@@ -2539,7 +2551,7 @@
     display: none;
 }
 
-/* More Posts heading */
+/* More Posts heading — terminal ls style */
 .more-posts-heading {
     font-size: 20px;
     font-weight: 700;
@@ -2547,6 +2559,15 @@
     margin: 0 0 16px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--border-light);
+    font-family: var(--font-mono);
+}
+
+.more-posts-heading::before {
+    content: '$ ls -la ';
+    color: var(--accent-primary);
+    font-weight: 400;
+    font-size: 0.85em;
+    opacity: 0.7;
 }
 
 [data-theme="dark"] .more-posts-heading {

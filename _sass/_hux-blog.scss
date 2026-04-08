@@ -768,6 +768,22 @@ code, kbd, pre, samp {
     line-height: 25px;
 }
 
+.navbar-custom .navbar-brand::before {
+    content: '>_ ';
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-custom .navbar-brand:hover::before {
+    animation: terminalCursorBlink 1s step-end infinite;
+}
+
+@keyframes terminalCursorBlink {
+    50% { opacity: 0; }
+}
+
 .navbar-custom .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
 }

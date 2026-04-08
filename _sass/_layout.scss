@@ -95,6 +95,14 @@ code, kbd, pre, samp, .code-lang-label {
     text-align: center;
     color: var(--text-muted);
     margin-bottom: 6px;
+    font-family: var(--font-mono);
+}
+
+.footer-attribution::before {
+    content: '[Process completed] ';
+    font-size: 11px;
+    color: var(--text-tertiary);
+    opacity: 0.5;
 }
 
 .footer-attribution a {
