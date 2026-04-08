@@ -3,22 +3,6 @@
    ======================================== */
 /* Dark mode token overrides are consolidated in :root [data-theme="dark"] block in _variables.scss */
 
-/* Smooth dark mode transitions for major components */
-.transitions-enabled .post-card,
-.transitions-enabled .post-container pre,
-.transitions-enabled .post-container code,
-.transitions-enabled .post-container blockquote,
-.transitions-enabled .related-post-card,
-.transitions-enabled .series-nav,
-.transitions-enabled .side-catalog,
-.transitions-enabled .mobile-toc-panel,
-.transitions-enabled .mobile-toc-toggle,
-.transitions-enabled .navbar-custom,
-.transitions-enabled .category-btn,
-.transitions-enabled #back-to-top,
-.transitions-enabled footer {
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
 
 [data-theme="dark"] body {
     background-color: var(--bg-body);

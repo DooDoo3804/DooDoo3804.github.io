@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var mainInput = document.getElementById('search-input');
         if (searchPage) {
             searchPage.classList.add('search-active');
-            document.body.classList.add('no-scroll');
+            setTimeout(function() { document.body.classList.add('no-scroll'); }, 400);
             if (mainInput) mainInput.focus();
         }
     });

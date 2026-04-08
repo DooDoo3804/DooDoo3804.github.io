@@ -366,6 +366,12 @@
             });
         }
 
+        // Close search when clicking a result link (mouse navigation)
+        resultsContainer.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link) { closeSearch(); }
+        });
+
         document.addEventListener('keydown', function (e) {
             var tag = (e.target.tagName || '').toLowerCase();
             var isInput = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;

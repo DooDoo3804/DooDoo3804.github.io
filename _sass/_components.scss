@@ -400,6 +400,11 @@ code.has-line-numbers .code-line::before {
     color: var(--text-secondary);
 }
 
+[data-theme="dark"] .series-item--current {
+    background: rgba(var(--accent-color-raw), 0.08);
+    border-radius: var(--radius-sm);
+}
+
 [data-theme="dark"] .series-item-current-badge {
     background: var(--accent-primary);
     color: var(--text-on-accent);
