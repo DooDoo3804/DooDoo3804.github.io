@@ -680,7 +680,7 @@ code, kbd, pre, samp {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 1.5em auto 1.6em auto;
+    margin: 1.5em auto;
 }
 
 /* --- Post Body Links --- */
@@ -792,10 +792,12 @@ code, kbd, pre, samp {
     font-family: var(--font-mono);
     color: var(--accent-primary);
     font-weight: 400;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
 }
 
 .navbar-custom .navbar-brand:hover::before {
+    opacity: 1;
     animation: terminalCursorBlink 1s step-end infinite;
 }
 
@@ -803,18 +805,8 @@ code, kbd, pre, samp {
     50% { opacity: 0; }
 }
 
-@keyframes glitch {
-    0%   { transform: translate(0); }
-    20%  { transform: translate(-2px, 1px); }
-    40%  { transform: translate(2px, -1px); }
-    60%  { transform: translate(-1px, 2px); }
-    80%  { transform: translate(1px, -2px); }
-    100% { transform: translate(0); }
-}
-
 .navbar-custom .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
-    animation: glitch 0.3s ease;
 }
 
 .navbar-custom .nav li a {

@@ -222,6 +222,11 @@
         // Safety: remove stale no-scroll from previous page state
         document.body.classList.remove('no-scroll');
 
+        // bfcache: when navigating back, DOMContentLoaded won't fire again
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) document.body.classList.remove('no-scroll');
+        });
+
         var pagefind = null;
         var _searchActiveIdx = -1;
 

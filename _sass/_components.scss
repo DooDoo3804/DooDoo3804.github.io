@@ -828,8 +828,10 @@ code.has-line-numbers .code-line::before {
 /* ========================================
    IMAGE LIGHTBOX
    ======================================== */
-/* Lightbox: cursor for zoomable images */
-.post-container img {
+/* Lightbox: cursor for zoomable images (content images only) */
+.post-container > p > img,
+.post-container > img,
+.post-container .highlighter-rouge + p > img {
     cursor: zoom-in;
 }
 

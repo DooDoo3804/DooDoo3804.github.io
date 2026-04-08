@@ -109,6 +109,7 @@
 }
 
 .post-card {
+    position: relative; /* ::before uses absolute positioning */
     background: var(--bg-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
@@ -126,7 +127,7 @@
     right: 0;
     height: 2px;
     background: var(--accent-primary);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-radius: 0; /* card overflow:hidden handles clipping */
     opacity: 0;
     transition: opacity 0.3s ease;
 }
