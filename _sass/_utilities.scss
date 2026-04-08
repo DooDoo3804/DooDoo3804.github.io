@@ -60,6 +60,11 @@
    ======================================== */
 :focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 
+.author-hero :focus-visible,
+.search-page :focus-visible {
+    outline-color: var(--terminal-blue);
+}
+
 /* ========================================
    TOUCH TARGETS
    ======================================== */
@@ -223,7 +228,7 @@ pre { overflow-x: auto; }
     .projects-card-body { padding: 14px 20px; }
     .projects-card-icon { padding: 20px 20px 0; }
     .projects-card-links { padding: 14px 20px 20px; }
-    .featured-post-hero { padding: 32px 24px; }
+    .featured-post-hero { padding: 36px 28px; }
     .featured-post-title { font-size: 22px; }
     .featured-post-excerpt { font-size: 14px; }
     .featured-post-meta { flex-wrap: wrap; gap: 8px; }
@@ -234,6 +239,10 @@ pre { overflow-x: auto; }
     .post-breadcrumb li:not(:last-child)::after { margin: 0 4px; }
     .filter-no-results-card { padding: 32px 24px; }
     .post-card-body { padding: 16px 20px 20px; }
+}
+
+@media (max-width: 480px) {
+    .post-card-body { padding: 14px 16px 16px; }
 }
 
 /* --- Utility Classes --- */

@@ -102,6 +102,12 @@
     }
 }
 
+@media (min-width: 1600px) {
+    .post-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .post-card {
     background: var(--bg-surface);
     border-radius: var(--radius-lg);
@@ -180,7 +186,6 @@
     background-position: center;
     border-bottom: 1px solid var(--border-light);
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
 }
 
 .post-card:hover .post-card-thumb {

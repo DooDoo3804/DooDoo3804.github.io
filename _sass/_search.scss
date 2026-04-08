@@ -112,10 +112,12 @@
 }
 
 .search-tag-pill {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: 10px;
     font-weight: 600;
-    padding: 2px 8px;
+    padding: 6px 12px;
+    min-height: 32px;
     border-radius: var(--radius-lg);
     background: rgba(var(--accent-color-raw), 0.12);
     color: var(--accent-primary);
@@ -240,7 +242,7 @@ mark {
 }
 
 .search-page #search-input {
-    border-bottom-color: var(--terminal-border);
+    border-bottom-color: var(--terminal-surface1);
 }
 
 .search-result-count {

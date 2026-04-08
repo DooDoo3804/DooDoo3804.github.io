@@ -16,6 +16,7 @@
     background: var(--terminal-bg);
     border: 1px solid var(--terminal-border);
     animation: borderGlow 6s ease-in-out infinite;
+    will-change: box-shadow;
 }
 
 /* Terminal header bar */
