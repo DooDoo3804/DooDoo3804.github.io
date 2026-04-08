@@ -398,6 +398,160 @@
         });
     }
 
+    /* --- Code Diff Viewer --- */
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function generateDiff(before, after) {
+        var beforeLines = before.split('\n');
+        var afterLines = after.split('\n');
+        var result = [];
+
+        var bi = 0, ai = 0;
+
+        while (bi < beforeLines.length || ai < afterLines.length) {
+            if (bi < beforeLines.length && ai < afterLines.length && beforeLines[bi] === afterLines[ai]) {
+                result.push('<span class="diff-line diff-same">  ' + escapeHtml(beforeLines[bi]) + '</span>');
+                bi++; ai++;
+            } else {
+                if (bi < beforeLines.length) {
+                    result.push('<span class="diff-line diff-del">- ' + escapeHtml(beforeLines[bi]) + '</span>');
+                    bi++;
+                }
+                if (ai < afterLines.length) {
+                    result.push('<span class="diff-line diff-add">+ ' + escapeHtml(afterLines[ai]) + '</span>');
+                    ai++;
+                }
+            }
+        }
+
+        return result.join('\n');
+    }
+
+    function initDiffBlocks() {
+        var diffs = document.querySelectorAll('.code-diff');
+        diffs.forEach(function(container) {
+            var pres = container.querySelectorAll('pre');
+            if (pres.length < 2) return;
+
+            var lang = container.getAttribute('data-lang') || '';
+            var beforeCode = pres[0].textContent;
+            var afterCode = pres[1].textContent;
+
+            // 탭 버튼 생성
+            var tabs = document.createElement('div');
+            tabs.className = 'diff-tabs';
+            tabs.innerHTML = '<button class="diff-tab active" data-view="before">Before</button>' +
+                             '<button class="diff-tab" data-view="after">After</button>' +
+                             '<button class="diff-tab" data-view="diff">Diff</button>';
+
+            // 뷰 컨테이너
+            var views = document.createElement('div');
+            views.className = 'diff-views';
+
+            // Before 뷰
+            var beforeView = document.createElement('div');
+            beforeView.className = 'diff-view active';
+            beforeView.setAttribute('data-view', 'before');
+            beforeView.appendChild(pres[0].cloneNode(true));
+
+            // After 뷰
+            var afterView = document.createElement('div');
+            afterView.className = 'diff-view';
+            afterView.setAttribute('data-view', 'after');
+            afterView.appendChild(pres[1].cloneNode(true));
+
+            // Diff 뷰
+            var diffView = document.createElement('div');
+            diffView.className = 'diff-view';
+            diffView.setAttribute('data-view', 'diff');
+            var diffPre = document.createElement('pre');
+            var diffCode = document.createElement('code');
+            diffCode.innerHTML = generateDiff(beforeCode, afterCode);
+            diffPre.appendChild(diffCode);
+            diffView.appendChild(diffPre);
+
+            views.appendChild(beforeView);
+            views.appendChild(afterView);
+            views.appendChild(diffView);
+
+            // 원본 pre들 제거하고 탭+뷰로 교체
+            container.innerHTML = '';
+            if (lang) {
+                var label = document.createElement('span');
+                label.className = 'diff-lang-label';
+                label.textContent = lang.toUpperCase();
+                container.appendChild(label);
+            }
+            container.appendChild(tabs);
+            container.appendChild(views);
+
+            // 탭 클릭 이벤트
+            tabs.addEventListener('click', function(e) {
+                var tab = e.target.closest('.diff-tab');
+                if (!tab) return;
+                var view = tab.getAttribute('data-view');
+                tabs.querySelectorAll('.diff-tab').forEach(function(t) { t.classList.remove('active'); });
+                tab.classList.add('active');
+                views.querySelectorAll('.diff-view').forEach(function(v) { v.classList.remove('active'); });
+                views.querySelector('.diff-view[data-view="' + view + '"]').classList.add('active');
+            });
+        });
+    }
+
+    /* --- Reading Stats Tracker --- */
+    function initReadingTracker() {
+        var postContainer = document.querySelector('.post-container[data-pagefind-body]');
+        if (!postContainer) return; // 포스트 페이지가 아니면 무시
+
+        var slug = window.location.pathname;
+        var titleEl = document.querySelector('.intro-header .post-heading h1');
+        var title = titleEl ? titleEl.textContent.trim() : document.title;
+
+        // 읽기 기록 가져오기
+        var STORAGE_KEY = 'doodoo-reading-stats';
+        var stats;
+        try {
+            stats = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch(e) {
+            stats = {};
+        }
+
+        // 이미 방문한 포스트면 방문 횟수만 증가
+        if (!stats[slug]) {
+            stats[slug] = { title: title, visits: 0, maxScroll: 0, readAt: null };
+        }
+        stats[slug].visits++;
+        stats[slug].lastVisit = new Date().toISOString();
+
+        // 스크롤 추적 (기존 reading progress bar와 연동)
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    if (docHeight > 50) {
+                        var pct = Math.round(Math.min(100, (scrollTop / docHeight) * 100));
+                        if (pct > (stats[slug].maxScroll || 0)) {
+                            stats[slug].maxScroll = pct;
+                            if (pct >= 70 && !stats[slug].readAt) {
+                                stats[slug].readAt = new Date().toISOString();
+                            }
+                            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch(e) {}
+                        }
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // 초기 저장
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch(e) {}
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -406,6 +560,7 @@
         updateToggleIcon(getPreferredTheme());
         initBackToTop();
         initReadingProgress();
+        initReadingTracker();
         initCodeLabels();
         initLineNumbers();
         initLineHighlight();
@@ -413,6 +568,7 @@
         initLazyImages();
         initShareButtons();
         initMobileShareBar();
+        initDiffBlocks();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {

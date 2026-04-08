@@ -338,6 +338,103 @@ code.has-line-numbers .code-line::before {
     background: rgba(var(--accent-color-raw), 0.15);
 }
 
+/* --- Code Diff Viewer --- */
+.code-diff {
+    position: relative;
+    margin: 1.5em 0;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.diff-lang-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.08);
+    border-radius: 0 var(--radius-md) 0 var(--radius-md);
+    z-index: 1;
+}
+
+.diff-tabs {
+    display: flex;
+    background: var(--bg-surface-raised);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.diff-tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color 0.2s, background 0.2s;
+}
+
+.diff-tab:hover {
+    color: var(--text-primary);
+    background: rgba(var(--accent-color-raw), 0.04);
+}
+
+.diff-tab.active {
+    color: var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
+}
+
+.diff-view {
+    display: none;
+}
+
+.diff-view.active {
+    display: block;
+}
+
+.diff-view pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.diff-line {
+    display: block;
+    padding: 1px 12px;
+    font-family: var(--font-mono);
+}
+
+.diff-same {
+    color: var(--text-secondary);
+}
+
+.diff-add {
+    background: rgba(40, 167, 69, 0.12);
+    color: var(--color-success);
+}
+
+.diff-del {
+    background: rgba(220, 53, 69, 0.12);
+    color: #e06c75;
+}
+
+[data-theme="dark"] .diff-add {
+    background: rgba(166, 227, 161, 0.1);
+    color: var(--terminal-green);
+}
+
+[data-theme="dark"] .diff-del {
+    background: rgba(243, 139, 168, 0.1);
+    color: #f38ba8;
+}
+
 /* --- Read Time Enhancement --- */
 .meta-read-time {
     font-weight: 600;
@@ -1089,4 +1186,33 @@ body.lightbox-open {
 .author-hero-terminal-btn:hover {
     background: var(--terminal-bg);
     border-color: var(--terminal-green);
+}
+
+/* ========================================
+   READING PROGRESS WIDGET
+   ======================================== */
+.reading-progress-widget {
+    margin-top: 12px;
+}
+
+.reading-stat {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--terminal-overlay);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.reading-bar {
+    height: 4px;
+    background: var(--terminal-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.reading-bar-fill {
+    height: 100%;
+    background: var(--terminal-green);
+    border-radius: 2px;
+    transition: width 0.5s ease;
 }
