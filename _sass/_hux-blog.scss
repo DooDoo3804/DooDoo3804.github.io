@@ -316,6 +316,23 @@ pre.highlight {
 .search-page.search-active .search-main {
     opacity: 1;
     transform: translateY(0) scale(1);
+    animation: terminalBoot 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes terminalBoot {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+        filter: brightness(2);
+    }
+    30% {
+        filter: brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+    }
 }
 
 /* Command palette / terminal style */
@@ -798,8 +815,18 @@ code, kbd, pre, samp {
     50% { opacity: 0; }
 }
 
+@keyframes glitch {
+    0%   { transform: translate(0); }
+    20%  { transform: translate(-2px, 1px); }
+    40%  { transform: translate(2px, -1px); }
+    60%  { transform: translate(-1px, 2px); }
+    80%  { transform: translate(1px, -2px); }
+    100% { transform: translate(0); }
+}
+
 .navbar-custom .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
+    animation: glitch 0.3s ease;
 }
 
 .navbar-custom .nav li a {

@@ -32,6 +32,46 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
     </div>
 </div>
 
+<script>
+(function() {
+    var titles = ['Backend Developer', 'Spring Boot Enthusiast', 'JVM Deep Diver', 'System Designer'];
+    var el = document.querySelector('.author-hero-subtitle');
+    if (!el) return;
+    var idx = 0, charIdx = 0, deleting = false, pauseEnd = 0;
+
+    function tick() {
+        var current = titles[idx];
+        if (!deleting) {
+            el.textContent = current.substring(0, charIdx + 1);
+            charIdx++;
+            if (charIdx === current.length) {
+                pauseEnd = Date.now() + 2000;
+                deleting = true;
+            }
+        } else {
+            if (Date.now() < pauseEnd) {
+                requestAnimationFrame(tick);
+                return;
+            }
+            el.textContent = current.substring(0, charIdx);
+            charIdx--;
+            if (charIdx < 0) {
+                deleting = false;
+                charIdx = 0;
+                idx = (idx + 1) % titles.length;
+            }
+        }
+        var speed = deleting ? 40 : 80;
+        setTimeout(tick, speed);
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = '';
+        setTimeout(tick, 500);
+    }
+})();
+</script>
+
 <!-- Start Here -->
 <div class="start-here">
     <h3 class="start-here-title">Quick Links</h3>

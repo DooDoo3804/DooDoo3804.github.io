@@ -66,6 +66,24 @@
     </div>
 </footer>
 
+<!-- Konami Code Easter Egg -->
+<script>
+(function() {
+    var k = [38,38,40,40,37,39,37,39,66,65], n = 0;
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === k[n]) {
+            n++;
+            if (n === k.length) {
+                n = 0;
+                document.body.style.transition = 'filter 0.5s';
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(function() { document.body.style.filter = ''; }, 3000);
+            }
+        } else { n = 0; }
+    });
+})();
+</script>
+
 <!-- Custom Theme JavaScript (vanilla JS — no jQuery/Bootstrap dependency) -->
 <script src="{{ "/js/hux-blog.min.js" | prepend: site.baseurl }}" defer></script>
 

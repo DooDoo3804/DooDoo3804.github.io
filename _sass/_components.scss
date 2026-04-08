@@ -1,4 +1,11 @@
 /* --- Author Hero Section — Terminal Window Style --- */
+@keyframes borderGlow {
+    0%   { box-shadow: 0 0 15px rgba(137,180,250,0.3), 0 0 30px rgba(166,227,161,0.15); }
+    33%  { box-shadow: 0 0 15px rgba(166,227,161,0.3), 0 0 30px rgba(249,226,175,0.15); }
+    66%  { box-shadow: 0 0 15px rgba(249,226,175,0.3), 0 0 30px rgba(137,180,250,0.15); }
+    100% { box-shadow: 0 0 15px rgba(137,180,250,0.3), 0 0 30px rgba(166,227,161,0.15); }
+}
+
 .author-hero {
     position: relative;
     padding: 32px 32px;
@@ -8,6 +15,7 @@
     overflow: hidden;
     background: #1e1e2e;
     border: 1px solid #313244;
+    animation: borderGlow 6s ease-in-out infinite;
 }
 
 /* Terminal header bar */

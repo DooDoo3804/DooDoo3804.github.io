@@ -2517,6 +2517,12 @@
 .featured-post-readtime {
     font-weight: 600;
     color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-mono);
+}
+
+.featured-post-readtime::before {
+    content: 'ETA: ';
+    opacity: 0.6;
 }
 
 .featured-post-cta {

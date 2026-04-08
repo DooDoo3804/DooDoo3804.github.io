@@ -129,7 +129,7 @@
 }
 
 .post-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) perspective(1000px) rotateX(2deg) rotateY(-1deg);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 20px rgba(var(--accent-color-raw), 0.05);
     border-color: var(--accent-primary);
 }
