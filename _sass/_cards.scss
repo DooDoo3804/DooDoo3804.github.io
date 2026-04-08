@@ -130,12 +130,12 @@
 
 .post-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 20px rgba(var(--accent-color-raw), 0.05);
     border-color: var(--accent-primary);
 }
 
 [data-theme="dark"] .post-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--accent-color-raw), 0.08);
     border-color: var(--accent-primary);
 }
 
@@ -179,6 +179,23 @@
     background-position: center;
     border-bottom: 1px solid var(--border-light);
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+}
+
+/* CRT scanline overlay — subtle retro terminal texture */
+.post-card-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .post-card:hover .post-card-thumb {

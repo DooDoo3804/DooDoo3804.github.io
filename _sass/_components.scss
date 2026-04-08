@@ -93,6 +93,18 @@
     font-weight: 400;
 }
 
+.author-hero-subtitle::after {
+    content: '\2588';
+    color: #a6e3a1;
+    animation: termBlockBlink 1.2s step-end infinite;
+    margin-left: 2px;
+    font-size: 0.9em;
+}
+
+@keyframes termBlockBlink {
+    50% { opacity: 0; }
+}
+
 .author-hero-topics {
     font-size: 13px;
     color: #9399b2;
@@ -533,12 +545,13 @@ code.has-line-numbers .code-line::before {
     padding: 20px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .related-post-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 15px rgba(var(--accent-color-raw), 0.04);
+    border-color: rgba(var(--accent-color-raw), 0.3);
 }
 
 .related-post-card a {

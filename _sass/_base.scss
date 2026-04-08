@@ -47,14 +47,32 @@ body {
     opacity: 0.3;
 }
 
-/* --- Blockquote --- */
+/* --- Blockquote (Terminal Comment Style) --- */
 .post-container blockquote {
-    border-left: 4px solid var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.06);
-    border-radius: 0 6px 6px 0;
-    padding: 14px 20px;
+    border-left: 3px solid #f9e2af;
+    background: #1e1e2e;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 14px 20px 14px 20px;
     margin: 1.5em 0;
-    color: var(--text-muted);
+    color: #bac2de;
+    position: relative;
+}
+
+.post-container blockquote::before {
+    content: '/* ';
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #585b70;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    opacity: 0.7;
+}
+
+.post-container blockquote p {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding-left: 1.8em;
 }
 
 .post-container blockquote p:last-child {
@@ -62,9 +80,9 @@ body {
 }
 
 [data-theme="dark"] .post-container blockquote {
-    background: rgba(var(--accent-color-raw), 0.08);
-    border-left-color: var(--accent-primary);
-    color: var(--text-muted);
+    background: #1e1e2e;
+    border-left-color: #f9e2af;
+    color: #bac2de;
 }
 
 /* --- Smooth Scroll --- */
@@ -105,43 +123,114 @@ html {
     text-shadow: none;
 }
 
-/* --- Post Content - Tables --- */
+/* --- Post Content - Tables (Terminal Style) --- */
 .post-container table {
     width: 100%;
     margin: 1.5em 0;
     border-collapse: collapse;
-    font-size: 15px;
+    font-size: 14px;
+    font-family: var(--font-mono);
+    background: #1e1e2e;
+    border: 1px solid #313244;
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .post-container table th {
-    background: rgba(var(--accent-color-raw), 0.06);
-    color: var(--text-primary);
+    background: #181825;
+    color: #cdd6f4;
     font-weight: 700;
     padding: 10px 14px;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid #313244;
     text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
 }
 
 .post-container table td {
     padding: 9px 14px;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid #313244;
     vertical-align: top;
+    color: #bac2de;
+    font-family: var(--font-mono);
 }
 
 .post-container table tr:nth-child(even) td {
-    background: rgba(0, 0, 0, 0.015);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="dark"] .post-container table {
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .post-container table th {
-    background: rgba(var(--accent-color-raw), 0.08);
-    color: var(--text-primary);
-    border-color: var(--border-light);
+    background: #181825;
+    color: #cdd6f4;
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .post-container table td {
-    border-color: var(--border-light);
+    border-color: #45475a;
+    color: #bac2de;
 }
 
 [data-theme="dark"] .post-container table tr:nth-child(even) td {
     background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Post Content - HR (Terminal Divider) --- */
+.post-container hr {
+    border: none;
+    text-align: center;
+    margin: 2em 0;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+.post-container hr::after {
+    content: '─────────────────────────────';
+    letter-spacing: -0.05em;
+}
+
+/* --- Post Content - Lists (Terminal Prompt Style) --- */
+.post-container ul {
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+.post-container ul > li {
+    position: relative;
+}
+
+.post-container ul > li::before {
+    content: '\25B8 ';
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    margin-left: -1.5em;
+    position: absolute;
+}
+
+.post-container ol {
+    padding-left: 2em;
+    font-variant-numeric: tabular-nums;
+}
+
+.post-container ol > li::marker {
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* --- Post Content - Strong/Em (Terminal Emphasis) --- */
+.post-container strong {
+    color: #cdd6f4;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .post-container strong {
+    color: #f5f5f5;
 }
