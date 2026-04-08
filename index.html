@@ -26,6 +26,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
                 {% if site.email_address %}
                 <a href="mailto:{{ site.email_address }}"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> Email</a>
                 {% endif %}
+                <button class="author-hero-terminal-btn" id="open-terminal-btn" aria-label="Open terminal">&gt;_ Terminal</button>
             </div>
             <p class="author-hero-updated"><svg class="icon" aria-hidden="true"><use href="#icon-arrows-rotate"/></svg> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
@@ -69,6 +70,211 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         el.textContent = '';
         setTimeout(tick, 500);
     }
+})();
+</script>
+
+<!-- Terminal Emulator -->
+<div class="blog-terminal-wrapper" id="blog-terminal-wrapper" style="display:none;">
+    <div class="blog-terminal">
+        <div class="blog-terminal-header">
+            <span class="blog-terminal-dots">&bull; &bull; &bull;</span>
+            <span class="blog-terminal-title">doodoo@blog:~</span>
+        </div>
+        <div class="blog-terminal-body" id="terminal-output">
+            <div class="terminal-line">Welcome to DooDoo IT Blog Terminal. Type <span style="color:var(--terminal-green)">help</span> for available commands.</div>
+        </div>
+        <div class="blog-terminal-input-line">
+            <span class="terminal-prompt">doodoo@blog:~$</span>
+            <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var wrapper = document.getElementById('blog-terminal-wrapper');
+    var openBtn = document.getElementById('open-terminal-btn');
+    var input = document.getElementById('terminal-input');
+    var output = document.getElementById('terminal-output');
+    if (!wrapper || !openBtn || !input || !output) return;
+
+    // Post data (generated at Jekyll build time)
+    var posts = [
+        {% for post in site.posts %}
+        { title: {{ post.title | jsonify }}, url: "{{ post.url | prepend: site.baseurl }}", date: "{{ post.date | date: '%Y-%m-%d' }}", tags: {{ post.tags | jsonify }}, category: "{{ post.categories | first }}" }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+
+    var categories = {};
+    posts.forEach(function(p) {
+        var cat = p.category || 'uncategorized';
+        if (!categories[cat]) categories[cat] = [];
+        categories[cat].push(p);
+    });
+
+    var commandHistory = [];
+    var historyIndex = -1;
+
+    function addLine(text, className) {
+        var div = document.createElement('div');
+        div.className = 'terminal-line' + (className ? ' ' + className : '');
+        div.innerHTML = text;
+        output.appendChild(div);
+        output.scrollTop = output.scrollHeight;
+    }
+
+    function addPromptLine(cmd) {
+        addLine('<span style="color:var(--terminal-green)">doodoo@blog:~$</span> ' + escapeHtml(cmd));
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    var commands = {
+        help: function() {
+            addLine('Available commands:');
+            addLine('  <span style="color:var(--terminal-green)">ls</span>           \u2014 List categories');
+            addLine('  <span style="color:var(--terminal-green)">ls [category]</span> \u2014 List posts in category');
+            addLine('  <span style="color:var(--terminal-green)">cat [slug]</span>    \u2014 Show post summary');
+            addLine('  <span style="color:var(--terminal-green)">cd [category]</span> \u2014 Go to category page');
+            addLine('  <span style="color:var(--terminal-green)">whoami</span>        \u2014 About me');
+            addLine('  <span style="color:var(--terminal-green)">neofetch</span>      \u2014 Blog system info');
+            addLine('  <span style="color:var(--terminal-green)">fortune</span>       \u2014 Random dev quote');
+            addLine('  <span style="color:var(--terminal-green)">clear</span>         \u2014 Clear terminal');
+            addLine('  <span style="color:var(--terminal-green)">exit</span>          \u2014 Close terminal');
+        },
+        ls: function(args) {
+            if (!args || args === '') {
+                Object.keys(categories).sort().forEach(function(cat) {
+                    addLine('  <span style="color:var(--terminal-blue)">' + cat + '/</span>  (' + categories[cat].length + ' posts)');
+                });
+            } else {
+                var cat = args.toLowerCase();
+                var found = categories[cat];
+                if (!found) {
+                    addLine('ls: cannot access \'' + escapeHtml(args) + '\': No such category');
+                    return;
+                }
+                found.forEach(function(p) {
+                    addLine('  <span style="color:var(--terminal-overlay)">' + p.date + '</span>  <span style="color:var(--terminal-blue)">' + escapeHtml(p.title) + '</span>');
+                });
+            }
+        },
+        cat: function(args) {
+            if (!args) { addLine('cat: missing operand'); return; }
+            var slug = args.toLowerCase();
+            var found = posts.find(function(p) {
+                return p.url.toLowerCase().indexOf(slug) > -1 || p.title.toLowerCase().indexOf(slug) > -1;
+            });
+            if (!found) {
+                addLine('cat: ' + escapeHtml(args) + ': No such post');
+                return;
+            }
+            addLine('<span style="color:var(--terminal-blue);font-weight:700">' + escapeHtml(found.title) + '</span>');
+            addLine('Date: ' + found.date);
+            addLine('Tags: ' + found.tags.join(', '));
+            addLine('URL: <a href="' + found.url + '" style="color:var(--terminal-green)">' + found.url + '</a>');
+        },
+        cd: function(args) {
+            if (!args) { window.location.href = '/'; return; }
+            var cat = args.toLowerCase();
+            if (categories[cat]) {
+                window.location.href = '/archive/?tag=' + encodeURIComponent(cat);
+            } else {
+                addLine('cd: ' + escapeHtml(args) + ': No such category');
+            }
+        },
+        whoami: function() {
+            addLine('DoYoon Kim \u2014 Backend Developer');
+            addLine('Building scalable systems with Spring, JVM & Kotlin');
+            addLine('<a href="/about/" style="color:var(--terminal-green)">\u2192 Full profile</a>');
+        },
+        neofetch: function() {
+            addLine('');
+            addLine('  <span style="color:var(--terminal-blue)">doodoo@blog</span>');
+            addLine('  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
+            addLine('  <span style="color:var(--terminal-blue)">OS:</span> Jekyll 4.0 + GitHub Pages');
+            addLine('  <span style="color:var(--terminal-blue)">Theme:</span> Catppuccin Mocha');
+            addLine('  <span style="color:var(--terminal-blue)">Posts:</span> ' + posts.length);
+            addLine('  <span style="color:var(--terminal-blue)">Categories:</span> ' + Object.keys(categories).length);
+            addLine('  <span style="color:var(--terminal-blue)">Tags:</span> ' + (function(){ var s = {}; posts.forEach(function(p){ p.tags.forEach(function(t){ s[t]=1; }); }); return Object.keys(s).length; })());
+            addLine('  <span style="color:var(--terminal-blue)">Search:</span> Pagefind');
+            addLine('  <span style="color:var(--terminal-blue)">Comments:</span> Giscus');
+            addLine('');
+        },
+        fortune: function() {
+            var quotes = [
+                '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand." \u2014 Martin Fowler',
+                '"First, solve the problem. Then, write the code." \u2014 John Johnson',
+                '"Premature optimization is the root of all evil." \u2014 Donald Knuth',
+                '"Simplicity is prerequisite for reliability." \u2014 Edsger Dijkstra',
+                '"Talk is cheap. Show me the code." \u2014 Linus Torvalds',
+                '"Programs must be written for people to read." \u2014 Harold Abelson',
+                '"The best error message is the one that never shows up." \u2014 Thomas Fuchs'
+            ];
+            addLine(quotes[Math.floor(Math.random() * quotes.length)]);
+        },
+        clear: function() {
+            output.innerHTML = '';
+        },
+        exit: function() {
+            wrapper.style.display = 'none';
+        }
+    };
+
+    function processCommand(cmd) {
+        cmd = cmd.trim();
+        if (!cmd) return;
+
+        addPromptLine(cmd);
+        commandHistory.push(cmd);
+        historyIndex = commandHistory.length;
+
+        var parts = cmd.split(/\s+/);
+        var name = parts[0].toLowerCase();
+        var args = parts.slice(1).join(' ');
+
+        if (commands[name]) {
+            commands[name](args);
+        } else {
+            addLine('command not found: ' + escapeHtml(name) + '. Type <span style="color:var(--terminal-green)">help</span> for commands.');
+        }
+    }
+
+    // Open terminal
+    openBtn.addEventListener('click', function() {
+        wrapper.style.display = 'block';
+        input.focus();
+    });
+
+    // Enter key + arrow key history
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            processCommand(input.value);
+            input.value = '';
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                input.value = commandHistory[historyIndex];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                input.value = commandHistory[historyIndex];
+            } else {
+                historyIndex = commandHistory.length;
+                input.value = '';
+            }
+        }
+    });
+
+    // Focus input when clicking terminal body
+    document.querySelector('.blog-terminal').addEventListener('click', function() {
+        input.focus();
+    });
 })();
 </script>
 

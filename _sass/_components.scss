@@ -985,3 +985,108 @@ body.lightbox-open {
 .giscus-retry-btn:hover {
     opacity: 0.85;
 }
+
+/* ========================================
+   BLOG TERMINAL EMULATOR
+   ======================================== */
+.blog-terminal-wrapper {
+    margin-bottom: 32px;
+    animation: terminalSlideIn 0.3s ease;
+}
+
+@keyframes terminalSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.blog-terminal {
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 14px;
+}
+
+.blog-terminal-header {
+    background: var(--terminal-header);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--terminal-border);
+}
+
+.blog-terminal-dots {
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, var(--terminal-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.blog-terminal-title {
+    color: var(--terminal-overlay);
+    font-size: 13px;
+}
+
+.blog-terminal-body {
+    padding: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+    color: var(--terminal-text);
+    line-height: 1.6;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.blog-terminal-input-line {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px 16px;
+    gap: 8px;
+}
+
+.terminal-prompt {
+    color: var(--terminal-green);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.terminal-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--terminal-text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    caret-color: var(--terminal-green);
+}
+
+/* Terminal open button in author hero */
+.author-hero-terminal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--terminal-header);
+    color: var(--terminal-green);
+    border: 1px solid var(--terminal-border);
+    border-radius: var(--radius-2xl);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.author-hero-terminal-btn:hover {
+    background: var(--terminal-bg);
+    border-color: var(--terminal-green);
+}
