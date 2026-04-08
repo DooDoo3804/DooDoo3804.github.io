@@ -6,6 +6,7 @@
 
     var HEADING_SELECTOR = 'h2[id], h3[id]';
     var MIN_HEADINGS = 2;
+    // rootMargin: 상단 80px 오프셋(navbar 높이), 하단 66% 제외(현재 섹션 감지 범위)
     var OBSERVER_ROOT_MARGIN = '-80px 0px -66%';
 
     function getPostContainer() {

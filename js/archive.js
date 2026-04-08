@@ -96,7 +96,7 @@ Rewritten to vanilla JS — Sprint 17
             result[i] || (result[i] = {});
             result[i][j] = true;
           } else {
-            var tags = (articles[j].getAttribute('data-tags') || '').split(',');
+            var tags = (articles[j].getAttribute('data-tags') || '').split(',').filter(Boolean);
             for (k = 0; k < tags.length; k++) {
               if (tags[k] === tag) {
                 result[i] || (result[i] = {});
