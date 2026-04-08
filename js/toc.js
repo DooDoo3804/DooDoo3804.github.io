@@ -70,9 +70,14 @@
         });
 
         // Auto-scroll sidebar to keep active item visible
-        var activeLi = document.querySelector('.catalog-body .active');
-        if (activeLi) {
-            activeLi.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+        // Only when sidebar is actually visible (lg+ screens) to prevent
+        // scrollIntoView from scrolling the entire page on mobile/tablet
+        var sidebar = document.querySelector('.side-catalog');
+        if (sidebar && sidebar.offsetParent !== null) {
+            var activeLi = sidebar.querySelector('.active');
+            if (activeLi) {
+                activeLi.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+            }
         }
     }
 
