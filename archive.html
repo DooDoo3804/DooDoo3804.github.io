@@ -87,6 +87,11 @@ nav-order: 1
 			</div>
 
 			<div class="archive-side-card">
+				<h5>ACTIVITY</h5>
+				<div id="post-heatmap"></div>
+			</div>
+
+			<div class="archive-side-card">
 				<h5>BY YEAR</h5>
 				{% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 				{% for year in years %}
@@ -115,6 +120,69 @@ nav-order: 1
 </div>
 
 <script>
+(function() {
+    var postDates = [
+        {% for post in site.posts %}
+        "{{ post.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+
+    var container = document.getElementById('post-heatmap');
+    if (!container) return;
+
+    var counts = {};
+    postDates.forEach(function(d) {
+        counts[d] = (counts[d] || 0) + 1;
+    });
+
+    var weeks = 26;
+    var today = new Date();
+    var startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - (weeks * 7));
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+    var cellSize = 12;
+    var cellGap = 2;
+    var totalSize = cellSize + cellGap;
+    var svgWidth = weeks * totalSize + 20;
+    var svgHeight = 7 * totalSize + 20;
+
+    var svg = '<svg width="' + svgWidth + '" height="' + svgHeight + '" style="display:block;margin:0 auto;">';
+
+    var dayLabels = ['', 'M', '', 'W', '', 'F', ''];
+    for (var d = 0; d < 7; d++) {
+        if (dayLabels[d]) {
+            svg += '<text x="0" y="' + (d * totalSize + cellSize + 8) + '" font-size="9" fill="var(--text-tertiary)" font-family="var(--font-mono)">' + dayLabels[d] + '</text>';
+        }
+    }
+
+    var currentDate = new Date(startDate);
+    for (var w = 0; w < weeks; w++) {
+        for (var d = 0; d < 7; d++) {
+            var dateStr = currentDate.toISOString().split('T')[0];
+            var count = counts[dateStr] || 0;
+            var color;
+            if (count === 0) color = 'var(--border-light)';
+            else if (count === 1) color = 'rgba(var(--accent-color-raw), 0.4)';
+            else if (count === 2) color = 'rgba(var(--accent-color-raw), 0.7)';
+            else color = 'var(--accent-primary)';
+
+            var x = w * totalSize + 15;
+            var y = d * totalSize + 4;
+            var opacity = currentDate > today ? '0.15' : '1';
+
+            svg += '<rect x="' + x + '" y="' + y + '" width="' + cellSize + '" height="' + cellSize + '" rx="2" fill="' + color + '" opacity="' + opacity + '">';
+            svg += '<title>' + dateStr + ': ' + count + ' post' + (count !== 1 ? 's' : '') + '</title>';
+            svg += '</rect>';
+
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    }
+
+    svg += '</svg>';
+    container.innerHTML = svg;
+})();
+
 document.querySelectorAll('.archive-year-item').forEach(function(item) {
     item.addEventListener('click', function() {
         var showAll = document.querySelector('.tag-button--all');

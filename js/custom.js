@@ -157,6 +157,37 @@
         });
     }
 
+    /* --- Code Block Line Highlighting --- */
+    function initLineHighlight() {
+        var pres = document.querySelectorAll('.post-container pre[data-highlight]');
+        pres.forEach(function(pre) {
+            var highlightAttr = pre.getAttribute('data-highlight');
+            if (!highlightAttr) return;
+
+            // 파싱: "3,5-7,10" → Set(3,5,6,7,10)
+            var lines = new Set();
+            highlightAttr.split(',').forEach(function(part) {
+                part = part.trim();
+                if (part.indexOf('-') > -1) {
+                    var range = part.split('-');
+                    var start = parseInt(range[0], 10);
+                    var end = parseInt(range[1], 10);
+                    for (var i = start; i <= end; i++) lines.add(i);
+                } else {
+                    lines.add(parseInt(part, 10));
+                }
+            });
+
+            // .code-line span들에 하이라이트 적용
+            var codeLines = pre.querySelectorAll('.code-line');
+            codeLines.forEach(function(line, idx) {
+                if (lines.has(idx + 1)) {
+                    line.classList.add('highlighted');
+                }
+            });
+        });
+    }
+
     /* --- Screen Reader Announcement --- */
     function announceToSR(msg) {
         var el = document.getElementById("sr-status");
@@ -377,6 +408,7 @@
         initReadingProgress();
         initCodeLabels();
         initLineNumbers();
+        initLineHighlight();
         initCopyButtons();
         initLazyImages();
         initShareButtons();

@@ -413,6 +413,20 @@
     font-size: 20px;
 }
 
+#post-heatmap {
+    overflow-x: auto;
+    padding: 4px 0;
+}
+
+#post-heatmap svg rect {
+    transition: opacity 0.2s;
+}
+
+#post-heatmap svg rect:hover {
+    stroke: var(--accent-primary);
+    stroke-width: 1;
+}
+
 .archive-year-item {
     display: flex;
     justify-content: space-between;

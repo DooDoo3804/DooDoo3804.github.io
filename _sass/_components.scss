@@ -326,6 +326,18 @@ code.has-line-numbers .code-line::before {
     -webkit-user-select: none;
 }
 
+/* --- Code Line Highlighting --- */
+.code-line.highlighted {
+    background: rgba(var(--accent-color-raw), 0.1);
+    border-left: 3px solid var(--accent-primary);
+    margin-left: -3px;
+    display: block;
+}
+
+[data-theme="dark"] .code-line.highlighted {
+    background: rgba(var(--accent-color-raw), 0.15);
+}
+
 /* --- Read Time Enhancement --- */
 .meta-read-time {
     font-weight: 600;
