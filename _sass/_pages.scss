@@ -457,6 +457,12 @@
     font-weight: 500;
 }
 
+/* "All" button stands out with accent color */
+#tag_cloud .tag-button--all {
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
 #tag_cloud .tag-button--all:hover,
 #tag_cloud .tag-button:hover,
 #tag_cloud .tag-button.focus {
@@ -466,6 +472,12 @@
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
     text-decoration: none;
+}
+
+#tag_cloud .tag-button--all:hover,
+#tag_cloud .tag-button--all:active,
+#tag_cloud .tag-button--all.focus {
+    background-color: var(--bg-surface-hover);
 }
 
 #tag_cloud .tag-button sup,
@@ -852,15 +864,15 @@
 .category-group {
     border-left: 3px solid var(--accent-primary);
 }
-.cat-group--algo  { border-left-color: #2ecc71; }
-.cat-group--cs    { border-left-color: #9b59b6; }
-.cat-group--db    { border-left-color: #e67e22; }
-.cat-group--infra { border-left-color: #3498db; }
-.cat-group--kotlin { border-left-color: #7f52ff; }
-.cat-group--react { border-left-color: #61dafb; }
-.cat-group--spring { border-left-color: #6db33f; }
-.cat-group--system-design { border-left-color: #e74c3c; }
-.cat-group--backend { border-left-color: #e67e22; }
+.cat-group--algo  { border-left-color: var(--cat-algo); }
+.cat-group--cs    { border-left-color: var(--cat-cs); }
+.cat-group--db    { border-left-color: var(--cat-db); }
+.cat-group--infra { border-left-color: var(--cat-infra); }
+.cat-group--kotlin { border-left-color: var(--cat-kotlin); }
+.cat-group--react { border-left-color: var(--cat-react); }
+.cat-group--spring { border-left-color: var(--cat-spring); }
+.cat-group--system-design { border-left-color: var(--cat-system-design); }
+.cat-group--backend { border-left-color: var(--cat-backend); }
 
 /* ========================================
    CATEGORIES PAGE - Card Grid
@@ -905,16 +917,16 @@
     overflow: hidden;
 }
 
-/* Per-category accent colors */
-.cat-card--algo  { --cat-accent: #2ecc71; }
-.cat-card--cs    { --cat-accent: #9b59b6; }
-.cat-card--db    { --cat-accent: #e67e22; }
-.cat-card--infra { --cat-accent: #3498db; }
-.cat-card--kotlin { --cat-accent: #7f52ff; }
-.cat-card--react { --cat-accent: #61dafb; }
-.cat-card--spring { --cat-accent: #6db33f; }
-.cat-card--system-design { --cat-accent: #e74c3c; }
-.cat-card--backend { --cat-accent: #e67e22; }
+/* Per-category accent colors (from --cat-* variables in _variables.scss) */
+.cat-card--algo  { --cat-accent: var(--cat-algo); }
+.cat-card--cs    { --cat-accent: var(--cat-cs); }
+.cat-card--db    { --cat-accent: var(--cat-db); }
+.cat-card--infra { --cat-accent: var(--cat-infra); }
+.cat-card--kotlin { --cat-accent: var(--cat-kotlin); }
+.cat-card--react { --cat-accent: var(--cat-react); }
+.cat-card--spring { --cat-accent: var(--cat-spring); }
+.cat-card--system-design { --cat-accent: var(--cat-system-design); }
+.cat-card--backend { --cat-accent: var(--cat-backend); }
 
 /* Top accent bar */
 .cat-card-accent {

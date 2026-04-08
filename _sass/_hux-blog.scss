@@ -1127,9 +1127,9 @@ footer .copyright a:focus {
 }
 
 /* --- Pager (Previous/Next) --- */
-.pager {
-    margin: 20px 0 0 !important;
-    padding: 0 !important;
+ul.pager {
+    margin: 20px 0 0;
+    padding: 0;
     display: flex;
     gap: 16px;
 }
@@ -1285,16 +1285,7 @@ img::-moz-selection {
     margin: 20px 0 15px 0;
 }
 
-#tag_cloud .tag-button--all {
-    font-weight: 700;
-    color: var(--accent-primary) !important;
-}
-
-#tag_cloud .tag-button--all:hover,
-#tag_cloud .tag-button--all:active,
-#tag_cloud .tag-button--all.focus {
-    background-color: var(--bg-surface-hover) !important;
-}
+/* tag-button--all accent & hover styles consolidated into _pages.scss */
 
 @media only screen and (min-width: 768px) {
     #tag_cloud {

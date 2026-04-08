@@ -49,6 +49,17 @@
     --radius-xl: 16px;
     --radius-2xl: 20px;
     --radius-full: 9999px;
+
+    /* Category accent colors */
+    --cat-algo: #2ecc71;
+    --cat-cs: #9b59b6;
+    --cat-db: #e67e22;
+    --cat-infra: #3498db;
+    --cat-kotlin: #7f52ff;
+    --cat-react: #61dafb;
+    --cat-spring: #6db33f;
+    --cat-system-design: #e74c3c;
+    --cat-backend: #e67e22;
 }
 [data-theme="dark"] {
     --accent-primary: #58a6ff;
