@@ -201,6 +201,9 @@
 <!-- Pagefind Search -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Safety: remove stale no-scroll from previous page state
+        document.body.classList.remove('no-scroll');
+
         var pagefind = null;
         var _searchActiveIdx = -1;
 
@@ -318,10 +321,12 @@
             }
         }
 
+        var _noScrollTimer = null;
+
         function openSearch() {
             if (!searchPage || searchPage.classList.contains('search-active')) return;
             searchPage.classList.add('search-active');
-            setTimeout(function () { bodyEl.classList.add('no-scroll'); }, 400);
+            _noScrollTimer = setTimeout(function () { bodyEl.classList.add('no-scroll'); }, 400);
             if (searchInput) searchInput.focus();
             _searchActiveIdx = -1;
             ensurePagefind();
@@ -329,6 +334,7 @@
 
         function closeSearch() {
             if (!searchPage) return;
+            if (_noScrollTimer) { clearTimeout(_noScrollTimer); _noScrollTimer = null; }
             searchPage.classList.remove('search-active');
             bodyEl.classList.remove('no-scroll');
             if (searchInput) searchInput.value = '';
@@ -385,7 +391,7 @@
             } else if (e.key === 'Enter' && _searchActiveIdx >= 0) {
                 e.preventDefault();
                 var url = items[_searchActiveIdx].getAttribute('data-url');
-                if (url) window.location.href = url;
+                if (url) { closeSearch(); window.location.href = url; }
             }
         });
     });
