@@ -54,7 +54,7 @@
                     {% if page.subtitle and page.subtitle != "" %}
                     <p class="subheading">{{ page.subtitle }}</p>
                     {% endif %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }} <span class="meta-divider">|</span> <span class="meta-read-time"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> {% include read-time.html content=page.content %}</span></span>
+                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }} <span class="meta-divider">&middot;</span> <span class="meta-read-time"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> {% include read-time.html content=page.content %}</span></span>
                 </div>
             </div>
         </div>

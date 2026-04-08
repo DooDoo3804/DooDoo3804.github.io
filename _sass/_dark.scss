@@ -92,11 +92,12 @@
 [data-theme="dark"] .post-container code {
     background: rgba(255, 255, 255, 0.08);
     color: var(--text-primary);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] .post-container pre code {
     background: transparent;
+    border: none;
 }
 
 [data-theme="dark"] .code-lang-label {

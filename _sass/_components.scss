@@ -589,11 +589,11 @@ code.has-line-numbers .code-line::before {
    ABOUT PAGE - Tech Stack Tags
    ======================================== */
 .post-container code {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.06);
     color: var(--text-primary);
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-sm);
-    padding: 2px 6px;
+    padding: 2px 8px;
     font-size: 13px;
     font-family: var(--font-mono);
 }
@@ -684,11 +684,23 @@ code.has-line-numbers .code-line::before {
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
-    background: var(--accent-gradient);
+    height: 2px;
+    background: var(--accent-primary);
     z-index: 9999;
     transition: width 0.1s linear;
     pointer-events: none;
+}
+
+#reading-progress-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 8px var(--accent-primary);
 }
 
 /* ========================================
