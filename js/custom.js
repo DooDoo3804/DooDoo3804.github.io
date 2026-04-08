@@ -552,6 +552,258 @@
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch(e) {}
     }
 
+    /* --- Mindmap --- */
+    function escapeText(str, maxLen) {
+        str = str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        if (maxLen && str.length > maxLen) str = str.substring(0, maxLen) + '\u2026';
+        return str;
+    }
+
+    function renderMindmap(container, root) {
+        var width = container.clientWidth || 700;
+        var nodeHeight = 28;
+
+        // 전체 노드 수로 높이 계산
+        var totalNodes = root.children.length;
+        root.children.forEach(function(c) { totalNodes += (c.children ? c.children.length : 0); });
+        var height = Math.max(300, totalNodes * nodeHeight + 60);
+
+        var svg = '<svg width="' + width + '" height="' + height + '" viewBox="0 0 ' + width + ' ' + height + '">';
+
+        var centerX = 20;
+        var centerY = height / 2;
+        var h2X = 220;
+        var h3X = 440;
+
+        // 루트 노드
+        svg += '<rect x="' + centerX + '" y="' + (centerY - 14) + '" width="180" height="28" rx="14" fill="var(--accent-primary)" />';
+        svg += '<text x="' + (centerX + 90) + '" y="' + (centerY + 5) + '" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="var(--font-mono)">' + escapeText(root.name, 22) + '</text>';
+
+        // H2 노드 배치
+        var h2Spacing = height / (root.children.length + 1);
+
+        root.children.forEach(function(h2, i) {
+            var y = h2Spacing * (i + 1);
+
+            // 루트 → H2 연결선
+            svg += '<path d="M' + (centerX + 180) + ',' + centerY + ' C' + (centerX + 200) + ',' + centerY + ' ' + (h2X - 20) + ',' + y + ' ' + h2X + ',' + y + '" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-opacity="0.4" />';
+
+            // H2 노드
+            svg += '<rect x="' + h2X + '" y="' + (y - 12) + '" width="180" height="24" rx="12" fill="var(--bg-surface-raised)" stroke="var(--accent-primary)" stroke-width="1.5" />';
+            svg += '<a href="#' + (h2.id || '') + '">';
+            svg += '<text x="' + (h2X + 90) + '" y="' + (y + 4) + '" text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent-primary)" font-family="var(--font-mono)" style="cursor:pointer">' + escapeText(h2.name, 24) + '</text>';
+            svg += '</a>';
+
+            // H3 자식 노드
+            if (h2.children && h2.children.length > 0) {
+                var h3Spacing = Math.min(nodeHeight, 60 / h2.children.length);
+                var h3StartY = y - ((h2.children.length - 1) * h3Spacing) / 2;
+
+                h2.children.forEach(function(h3, j) {
+                    var h3Y = h3StartY + j * h3Spacing;
+
+                    // H2 → H3 연결선
+                    svg += '<path d="M' + (h2X + 180) + ',' + y + ' C' + (h2X + 200) + ',' + y + ' ' + (h3X - 20) + ',' + h3Y + ' ' + h3X + ',' + h3Y + '" fill="none" stroke="var(--border-medium)" stroke-width="1" stroke-opacity="0.4" />';
+
+                    // H3 노드
+                    svg += '<a href="#' + (h3.id || '') + '">';
+                    svg += '<text x="' + h3X + '" y="' + (h3Y + 3) + '" font-size="10" fill="var(--text-secondary)" font-family="var(--font-mono)" style="cursor:pointer">' + escapeText(h3.name, 30) + '</text>';
+                    svg += '</a>';
+                });
+            }
+        });
+
+        svg += '</svg>';
+        container.innerHTML = svg;
+    }
+
+    function initMindmap() {
+        var container = document.querySelector('.post-container[data-pagefind-body]');
+        if (!container) return;
+
+        var headings = container.querySelectorAll('h2[id], h3[id]');
+        if (headings.length < 3) return; // 헤딩 3개 미만이면 마인드맵 불필요
+
+        // 트리 구조 빌드
+        var titleEl = document.querySelector('.intro-header .post-heading h1');
+        var root = { name: titleEl ? titleEl.textContent.trim() : 'Post', children: [] };
+        var currentH2 = null;
+
+        headings.forEach(function(h) {
+            var node = { name: h.textContent.trim(), id: h.id };
+            if (h.tagName === 'H2') {
+                node.children = [];
+                root.children.push(node);
+                currentH2 = node;
+            } else if (h.tagName === 'H3' && currentH2) {
+                currentH2.children.push(node);
+            }
+        });
+
+        // 토글 버튼 — breadcrumb 바로 뒤에 삽입
+        var breadcrumb = container.querySelector('.post-breadcrumb');
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className = 'mindmap-toggle';
+        toggleBtn.innerHTML = '\uD83E\uDDE0 Mindmap';
+        toggleBtn.setAttribute('aria-label', 'Toggle mindmap view');
+
+        var mapContainer = document.createElement('div');
+        mapContainer.className = 'mindmap-container';
+        mapContainer.style.display = 'none';
+
+        if (breadcrumb) {
+            breadcrumb.after(toggleBtn);
+            toggleBtn.after(mapContainer);
+        } else {
+            container.prepend(mapContainer);
+            container.prepend(toggleBtn);
+        }
+
+        var rendered = false;
+
+        toggleBtn.addEventListener('click', function() {
+            var isOpen = mapContainer.style.display !== 'none';
+            mapContainer.style.display = isOpen ? 'none' : 'block';
+            toggleBtn.classList.toggle('active', !isOpen);
+
+            if (!rendered) {
+                renderMindmap(mapContainer, root);
+                rendered = true;
+            }
+        });
+    }
+
+    /* --- Typing Challenge Mini-Game --- */
+    function initTypingChallenge() {
+        var pres = document.querySelectorAll('.post-container pre');
+        pres.forEach(function(pre) {
+            var code = pre.querySelector('code');
+            if (!code) return;
+            var text = code.textContent.trim();
+            if (!text || text.split('\n').length < 3) return; // 3줄 미만은 스킵
+
+            var btn = document.createElement('button');
+            btn.className = 'typing-challenge-btn';
+            btn.textContent = '\u2328 Type';
+            btn.setAttribute('aria-label', 'Start typing challenge');
+            pre.style.position = 'relative';
+            pre.appendChild(btn);
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                startTypingChallenge(text, pre);
+            });
+        });
+    }
+
+    function startTypingChallenge(targetText, preElement) {
+        var overlay = document.createElement('div');
+        overlay.className = 'typing-overlay';
+
+        var lines = targetText.split('\n').slice(0, 10); // 최대 10줄
+        var target = lines.join('\n');
+
+        overlay.innerHTML =
+            '<div class="typing-header">' +
+                '<span class="typing-title">\u2328 Typing Challenge</span>' +
+                '<button class="typing-close" aria-label="Close">\u2715</button>' +
+            '</div>' +
+            '<div class="typing-stats">' +
+                '<span class="typing-wpm">0 WPM</span>' +
+                '<span class="typing-acc">100%</span>' +
+                '<span class="typing-timer">0.0s</span>' +
+            '</div>' +
+            '<pre class="typing-target"><code></code></pre>' +
+            '<textarea class="typing-input" spellcheck="false" autocomplete="off" placeholder="Start typing..."></textarea>';
+
+        preElement.style.position = 'relative';
+        preElement.appendChild(overlay);
+
+        var targetEl = overlay.querySelector('.typing-target code');
+        var inputEl = overlay.querySelector('.typing-input');
+        var wpmEl = overlay.querySelector('.typing-wpm');
+        var accEl = overlay.querySelector('.typing-acc');
+        var timerEl = overlay.querySelector('.typing-timer');
+        var closeBtn = overlay.querySelector('.typing-close');
+
+        renderTypingTarget(targetEl, target, '');
+
+        var startTime = null;
+        var timerInterval = null;
+
+        inputEl.focus();
+
+        inputEl.addEventListener('input', function() {
+            var typed = inputEl.value;
+
+            if (!startTime) {
+                startTime = Date.now();
+                timerInterval = setInterval(function() {
+                    var elapsed = (Date.now() - startTime) / 1000;
+                    timerEl.textContent = elapsed.toFixed(1) + 's';
+                }, 100);
+            }
+
+            renderTypingTarget(targetEl, target, typed);
+
+            // WPM 계산
+            var elapsed = (Date.now() - startTime) / 1000 / 60;
+            var words = typed.length / 5;
+            var wpm = elapsed > 0 ? Math.round(words / elapsed) : 0;
+            wpmEl.textContent = wpm + ' WPM';
+
+            // 정확도 계산
+            var correct = 0;
+            for (var i = 0; i < typed.length; i++) {
+                if (typed[i] === target[i]) correct++;
+            }
+            var acc = typed.length > 0 ? Math.round((correct / typed.length) * 100) : 100;
+            accEl.textContent = acc + '%';
+
+            // 완료 체크
+            if (typed.length >= target.length) {
+                clearInterval(timerInterval);
+                var finalTime = ((Date.now() - startTime) / 1000).toFixed(1);
+                inputEl.disabled = true;
+                overlay.querySelector('.typing-header .typing-title').textContent =
+                    '\u2705 Complete! ' + wpm + ' WPM \u00b7 ' + acc + '% \u00b7 ' + finalTime + 's';
+
+                // RPG XP 보너스 (있으면)
+                try {
+                    var rpgState = JSON.parse(localStorage.getItem('doodoo-rpg')) || {};
+                    rpgState.xp = (rpgState.xp || 0) + 20;
+                    localStorage.setItem('doodoo-rpg', JSON.stringify(rpgState));
+                } catch(e) {}
+            }
+        });
+
+        closeBtn.addEventListener('click', function() {
+            clearInterval(timerInterval);
+            overlay.remove();
+        });
+    }
+
+    function renderTypingTarget(el, target, typed) {
+        var html = '';
+        for (var i = 0; i < target.length; i++) {
+            var char = target[i] === '\n' ? '\u21b5\n' : (target[i] === ' ' ? ' ' : target[i]);
+            var safeChar = char.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+            if (i < typed.length) {
+                if (typed[i] === target[i]) {
+                    html += '<span class="typing-correct">' + safeChar + '</span>';
+                } else {
+                    html += '<span class="typing-wrong">' + safeChar + '</span>';
+                }
+            } else if (i === typed.length) {
+                html += '<span class="typing-cursor">' + safeChar + '</span>';
+            } else {
+                html += '<span class="typing-pending">' + safeChar + '</span>';
+            }
+        }
+        el.innerHTML = html;
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -569,6 +821,8 @@
         initShareButtons();
         initMobileShareBar();
         initDiffBlocks();
+        initMindmap();
+        initTypingChallenge();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {
