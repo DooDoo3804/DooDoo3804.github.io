@@ -217,3 +217,24 @@ html {
 [data-theme="dark"] .post-container strong {
     color: #f5f5f5;
 }
+
+/* --- Post Content - Image Captions --- */
+.post-container img + em,
+.post-container figcaption {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 8px;
+    margin-bottom: 1.5em;
+    font-style: normal;
+    opacity: 0.8;
+}
+
+.post-container figcaption::before,
+.post-container img + em::before {
+    content: '// ';
+    color: var(--text-tertiary);
+    opacity: 0.5;
+}

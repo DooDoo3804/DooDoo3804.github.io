@@ -18,6 +18,13 @@
     letter-spacing: 0.05em;
     color: var(--text-muted);
     margin-right: 4px;
+    font-family: var(--font-mono);
+}
+
+.post-share-label::before {
+    content: '// ';
+    color: var(--text-tertiary);
+    opacity: 0.6;
 }
 
 .share-btn {

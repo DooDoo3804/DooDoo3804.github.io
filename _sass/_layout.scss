@@ -139,6 +139,13 @@ code, kbd, pre, samp, .code-lang-label {
     letter-spacing: 0.05em;
     color: var(--text-primary);
     margin-bottom: 12px;
+    font-family: var(--font-mono);
+}
+
+.footer-col-title::before {
+    content: '> ';
+    color: var(--accent-primary);
+    font-weight: 400;
 }
 
 .footer-nav {

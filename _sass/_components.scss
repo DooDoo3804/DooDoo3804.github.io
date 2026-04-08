@@ -583,8 +583,9 @@ code.has-line-numbers .code-line::before {
 }
 
 .related-post-card .rp-date {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
+    font-family: var(--font-mono);
 }
 
 /* --- Tag Improvements --- */
@@ -671,6 +672,21 @@ code.has-line-numbers .code-line::before {
 .side-catalog.fixed {
     position: sticky !important;
     top: 80px !important;
+}
+
+/* TOC sidebar title — terminal style */
+.side-catalog h5 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.side-catalog h5::before {
+    content: '> ';
+    color: var(--accent-primary);
 }
 
 /* TOC list reset & hierarchy */
@@ -954,6 +970,23 @@ body.lightbox-open {
 }
 @keyframes lightbox-spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Giscus: section heading — terminal style */
+.giscus-heading {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+}
+
+.giscus-heading::before {
+    content: '// ';
+    color: var(--text-tertiary);
+    opacity: 0.6;
 }
 
 /* Giscus: loading placeholder & error — terminal style */
