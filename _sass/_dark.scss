@@ -100,8 +100,8 @@
 }
 
 [data-theme="dark"] .code-lang-label {
-    color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.12);
     border-color: var(--border-light);
 }
 

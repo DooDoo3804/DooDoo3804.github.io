@@ -2505,11 +2505,11 @@
 }
 
 .featured-post-cta:hover {
-    background: #f0fdff;
+    background: rgba(255, 255, 255, 0.95);
     color: var(--accent-primary);
     text-decoration: none;
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(var(--accent-color-raw), 0.3), 0 0 20px rgba(var(--accent-color-raw), 0.15);
+    box-shadow: 0 8px 32px rgba(var(--accent-color-raw), 0.35), 0 0 28px rgba(var(--accent-color-raw), 0.2);
 }
 
 /* Dark mode */
