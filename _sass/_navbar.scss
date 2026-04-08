@@ -1,0 +1,277 @@
+/* ========================================
+   Navbar
+   Extracted from _hux-blog.scss — Sprint 22
+   ======================================== */
+
+/* --- Navbar (Mobile Collapse) --- */
+@media only screen and (max-width: 767px) {
+    .navbar-default .navbar-collapse {
+        position: absolute;
+        right: 0;
+        border: 1px solid var(--border-light);
+        background: var(--bg-surface);
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-md);
+        width: 200px;
+    }
+
+    #huxblog_navbar {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+        transform-origin: top right;
+        transition: opacity 200ms ease, transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    #huxblog_navbar a,
+    #huxblog_navbar button {
+        font-size: 13px;
+        line-height: 28px;
+        color: var(--text-primary) !important;
+    }
+
+    #huxblog_navbar .navbar-nav > li > a:hover,
+    #huxblog_navbar .navbar-nav > li > a:focus {
+        color: var(--accent-primary) !important;
+        background: rgba(var(--accent-color-raw), 0.08);
+    }
+
+    #huxblog_navbar .navbar-collapse {
+        height: 0;
+        transform: translateY(-4px);
+        transform-origin: top right;
+        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), height 300ms ease;
+    }
+
+    #huxblog_navbar li {
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    #huxblog_navbar.in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition: opacity 250ms ease, transform 300ms cubic-bezier(0.0, 0, 0.2, 1);
+        pointer-events: auto;
+    }
+
+    #huxblog_navbar.in .navbar-collapse {
+        transform: translateY(0);
+        transition: transform 400ms cubic-bezier(0.0, 0, 0.2, 1);
+    }
+
+    #huxblog_navbar.in li {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 300ms ease 100ms, transform 300ms cubic-bezier(0.0, 0, 0.2, 1) 100ms;
+    }
+
+    #huxblog_navbar.in li:nth-child(2) { transition-delay: 140ms; }
+    #huxblog_navbar.in li:nth-child(3) { transition-delay: 180ms; }
+    #huxblog_navbar.in li:nth-child(4) { transition-delay: 220ms; }
+    #huxblog_navbar.in li:nth-child(5) { transition-delay: 260ms; }
+    #huxblog_navbar.in li:nth-child(6) { transition-delay: 300ms; }
+}
+
+/* --- Navbar Custom --- */
+.navbar-custom {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    font-family: var(--font-sans);
+    line-height: 1.7;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 800;
+    color: #fff;
+    height: 56px;
+    line-height: 25px;
+}
+
+.navbar-custom .navbar-brand::before {
+    content: '>_ ';
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 400;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-custom .navbar-brand:hover::before {
+    opacity: 1;
+    animation: terminalCursorBlink 1s step-end infinite;
+}
+
+@keyframes terminalCursorBlink {
+    50% { opacity: 0; }
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-custom .nav li a {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.navbar-custom .nav li a:active {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-custom {
+        background: none;
+        border-bottom: 1px solid transparent;
+    }
+
+    .navbar-custom .navbar-brand {
+        color: #fff;
+        padding: 20px;
+        line-height: 20px;
+    }
+
+    .navbar-custom .navbar-brand:hover,
+    .navbar-custom .navbar-brand:focus {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .navbar-custom .nav li a,
+    .navbar-custom .nav li button {
+        color: #fff;
+        padding: 20px;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li button:hover,
+    .navbar-custom .nav li button:focus {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .navbar-custom .nav li a:active,
+    .navbar-custom .nav li button:active {
+        background: none;
+    }
+
+    .navbar-custom .nav li.active > a {
+        color: #fff;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 18px;
+    }
+
+    .navbar-custom.invert .nav li.active > a {
+        color: var(--accent-primary);
+        border-bottom-color: var(--accent-primary);
+    }
+}
+
+/* Inverted navbar (text-style header pages) */
+.navbar-custom.invert .navbar-toggle:active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navbar-custom.invert .navbar-toggle .icon-bar {
+    background-color: var(--text-primary);
+}
+
+.navbar-custom.invert .navbar-brand {
+    color: var(--text-primary);
+}
+
+.navbar-custom.invert .navbar-brand:hover,
+.navbar-custom.invert .navbar-brand:focus {
+    color: var(--accent-primary);
+}
+
+.navbar-custom.invert .nav li a,
+.navbar-custom.invert .nav li button {
+    color: var(--text-primary);
+}
+
+.navbar-custom.invert .nav li a:hover,
+.navbar-custom.invert .nav li a:focus,
+.navbar-custom.invert .nav li button:hover,
+.navbar-custom.invert .nav li button:focus {
+    color: var(--accent-primary);
+}
+
+/* Fixed navbar on scroll */
+@media only screen and (min-width: 1170px) {
+    .navbar-custom {
+        transition: background-color 0.3s;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+    }
+
+    .navbar-custom.is-fixed {
+        position: fixed;
+        top: -61px;
+        background-color: var(--bg-surface);
+        border-bottom: 1px solid var(--border-light);
+        transition: transform 0.3s;
+    }
+
+    .navbar-custom.is-fixed .navbar-brand {
+        color: var(--text-primary);
+    }
+
+    .navbar-custom.is-fixed .navbar-brand:hover,
+    .navbar-custom.is-fixed .navbar-brand:focus {
+        color: var(--accent-primary);
+    }
+
+    .navbar-custom.is-fixed .nav li a,
+    .navbar-custom.is-fixed .nav li button {
+        color: var(--text-primary);
+    }
+
+    .navbar-custom.is-fixed .nav li a:hover,
+    .navbar-custom.is-fixed .nav li a:focus,
+    .navbar-custom.is-fixed .nav li button:hover,
+    .navbar-custom.is-fixed .nav li button:focus {
+        color: var(--accent-primary);
+    }
+
+    .navbar-custom.is-visible {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+/* --- Navbar Toggle --- */
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+    background-color: inherit;
+}
+
+.navbar-default .navbar-toggle:active {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    padding: 19px 16px;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border-radius: 50%;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    width: 18px;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 3px;
+}

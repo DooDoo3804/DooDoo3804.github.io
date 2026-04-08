@@ -1,0 +1,147 @@
+/* ========================================
+   Syntax Highlighting
+   Light mode: One Light theme; Dark mode: One Dark theme.
+   These colors are intentionally hardcoded for the code theme.
+   Extracted from _hux-blog.scss — Sprint 22
+   ======================================== */
+
+.highlight,
+pre.highlight {
+    background: #fafbfc;
+    color: #383a42;
+}
+
+.highlight pre { background: #fafbfc; }
+.highlight .hll { background: #e8eaed; }
+
+[data-theme="dark"] .highlight,
+[data-theme="dark"] pre.highlight {
+    background: #282c34;
+    color: #abb2bf;
+}
+
+[data-theme="dark"] .highlight pre { background: #282c34; }
+[data-theme="dark"] .highlight .hll { background: #282c34; }
+.highlight .c { color: #5c6370; font-style: italic; }
+/* One Light (light mode) */
+.highlight .c, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs { color: #a0a1a7; font-style: italic; }
+.highlight .err { color: #e45649; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { color: #a626a4; }
+.highlight .l, .highlight .ld, .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .s1 { color: #50a14f; }
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il { color: #986801; }
+.highlight .n, .highlight .nf, .highlight .nn, .highlight .nx { color: #383a42; }
+.highlight .na { color: #986801; }
+.highlight .nb, .highlight .nc, .highlight .no, .highlight .nd, .highlight .ni, .highlight .ne, .highlight .nl, .highlight .py, .highlight .bp, .highlight .vc, .highlight .vg { color: #c18401; }
+.highlight .nt { color: #e45649; }
+.highlight .nv, .highlight .vi { color: #e45649; }
+.highlight .o, .highlight .p { color: #383a42; }
+.highlight .sr, .highlight .ss { color: #0184bc; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: 700; }
+.highlight .ow { font-weight: 700; }
+.highlight .w { color: #383a42; }
+.highlight .gu { color: #a0a1a7; }
+.highlight .gd { color: #e45649; }
+.highlight .gi { color: #50a14f; }
+
+/* One Dark (dark mode) */
+[data-theme="dark"] .highlight .c, [data-theme="dark"] .highlight .cm, [data-theme="dark"] .highlight .cp, [data-theme="dark"] .highlight .c1, [data-theme="dark"] .highlight .cs { color: #5c6370; font-style: italic; }
+[data-theme="dark"] .highlight .err { color: #960050; background-color: #1e0010; }
+.language-coq .highlight .err { background-color: transparent; }
+[data-theme="dark"] .highlight .k, [data-theme="dark"] .highlight .kc, [data-theme="dark"] .highlight .kd, [data-theme="dark"] .highlight .kn, [data-theme="dark"] .highlight .kp, [data-theme="dark"] .highlight .kr, [data-theme="dark"] .highlight .kt { color: #c678dd; }
+[data-theme="dark"] .highlight .l, [data-theme="dark"] .highlight .ld, [data-theme="dark"] .highlight .s, [data-theme="dark"] .highlight .sb, [data-theme="dark"] .highlight .sc, [data-theme="dark"] .highlight .sd, [data-theme="dark"] .highlight .s2, [data-theme="dark"] .highlight .se, [data-theme="dark"] .highlight .sh, [data-theme="dark"] .highlight .si, [data-theme="dark"] .highlight .sx, [data-theme="dark"] .highlight .s1 { color: #98c379; }
+[data-theme="dark"] .highlight .m, [data-theme="dark"] .highlight .mf, [data-theme="dark"] .highlight .mh, [data-theme="dark"] .highlight .mi, [data-theme="dark"] .highlight .mo, [data-theme="dark"] .highlight .il { color: #d19a66; }
+[data-theme="dark"] .highlight .n, [data-theme="dark"] .highlight .nf, [data-theme="dark"] .highlight .nn, [data-theme="dark"] .highlight .nx { color: #abb2bf; }
+[data-theme="dark"] .highlight .na { color: #d19a66; }
+[data-theme="dark"] .highlight .nb, [data-theme="dark"] .highlight .nc, [data-theme="dark"] .highlight .no, [data-theme="dark"] .highlight .nd, [data-theme="dark"] .highlight .ni, [data-theme="dark"] .highlight .ne, [data-theme="dark"] .highlight .nl, [data-theme="dark"] .highlight .py, [data-theme="dark"] .highlight .bp, [data-theme="dark"] .highlight .vc, [data-theme="dark"] .highlight .vg { color: #e5c07b; }
+[data-theme="dark"] .highlight .nt { color: #e06c75; }
+[data-theme="dark"] .highlight .nv, [data-theme="dark"] .highlight .vi { color: #e06c75; }
+[data-theme="dark"] .highlight .o, [data-theme="dark"] .highlight .p { color: #abb2bf; }
+[data-theme="dark"] .highlight .sr, [data-theme="dark"] .highlight .ss { color: #56b6c2; }
+[data-theme="dark"] .highlight .ge { font-style: italic; }
+[data-theme="dark"] .highlight .gs { font-weight: 700; }
+[data-theme="dark"] .highlight .ow { font-weight: 700; }
+[data-theme="dark"] .highlight .w { color: #f8f8f2; }
+[data-theme="dark"] .highlight .gu { color: #75715e; }
+[data-theme="dark"] .highlight .gd { color: #f92672; }
+[data-theme="dark"] .highlight .gi { color: #a6e22e; }
+
+/* --- Rouge Code Blocks --- */
+.highlighter-rouge .highlight {
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .highlighter-rouge .highlight {
+    border-color: transparent;
+}
+
+.highlighter-rouge .highlight pre {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+}
+
+.highlighter-rouge .highlight .rouge-table .rouge-gutter,
+.highlighter-rouge .highlight .rouge-table .rouge-code {
+    border: 0 !important;
+}
+
+.highlighter-rouge .highlight .rouge-code pre {
+    color: #383a42;
+}
+
+[data-theme="dark"] .highlighter-rouge .highlight .rouge-code pre {
+    color: #abb2bf;
+}
+
+.highlighter-rouge .highlight .table-responsive {
+    margin: 0;
+    border: 0;
+}
+
+.highlighter-rouge .highlight .table {
+    margin: 0;
+    table-layout: fixed;
+}
+
+.highlighter-rouge .highlight table > tbody > tr > td {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.highlighter-rouge .highlight table > tbody > tr > td > pre {
+    padding: 14px;
+}
+
+.highlighter-rouge .highlight td.rouge-gutter {
+    width: 56px;
+}
+
+.highlighter-rouge .highlight .lineno {
+    text-align: right;
+    border-radius: 0;
+}
+
+@media (max-width: 480px) {
+    .highlighter-rouge .highlight {
+        margin-left: -15px;
+        margin-right: -15px;
+        border-radius: 0;
+    }
+
+    .highlighter-rouge .highlight td.rouge-gutter {
+        width: 36px;
+    }
+
+    .highlighter-rouge .highlight table > tbody > tr > td > pre {
+        padding: 14px 10px;
+    }
+}
