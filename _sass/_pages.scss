@@ -431,13 +431,13 @@
 }
 
 .archive-year-item:hover {
-    color: #89b4fa;
+    color: var(--terminal-blue);
 }
 
 .archive-year-count {
     font-size: 12px;
     background: rgba(137, 180, 250, 0.12);
-    color: #89b4fa;
+    color: var(--terminal-blue);
     padding: 2px 9px;
     border-radius: var(--radius-lg);
     font-weight: 600;
@@ -625,7 +625,7 @@
 
 [data-theme="dark"] .archive-year-count {
     background: rgba(137, 180, 250, 0.12);
-    color: #89b4fa;
+    color: var(--terminal-blue);
 }
 
 [data-theme="dark"] #tag_cloud .tag-button--all,
@@ -1248,7 +1248,7 @@
 
 .about-section-title::before {
     content: '##';
-    color: #a6e3a1;
+    color: var(--terminal-green);
     font-weight: 400;
     font-size: 16px;
 }
@@ -1312,14 +1312,14 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #9399b2;
+    color: var(--terminal-overlay);
     margin: 0 0 10px;
     font-family: var(--font-mono);
 }
 
 .skill-category-label::before {
     content: '> ';
-    color: #a6e3a1;
+    color: var(--terminal-green);
     font-weight: 400;
 }
 
@@ -1472,7 +1472,7 @@
 
 .project-link::before {
     content: '$ open ';
-    color: #a6e3a1;
+    color: var(--terminal-green);
     font-weight: 400;
 }
 
@@ -1589,15 +1589,9 @@
     border-bottom-color: var(--border-light);
 }
 
-/* Terminal style is always dark — minimal dark-mode overrides */
-[data-theme="dark"] .skill-category {
-    background: var(--terminal-bg);
-    border-color: var(--terminal-border);
-}
-
-[data-theme="dark"] .skill-category-label {
-    color: #9399b2;
-}
+/* Terminal style is always dark — redundant dark-mode overrides removed */
+/* [data-theme="dark"] .skill-category — removed: same as light (var(--terminal-bg/border)) */
+/* [data-theme="dark"] .skill-category-label — removed: same as light (var(--terminal-overlay)) */
 
 [data-theme="dark"] .skill-badge--kotlin {
     background: rgba(123, 47, 247, 0.15);
@@ -1883,7 +1877,7 @@
 
 .projects-card-desc {
     font-size: 13px;
-    color: #9399b2;
+    color: var(--terminal-overlay);
     line-height: 1.65;
     margin: 0 0 16px;
     font-family: var(--font-mono);
@@ -1927,32 +1921,32 @@
     text-decoration: none;
     transition: background-color 0.2s, transform 0.2s;
     background: rgba(137, 180, 250, 0.12);
-    color: #89b4fa;
+    color: var(--terminal-blue);
     border: 1px solid rgba(137, 180, 250, 0.2);
 }
 
 .projects-link-btn:hover {
     transform: translateY(-1px);
     background: rgba(137, 180, 250, 0.2);
-    color: #89b4fa;
+    color: var(--terminal-blue);
     text-decoration: none;
 }
 
 .projects-link-btn--demo {
     background: rgba(166, 227, 161, 0.1);
-    color: #a6e3a1;
+    color: var(--terminal-green);
     border: 1px solid rgba(166, 227, 161, 0.2);
 }
 
 .projects-link-btn--demo:hover {
     background: rgba(166, 227, 161, 0.18);
-    color: #a6e3a1;
+    color: var(--terminal-green);
 }
 
 .projects-no-results {
     text-align: center;
     padding: 80px 20px;
-    color: #9399b2;
+    color: var(--terminal-overlay);
     font-family: var(--font-mono);
 }
 
@@ -1989,7 +1983,7 @@
 
 /* Terminal cards are dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .projects-card {
-    border-color: #45475a;
+    border-color: var(--terminal-surface1);
 }
 
 [data-theme="dark"] .projects-card:hover {
@@ -1997,11 +1991,11 @@
 }
 
 [data-theme="dark"] .projects-card::before {
-    border-bottom-color: #45475a;
+    border-bottom-color: var(--terminal-surface1);
 }
 
 [data-theme="dark"] .projects-card-links {
-    border-top-color: #45475a;
+    border-top-color: var(--terminal-surface1);
 }
 
 /* --- Projects: Status Badge & Meta --- */
@@ -2428,7 +2422,7 @@
 }
 
 [data-theme="dark"] .post-card-meta .post-updated {
-    color: #a6e3a1;
+    color: var(--terminal-green);
 }
 
 /* ========================================

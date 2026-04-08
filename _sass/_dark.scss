@@ -110,7 +110,7 @@
 /* table dark overrides consolidated in _base.scss */
 
 [data-theme="dark"] .post-container hr {
-    color: #585b70;
+    color: var(--terminal-muted);
 }
 
 [data-theme="dark"] .header-mask {

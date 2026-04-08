@@ -29,17 +29,17 @@
 }
 
 .sidebar-container h5 a {
-    color: var(--text-muted) !important;
+    color: var(--text-muted);
     text-decoration: none;
 }
 
 .sidebar-container a {
-    color: var(--text-secondary) !important;
+    color: var(--text-secondary);
 }
 
 .sidebar-container a:hover,
 .sidebar-container a:active {
-    color: var(--accent-primary) !important;
+    color: var(--accent-primary);
 }
 
 .sidebar-container .tags a {
@@ -372,7 +372,7 @@ pre.highlight {
 
 /* Close icon always light on dark terminal modal */
 .search-page .search-icon-close {
-    color: #9399b2;
+    color: var(--terminal-overlay);
 }
 
 .search-page .search-icon-close:hover {
@@ -394,7 +394,7 @@ pre.highlight {
 }
 
 .search-page #search-input::placeholder {
-    color: #585b70;
+    color: var(--terminal-muted);
 }
 
 .search-page #search-results {
@@ -518,12 +518,7 @@ table.table > thead td {
     }
 }
 
-hr.small {
-    max-width: 100px;
-    margin: 15px auto;
-    border-width: 4px;
-    border-color: var(--border-light);
-}
+/* hr.small — removed: unused in any template */
 
 pre,
 .table-responsive {
@@ -1097,7 +1092,7 @@ code, kbd, pre, samp {
 }
 
 .intro-header .post-heading .tags .tag {
-    border-color: #45475a;
+    border-color: var(--terminal-surface1);
     color: var(--terminal-blue);
     background: rgba(137, 180, 250, 0.08);
 }
@@ -1119,7 +1114,7 @@ code, kbd, pre, samp {
     font-weight: 400;
     margin: 10px 0 30px;
     margin-top: -5px;
-    color: #bac2de;
+    color: var(--terminal-subtext);
 }
 
 .intro-header .post-heading .meta {
@@ -1128,7 +1123,7 @@ code, kbd, pre, samp {
     font-weight: 400;
     font-size: 14px;
     opacity: 1;
-    color: #9399b2;
+    color: var(--terminal-overlay);
 }
 
 .intro-header .post-heading .meta a {
@@ -1446,7 +1441,7 @@ img::-moz-selection {
 
 .listing-seperator {
     color: var(--accent-primary);
-    font-size: 21px !important;
+    font-size: 21px;
 }
 
 .listing-seperator::before {
@@ -1455,8 +1450,8 @@ img::-moz-selection {
 
 @media only screen and (min-width: 768px) {
     .listing-seperator {
-        font-size: 20px !important;
-        line-height: 2 !important;
+        font-size: 20px;
+        line-height: 2;
     }
 }
 

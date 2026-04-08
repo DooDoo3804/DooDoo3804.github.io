@@ -66,7 +66,7 @@
     flex-shrink: 0;
     object-fit: cover;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-    border: 2px solid #45475a;
+    border: 2px solid var(--terminal-surface1);
 }
 
 .author-hero-info {
@@ -113,7 +113,7 @@
 
 .author-hero-topics {
     font-size: 13px;
-    color: #9399b2;
+    color: var(--terminal-overlay);
     margin: 0 0 12px;
     font-family: var(--font-mono);
 }
@@ -143,12 +143,9 @@
     margin-right: 4px;
 }
 
-/* Terminal style is dark by default — minimal dark-mode overrides */
-[data-theme="dark"] .author-hero {
-    border-color: var(--terminal-border);
-}
-
-/* [data-theme="dark"] .author-hero-topics — removed: same as light (#9399b2) */
+/* Terminal style is dark by default — redundant dark-mode overrides removed */
+/* [data-theme="dark"] .author-hero — removed: same as light (var(--terminal-border)) */
+/* [data-theme="dark"] .author-hero-topics — removed: same as light (var(--terminal-overlay)) */
 
 @media (max-width: 576px) {
     .author-hero {
@@ -674,9 +671,9 @@ code.has-line-numbers .code-line::before {
 }
 
 /* Active TOC link — left border accent */
-.side-catalog .catalog-body .active a {
+.side-catalog .catalog-body li.active a {
     border-left: 3px solid var(--accent-primary);
-    color: var(--accent-primary) !important;
+    color: var(--accent-primary);
     background: rgba(var(--accent-color-raw), 0.06);
     font-weight: 500;
 }
@@ -685,7 +682,7 @@ code.has-line-numbers .code-line::before {
     background-color: transparent;
 }
 
-[data-theme="dark"] .side-catalog .catalog-body .active a {
+[data-theme="dark"] .side-catalog .catalog-body li.active a {
     border-left-color: var(--accent-primary);
     background: rgba(var(--accent-color-raw), 0.08);
 }
@@ -770,7 +767,7 @@ code.has-line-numbers .code-line::before {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: #9399b2;
+    color: var(--terminal-overlay);
     font-family: var(--font-mono);
 }
 
@@ -789,7 +786,7 @@ code.has-line-numbers .code-line::before {
     padding: 4px 8px;
     font-size: 13px;
     font-family: var(--font-mono);
-    color: #9399b2;
+    color: var(--terminal-overlay);
     text-decoration: none;
     transition: color 0.2s, border-color 0.2s;
     border-left: 3px solid transparent;
@@ -800,9 +797,9 @@ code.has-line-numbers .code-line::before {
     font-size: 12px;
 }
 
-.mobile-catalog-body .active a {
+.mobile-catalog-body li.active a {
     border-left: 3px solid var(--accent-primary);
-    color: var(--accent-primary) !important;
+    color: var(--accent-primary);
     font-weight: 500;
 }
 

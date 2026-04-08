@@ -313,9 +313,9 @@ pre { overflow-x: auto; }
 }
 
 [data-theme="dark"] .subscribe-cta-github:hover {
-    background: #cdd6f4;
-    color: #1e1e2e;
-    border-color: #cdd6f4;
+    background: var(--terminal-text);
+    color: var(--terminal-bg);
+    border-color: var(--terminal-text);
 }
 
 /* --- Accessibility: Reduced Motion --- */
