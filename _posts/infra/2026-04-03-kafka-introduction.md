@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kafka, message-queue, event-streaming, backend"
-description: "Kafka 핵심 개념, 메시지 보장, Spring Boot 연동을 코드로 정리합니다."
+description: "Apache Kafka의 Producer/Consumer, Partition, Consumer Group, Dead Letter Queue, 메시지 보장 수준(At-Least-Once, Exactly-Once)과 Spring Boot 연동을 코드로 정리합니다."
 series: "백엔드 심화"
 tags:
   - Kafka

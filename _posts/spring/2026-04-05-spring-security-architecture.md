@@ -9,7 +9,7 @@ header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "spring, security, authentication, authorization, jwt, backend"
 description: "Spring Security의 필터 체인 구조, 인증/인가 메커니즘, JWT 기반 인증 구현, Method Security, CSRF/CORS 설정을 깊이 있게 정리합니다."
-series: "백엔드 심화"
+series: "Spring 심화"
 tags:
   - Spring
   - Security

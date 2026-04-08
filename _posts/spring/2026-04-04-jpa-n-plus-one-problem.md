@@ -9,7 +9,7 @@ header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "jpa, spring, hibernate, performance, backend"
 description: "JPA N+1 문제의 발생 원인을 이해하고, Fetch Join, @EntityGraph, Batch Size, QueryDSL 등 다양한 해결 전략을 실무 관점에서 정리합니다."
-series: "백엔드 심화"
+series: "Spring 심화"
 tags:
   - JPA
   - Spring

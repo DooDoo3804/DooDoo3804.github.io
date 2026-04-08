@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "redis, caching, backend, performance"
-description: "Redis 캐싱 전략 비교와 Cache Stampede 해결, Spring Boot 연동 정리."
+description: "Redis를 활용한 Cache-Aside, Write-Through, Write-Behind 전략 비교와 Cache Stampede/Thundering Herd 해결, TTL 설계, Spring Boot @Cacheable 연동을 정리합니다."
 series: "백엔드 심화"
 tags:
   - Redis
