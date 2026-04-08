@@ -1,0 +1,207 @@
+---
+title: Knowledge Graph
+layout: default
+description: "Explore the connections between blog posts"
+nav-order: 1.5
+no-catalog: true
+header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+---
+
+{% include intro-header.html type='page' short=true %}
+
+<div class="container" style="padding-top:20px; padding-bottom:60px;">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div id="knowledge-graph" class="knowledge-graph-container"></div>
+            <div id="graph-tooltip" class="graph-tooltip" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function() {
+    // Jekyll 빌드 시 노드/엣지 데이터 생성
+    var nodes = [
+        {% for post in site.posts %}
+        {
+            id: {{ post.url | jsonify }},
+            title: {{ post.title | jsonify }},
+            tags: {{ post.tags | jsonify }},
+            category: "{{ post.categories | first | downcase }}",
+            date: "{{ post.date | date: '%Y-%m-%d' }}",
+            series: {{ post.series | default: "" | jsonify }},
+            url: "{{ post.url | prepend: site.baseurl }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+
+    // 엣지 생성: 공유 태그 기반
+    var links = [];
+    for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+            var shared = 0;
+            var a = nodes[i], b = nodes[j];
+            // 공유 태그 수
+            a.tags.forEach(function(t) {
+                if (b.tags.indexOf(t) > -1) shared++;
+            });
+            // 같은 시리즈
+            if (a.series && b.series && a.series === b.series) shared += 2;
+            // 같은 카테고리
+            if (a.category && b.category && a.category === b.category) shared++;
+
+            if (shared >= 2) {
+                links.push({ source: a.id, target: b.id, weight: shared });
+            }
+        }
+    }
+
+    // 카테고리별 색상 (기존 _variables.scss 참조)
+    var catColors = {
+        'algorithm': '#2ecc71',
+        'cs': '#9b59b6',
+        'database': '#e67e22',
+        'db': '#e67e22',
+        'infra': '#3498db',
+        'kotlin': '#7f52ff',
+        'react': '#61dafb',
+        'spring': '#6db33f',
+        'system-design': '#e74c3c',
+        'backend': '#e67e22',
+        'jvm': '#f39c12'
+    };
+
+    var container = document.getElementById('knowledge-graph');
+    var tooltip = document.getElementById('graph-tooltip');
+    if (!container) return;
+
+    var width = container.clientWidth;
+    var height = Math.max(500, window.innerHeight * 0.6);
+
+    var svg = d3.select('#knowledge-graph')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .attr('viewBox', [0, 0, width, height]);
+
+    // 줌/팬
+    var g = svg.append('g');
+    svg.call(d3.zoom()
+        .scaleExtent([0.3, 3])
+        .on('zoom', function(event) {
+            g.attr('transform', event.transform);
+        }));
+
+    // 시뮬레이션
+    var simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(function(d) { return 120 - d.weight * 10; }))
+        .force('charge', d3.forceManyBody().strength(-200))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(30));
+
+    // 엣지
+    var link = g.append('g')
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .attr('stroke', 'var(--border-light)')
+        .attr('stroke-width', function(d) { return Math.min(d.weight, 4); })
+        .attr('stroke-opacity', 0.3);
+
+    // 노드
+    var node = g.append('g')
+        .selectAll('circle')
+        .data(nodes)
+        .join('circle')
+        .attr('r', 8)
+        .attr('fill', function(d) { return catColors[d.category] || 'var(--accent-primary)'; })
+        .attr('stroke', 'var(--bg-surface)')
+        .attr('stroke-width', 2)
+        .attr('cursor', 'pointer')
+        .call(d3.drag()
+            .on('start', dragstarted)
+            .on('drag', dragged)
+            .on('end', dragended));
+
+    // 노드 라벨
+    var label = g.append('g')
+        .selectAll('text')
+        .data(nodes)
+        .join('text')
+        .text(function(d) { return d.title.length > 20 ? d.title.substring(0, 20) + '...' : d.title; })
+        .attr('font-size', 10)
+        .attr('font-family', 'var(--font-mono)')
+        .attr('fill', 'var(--text-secondary)')
+        .attr('dx', 14)
+        .attr('dy', 4);
+
+    // 호버
+    node.on('mouseover', function(event, d) {
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = '<strong>' + d.title + '</strong><br>' +
+            '<span style="color:' + (catColors[d.category] || '#999') + '">' + d.category + '</span> · ' + d.date + '<br>' +
+            d.tags.join(', ');
+        tooltip.style.left = (event.pageX + 15) + 'px';
+        tooltip.style.top = (event.pageY - 10) + 'px';
+
+        // 연결된 노드 강조
+        var connected = new Set();
+        links.forEach(function(l) {
+            if (l.source.id === d.id) connected.add(l.target.id);
+            if (l.target.id === d.id) connected.add(l.source.id);
+        });
+        connected.add(d.id);
+
+        node.attr('opacity', function(n) { return connected.has(n.id) ? 1 : 0.15; });
+        link.attr('stroke-opacity', function(l) {
+            return (l.source.id === d.id || l.target.id === d.id) ? 0.8 : 0.05;
+        });
+        label.attr('opacity', function(n) { return connected.has(n.id) ? 1 : 0.1; });
+    })
+    .on('mouseout', function() {
+        tooltip.style.display = 'none';
+        node.attr('opacity', 1);
+        link.attr('stroke-opacity', 0.3);
+        label.attr('opacity', 1);
+    })
+    .on('click', function(event, d) {
+        window.location.href = d.url;
+    });
+
+    // tick
+    simulation.on('tick', function() {
+        link.attr('x1', function(d) { return d.source.x; })
+            .attr('y1', function(d) { return d.source.y; })
+            .attr('x2', function(d) { return d.target.x; })
+            .attr('y2', function(d) { return d.target.y; });
+        node.attr('cx', function(d) { return d.x; })
+            .attr('cy', function(d) { return d.y; });
+        label.attr('x', function(d) { return d.x; })
+            .attr('y', function(d) { return d.y; });
+    });
+
+    function dragstarted(event) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+    }
+    function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+    }
+    function dragended(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+    }
+
+    // 반응형
+    window.addEventListener('resize', function() {
+        width = container.clientWidth;
+        svg.attr('width', width);
+        simulation.force('center', d3.forceCenter(width / 2, height / 2));
+        simulation.alpha(0.3).restart();
+    });
+})();
+</script>

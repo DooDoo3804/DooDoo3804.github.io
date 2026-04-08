@@ -2687,3 +2687,38 @@
 
 /* REDUNDANT removed: [data-theme="dark"] .learning-pill
    — all properties use CSS vars that auto-resolve in dark mode */
+
+/* --- Knowledge Graph --- */
+.knowledge-graph-container {
+    width: 100%;
+    min-height: 500px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+.knowledge-graph-container svg {
+    display: block;
+}
+
+.graph-tooltip {
+    position: absolute;
+    padding: 12px 16px;
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: var(--radius-md);
+    color: var(--terminal-text);
+    font-size: 13px;
+    font-family: var(--font-mono);
+    line-height: 1.5;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 300px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .knowledge-graph-container {
+    background: var(--bg-surface-raised);
+}
