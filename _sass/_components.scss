@@ -50,7 +50,7 @@
 
 .author-hero-name {
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 700;
     margin: 0 0 6px;
     color: var(--heading-dark);
     letter-spacing: -0.02em;
@@ -156,6 +156,11 @@
     background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+}
+
+#back-to-top:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
 }
 
 /* Stack fixed bottom-right buttons on mobile to prevent overlap:
@@ -666,7 +671,7 @@ code.has-line-numbers .code-line::before {
 .mobile-toc-wrapper .mobile-toc-toggle {
     width: 45px;
     height: 45px;
-    border: 1px solid var(--border-light, #ddd);
+    border: 1px solid var(--border-light, #e8e8e8);
     border-radius: 50%;
     box-shadow: var(--shadow-sm);
     font-size: 18px;

@@ -486,6 +486,11 @@
     background: rgba(255, 255, 255, 0.25);
 }
 
+[data-theme="dark"] #tag_cloud .tag-button sup,
+[data-theme="dark"] #tag_cloud .tag-button--all sup {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* Archive post list */
 .mini-post-list .listing-seperator {
     display: flex;
@@ -1414,6 +1419,10 @@
     background: var(--accent-primary);
     border: 3px solid var(--bg-surface);
     box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+[data-theme="dark"] .timeline-marker {
+    border-color: var(--bg-surface-raised);
 }
 
 .timeline-content {
@@ -2366,7 +2375,7 @@
     background-position: center;
     border-radius: var(--radius-xl);
     padding: 48px 40px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
