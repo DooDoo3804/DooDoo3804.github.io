@@ -1216,3 +1216,50 @@ body.lightbox-open {
     border-radius: 2px;
     transition: width 0.5s ease;
 }
+
+/* RPG Widget */
+.rpg-widget {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+}
+
+.rpg-level {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--terminal-text);
+    margin-bottom: 6px;
+}
+
+.rpg-title {
+    font-weight: 700;
+    color: var(--terminal-green);
+}
+
+.rpg-xp {
+    color: var(--terminal-overlay);
+    font-size: 11px;
+}
+
+.rpg-bar {
+    height: 6px;
+    background: var(--terminal-border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.rpg-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--terminal-green), var(--terminal-blue));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.rpg-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--terminal-overlay);
+}
