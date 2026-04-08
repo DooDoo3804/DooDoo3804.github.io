@@ -1391,7 +1391,7 @@
     top: 6px;
     bottom: 6px;
     width: 2px;
-    background: linear-gradient(180deg, var(--accent-primary), #00b4d8);
+    background: linear-gradient(180deg, var(--accent-primary), #38bdf8);
     border-radius: 2px;
 }
 
@@ -1412,7 +1412,7 @@
     height: 12px;
     border-radius: 50%;
     background: var(--accent-primary);
-    border: 3px solid #fff;
+    border: 3px solid var(--bg-surface);
     box-shadow: 0 0 0 2px var(--accent-primary);
 }
 

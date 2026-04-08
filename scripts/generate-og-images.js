@@ -159,7 +159,7 @@ async function generateOgImage(title, tags, date, outputPath) {
   <text x="${W / 2}" y="52" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="600" font-size="26" fill="#ffffff" opacity="0.85">DooDoo IT Blog</text>
 
   <!-- Accent line -->
-  <rect x="${W / 2 - 40}" y="68" width="80" height="3" rx="1.5" fill="#0085a1"/>
+  <rect x="${W / 2 - 40}" y="68" width="80" height="3" rx="1.5" fill="#0ea5e9"/>
 
   <!-- Title -->
   ${titleTspans}
@@ -168,7 +168,7 @@ async function generateOgImage(title, tags, date, outputPath) {
   <text x="${W / 2}" y="${H - 72}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="400" font-size="20" fill="#a0a0a0">${escapeXml(dateStr)}</text>
 
   <!-- Tags -->
-  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#0085a1">${escapeXml(tagsStr)}</text>
+  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#0ea5e9">${escapeXml(tagsStr)}</text>
 </svg>`;
 
   await sharp(Buffer.from(svg)).png().toFile(outputPath);

@@ -66,7 +66,7 @@ magick -size 1200x630 \
     -gravity Center \
     -pointsize 56 -interline-spacing 8 -annotate +0-20 "$WRAPPED_TITLE" \
     -gravity South \
-    -fill '#0085a1' -font "$FONT_REGULAR" -pointsize 24 -annotate +0+50 "$TAGS" \
+    -fill '#0ea5e9' -font "$FONT_REGULAR" -pointsize 24 -annotate +0+50 "$TAGS" \
     "$OUTPUT"
 
 echo "Generated: $OUTPUT"
