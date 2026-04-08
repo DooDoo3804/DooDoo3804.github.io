@@ -956,7 +956,7 @@ body.lightbox-open {
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Giscus: loading placeholder & error */
+/* Giscus: loading placeholder & error — terminal style */
 .giscus-placeholder {
     display: flex;
     align-items: center;
@@ -965,6 +965,7 @@ body.lightbox-open {
     padding: 32px 16px;
     color: var(--text-muted);
     font-size: 14px;
+    font-family: var(--font-mono);
 }
 .giscus-placeholder-spinner {
     display: inline-block;

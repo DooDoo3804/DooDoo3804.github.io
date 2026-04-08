@@ -74,7 +74,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
 
 <!-- Start Here -->
 <div class="start-here">
-    <h3 class="start-here-title">Quick Links</h3>
+    <h3 class="start-here-title">~/shortcuts</h3>
     <div class="start-here-cards">
         <a href="{{ site.baseurl }}/archive/?tag=Algorithm" class="start-here-card">
             <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg>
@@ -116,7 +116,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
             <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
             <span class="featured-post-readtime">{% include read-time.html content=featured.content %}</span>
         </div>
-        <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta"><span>Read Post &rarr;</span></a>
+        <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta"><span>$ cat post &rarr;</span></a>
     </div>
 </div>
 {% endif %}

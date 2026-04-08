@@ -213,7 +213,7 @@ pre { overflow-x: auto; }
    MOBILE BREAKPOINTS
    ======================================== */
 @media (max-width: 768px) {
-    .about-hero { padding: 20px 20px; }
+    .about-hero { padding: 48px 20px 24px; }
     .about-name { font-size: 24px; }
     .timeline { padding-left: 20px; }
     .series-nav { flex-direction: column; }

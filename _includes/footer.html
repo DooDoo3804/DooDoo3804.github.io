@@ -22,7 +22,7 @@
                         <h5 class="footer-col-title">Recent Posts</h5>
                         <ul class="footer-nav">
                             {% for post in site.posts limit:4 %}
-                            <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | truncate: 40 }}</a></li>
+                            <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | truncate: 50 }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

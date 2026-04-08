@@ -31,6 +31,17 @@
         display: none !important;
     }
 
+    /* Hide terminal decorative pseudo-elements */
+    .author-hero::before,
+    .author-hero::after,
+    .about-hero::before,
+    .about-hero::after,
+    .post-container h2::before,
+    .post-container h3::before {
+        display: none !important;
+        content: none !important;
+    }
+
     /* Reset colors for print */
     body,
     .post-container,

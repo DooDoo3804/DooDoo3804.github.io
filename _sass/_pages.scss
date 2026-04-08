@@ -1138,11 +1138,48 @@
    ABOUT PAGE - Portfolio Redesign
    ======================================== */
 
-/* --- Hero Section --- */
+/* --- Hero Section — Terminal Window Style --- */
 .about-hero {
+    position: relative;
     text-align: center;
-    padding: 20px 0 40px;
+    padding: 52px 32px 40px; /* top space for terminal header bar */
     margin-bottom: 10px;
+    background: #1e1e2e;
+    border: 1px solid #313244;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+/* Terminal header bar */
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #181825;
+    border-bottom: 1px solid #313244;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Terminal traffic-light dots */
+.about-hero::after {
+    content: '\25CF  \25CF  \25CF';
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    z-index: 2;
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .about-hero {
+    border-color: #45475a;
 }
 
 .about-name {
@@ -1150,26 +1187,34 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     margin: 0 0 8px;
-    color: var(--heading-dark);
+    color: #cdd6f4;
+    font-family: var(--font-mono);
 }
 
 .about-name-en {
     font-size: 18px;
     font-weight: 400;
-    color: var(--text-muted);
+    color: #9399b2;
     margin-left: 6px;
 }
 
 .about-tagline {
     font-size: 17px;
-    color: var(--text-tertiary);
+    color: #a6e3a1;
     margin: 0 0 12px;
     line-height: 1.6;
+    font-family: var(--font-mono);
+}
+
+.about-tagline::before {
+    content: '$ ';
+    color: #89b4fa;
+    font-weight: 400;
 }
 
 .about-intro {
     font-size: 15px;
-    color: var(--text-muted);
+    color: #9399b2;
     margin: 0 0 24px;
     line-height: 1.7;
     max-width: 600px;
@@ -1177,9 +1222,7 @@
     margin-right: auto;
 }
 
-[data-theme="dark"] .about-intro {
-    color: var(--text-secondary);
-}
+/* Terminal is always dark — no dark-mode override needed for .about-intro */
 
 .about-links {
     display: flex;
@@ -1459,6 +1502,13 @@
     color: var(--accent-primary);
     text-decoration: none;
     transition: color 0.2s;
+    font-family: var(--font-mono);
+}
+
+.project-link::before {
+    content: '$ open ';
+    color: #a6e3a1;
+    font-weight: 400;
 }
 
 .project-link:hover {
@@ -2340,8 +2390,16 @@
 
 .start-here-card i,
 .start-here-card .icon {
-    font-size: 22px;
+    font-size: 30px;
     color: var(--accent-primary);
+    filter: drop-shadow(0 2px 6px rgba(var(--accent-color-raw), 0.3));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.start-here-card:hover i,
+.start-here-card:hover .icon {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 4px 10px rgba(var(--accent-color-raw), 0.45));
 }
 
 .start-here-label {
@@ -2385,8 +2443,17 @@
 /* --- Post Card Updated Badge --- */
 .post-card-meta .post-updated {
     font-size: 11.5px;
-    color: var(--accent-primary);
-    font-weight: 500;
+    color: #40a02b;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+}
+
+.post-card-meta .post-updated .icon {
+    width: 12px;
+    height: 12px;
+    vertical-align: -1px;
+    margin-right: 2px;
 }
 
 .post-card-meta .post-updated i {
@@ -2395,7 +2462,7 @@
 }
 
 [data-theme="dark"] .post-card-meta .post-updated {
-    color: #a371f7;
+    color: #a6e3a1;
 }
 
 /* ========================================
@@ -2602,9 +2669,9 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 16px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border-light);
+    margin: 0 0 8px;
+    padding-bottom: 0;
+    border-bottom: none;
     font-family: var(--font-mono);
 }
 
