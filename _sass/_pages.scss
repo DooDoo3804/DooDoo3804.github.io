@@ -700,12 +700,16 @@
     color: var(--accent-primary);
 }
 
-/* Tag Cloud Pills */
+/* Tag Cloud Pills — Terminal Tab Style */
 .tags-cloud {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 40px;
+    background: #1e1e2e;
+    border: 1px solid #313244;
+    border-radius: var(--radius-lg);
+    padding: 16px;
 }
 
 .tags-pill {
@@ -713,12 +717,13 @@
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-2xl);
-    font-size: 14px;
+    border: 1px solid #313244;
+    border-radius: var(--radius-md);
+    font-size: 13px;
     font-weight: 500;
-    color: var(--text-muted);
-    background: var(--bg-surface-raised);
+    font-family: var(--font-mono);
+    color: #9399b2;
+    background: transparent;
     cursor: pointer;
     transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     text-decoration: none;
@@ -726,17 +731,18 @@
 
 .tags-pill:hover,
 .tags-pill:focus {
-    background: var(--accent-primary);
-    color: #fff;
-    border-color: var(--accent-primary);
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
+    border-color: #89b4fa;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
 
 .tags-pill-count {
-    font-size: 11px;
-    background: rgba(0, 0, 0, 0.08);
+    font-size: 10px;
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
     padding: 2px 7px;
     border-radius: var(--radius-lg);
     font-weight: 600;
@@ -747,7 +753,8 @@
 }
 
 .tags-pill:hover .tags-pill-count {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(137, 180, 250, 0.25);
+    color: #cdd6f4;
 }
 
 /* Tag Groups */
@@ -1062,11 +1069,15 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Tags page dark mode — most overrides eliminated via design tokens */
+/* Tags page dark mode — terminal is always dark, minimal overrides */
+[data-theme="dark"] .tags-cloud {
+    border-color: #45475a;
+}
+
 [data-theme="dark"] .tags-pill:hover,
 [data-theme="dark"] .tags-pill:focus {
-    color: var(--bg-surface);
-    box-shadow: var(--shadow-md);
+    color: #89b4fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .tags-group--highlight {
@@ -1218,6 +1229,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: var(--font-mono);
+}
+
+.about-section-title::before {
+    content: '##';
+    color: #a6e3a1;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .about-section-icon {
@@ -1238,10 +1257,40 @@
 }
 
 .skill-category {
-    padding: 18px;
-    background: var(--bg-surface-raised);
+    padding: 52px 18px 18px;
+    background: #1e1e2e;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
+    border: 1px solid #313244;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Terminal header bar */
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: #181825;
+    border-bottom: 1px solid #313244;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Terminal traffic-light dots */
+.skill-category::after {
+    content: '\25CF  \25CF  \25CF';
+    position: absolute;
+    top: 9px;
+    left: 14px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    z-index: 2;
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .skill-category-label {
@@ -1249,8 +1298,15 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: #9399b2;
     margin: 0 0 10px;
+    font-family: var(--font-mono);
+}
+
+.skill-category-label::before {
+    content: '> ';
+    color: #a6e3a1;
+    font-weight: 400;
 }
 
 .skill-badges {
@@ -1512,13 +1568,14 @@
     border-bottom-color: var(--border-light);
 }
 
+/* Terminal style is always dark — minimal dark-mode overrides */
 [data-theme="dark"] .skill-category {
-    background: var(--bg-surface-raised);
-    border-color: var(--border-light);
+    background: #1e1e2e;
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .skill-category-label {
-    color: var(--text-secondary);
+    color: #9399b2;
 }
 
 [data-theme="dark"] .skill-badge--kotlin {

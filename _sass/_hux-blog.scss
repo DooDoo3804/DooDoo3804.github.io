@@ -690,11 +690,11 @@ code, kbd, pre, samp {
     .navbar-default .navbar-collapse {
         position: absolute;
         right: 0;
-        border: none;
-        background: var(--bg-surface);
-        box-shadow: var(--shadow-lg);
+        border: 1px solid #313244;
+        background: #1e1e2e;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         border-radius: var(--radius-md);
-        width: 180px;
+        width: 200px;
     }
 
     #huxblog_navbar {
@@ -709,6 +709,20 @@ code, kbd, pre, samp {
     #huxblog_navbar button {
         font-size: 13px;
         line-height: 28px;
+        font-family: var(--font-mono);
+        color: #cdd6f4 !important;
+    }
+
+    #huxblog_navbar .navbar-nav > li > a::before {
+        content: '$ ';
+        color: #a6e3a1;
+        font-weight: 400;
+    }
+
+    #huxblog_navbar .navbar-nav > li > a:hover,
+    #huxblog_navbar .navbar-nav > li > a:focus {
+        color: #89b4fa !important;
+        background: rgba(137, 180, 250, 0.08);
     }
 
     #huxblog_navbar .navbar-collapse {
@@ -1234,7 +1248,7 @@ footer .copyright a:focus {
     color: var(--accent-primary);
 }
 
-/* --- Pager (Previous/Next) --- */
+/* --- Pager (Previous/Next) — Terminal Card Style --- */
 ul.pager {
     margin: 20px 0 0;
     padding: 0;
@@ -1244,29 +1258,44 @@ ul.pager {
 
 .pager li > a,
 .pager li > span {
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 600;
     padding: 16px 20px;
-    background-color: var(--bg-surface);
+    background-color: #1e1e2e;
     border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
+    border: 1px solid #313244;
     display: block;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    color: #cdd6f4;
 }
 
 .pager li > a {
-    color: var(--text-primary);
+    color: #cdd6f4;
     text-decoration: none;
+}
+
+.pager li.previous > a::before {
+    content: 'cd .. ';
+    color: #a6e3a1;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.pager li.next > a::after {
+    content: ' ./next';
+    color: #a6e3a1;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .pager li > a:hover,
 .pager li > a:focus {
-    color: var(--accent-primary);
-    border-color: var(--accent-primary);
-    box-shadow: 0 4px 12px rgba(var(--accent-color-raw), 0.15);
+    color: #89b4fa;
+    border-color: #89b4fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
-    background-color: var(--bg-surface);
+    background-color: #1e1e2e;
 }
 
 .pager li > a > span {
@@ -1274,23 +1303,23 @@ ul.pager {
     font-size: 14px;
     font-weight: 500;
     margin-top: 4px;
-    color: var(--text-secondary);
+    color: #9399b2;
     transition: color 0.2s;
 }
 
 .pager li > a:hover > span,
 .pager li > a:focus > span {
-    color: var(--text-primary);
+    color: #cdd6f4;
 }
 
 .pager .disabled > a,
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-    color: var(--text-muted);
-    background-color: var(--bg-surface-raised);
+    color: #585b70;
+    background-color: #181825;
     cursor: not-allowed;
-    border-color: var(--border-light);
+    border-color: #313244;
     box-shadow: none;
     transform: none;
 }

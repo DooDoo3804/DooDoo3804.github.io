@@ -761,13 +761,13 @@ code.has-line-numbers .code-line::before {
 .mobile-toc-wrapper .mobile-toc-toggle {
     width: 45px;
     height: 45px;
-    border: 1px solid var(--border-light, #e8e8e8);
+    border: 1px solid #313244;
     border-radius: 50%;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     font-size: 18px;
     padding: 0;
-    background: var(--bg-surface, #fff);
-    color: var(--text-base, #1a1a2e);
+    background: #1e1e2e;
+    color: #cdd6f4;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -783,9 +783,10 @@ code.has-line-numbers .code-line::before {
     width: min(260px, calc(100vw - 40px));
     max-height: 60vh;
     overflow-y: auto;
-    background: var(--bg-surface);
+    background: #1e1e2e;
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
+    border: 1px solid #313244;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     padding: 15px;
     z-index: 1001;
 }
@@ -800,7 +801,13 @@ code.has-line-numbers .code-line::before {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--text-muted);
+    color: #9399b2;
+    font-family: var(--font-mono);
+}
+
+.mobile-toc-panel h5::before {
+    content: '> ';
+    color: #a6e3a1;
 }
 
 .mobile-catalog-body {
@@ -809,29 +816,31 @@ code.has-line-numbers .code-line::before {
     margin: 0;
 }
 
+/* Terminal style is always dark — minimal dark-mode overrides */
 [data-theme="dark"] .mobile-toc-wrapper .mobile-toc-toggle {
-    background: var(--bg-surface-raised);
-    border-color: var(--border-light);
-    color: var(--text-base);
+    background: #1e1e2e;
+    border-color: #45475a;
+    color: #cdd6f4;
 }
 
 [data-theme="dark"] .mobile-toc-panel {
-    background: var(--bg-surface-raised);
-    border: 1px solid var(--border-light);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    background: #1e1e2e;
+    border-color: #45475a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 [data-theme="dark"] .mobile-toc-panel a {
-    color: var(--text-base);
+    color: #cdd6f4;
 }
 
 
-/* Mobile TOC active state */
+/* Mobile TOC active state — terminal palette */
 .mobile-catalog-body li a {
     display: block;
     padding: 4px 8px;
     font-size: 13px;
-    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    color: #9399b2;
     text-decoration: none;
     transition: color 0.2s, border-color 0.2s;
     border-left: 3px solid transparent;
