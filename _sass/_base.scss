@@ -54,6 +54,39 @@ body {
 /* --- Smooth Scroll --- */
 html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-medium) transparent;
+}
+
+/* --- Custom Scrollbar (Webkit) --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+/* --- Custom Text Selection --- */
+::selection {
+    background: rgba(var(--accent-color-raw), 0.3);
+    color: inherit;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: rgba(var(--accent-color-raw), 0.3);
+    color: inherit;
+    text-shadow: none;
 }
 
 /* --- Post Content - Tables --- */

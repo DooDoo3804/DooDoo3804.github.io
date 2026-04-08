@@ -2308,8 +2308,9 @@
     text-decoration: none;
 }
 
-.start-here-card i {
-    font-size: 18px;
+.start-here-card i,
+.start-here-card .icon {
+    font-size: 22px;
     color: var(--accent-primary);
 }
 

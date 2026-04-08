@@ -1,28 +1,46 @@
-/* --- Author Hero Section --- */
+/* --- Author Hero Section — Terminal Window Style --- */
 .author-hero {
     position: relative;
     padding: 32px 32px;
+    padding-top: 52px; /* space for terminal header bar */
     margin-bottom: 32px;
     border-radius: var(--radius-xl);
     overflow: hidden;
-    border: 1px solid rgba(var(--accent-color-raw), 0.15);
+    background: #1e1e2e;
+    border: 1px solid #313244;
 }
 
-.author-hero-mesh {
+/* Terminal header bar */
+.author-hero::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(var(--accent-color-raw), 0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(var(--accent-color-raw), 0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(var(--accent-color-raw), 0.03) 0%, transparent 70%);
-    animation: heroMeshShift 30s ease-in-out infinite alternate;
-    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #181825;
+    border-bottom: 1px solid #313244;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
-@keyframes heroMeshShift {
-    0%   { background-position: 0% 0%, 100% 100%, 50% 50%; }
-    50%  { background-position: 20% 30%, 80% 60%, 40% 70%; }
-    100% { background-position: 10% 60%, 90% 30%, 60% 40%; }
+/* Terminal traffic-light dots */
+.author-hero::after {
+    content: '\25CF  \25CF  \25CF';
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    z-index: 2;
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Hide the mesh gradient background — terminal is opaque dark */
+.author-hero-mesh {
+    display: none;
 }
 
 .author-hero-inner {
@@ -39,8 +57,8 @@
     border-radius: 50%;
     flex-shrink: 0;
     object-fit: cover;
-    box-shadow: var(--shadow-md);
-    border: 2px solid rgba(var(--accent-color-raw), 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid #45475a;
 }
 
 .author-hero-info {
@@ -52,27 +70,34 @@
     font-size: 22px;
     font-weight: 700;
     margin: 0 0 6px;
-    color: var(--heading-dark);
+    color: #cdd6f4;
     letter-spacing: -0.02em;
 }
 
 [data-theme="dark"] .author-hero-name {
-    color: var(--text-primary);
+    color: #cdd6f4;
 }
 
-/* Author hero subtitle (static text, typing animation removed Sprint 15 M3) */
+/* Author hero subtitle — terminal prompt style */
 .author-hero-subtitle {
     font-size: 15px;
     font-weight: 500;
     margin: 0 0 4px;
-    color: var(--accent-primary);
+    color: #a6e3a1;
     font-family: var(--font-mono);
 }
 
+.author-hero-subtitle::before {
+    content: '$ ';
+    color: #89b4fa;
+    font-weight: 400;
+}
+
 .author-hero-topics {
-    font-size: 14px;
-    color: var(--text-muted);
+    font-size: 13px;
+    color: #9399b2;
     margin: 0 0 12px;
+    font-family: var(--font-mono);
 }
 
 .author-hero-links {
@@ -83,7 +108,7 @@
 
 .author-hero-links a {
     font-size: 13px;
-    color: var(--accent-primary);
+    color: #89b4fa;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s, transform 0.2s;
@@ -91,27 +116,30 @@
 
 .author-hero-links a:hover {
     transform: translateY(-1px);
-    color: var(--heading-dark);
+    color: #b4befe;
 }
 
 [data-theme="dark"] .author-hero-links a:hover {
-    color: #fff;
+    color: #b4befe;
 }
 
-.author-hero-links a i {
+.author-hero-links a .icon {
     margin-right: 4px;
 }
 
+/* Terminal style is dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .author-hero {
-    border-color: rgba(var(--accent-color-raw), 0.25);
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .author-hero-topics {
-    color: var(--text-secondary);
+    color: #9399b2;
 }
 
 @media (max-width: 576px) {
-    .author-hero { padding: 24px 20px; }
+    .author-hero {
+        padding: 48px 20px 24px;
+    }
     .author-hero-inner {
         flex-direction: column;
         text-align: center;
@@ -202,19 +230,19 @@ body.has-mobile-toc #back-to-top {
 
 .code-lang-label {
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 0;
-    padding: 2px 10px;
+    padding: 4px 14px;
     font-size: 12px;
     font-weight: 600;
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.08);
-    border-radius: 8px 0 6px 0;
-    border-bottom: 1px solid var(--border-subtle);
-    border-right: 1px solid var(--border-subtle);
+    color: #89b4fa;
+    background: #1e1e2e;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    border: 1px solid var(--border-subtle);
+    border-bottom: 1px solid #1e1e2e;
 }
 
 .copy-btn {
