@@ -318,11 +318,12 @@ pre.highlight {
     transform: translateY(0) scale(1);
 }
 
+/* Command palette / terminal style */
 .search-page .search-main {
-    background: var(--bg-surface);
+    background: #1e1e2e;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-light);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #313244;
     width: 90%;
     max-width: 640px;
     max-height: 70vh;
@@ -352,6 +353,15 @@ pre.highlight {
     font-size: 18px;
 }
 
+/* Close icon always light on dark terminal modal */
+.search-page .search-icon-close {
+    color: #9399b2;
+}
+
+.search-page .search-icon-close:hover {
+    color: #cdd6f4;
+}
+
 .search-page #search-input {
     font-family: var(--font-mono);
     border: none;
@@ -361,9 +371,13 @@ pre.highlight {
     width: 100%;
     font-size: 18px;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #cdd6f4;
     background: transparent;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid #313244;
+}
+
+.search-page #search-input::placeholder {
+    color: #585b70;
 }
 
 .search-page #search-results {
@@ -371,6 +385,7 @@ pre.highlight {
     flex: 1;
     -webkit-overflow-scrolling: touch;
     padding: 8px 12px 16px;
+    color: #cdd6f4;
 }
 
 .search-icon a,
@@ -987,9 +1002,58 @@ code, kbd, pre, samp {
     }
 }
 
+/* --- Post Heading: Terminal Window Style --- */
+.intro-header .post-heading {
+    position: relative;
+    background: #1e1e2e;
+    border: 1px solid #313244;
+    border-radius: var(--radius-xl);
+    padding: 52px 32px 32px;
+    overflow: hidden;
+}
+
+/* Terminal header bar for post heading */
+.intro-header .post-heading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #181825;
+    border-bottom: 1px solid #313244;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Terminal traffic-light dots for post heading */
+.intro-header .post-heading::after {
+    content: '\25CF  \25CF  \25CF';
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    z-index: 2;
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .intro-header .post-heading h1 {
     font-size: 30px;
     margin-bottom: 24px;
+    color: #cdd6f4;
+}
+
+.intro-header .post-heading .tags .tag {
+    border-color: #45475a;
+    color: #89b4fa;
+    background: rgba(137, 180, 250, 0.08);
+}
+
+.intro-header .post-heading .tags .tag:hover {
+    background: rgba(137, 180, 250, 0.15);
 }
 
 .intro-header .post-heading .subheading,
@@ -1005,6 +1069,7 @@ code, kbd, pre, samp {
     font-weight: 400;
     margin: 10px 0 30px;
     margin-top: -5px;
+    color: #bac2de;
 }
 
 .intro-header .post-heading .meta {
@@ -1012,14 +1077,19 @@ code, kbd, pre, samp {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    opacity: 0.85;
+    opacity: 1;
+    color: #9399b2;
 }
 
 .intro-header .post-heading .meta a {
-    color: #fff;
+    color: #89b4fa;
 }
 
 @media only screen and (min-width: 768px) {
+    .intro-header .post-heading {
+        padding: 52px 40px 40px;
+    }
+
     .intro-header .post-heading h1 {
         font-size: 55px;
     }
@@ -1030,6 +1100,12 @@ code, kbd, pre, samp {
 
     .intro-header .post-heading .meta {
         font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .intro-header .post-heading {
+        padding: 48px 20px 24px;
     }
 }
 

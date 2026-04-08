@@ -145,7 +145,7 @@ mark {
 
 .search-excerpt {
     font-size: 13px;
-    color: var(--text-tertiary);
+    color: #7f849c;
     margin: 6px 0 8px;
     line-height: 1.5;
     font-weight: 400;
@@ -155,13 +155,9 @@ mark {
     overflow: hidden;
 }
 
-html:not([data-theme="dark"]) .search-excerpt {
-    color: var(--text-tertiary);
-}
-
 .search-date {
     font-size: 11px;
-    color: var(--text-muted);
+    color: #585b70;
     font-weight: 500;
 }
 
@@ -252,35 +248,43 @@ html:not([data-theme="dark"]) .search-excerpt {
 }
 
 /* ========================================
-   SEARCH - Light Mode Fixes
+   SEARCH - Terminal Modal Overrides
+   Search modal is now always dark (terminal style),
+   so light mode uses same colors as dark mode.
    ======================================== */
-html:not([data-theme="dark"]) .search-hint,
-html:not([data-theme="dark"]) .search-hint kbd {
-    color: rgba(0,0,0,0.4);
+.search-hint,
+.search-hint kbd {
+    color: #585b70;
 }
 
-html:not([data-theme="dark"]) .search-input-icon {
-    color: rgba(0,0,0,0.3);
+.search-hint kbd {
+    color: #7f849c;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
-html:not([data-theme="dark"]) #search-input {
-    border-bottom-color: rgba(0,0,0,0.12) !important;
+.search-input-icon {
+    color: #585b70;
 }
 
-html:not([data-theme="dark"]) .search-result-count {
-    border-bottom-color: rgba(0,0,0,0.08);
+#search-input {
+    border-bottom-color: #313244 !important;
 }
 
-html:not([data-theme="dark"]) .search-result-item {
-    border-bottom-color: rgba(0,0,0,0.06);
+.search-result-count {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
-html:not([data-theme="dark"]) .search-empty-icon {
-    color: rgba(0,0,0,0.15);
+.search-result-item {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
 }
 
-html:not([data-theme="dark"]) .search-empty-suggestions {
-    color: var(--text-tertiary);
+.search-empty-icon {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.search-empty-suggestions {
+    color: #7f849c;
 }
 
 /* ========================================

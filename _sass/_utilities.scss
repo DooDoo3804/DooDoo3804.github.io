@@ -236,7 +236,7 @@ pre { overflow-x: auto; }
     .footer-social-link { width: 36px; height: 36px; font-size: 16px; }
     .search-empty-suggestions { flex-direction: column; gap: 8px; }
     .post-breadcrumb { font-size: 12px; padding: 8px 12px; }
-    .post-breadcrumb li:not(:last-child)::after { margin: 0 6px; }
+    .post-breadcrumb li:not(:last-child)::after { margin: 0 4px; }
     .filter-no-results-card { padding: 32px 24px; }
     .post-card-body { padding: 16px 20px 20px; }
 }
@@ -247,20 +247,21 @@ pre { overflow-x: auto; }
 }
 
 
-/* --- Subscribe CTA --- */
+/* --- Subscribe CTA — Terminal Window Style --- */
 .subscribe-cta {
     text-align: center;
     margin: 36px 0;
     padding: 28px 24px;
-    border: 1px dashed var(--border-medium);
+    border: 1px solid #313244;
     border-radius: var(--radius-lg);
-    background: rgba(var(--accent-color-raw), 0.03);
+    background: #1e1e2e;
+    font-family: var(--font-mono);
 }
 
 .subscribe-cta-text {
     font-size: 15px;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #cdd6f4;
     margin: 0 0 14px;
 }
 
@@ -280,9 +281,10 @@ pre { overflow-x: auto; }
     border-radius: var(--radius-2xl);
     font-size: 13px;
     font-weight: 600;
-    border: 1px solid var(--border-medium);
-    background: var(--bg-surface);
-    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    border: 1px solid #45475a;
+    background: #181825;
+    color: #9399b2;
     text-decoration: none;
     transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s;
 }
@@ -299,26 +301,26 @@ pre { overflow-x: auto; }
 }
 
 .subscribe-cta-github:hover {
-    background: #24292e;
-    color: #fff;
-    border-color: #24292e;
+    background: #cdd6f4;
+    color: #1e1e2e;
+    border-color: #cdd6f4;
 }
 
+/* Terminal style is dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .subscribe-cta {
-    border-color: var(--border-light);
-    background: rgba(var(--accent-color-raw), 0.05);
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .subscribe-cta-btn {
-    background: var(--bg-surface-raised);
-    border-color: var(--border-light);
-    color: var(--text-base);
+    background: #181825;
+    border-color: #45475a;
+    color: #9399b2;
 }
 
 [data-theme="dark"] .subscribe-cta-github:hover {
-    background: var(--text-primary);
-    color: var(--bg-body);
-    border-color: var(--text-primary);
+    background: #cdd6f4;
+    color: #1e1e2e;
+    border-color: #cdd6f4;
 }
 
 /* --- Accessibility: Reduced Motion --- */

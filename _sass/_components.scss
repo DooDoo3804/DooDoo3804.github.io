@@ -322,35 +322,74 @@ code.has-line-numbers .code-line::before {
     opacity: 0.5;
 }
 
-/* --- Series Navigation --- */
+/* --- Series Navigation — Terminal Window Style --- */
 .series-nav {
     margin: 40px 0;
-    padding: var(--space-6);
-    background: var(--bg-surface-raised);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
+    padding: 52px 24px 24px;
+    position: relative;
+    background: #1e1e2e;
+    border-radius: var(--radius-xl);
+    border: 1px solid #313244;
     border-left: 4px solid var(--accent-primary);
+    overflow: hidden;
+    font-family: var(--font-mono);
+}
+
+/* Terminal header bar */
+.series-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #181825;
+    border-bottom: 1px solid #313244;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Terminal traffic-light dots */
+.series-nav::after {
+    content: '\25CF  \25CF  \25CF';
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    z-index: 2;
+    background: linear-gradient(90deg, #f38ba8, #f9e2af, #a6e3a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .series-nav-title {
     font-size: 15px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #cdd6f4;
     margin: 0 0 16px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+/* Terminal prompt before title */
+.series-nav-title::before {
+    content: '>';
+    color: #a6e3a1;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
 .series-nav-title .icon {
-    color: var(--accent-primary);
+    color: #89b4fa;
 }
 
 .series-count {
     font-size: 11px;
     font-weight: 600;
-    background: rgba(var(--accent-color-raw), 0.1);
-    color: var(--accent-primary);
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
     padding: 2px 10px;
     border-radius: var(--radius-lg);
     margin-left: auto;
@@ -368,7 +407,7 @@ code.has-line-numbers .code-line::before {
     padding: 6px 0;
     font-size: 14px;
     line-height: 1.5;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .series-item:last-child {
@@ -376,22 +415,22 @@ code.has-line-numbers .code-line::before {
 }
 
 .series-item a {
-    color: var(--text-tertiary);
+    color: #9399b2;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .series-item a:hover {
-    color: var(--accent-primary);
+    color: #89b4fa;
 }
 
 .series-item--current {
     font-weight: 600;
-    color: var(--accent-primary);
+    color: #89b4fa;
 }
 
 .series-item-title {
-    color: var(--accent-primary);
+    color: #89b4fa;
 }
 
 .series-item-current-badge {
@@ -407,17 +446,15 @@ code.has-line-numbers .code-line::before {
     vertical-align: middle;
 }
 
-/* Series Nav Dark Mode
-   REDUNDANT lines removed:
-   - .series-nav background/border (same vars as light)
-   - .series-nav-title color (same var)
-   - .series-nav-title .icon color (same var)
-   - .series-item a:hover color (same var)
-   - .series-item--current / .series-item-title color (same var)
-*/
+/* Series Nav — dark mode (terminal is dark by default, minimal overrides) */
+[data-theme="dark"] .series-nav {
+    border-color: #45475a;
+    border-left-color: var(--accent-primary);
+}
+
 [data-theme="dark"] .series-count {
-    background: rgba(var(--accent-color-raw), 0.12);
-    color: var(--accent-primary);
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
 }
 
 [data-theme="dark"] .series-item {
@@ -425,11 +462,11 @@ code.has-line-numbers .code-line::before {
 }
 
 [data-theme="dark"] .series-item a {
-    color: var(--text-secondary);
+    color: #9399b2;
 }
 
 [data-theme="dark"] .series-item--current {
-    background: rgba(var(--accent-color-raw), 0.08);
+    background: rgba(137, 180, 250, 0.08);
     border-radius: var(--radius-sm);
 }
 
@@ -700,7 +737,7 @@ code.has-line-numbers .code-line::before {
     height: 6px;
     border-radius: 50%;
     background: var(--accent-primary);
-    box-shadow: 0 0 8px var(--accent-primary);
+    box-shadow: 0 0 4px rgba(var(--accent-color-raw), 0.6);
 }
 
 /* ========================================
