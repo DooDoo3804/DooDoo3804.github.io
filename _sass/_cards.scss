@@ -50,7 +50,6 @@
     background: var(--accent-primary);
     color: #fff;
     border-color: var(--accent-primary);
-    box-shadow: var(--shadow-sm);
 }
 
 /* REDUNDANT removed: [data-theme="dark"] .category-filter border-bottom-color
@@ -72,7 +71,6 @@
     background: var(--accent-primary);
     color: #fff;
     border-color: var(--accent-primary);
-    box-shadow: var(--shadow-sm);
 }
 
 /* --- Post Cards (Homepage) --- */
@@ -115,8 +113,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: var(--accent-gradient);
+    height: 2px;
+    background: var(--accent-primary);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -127,13 +125,13 @@
 }
 
 .post-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border-color: var(--accent-primary);
 }
 
 [data-theme="dark"] .post-card:hover {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     border-color: var(--accent-primary);
 }
 
@@ -180,44 +178,44 @@
 }
 
 .post-card:hover .post-card-thumb {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .post-card-thumb--gradient {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
 }
 
 .post-card-thumb--algorithm {
-    background: linear-gradient(135deg, #1565c0 0%, #42a5f5 50%, #80d8ff 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #3b6fa0 100%);
 }
 
 .post-card-thumb--kotlin {
-    background: linear-gradient(135deg, #6a1b9a 0%, #ab47bc 50%, #ce93d8 100%);
+    background: linear-gradient(135deg, #3b1f5e 0%, #5b3a7a 50%, #7a5a96 100%);
 }
 
 .post-card-thumb--react {
-    background: linear-gradient(135deg, #0097a7 0%, #26c6da 50%, #80deea 100%);
+    background: linear-gradient(135deg, #1a3c4a 0%, #2a5a6a 50%, #3a7a8a 100%);
 }
 
 .post-card-thumb--spring {
-    background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 50%, #a5d6a7 100%);
+    background: linear-gradient(135deg, #1e3a2a 0%, #3a5a42 50%, #5a7a62 100%);
 }
 
 .post-card-thumb--infra {
-    background: linear-gradient(135deg, #e65100 0%, #ff9800 50%, #ffcc80 100%);
+    background: linear-gradient(135deg, #3d2a1a 0%, #5a4030 50%, #7a5a42 100%);
 }
 
 .post-card-thumb--database {
-    background: linear-gradient(135deg, #4527a0 0%, #7e57c2 50%, #b39ddb 100%);
+    background: linear-gradient(135deg, #2a1e4a 0%, #3d3060 50%, #5a4a7a 100%);
 }
 
 .post-card-thumb-label {
     font-size: 18px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-family: var(--font-mono);

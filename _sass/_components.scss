@@ -15,7 +15,7 @@
         radial-gradient(ellipse 80% 60% at 10% 20%, rgba(var(--accent-color-raw), 0.10) 0%, transparent 60%),
         radial-gradient(ellipse 60% 80% at 90% 80%, rgba(var(--accent-color-raw), 0.08) 0%, transparent 55%),
         radial-gradient(ellipse 50% 50% at 50% 50%, rgba(var(--accent-color-raw), 0.03) 0%, transparent 70%);
-    animation: heroMeshShift 12s ease-in-out infinite alternate;
+    animation: heroMeshShift 30s ease-in-out infinite alternate;
     z-index: 0;
 }
 
@@ -189,7 +189,7 @@ body.has-mobile-toc #back-to-top {
 .post-container pre {
     border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle);
-    border-left: 3px solid var(--border-medium);
+    border-left: none;
     position: relative;
     margin: 1.5em 0;
 }

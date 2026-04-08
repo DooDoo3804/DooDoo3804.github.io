@@ -2390,13 +2390,13 @@
     margin-bottom: 32px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .featured-post-hero:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .featured-post-content {
@@ -2516,11 +2516,11 @@
 /* Dark mode */
 [data-theme="dark"] .featured-post-hero {
     background: linear-gradient(135deg, #162235 0%, #1e3a52 50%, #1a4a70 100%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
 }
 
 [data-theme="dark"] .featured-post-hero:hover {
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .featured-post-cta {
