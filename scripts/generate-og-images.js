@@ -148,9 +148,9 @@ async function generateOgImage(title, tags, date, outputPath) {
   const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a2e"/>
-      <stop offset="50%" style="stop-color:#16213e"/>
-      <stop offset="100%" style="stop-color:#0f3460"/>
+      <stop offset="0%" style="stop-color:#1e1e2e"/>
+      <stop offset="50%" style="stop-color:#181825"/>
+      <stop offset="100%" style="stop-color:#11111b"/>
     </linearGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
@@ -159,16 +159,16 @@ async function generateOgImage(title, tags, date, outputPath) {
   <text x="${W / 2}" y="52" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="600" font-size="26" fill="#ffffff" opacity="0.85">DooDoo IT Blog</text>
 
   <!-- Accent line -->
-  <rect x="${W / 2 - 40}" y="68" width="80" height="3" rx="1.5" fill="#0ea5e9"/>
+  <rect x="${W / 2 - 40}" y="68" width="80" height="3" rx="1.5" fill="#89b4fa"/>
 
   <!-- Title -->
   ${titleTspans}
 
   <!-- Date -->
-  <text x="${W / 2}" y="${H - 72}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="400" font-size="20" fill="#a0a0a0">${escapeXml(dateStr)}</text>
+  <text x="${W / 2}" y="${H - 72}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="400" font-size="20" fill="#9399b2">${escapeXml(dateStr)}</text>
 
   <!-- Tags -->
-  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#0ea5e9">${escapeXml(tagsStr)}</text>
+  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#89b4fa">${escapeXml(tagsStr)}</text>
 </svg>`;
 
   await sharp(Buffer.from(svg)).png().toFile(outputPath);

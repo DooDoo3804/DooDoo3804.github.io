@@ -206,13 +206,13 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 /* ========================================
-   BREADCRUMB NAVIGATION — Terminal Path Style
+   BREADCRUMB NAVIGATION
    ======================================== */
 .post-breadcrumb {
     margin-bottom: var(--space-6);
     padding: 10px var(--space-4);
-    background: #1e1e2e;
-    border: 1px solid #313244;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     font-size: 14px;
     font-family: var(--font-mono);
@@ -231,15 +231,14 @@ code, kbd, pre, samp, .code-lang-label {
 .post-breadcrumb li {
     display: flex;
     align-items: center;
-    color: #9399b2;
+    color: var(--text-muted);
     line-height: 1.4;
 }
 
-/* Terminal path separator: / instead of > */
 .post-breadcrumb li:not(:last-child)::after {
     content: "/";
     margin: 0 6px;
-    color: #585b70;
+    color: var(--text-tertiary);
     font-size: 14px;
     font-weight: 400;
 }
@@ -247,18 +246,18 @@ code, kbd, pre, samp, .code-lang-label {
 /* Prompt prefix ~ on first item */
 .post-breadcrumb li:first-child::before {
     content: "~/";
-    color: #a6e3a1;
+    color: var(--accent-primary);
     font-weight: 500;
     margin-right: 0;
 }
 
 .post-breadcrumb a {
-    color: #89b4fa;
+    color: var(--accent-primary);
     text-decoration: none;
 }
 
 .post-breadcrumb a:hover {
-    color: #b4befe;
+    color: var(--accent-hover);
     text-decoration: underline;
 }
 
@@ -267,7 +266,7 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 .post-breadcrumb li:last-child strong {
-    color: #cdd6f4;
+    color: var(--text-primary);
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -282,25 +281,21 @@ code, kbd, pre, samp, .code-lang-label {
     }
 }
 
-/* Terminal style is dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .post-breadcrumb {
-    border-color: #45475a;
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
 }
 
 [data-theme="dark"] .post-breadcrumb li {
-    color: #9399b2;
-}
-
-[data-theme="dark"] .post-breadcrumb li:not(:last-child)::after {
-    color: #585b70;
+    color: var(--text-muted);
 }
 
 [data-theme="dark"] .post-breadcrumb a {
-    color: #89b4fa;
+    color: var(--accent-primary);
 }
 
 [data-theme="dark"] .post-breadcrumb li:last-child strong {
-    color: #cdd6f4;
+    color: var(--text-primary);
 }
 
 /* ========================================

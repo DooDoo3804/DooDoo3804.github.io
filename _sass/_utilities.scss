@@ -247,21 +247,21 @@ pre { overflow-x: auto; }
 }
 
 
-/* --- Subscribe CTA — Terminal Window Style --- */
+/* --- Subscribe CTA --- */
 .subscribe-cta {
     text-align: center;
     margin: 36px 0;
     padding: 28px 24px;
-    border: 1px solid #313244;
+    border: 1px dashed var(--border-medium);
     border-radius: var(--radius-lg);
-    background: #1e1e2e;
+    background: rgba(var(--accent-color-raw), 0.03);
     font-family: var(--font-mono);
 }
 
 .subscribe-cta-text {
     font-size: 15px;
     font-weight: 600;
-    color: #cdd6f4;
+    color: var(--text-primary);
     margin: 0 0 14px;
 }
 
@@ -282,9 +282,9 @@ pre { overflow-x: auto; }
     font-size: 13px;
     font-weight: 600;
     font-family: var(--font-mono);
-    border: 1px solid #45475a;
-    background: #181825;
-    color: #9399b2;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-surface);
+    color: var(--text-muted);
     text-decoration: none;
     transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s;
 }
@@ -301,20 +301,20 @@ pre { overflow-x: auto; }
 }
 
 .subscribe-cta-github:hover {
-    background: #cdd6f4;
-    color: #1e1e2e;
-    border-color: #cdd6f4;
+    background: var(--text-primary);
+    color: var(--bg-surface);
+    border-color: var(--text-primary);
 }
 
-/* Terminal style is dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .subscribe-cta {
-    border-color: #45475a;
+    background: rgba(var(--accent-color-raw), 0.04);
+    border-color: var(--border-light);
 }
 
 [data-theme="dark"] .subscribe-cta-btn {
-    background: #181825;
-    border-color: #45475a;
-    color: #9399b2;
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+    color: var(--text-muted);
 }
 
 [data-theme="dark"] .subscribe-cta-github:hover {
