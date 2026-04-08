@@ -147,11 +147,13 @@ code, kbd, pre, samp, .code-lang-label {
     font-size: 14px;
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
 }
 
 .footer-nav a:hover {
     color: var(--accent-primary);
+    transform: translateY(-1px);
 }
 
 .footer-bottom {
