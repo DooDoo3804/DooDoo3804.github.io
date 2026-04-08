@@ -276,9 +276,10 @@ pre:hover .copy-btn {
 }
 
 .copy-btn.copy-btn--success {
-    background: var(--color-success);
-    color: #fff;
-    border-color: var(--color-success);
+    background: #a6e3a1;
+    color: #1e1e2e;
+    border-color: #a6e3a1;
+    font-family: var(--font-mono);
     opacity: 1;
 }
 
@@ -489,6 +490,13 @@ code.has-line-numbers .code-line::before {
     letter-spacing: 0.05em;
     color: var(--text-muted);
     margin-bottom: 20px;
+    font-family: var(--font-mono);
+}
+
+.related-posts h4::before {
+    content: '// ';
+    color: var(--text-tertiary);
+    opacity: 0.6;
 }
 
 .related-posts-grid {

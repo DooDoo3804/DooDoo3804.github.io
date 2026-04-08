@@ -376,8 +376,8 @@
 }
 
 .archive-side-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
+    background: #1e1e2e;
+    border: 1px solid #313244;
     border-radius: var(--radius-lg);
     padding: 20px;
     margin-bottom: 20px;
@@ -388,20 +388,28 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: #9399b2;
     margin: 0 0 14px;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-divider);
+    border-bottom: 1px solid #313244;
+    font-family: var(--font-mono);
+}
+
+.archive-side-card h5::before {
+    content: '> ';
+    color: #a6e3a1;
+    font-weight: 400;
 }
 
 .archive-stat-total {
     font-size: 14px;
-    color: var(--text-tertiary);
+    color: #9399b2;
     margin: 0;
+    font-family: var(--font-mono);
 }
 
 .archive-stat-total strong {
-    color: var(--accent-primary);
+    color: #89b4fa;
     font-size: 20px;
 }
 
@@ -411,7 +419,9 @@
     align-items: center;
     padding: 7px 0;
     font-size: 14px;
-    border-bottom: 1px solid var(--border-divider);
+    font-family: var(--font-mono);
+    color: #cdd6f4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -421,16 +431,17 @@
 }
 
 .archive-year-item:hover {
-    color: var(--accent-primary);
+    color: #89b4fa;
 }
 
 .archive-year-count {
     font-size: 12px;
-    background: rgba(var(--accent-color-raw), 0.08);
-    color: var(--accent-primary);
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
     padding: 2px 9px;
     border-radius: var(--radius-lg);
     font-weight: 600;
+    font-family: var(--font-mono);
 }
 
 /* Archive tag cloud - modern pill style */
@@ -592,31 +603,29 @@
 /* ========================================
    ARCHIVE DARK MODE
    ======================================== */
+/* Archive side card is terminal-dark by default — minimal dark-mode overrides */
 [data-theme="dark"] .archive-side-card {
-    background: var(--bg-surface-raised);
-    border-color: var(--border-light);
+    background: #1e1e2e;
+    border-color: #45475a;
 }
 
 [data-theme="dark"] .archive-side-card h5 {
-    color: var(--text-secondary);
-    border-bottom-color: var(--border-light);
+    color: #9399b2;
+    border-bottom-color: #313244;
 }
 
 [data-theme="dark"] .archive-stat-total {
-    color: var(--text-base);
+    color: #9399b2;
 }
 
 [data-theme="dark"] .archive-year-item {
-    border-bottom-color: var(--border-subtle);
-    color: var(--text-base);
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+    color: #cdd6f4;
 }
 
-/* REDUNDANT removed: [data-theme="dark"] .archive-year-item:hover
-   — color: var(--accent-primary) same as light hover */
-
 [data-theme="dark"] .archive-year-count {
-    background: rgba(var(--accent-color-raw), 0.1);
-    color: var(--accent-primary);
+    background: rgba(137, 180, 250, 0.12);
+    color: #89b4fa;
 }
 
 [data-theme="dark"] #tag_cloud .tag-button--all,

@@ -31,6 +31,22 @@ body {
 .post-container h3 { font-size: 1.375rem; }
 .post-container h4 { font-size: 1.125rem; }
 
+.post-container h2::before {
+    content: '## ';
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    opacity: 0.35;
+}
+
+.post-container h3::before {
+    content: '### ';
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    opacity: 0.3;
+}
+
 /* --- Blockquote --- */
 .post-container blockquote {
     border-left: 4px solid var(--accent-primary);

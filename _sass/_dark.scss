@@ -242,6 +242,32 @@
     border: none;
     padding: 0;
     color: inherit;
+    position: relative;
+}
+
+.dark-mode-toggle::after {
+    content: '--theme dark';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    padding-top: 4px;
+}
+
+.dark-mode-toggle:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-theme="dark"] .dark-mode-toggle::after {
+    content: '--theme light';
 }
 
 .dark-mode-toggle:hover {

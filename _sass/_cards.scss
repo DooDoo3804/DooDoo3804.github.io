@@ -217,12 +217,22 @@
 }
 
 .post-card-thumb-label {
-    font-size: 18px;
+    font-size: clamp(14px, 3vw, 18px);
     font-weight: 700;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: lowercase;
     font-family: var(--font-mono);
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-card:hover .post-card-thumb-label {
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.08em;
 }
 
 .post-card-thumb-label::before {
@@ -316,6 +326,12 @@
     border-top: 1px solid var(--border-light);
     font-size: 13px;
     color: var(--text-secondary);
+}
+
+.post-card-meta .post-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
 }
 
 .post-card-meta .read-time {
