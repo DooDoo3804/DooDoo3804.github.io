@@ -250,11 +250,17 @@ body.has-mobile-toc #back-to-top {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--terminal-blue);
-    background: var(--terminal-bg);
+    color: var(--accent-primary);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     border: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--terminal-bg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .code-lang-label {
+    color: var(--terminal-blue);
+    background: var(--terminal-bg);
+    border-bottom-color: var(--terminal-bg);
 }
 
 .copy-btn {
@@ -728,18 +734,25 @@ code.has-line-numbers .code-line::before {
 .mobile-toc-wrapper .mobile-toc-toggle {
     width: 45px;
     height: 45px;
-    border: 1px solid var(--terminal-border);
+    border: 1px solid var(--border-light);
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-md);
     font-size: 18px;
     padding: 0;
-    background: var(--terminal-bg);
-    color: var(--terminal-text);
+    background: var(--bg-surface);
+    color: var(--text-primary);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
+}
+
+[data-theme="dark"] .mobile-toc-wrapper .mobile-toc-toggle {
+    background: var(--terminal-bg);
+    color: var(--terminal-text);
+    border-color: var(--terminal-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .mobile-toc-panel {
@@ -750,12 +763,18 @@ code.has-line-numbers .code-line::before {
     width: min(260px, calc(100vw - 40px));
     max-height: 60vh;
     overflow-y: auto;
-    background: var(--terminal-bg);
+    background: var(--bg-surface);
     border-radius: var(--radius-md);
-    border: 1px solid var(--terminal-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
     padding: 15px;
     z-index: 1001;
+}
+
+[data-theme="dark"] .mobile-toc-panel {
+    background: var(--terminal-bg);
+    border-color: var(--terminal-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-toc-panel--open {
