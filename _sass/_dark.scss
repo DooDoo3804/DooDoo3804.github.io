@@ -78,10 +78,7 @@
     color: var(--accent-primary);
 }
 
-[data-theme="dark"] .post-container blockquote {
-    border-left-color: var(--accent-primary);
-    color: var(--text-muted);
-}
+/* blockquote dark override consolidated in _base.scss */
 
 [data-theme="dark"] .post-container pre {
     background: var(--bg-surface-raised);
@@ -110,14 +107,7 @@
     color: var(--text-base);
 }
 
-[data-theme="dark"] .post-container table th,
-[data-theme="dark"] .post-container table td {
-    border-color: var(--border-light);
-}
-
-[data-theme="dark"] .post-container table th {
-    background: var(--bg-surface-raised);
-}
+/* table dark overrides consolidated in _base.scss */
 
 [data-theme="dark"] .post-container hr {
     color: #585b70;

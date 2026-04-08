@@ -159,21 +159,5 @@
         color: #1e1e2e !important;
     }
 
-    /* Terminal style is always dark — no separate dark-mode override needed */
-    [data-theme="dark"] .mobile-share-bar {
-        background: #1e1e2e;
-        border-color: #45475a;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    }
-
-    [data-theme="dark"] .mobile-share-btn {
-        background: rgba(255, 255, 255, 0.08);
-        color: #cdd6f4;
-    }
-
-    [data-theme="dark"] .mobile-share-btn:hover,
-    [data-theme="dark"] .mobile-share-btn:active {
-        background: #89b4fa;
-        color: #1e1e2e;
-    }
+    /* Terminal style is always dark — redundant [data-theme="dark"] overrides removed */
 }

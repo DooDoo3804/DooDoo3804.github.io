@@ -408,45 +408,7 @@
     opacity: 0.7;
 }
 
-/* --- No Results (Category Filter) --- */
-.filter-no-results-card {
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--text-muted);
-}
-
-.filter-no-results-card i {
-    font-size: 32px;
-    margin-bottom: 12px;
-    display: block;
-    opacity: 0.4;
-}
-
-.filter-no-results-card h4 {
-    margin: 0 0 8px;
-    font-size: 16px;
-    color: var(--text-primary);
-}
-
-.filter-no-results-hint {
-    font-size: 14px;
-    margin: 0 0 16px;
-}
-
-.filter-no-results-reset {
-    background: none;
-    border: none;
-    color: var(--accent-primary);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    transition: opacity 0.2s;
-}
-
-.filter-no-results-reset:hover {
-    opacity: 0.7;
-}
+/* --- No Results: consolidated in _utilities.scss --- */
 
 /* --- Pagination --- */
 .pagination {

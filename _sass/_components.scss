@@ -82,9 +82,7 @@
     letter-spacing: -0.02em;
 }
 
-[data-theme="dark"] .author-hero-name {
-    color: #cdd6f4;
-}
+/* [data-theme="dark"] .author-hero-name — removed: terminal is always dark (#cdd6f4) */
 
 /* Author hero subtitle — terminal prompt style */
 .author-hero-subtitle {
@@ -139,9 +137,7 @@
     color: #b4befe;
 }
 
-[data-theme="dark"] .author-hero-links a:hover {
-    color: #b4befe;
-}
+/* [data-theme="dark"] .author-hero-links a:hover — removed: same as light (#b4befe) */
 
 .author-hero-links a .icon {
     margin-right: 4px;
@@ -152,9 +148,7 @@
     border-color: #45475a;
 }
 
-[data-theme="dark"] .author-hero-topics {
-    color: #9399b2;
-}
+/* [data-theme="dark"] .author-hero-topics — removed: same as light (#9399b2) */
 
 @media (max-width: 576px) {
     .author-hero {
@@ -473,18 +467,9 @@ code.has-line-numbers .code-line::before {
     border-left-color: var(--accent-primary);
 }
 
-[data-theme="dark"] .series-count {
-    background: rgba(137, 180, 250, 0.12);
-    color: #89b4fa;
-}
-
-[data-theme="dark"] .series-item {
-    border-bottom-color: rgba(255, 255, 255, 0.04);
-}
-
-[data-theme="dark"] .series-item a {
-    color: #9399b2;
-}
+/* [data-theme="dark"] .series-count — removed: same as light */
+/* [data-theme="dark"] .series-item — removed: same border-bottom-color */
+/* [data-theme="dark"] .series-item a — removed: same color (#9399b2) */
 
 [data-theme="dark"] .series-item--current {
     background: rgba(137, 180, 250, 0.08);
@@ -837,22 +822,7 @@ code.has-line-numbers .code-line::before {
     margin: 0;
 }
 
-/* Terminal style is always dark — minimal dark-mode overrides */
-[data-theme="dark"] .mobile-toc-wrapper .mobile-toc-toggle {
-    background: #1e1e2e;
-    border-color: #45475a;
-    color: #cdd6f4;
-}
-
-[data-theme="dark"] .mobile-toc-panel {
-    background: #1e1e2e;
-    border-color: #45475a;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-}
-
-[data-theme="dark"] .mobile-toc-panel a {
-    color: #cdd6f4;
-}
+/* Terminal style is always dark — redundant [data-theme="dark"] overrides removed */
 
 
 /* Mobile TOC active state — terminal palette */
@@ -878,10 +848,7 @@ code.has-line-numbers .code-line::before {
     font-weight: 500;
 }
 
-[data-theme="dark"] .mobile-catalog-body .active a {
-    border-left-color: var(--accent-primary);
-    color: var(--accent-primary) !important;
-}
+/* [data-theme="dark"] .mobile-catalog-body .active a — removed: same as light */
 
 /* ========================================
    IMAGE LIGHTBOX

@@ -197,13 +197,8 @@ pre { overflow-x: auto; }
     border-color: var(--border-light);
 }
 
-[data-theme="dark"] .filter-no-results-card h4 {
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .filter-no-results .icon {
-    color: var(--accent-primary);
-}
+/* [data-theme="dark"] .filter-no-results-card h4 — removed: uses var(--text-primary), inherits */
+/* [data-theme="dark"] .filter-no-results .icon — removed: uses var(--accent-primary), inherits */
 
 [data-theme="dark"] .filter-no-results-reset {
     background: var(--accent-primary);
