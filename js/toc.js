@@ -70,13 +70,17 @@
         });
 
         // Auto-scroll sidebar to keep active item visible
-        // Only when sidebar is actually visible (lg+ screens) to prevent
-        // scrollIntoView from scrolling the entire page on mobile/tablet
+        // Manual scroll instead of scrollIntoView to prevent page-level scroll jumps
         var sidebar = document.querySelector('.side-catalog');
-        if (sidebar && sidebar.offsetParent !== null) {
+        if (sidebar && sidebar.offsetParent !== null && sidebar.scrollHeight > sidebar.clientHeight) {
             var activeLi = sidebar.querySelector('.active');
             if (activeLi) {
-                activeLi.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+                var liTop = activeLi.offsetTop - sidebar.offsetTop;
+                var viewTop = sidebar.scrollTop;
+                var viewBottom = viewTop + sidebar.clientHeight;
+                if (liTop < viewTop || liTop > viewBottom - 30) {
+                    sidebar.scrollTop = liTop - sidebar.clientHeight / 3;
+                }
             }
         }
     }

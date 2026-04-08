@@ -1039,58 +1039,10 @@ code, kbd, pre, samp {
     }
 }
 
-/* --- Post Heading: Terminal Window Style --- */
-.intro-header .post-heading {
-    position: relative;
-    background: var(--terminal-bg);
-    border: 1px solid var(--terminal-border);
-    border-radius: var(--radius-xl);
-    padding: 52px 32px 32px;
-    overflow: hidden;
-}
-
-/* Terminal header bar for post heading */
-.intro-header .post-heading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 36px;
-    background: var(--terminal-header);
-    border-bottom: 1px solid var(--terminal-border);
-    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-}
-
-/* Terminal traffic-light dots for post heading */
-.intro-header .post-heading::after {
-    content: '\25CF  \25CF  \25CF';
-    position: absolute;
-    top: 10px;
-    left: 16px;
-    font-size: 12px;
-    letter-spacing: 4px;
-    z-index: 2;
-    background: linear-gradient(90deg, #f38ba8, #f9e2af, var(--terminal-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
+/* --- Post Heading --- */
 .intro-header .post-heading h1 {
     font-size: 30px;
     margin-bottom: 24px;
-    color: var(--terminal-text);
-}
-
-.intro-header .post-heading .tags .tag {
-    border-color: var(--terminal-surface1);
-    color: var(--terminal-blue);
-    background: rgba(137, 180, 250, 0.08);
-}
-
-.intro-header .post-heading .tags .tag:hover {
-    background: rgba(137, 180, 250, 0.15);
 }
 
 .intro-header .post-heading .subheading,
@@ -1106,7 +1058,6 @@ code, kbd, pre, samp {
     font-weight: 400;
     margin: 10px 0 30px;
     margin-top: -5px;
-    color: var(--terminal-subtext);
 }
 
 .intro-header .post-heading .meta {
@@ -1114,19 +1065,9 @@ code, kbd, pre, samp {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    opacity: 1;
-    color: var(--terminal-overlay);
-}
-
-.intro-header .post-heading .meta a {
-    color: var(--terminal-blue);
 }
 
 @media only screen and (min-width: 768px) {
-    .intro-header .post-heading {
-        padding: 52px 40px 40px;
-    }
-
     .intro-header .post-heading h1 {
         font-size: 55px;
     }
@@ -1137,12 +1078,6 @@ code, kbd, pre, samp {
 
     .intro-header .post-heading .meta {
         font-size: 15px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .intro-header .post-heading {
-        padding: 48px 20px 24px;
     }
 }
 
