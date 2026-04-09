@@ -3,6 +3,11 @@
    ========================================
    Note: No removeEventListener needed — MPA (full page reload on navigation).
    Event delegation is used where practical for code quality, not leak prevention.
+
+   Shared localStorage keys:
+   'doodoo-reading-stats' — read/write by custom.js, read by rpg.js & index.html
+   'doodoo-rpg'           — read/write by rpg.js; written by custom.js (typing challenge XP)
+   'doodoo-blog-theme'    — read/write by custom.js only
    ======================================== */
 
 (function() {
@@ -617,7 +622,11 @@
         container.innerHTML = svg;
     }
 
+    var mindmapInitialized = false;
     function initMindmap() {
+        if (mindmapInitialized) return;
+        mindmapInitialized = true;
+
         var container = document.querySelector('.post-container[data-pagefind-body]');
         if (!container) return;
 
@@ -900,8 +909,13 @@
             if (text.length > 10 && text.length < 500) {
                 selectedText = text;
                 popup.style.display = 'flex';
-                popup.style.left = e.pageX + 'px';
-                popup.style.top = (e.pageY - 45) + 'px';
+                var left = e.pageX;
+                var top = e.pageY - 45;
+                // 화면 밖 방지
+                if (left + 200 > window.innerWidth + window.scrollX) left = window.innerWidth + window.scrollX - 210;
+                if (top < window.scrollY) top = e.pageY + 15;
+                popup.style.left = left + 'px';
+                popup.style.top = top + 'px';
             } else {
                 popup.style.display = 'none';
             }

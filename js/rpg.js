@@ -1,6 +1,10 @@
 (function() {
     'use strict';
 
+    // Shared localStorage keys:
+    // 'doodoo-reading-stats' — read/write by custom.js, read by rpg.js & index.html
+    // 'doodoo-rpg'           — read/write by rpg.js; written by custom.js (typing challenge XP)
+    // 'doodoo-blog-theme'    — read/write by custom.js only
     var STORAGE_KEY = 'doodoo-rpg';
     var READING_KEY = 'doodoo-reading-stats';
 

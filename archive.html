@@ -130,6 +130,11 @@ nav-order: 1
     var container = document.getElementById('post-heatmap');
     if (!container) return;
 
+    if (!postDates || postDates.length === 0) {
+        container.innerHTML = '<span style="color:var(--text-muted);font-size:12px">No posts yet</span>';
+        return;
+    }
+
     var counts = {};
     postDates.forEach(function(d) {
         counts[d] = (counts[d] || 0) + 1;

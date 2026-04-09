@@ -657,7 +657,7 @@ code.has-line-numbers .code-line::before {
 
 /* Smart Recommendation: Read badge */
 .related-post-card.rp-read {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .rp-read-badge {
@@ -1183,6 +1183,7 @@ body.lightbox-open {
     font-family: var(--font-mono);
     font-size: 14px;
     caret-color: var(--terminal-green);
+    min-height: 44px;
 }
 
 /* Terminal open button in author hero */
@@ -1278,6 +1279,7 @@ body.lightbox-open {
 
 .rpg-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     font-size: 11px;
     color: var(--terminal-overlay);
@@ -1569,4 +1571,19 @@ pre:hover .typing-challenge-btn { opacity: 1; }
 .text-share-btn:hover {
     background: rgba(var(--accent-color-raw), 0.1);
     color: var(--accent-primary);
+}
+
+/* --- Dark mode: additional component overrides --- */
+[data-theme="dark"] .mindmap-container {
+    background: var(--bg-surface-raised);
+}
+
+[data-theme="dark"] .typing-challenge-btn {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .post-minimap {
+    background: rgba(var(--accent-color-raw), 0.05);
+    border-left-color: var(--border-light);
 }

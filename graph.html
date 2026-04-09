@@ -100,6 +100,16 @@ header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
         .force('center', d3.forceCenter(width / 2, height / 2))
         .force('collision', d3.forceCollide().radius(30));
 
+    // adjacency map — 호버 시 O(1) 이웃 조회용
+    var adjacencyMap = {};
+    nodes.forEach(function(n) { adjacencyMap[n.id] = new Set(); });
+    links.forEach(function(l) {
+        var sid = typeof l.source === 'object' ? l.source.id : l.source;
+        var tid = typeof l.target === 'object' ? l.target.id : l.target;
+        adjacencyMap[sid].add(tid);
+        adjacencyMap[tid].add(sid);
+    });
+
     // 엣지
     var link = g.append('g')
         .selectAll('line')
@@ -145,19 +155,17 @@ header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
         tooltip.style.left = (event.pageX + 15) + 'px';
         tooltip.style.top = (event.pageY - 10) + 'px';
 
-        // 연결된 노드 강조
-        var connected = new Set();
-        links.forEach(function(l) {
-            if (l.source.id === d.id) connected.add(l.target.id);
-            if (l.target.id === d.id) connected.add(l.source.id);
-        });
-        connected.add(d.id);
+        // 연결된 노드 강조 (adjacencyMap 사용 — O(1) 조회)
+        var connected = adjacencyMap[d.id] || new Set();
+        // connected에 자기 자신도 포함
+        var highlight = new Set(connected);
+        highlight.add(d.id);
 
-        node.attr('opacity', function(n) { return connected.has(n.id) ? 1 : 0.15; });
+        node.attr('opacity', function(n) { return highlight.has(n.id) ? 1 : 0.15; });
         link.attr('stroke-opacity', function(l) {
             return (l.source.id === d.id || l.target.id === d.id) ? 0.8 : 0.05;
         });
-        label.attr('opacity', function(n) { return connected.has(n.id) ? 1 : 0.1; });
+        label.attr('opacity', function(n) { return highlight.has(n.id) ? 1 : 0.1; });
     })
     .on('mouseout', function() {
         tooltip.style.display = 'none';
