@@ -59,12 +59,22 @@
         var selectors = ['.catalog-body li', '.mobile-catalog-body li'];
         selectors.forEach(function (sel) {
             var lis = document.querySelectorAll(sel);
+            var passedActive = false;
+
             lis.forEach(function (li) {
                 var a = li.querySelector('a');
                 if (a && a.getAttribute('href') === '#' + id) {
                     li.classList.add('active');
-                } else {
+                    li.classList.remove('completed');
+                    passedActive = true;
+                } else if (!passedActive) {
+                    // Before active = already read section
                     li.classList.remove('active');
+                    li.classList.add('completed');
+                } else {
+                    // After active = not yet read section
+                    li.classList.remove('active');
+                    li.classList.remove('completed');
                 }
             });
         });

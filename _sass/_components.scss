@@ -486,6 +486,21 @@ code.has-line-numbers .code-line::before {
     margin-left: auto;
 }
 
+.series-progress {
+    height: 4px;
+    background: var(--border-light);
+    border-radius: 2px;
+    margin: 12px 0 16px;
+    overflow: hidden;
+}
+
+.series-progress-fill {
+    height: 100%;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
 .series-list {
     margin: 0;
     padding-left: 24px;
@@ -808,6 +823,17 @@ code.has-line-numbers .code-line::before {
     background: rgba(var(--accent-color-raw), 0.08);
 }
 
+/* Completed TOC link — already-read sections */
+.side-catalog .catalog-body li.completed a {
+    color: var(--color-success);
+    opacity: 0.7;
+}
+
+.side-catalog .catalog-body li.completed a::before {
+    content: '\2713\0020';
+    font-size: 10px;
+}
+
 /* ========================================
    READING PROGRESS BAR
    ======================================== */
@@ -938,6 +964,17 @@ code.has-line-numbers .code-line::before {
 }
 
 /* [data-theme="dark"] .mobile-catalog-body .active a — removed: same as light */
+
+/* Mobile TOC completed state */
+.mobile-catalog-body li.completed a {
+    color: var(--color-success);
+    opacity: 0.7;
+}
+
+.mobile-catalog-body li.completed a::before {
+    content: '\2713\0020';
+    font-size: 10px;
+}
 
 /* ========================================
    IMAGE LIGHTBOX
@@ -1586,4 +1623,37 @@ pre:hover .typing-challenge-btn { opacity: 1; }
 [data-theme="dark"] .post-minimap {
     background: rgba(var(--accent-color-raw), 0.05);
     border-left-color: var(--border-light);
+}
+
+/* --- Reading Complete Banner --- */
+.reading-complete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    margin: 32px 0;
+    background: rgba(var(--accent-color-raw), 0.06);
+    border: 1px solid rgba(var(--accent-color-raw), 0.2);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-primary);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reading-complete--show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reading-complete-icon {
+    font-size: 20px;
+}
+
+.reading-complete-xp {
+    color: var(--color-success);
+    font-weight: 700;
 }

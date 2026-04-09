@@ -151,5 +151,54 @@
             '</div>';
     }
 
-    document.addEventListener('DOMContentLoaded', renderWidget);
+    // 카테고리 마스터리 뱃지 렌더링
+    function renderCategoryBadges() {
+        var cards = document.querySelectorAll('.post-card');
+        if (cards.length === 0) return;
+
+        var stats;
+        try { stats = JSON.parse(localStorage.getItem(READING_KEY)) || {}; } catch(e) { return; }
+
+        // 카테고리별 전체/읽은 수 카운트
+        var catTotal = {};
+        var catRead = {};
+
+        cards.forEach(function(card) {
+            var tagAttr = card.getAttribute('data-tag');
+            if (!tagAttr) return;
+            var cat = tagAttr.toLowerCase();
+            catTotal[cat] = (catTotal[cat] || 0) + 1;
+
+            var link = card.querySelector('a');
+            if (link) {
+                var href = link.getAttribute('href');
+                if (stats[href] && stats[href].readAt) {
+                    catRead[cat] = (catRead[cat] || 0) + 1;
+                }
+            }
+        });
+
+        // 카테고리 필터 버튼에 마스터리 표시
+        var filterBtns = document.querySelectorAll('.category-btn[data-filter]');
+        filterBtns.forEach(function(btn) {
+            var filter = btn.getAttribute('data-filter');
+            if (filter === 'all') return;
+
+            var total = catTotal[filter] || 0;
+            var read = catRead[filter] || 0;
+
+            if (total > 0 && read >= total) {
+                var badge = document.createElement('span');
+                badge.className = 'cat-mastery-badge';
+                badge.textContent = '\uD83C\uDFC6';
+                badge.title = 'All ' + total + ' posts read!';
+                btn.appendChild(badge);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderWidget();
+        renderCategoryBadges();
+    });
 })();

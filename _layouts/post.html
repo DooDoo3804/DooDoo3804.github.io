@@ -61,6 +61,9 @@ layout: default
                 {% endfor %}
                 <nav class="series-nav" aria-label="Series navigation">
                     <h4 class="series-nav-title"><svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg> {{ page.series }} <span class="series-count">{{ reversed_series.size }}편 중 {{ current_index }}편</span></h4>
+                    <div class="series-progress" role="progressbar" aria-valuenow="{{ current_index }}" aria-valuemin="1" aria-valuemax="{{ reversed_series.size }}" aria-label="Series progress">
+                        <div class="series-progress-fill" style="width: {{ current_index | times: 100 | divided_by: reversed_series.size }}%"></div>
+                    </div>
                     <ol class="series-list">
                     {% for p in reversed_series %}
                         <li class="series-item{% if p.url == page.url %} series-item--current{% endif %}">
