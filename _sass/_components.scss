@@ -1,22 +1,14 @@
 /* --- Author Hero Section — Terminal Window Style --- */
-@keyframes borderGlow {
-    0%   { box-shadow: 0 0 15px rgba(137,180,250,0.3), 0 0 30px rgba(166,227,161,0.15); }
-    33%  { box-shadow: 0 0 15px rgba(166,227,161,0.3), 0 0 30px rgba(249,226,175,0.15); }
-    66%  { box-shadow: 0 0 15px rgba(249,226,175,0.3), 0 0 30px rgba(137,180,250,0.15); }
-    100% { box-shadow: 0 0 15px rgba(137,180,250,0.3), 0 0 30px rgba(166,227,161,0.15); }
-}
-
 .author-hero {
     position: relative;
     padding: 32px 32px;
     padding-top: 52px; /* space for terminal header bar */
-    margin-bottom: 32px;
+    margin-bottom: 48px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     background: var(--terminal-bg);
     border: 1px solid var(--terminal-border);
-    animation: borderGlow 6s ease-in-out infinite;
-    will-change: box-shadow;
+    box-shadow: 0 0 0 1px rgba(var(--accent-color-raw), 0.15);
 }
 
 /* Terminal header bar */

@@ -54,9 +54,9 @@
 }
 
 .category-btn.active {
-    background: var(--accent-primary);
-    color: #fff;
-    border-color: var(--accent-primary);
+    background: var(--text-primary);
+    color: var(--bg-surface);
+    border-color: var(--text-primary);
     box-shadow: var(--shadow-sm);
 }
 
@@ -73,9 +73,9 @@
 }
 
 [data-theme="dark"] .category-btn.active {
-    background: var(--accent-primary);
-    color: #fff;
-    border-color: var(--accent-primary);
+    background: var(--text-primary);
+    color: var(--bg-surface);
+    border-color: var(--text-primary);
 }
 
 /* --- Post Cards (Homepage) --- */
@@ -109,42 +109,22 @@
 }
 
 .post-card {
-    position: relative; /* ::before uses absolute positioning */
+    position: relative;
     background: var(--bg-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     overflow: hidden;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.3s ease;
-}
-
-.post-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--accent-primary);
-    border-radius: 0; /* card overflow:hidden handles clipping */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.post-card:hover::before {
-    opacity: 1;
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .post-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(var(--accent-color-raw), 0.1);
-    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .post-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--accent-color-raw), 0.08);
-    border-color: var(--accent-primary);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
 /* Category filter animation */
@@ -186,11 +166,6 @@
     background-size: cover;
     background-position: center;
     border-bottom: 1px solid var(--border-light);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.post-card:hover .post-card-thumb {
-    transform: scale(1.02);
 }
 
 .post-card-thumb--gradient {
@@ -230,16 +205,10 @@
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: color 0.2s ease, letter-spacing 0.2s ease;
     max-width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.post-card:hover .post-card-thumb-label {
-    color: rgba(255, 255, 255, 0.95);
-    letter-spacing: 0.08em;
 }
 
 .post-card-body {
@@ -267,16 +236,6 @@
     border-radius: var(--radius-2xl);
     margin-right: 6px;
     margin-bottom: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.post-card:hover .post-card-tags span {
-    background: rgba(var(--accent-color-raw), 0.18);
-    color: var(--accent-primary);
-}
-
-[data-theme="dark"] .post-card:hover .post-card-tags span {
-    background: rgba(var(--accent-color-raw), 0.22);
 }
 
 .post-card .post-title {
@@ -284,11 +243,6 @@
     font-weight: 700;
     margin: 0 0 8px;
     line-height: 1.35;
-    transition: color 0.2s ease;
-}
-
-.post-card:hover .post-title {
-    color: var(--accent-primary);
 }
 
 .post-card .post-subtitle {
@@ -312,7 +266,7 @@
 
 .post-card-meta {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     gap: 4px 12px;
