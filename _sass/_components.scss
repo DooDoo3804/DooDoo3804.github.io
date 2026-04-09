@@ -231,13 +231,20 @@ body.has-mobile-toc #back-to-top {
     border: 1px solid var(--border-subtle);
     border-left: none;
     position: relative;
-    margin: 1.5em 0;
+    margin: 1.5em -16px;
+    padding: 1em 16px;
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
 .post-container .highlighter-rouge .highlight pre,
 .post-container .rouge-code pre {
     padding-top: 2em !important;
+}
+
+/* Widen Rouge code blocks slightly beyond container */
+.post-container .highlighter-rouge {
+    margin-left: -16px;
+    margin-right: -16px;
 }
 
 .code-lang-label {
@@ -1625,35 +1632,4 @@ pre:hover .typing-challenge-btn { opacity: 1; }
     border-left-color: var(--border-light);
 }
 
-/* --- Reading Complete Banner --- */
-.reading-complete {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px;
-    margin: 32px 0;
-    background: rgba(var(--accent-color-raw), 0.06);
-    border: 1px solid rgba(var(--accent-color-raw), 0.2);
-    border-radius: var(--radius-lg);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--text-primary);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.reading-complete--show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reading-complete-icon {
-    font-size: 20px;
-}
-
-.reading-complete-xp {
-    color: var(--color-success);
-    font-weight: 700;
-}
+/* --- Reading Complete Banner — REMOVED (Sprint bug fix) --- */

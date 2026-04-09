@@ -297,9 +297,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* overflow-x on wrapper instead of body — body overflow can break scroll on some browsers */
+/* overflow-x on wrapper instead of body — body overflow can break scroll on some browsers.
+   Use clip instead of hidden so position:sticky still works inside descendants. */
 .container-fluid, .container {
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 p {
@@ -361,6 +362,7 @@ select {
 select.sel-lang {
     min-height: 28px;
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
 table {
@@ -374,6 +376,21 @@ table.table > thead td {
     border: 1px solid var(--border-light) !important;
 }
 
+/* Ensure table-responsive wrapper scrolls horizontally without collapsing */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 0;
+}
+
+.table-responsive > .table {
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
 @media screen and (max-width: 767px) {
     .table-responsive {
         border: 0;
@@ -382,8 +399,7 @@ table.table > thead td {
 
 /* hr.small — removed: unused in any template */
 
-pre,
-.table-responsive {
+pre {
     -webkit-overflow-scrolling: touch;
 }
 
@@ -577,7 +593,7 @@ code, kbd, pre, samp {
 .intro-header.style-text .site-heading,
 .intro-header.style-text .post-heading,
 .intro-header.style-text .page-heading {
-    padding: 85px 0 20px;
+    padding: 120px 0 20px;
     color: var(--text-primary);
 }
 
@@ -610,7 +626,7 @@ code, kbd, pre, samp {
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-    padding: 85px 0 55px;
+    padding: 120px 0 55px;
     color: #fff;
 }
 
@@ -623,7 +639,7 @@ code, kbd, pre, samp {
 }
 
 .intro-header .site-heading {
-    padding: 95px 0 70px;
+    padding: 130px 0 70px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -727,12 +743,20 @@ code, kbd, pre, samp {
 /* --- Post Preview (archive/list views) --- */
 .post-preview > a {
     color: var(--text-primary);
+    text-decoration: none;
 }
 
 .post-preview > a:hover,
 .post-preview > a:focus {
     text-decoration: none;
     color: var(--accent-primary);
+}
+
+/* Prevent post-container global underline from leaking into post-preview items */
+.post-container .post-preview a,
+.post-container .mini-post-list a,
+.post-container .related-post-card a {
+    text-decoration: none !important;
 }
 
 .post-preview > a > .post-title {

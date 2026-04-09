@@ -879,12 +879,27 @@
 
         updateViewport();
 
-        // 클릭으로 점프
-        minimap.addEventListener('click', function(e) {
+        // 클릭 + 드래그로 점프
+        var isDragging = false;
+
+        function jumpToPosition(e) {
             var rect = minimap.getBoundingClientRect();
-            var clickPct = (e.clientY - rect.top) / rect.height;
-            var scrollTarget = clickPct * document.documentElement.scrollHeight;
-            window.scrollTo({ top: scrollTarget });
+            var clickPct = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+            window.scrollTo({ top: clickPct * document.documentElement.scrollHeight });
+        }
+
+        minimap.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            jumpToPosition(e);
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            jumpToPosition(e);
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
         });
     }
 
@@ -981,42 +996,6 @@
         });
     }
 
-    /* --- Reading Complete Banner --- */
-    function initReadingComplete() {
-        var postContainer = document.querySelector('.post-container[data-pagefind-body]');
-        if (!postContainer) return;
-
-        var shown = false;
-        var banner = document.createElement('div');
-        banner.className = 'reading-complete';
-        banner.style.display = 'none';
-        banner.innerHTML = '<span class="reading-complete-icon">\uD83C\uDF89</span> ' +
-            '<span>Post completed!</span> ' +
-            '<span class="reading-complete-xp">+50 XP</span>';
-
-        // Insert before pager, or append to container
-        var pager = postContainer.querySelector('.pager');
-        if (pager) {
-            pager.before(banner);
-        } else {
-            postContainer.appendChild(banner);
-        }
-
-        window.addEventListener('scroll', function() {
-            if (shown) return;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (docHeight <= 0) return;
-            var scrollPct = (window.scrollY / docHeight) * 100;
-            if (scrollPct >= 90) {
-                shown = true;
-                banner.style.display = 'flex';
-                // Force reflow before adding animation class
-                banner.offsetHeight;
-                banner.classList.add('reading-complete--show');
-            }
-        });
-    }
-
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -1039,7 +1018,6 @@
         initMinimap();
         initTextSharePopup();
         initSmartRecommendation();
-        initReadingComplete();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {
