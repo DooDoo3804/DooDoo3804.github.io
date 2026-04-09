@@ -87,9 +87,6 @@ service-worker: true
 
 # Last updated signal is now auto-generated via site.posts.first.date in index.html
 
-# Featured Post — set slug to pin a specific post, or leave blank for latest
-# featured_post_slug: "2026-04-06-database-transaction-isolation"
-
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 

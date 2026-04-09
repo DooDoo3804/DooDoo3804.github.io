@@ -12,10 +12,10 @@
 }
 
 .post-share-label {
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: var(--text-muted);
     margin-right: 4px;
 }
@@ -23,10 +23,10 @@
 .share-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    gap: 5px;
+    padding: 6px 12px;
     border-radius: var(--radius-2xl);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     border: 1px solid var(--border-medium);
     background: var(--bg-surface);

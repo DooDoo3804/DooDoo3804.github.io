@@ -278,60 +278,6 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
 })();
 </script>
 
-<!-- Start Here -->
-<div class="start-here">
-    <h3 class="start-here-title">~/shortcuts</h3>
-    <div class="start-here-cards">
-        <a href="{{ site.baseurl }}/archive/?tag=Algorithm" class="start-here-card">
-            <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg>
-            <span class="start-here-label">Algorithms</span>
-            <span class="start-here-desc">Data structures & problem solving</span>
-        </a>
-        <a href="{{ site.baseurl }}/archive/?tag=Kotlin" class="start-here-card">
-            <svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg>
-            <span class="start-here-label">Kotlin</span>
-            <span class="start-here-desc">Coroutines, syntax & interop</span>
-        </a>
-        <a href="{{ site.baseurl }}/about/" class="start-here-card">
-            <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>
-            <span class="start-here-label">About Me</span>
-            <span class="start-here-desc">Skills & journey</span>
-        </a>
-    </div>
-</div>
-
-<!-- Featured Post Hero -->
-{% if site.featured_post_slug %}
-  {% assign featured = site.posts | where: "slug", site.featured_post_slug | first %}
-  {% unless featured %}{% assign featured = site.posts.first %}{% endunless %}
-{% else %}
-  {% assign featured = site.posts.first %}
-{% endif %}
-{% if featured %}
-<div class="featured-post-hero" {% if featured.header-img %}style="background-image: linear-gradient(135deg, rgba(10,10,26,0.92) 0%, rgba(26,42,78,0.85) 60%, rgba(14,165,233,0.25) 100%), url('{{ featured.header-img | prepend: site.baseurl }}');"{% endif %}>
-    <div class="featured-post-content">
-        <div class="featured-post-label">Featured Post</div>
-        <div class="featured-post-tags">
-            {% for tag in featured.tags %}
-            <span>{{ tag }}</span>
-            {% endfor %}
-        </div>
-        <h2 class="featured-post-title">{{ featured.title }}</h2>
-        <p class="featured-post-excerpt">{{ featured.description | default: featured.content | strip_html | truncate: 160 }}</p>
-        <div class="featured-post-meta">
-            <span class="featured-post-date post-date" data-date="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %-d, %Y" }}</span>
-            <span class="featured-post-readtime">{% include read-time.html content=featured.content %}</span>
-        </div>
-        <a href="{{ featured.url | prepend: site.baseurl }}" class="featured-post-cta"><span>$ cat post &rarr;</span></a>
-    </div>
-</div>
-{% endif %}
-
-<!-- More Posts heading -->
-{% if site.posts.size > 1 %}
-<h3 class="more-posts-heading">More Posts</h3>
-{% endif %}
-
 <!-- Category Filter Bar -->
 <div class="category-filter">
     <button class="category-btn active" data-filter="all">All</button>
@@ -359,7 +305,6 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
 <div class="post-cards-grid">
 {% assign post_list = paginator.posts | default: site.posts %}
 {% for post in post_list %}
-{% if post.url == featured.url %}{% continue %}{% endif %}
 <div class="post-card" data-tags="{{ post.tags | join: ',' | downcase }}" data-tag="{{ post.tags | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         {% if post.header-img or post.thumbnail %}
@@ -381,7 +326,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
             <h3 class="post-subtitle">{{ post.subtitle }}</h3>
             {% endif %}
             <p class="post-card-excerpt">
-                {{ post.content | strip_html | truncate:120 }}
+                {{ post.content | strip_html | truncate:90 }}
             </p>
 
             <div class="post-card-meta">
