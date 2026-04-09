@@ -103,6 +103,12 @@
         padding: 0 2px;
     }
 
+    .post-container pre,
+    .post-container .highlighter-rouge {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
     /* Show URLs after links */
     .post-container a[href]::after {
         content: " (" attr(href) ")";

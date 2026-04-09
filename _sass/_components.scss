@@ -247,6 +247,29 @@ body.has-mobile-toc #back-to-top {
     margin-right: -16px;
 }
 
+@media (max-width: 576px) {
+    .post-container pre {
+        margin-left: -12px;
+        margin-right: -12px;
+        padding: 1em 12px;
+    }
+    .post-container .highlighter-rouge {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .post-container pre {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .post-container .highlighter-rouge {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 .code-lang-label {
     position: absolute;
     top: -1px;
@@ -833,7 +856,6 @@ code.has-line-numbers .code-line::before {
 /* Completed TOC link — already-read sections */
 .side-catalog .catalog-body li.completed a {
     color: var(--color-success);
-    opacity: 0.7;
 }
 
 .side-catalog .catalog-body li.completed a::before {
@@ -975,7 +997,6 @@ code.has-line-numbers .code-line::before {
 /* Mobile TOC completed state */
 .mobile-catalog-body li.completed a {
     color: var(--color-success);
-    opacity: 0.7;
 }
 
 .mobile-catalog-body li.completed a::before {
