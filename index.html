@@ -28,8 +28,6 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
                 {% endif %}
                 <button class="author-hero-terminal-btn" id="open-terminal-btn" aria-label="Open terminal">&gt;_ Terminal</button>
             </div>
-            <div class="reading-progress-widget" id="reading-progress-widget"></div>
-            <div class="rpg-widget" id="rpg-widget"></div>
             <p class="author-hero-updated"><svg class="icon" aria-hidden="true"><use href="#icon-arrows-rotate"/></svg> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
     </div>
@@ -72,28 +70,6 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         el.textContent = '';
         setTimeout(tick, 500);
     }
-})();
-</script>
-
-<script>
-(function() {
-    var widget = document.getElementById('reading-progress-widget');
-    if (!widget) return;
-    var STORAGE_KEY = 'doodoo-reading-stats';
-    var totalPosts = {{ site.posts.size }};
-    var stats;
-    try { stats = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { stats = {}; }
-
-    var readCount = 0;
-    Object.keys(stats).forEach(function(k) {
-        if (stats[k].readAt) readCount++;
-    });
-
-    if (readCount === 0) return; // 아무것도 안 읽었으면 숨기기
-
-    var pct = Math.round((readCount / totalPosts) * 100);
-    widget.innerHTML = '<span class="reading-stat">' + readCount + '/' + totalPosts + ' posts read (' + pct + '%)</span>' +
-        '<div class="reading-bar"><div class="reading-bar-fill" style="width:' + pct + '%"></div></div>';
 })();
 </script>
 

@@ -885,7 +885,7 @@
         function jumpToPosition(e) {
             var rect = minimap.getBoundingClientRect();
             var clickPct = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
-            window.scrollTo({ top: clickPct * document.documentElement.scrollHeight });
+            window.scrollTo(0, clickPct * (document.documentElement.scrollHeight - window.innerHeight));
         }
 
         minimap.addEventListener('mousedown', function(e) {

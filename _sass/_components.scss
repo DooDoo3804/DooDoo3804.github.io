@@ -228,69 +228,42 @@ body.has-mobile-toc #back-to-top {
 /* --- Code Block Enhancements --- */
 .post-container pre {
     border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-    border-left: none;
+    border: 1px solid var(--border-light);
     position: relative;
-    margin: 1.5em -16px;
-    padding: 1em 16px;
+    margin: 1.5em 0;
+    padding: 1em;
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
 .post-container .highlighter-rouge .highlight pre,
 .post-container .rouge-code pre {
-    padding-top: 2em !important;
+    padding-top: 1em;
 }
 
-/* Widen Rouge code blocks slightly beyond container */
+/* Code blocks same width as body text */
 .post-container .highlighter-rouge {
-    margin-left: -16px;
-    margin-right: -16px;
-}
-
-@media (max-width: 576px) {
-    .post-container pre {
-        margin-left: -12px;
-        margin-right: -12px;
-        padding: 1em 12px;
-    }
-    .post-container .highlighter-rouge {
-        margin-left: -12px;
-        margin-right: -12px;
-    }
-}
-
-@media (max-width: 375px) {
-    .post-container pre {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .post-container .highlighter-rouge {
-        margin-left: 0;
-        margin-right: 0;
-    }
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .code-lang-label {
     position: absolute;
-    top: -1px;
-    left: 0;
-    padding: 4px 14px;
-    font-size: 12px;
+    top: 4px;
+    right: 8px;
+    padding: 0;
+    font-size: 11px;
     font-weight: 600;
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--accent-primary);
-    background: rgba(0, 0, 0, 0.06);
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-    border: 1px solid var(--border-subtle);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--text-tertiary);
+    background: none;
+    border: none;
+    opacity: 0.5;
 }
 
 [data-theme="dark"] .code-lang-label {
-    color: var(--terminal-blue);
-    background: var(--terminal-bg);
-    border-bottom-color: var(--terminal-bg);
+    color: var(--terminal-overlay);
 }
 
 .copy-btn {
@@ -1273,82 +1246,7 @@ body.lightbox-open {
     border-color: var(--terminal-green);
 }
 
-/* ========================================
-   READING PROGRESS WIDGET
-   ======================================== */
-.reading-progress-widget {
-    margin-top: 12px;
-}
-
-.reading-stat {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--terminal-overlay);
-    display: block;
-    margin-bottom: 6px;
-}
-
-.reading-bar {
-    height: 4px;
-    background: var(--terminal-border);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.reading-bar-fill {
-    height: 100%;
-    background: var(--terminal-green);
-    border-radius: 2px;
-    transition: width 0.5s ease;
-}
-
-/* RPG Widget */
-.rpg-widget {
-    margin-top: 12px;
-    font-family: var(--font-mono);
-}
-
-.rpg-level {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--terminal-text);
-    margin-bottom: 6px;
-}
-
-.rpg-title {
-    font-weight: 700;
-    color: var(--terminal-green);
-}
-
-.rpg-xp {
-    color: var(--terminal-overlay);
-    font-size: 11px;
-}
-
-.rpg-bar {
-    height: 6px;
-    background: var(--terminal-border);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 6px;
-}
-
-.rpg-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--terminal-green), var(--terminal-blue));
-    border-radius: 3px;
-    transition: width 0.5s ease;
-}
-
-.rpg-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 11px;
-    color: var(--terminal-overlay);
-}
+/* Reading progress widget & RPG widget CSS removed (Sprint 22) */
 
 /* --- Mindmap --- */
 .mindmap-toggle {
