@@ -269,7 +269,7 @@ body.has-mobile-toc #back-to-top {
     border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    opacity: 0.4;
+    opacity: 0.6;
     transition: opacity 0.2s, background 0.2s;
     z-index: 2;
 }
@@ -1175,6 +1175,21 @@ body.lightbox-open {
 .blog-terminal-title {
     color: var(--terminal-overlay);
     font-size: 13px;
+}
+
+.terminal-close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--terminal-overlay);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.terminal-close-btn:hover {
+    color: var(--terminal-text);
 }
 
 .blog-terminal-body {

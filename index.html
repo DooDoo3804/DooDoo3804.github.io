@@ -79,6 +79,7 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         <div class="blog-terminal-header">
             <span class="blog-terminal-dots">&bull; &bull; &bull;</span>
             <span class="blog-terminal-title">doodoo@blog:~</span>
+            <button class="terminal-close-btn" id="terminal-close-btn" aria-label="Close terminal">&times;</button>
         </div>
         <div class="blog-terminal-body" id="terminal-output">
             <div class="terminal-line">Welcome to DooDoo IT Blog Terminal. Type <span style="color:var(--terminal-green)">help</span> for available commands.</div>
@@ -240,6 +241,14 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
         } else {
             addLine('command not found: ' + escapeHtml(name) + '. Type <span style="color:var(--terminal-green)">help</span> for commands.');
         }
+    }
+
+    // Close terminal (header X button)
+    var closeTerminalBtn = document.getElementById('terminal-close-btn');
+    if (closeTerminalBtn) {
+        closeTerminalBtn.addEventListener('click', function() {
+            wrapper.style.display = 'none';
+        });
     }
 
     // Open terminal
