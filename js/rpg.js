@@ -124,12 +124,25 @@
 
         var level = getLevel(state.xp);
 
+        // 주간 읽기 목표 계산 (월~일 기준)
+        var weeklyGoal = 5;
+        var weekStart = new Date();
+        weekStart.setDate(weekStart.getDate() - weekStart.getDay() + (weekStart.getDay() === 0 ? -6 : 1)); // 월요일
+        weekStart.setHours(0, 0, 0, 0);
+        var weeklyRead = 0;
+        var rawStats;
+        try { rawStats = JSON.parse(localStorage.getItem(READING_KEY)) || {}; } catch(e) { rawStats = {}; }
+        Object.keys(rawStats).forEach(function(k) {
+            if (rawStats[k].readAt && new Date(rawStats[k].readAt) >= weekStart) weeklyRead++;
+        });
+
         widget.innerHTML =
             '<div class="rpg-level">' + level.current.emoji + ' <span class="rpg-title">' + level.current.title + '</span> <span class="rpg-xp">' + state.xp + ' XP</span></div>' +
             '<div class="rpg-bar"><div class="rpg-bar-fill" style="width:' + level.progress + '%"></div></div>' +
             '<div class="rpg-meta">' +
                 '<span>' + readStats.postsRead + ' posts read</span>' +
-                (state.streak > 1 ? '<span>🔥 ' + state.streak + ' day streak</span>' : '') +
+                (state.streak > 1 ? '<span>\uD83D\uDD25 ' + state.streak + ' day streak</span>' : '') +
+                '<span>\uD83D\uDCDA ' + weeklyRead + '/' + weeklyGoal + ' this week</span>' +
                 '<span>' + state.achievements.length + ' achievements</span>' +
             '</div>';
     }

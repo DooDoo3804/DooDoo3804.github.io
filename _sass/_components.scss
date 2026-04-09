@@ -601,6 +601,7 @@ code.has-line-numbers .code-line::before {
 }
 
 .related-post-card {
+    position: relative;
     padding: 20px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
@@ -652,6 +653,24 @@ code.has-line-numbers .code-line::before {
     font-size: 11px;
     color: var(--text-muted);
     font-family: var(--font-mono);
+}
+
+/* Smart Recommendation: Read badge */
+.related-post-card.rp-read {
+    opacity: 0.6;
+}
+
+.rp-read-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-success);
+    background: rgba(var(--accent-color-raw), 0.06);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
 }
 
 /* --- Tag Improvements --- */

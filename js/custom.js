@@ -933,6 +933,40 @@
         });
     }
 
+    /* --- Smart Recommendation: Read badge on Related Posts --- */
+    function initSmartRecommendation() {
+        var relatedSection = document.querySelector('.related-posts');
+        if (!relatedSection) return;
+
+        var READING_KEY = 'doodoo-reading-stats';
+        var stats;
+        try { stats = JSON.parse(localStorage.getItem(READING_KEY)) || {}; } catch(e) { stats = {}; }
+
+        // 읽은 포스트 URL 목록
+        var readUrls = new Set();
+        Object.keys(stats).forEach(function(k) {
+            if (stats[k].readAt) readUrls.add(k);
+        });
+
+        if (readUrls.size === 0) return; // 아직 읽은 게 없으면 패스
+
+        // 관련 포스트 카드에서 읽은 것 표시
+        var cards = relatedSection.querySelectorAll('.related-post-card');
+        cards.forEach(function(card) {
+            var link = card.querySelector('a');
+            if (!link) return;
+            var href = link.getAttribute('href');
+            if (readUrls.has(href)) {
+                card.classList.add('rp-read');
+                // "✓ Read" 뱃지 추가
+                var badge = document.createElement('span');
+                badge.className = 'rp-read-badge';
+                badge.textContent = '\u2713 Read';
+                card.appendChild(badge);
+            }
+        });
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -954,6 +988,7 @@
         initTypingChallenge();
         initMinimap();
         initTextSharePopup();
+        initSmartRecommendation();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {
