@@ -84,6 +84,73 @@
 })();
 </script>
 
+<!-- Keyboard Shortcuts Panel -->
+<script>
+(function() {
+    var shortcuts = [
+        { key: '/', desc: 'Search' },
+        { key: '?', desc: 'Show shortcuts' },
+        { key: 'Esc', desc: 'Close panel' },
+        { key: 'g h', desc: 'Go to Home' },
+        { key: 'g a', desc: 'Go to Archive' },
+        { key: 'g g', desc: 'Go to Graph' },
+        { key: '↑↑↓↓←→←→BA', desc: 'Easter egg' }
+    ];
+
+    var panel = document.createElement('div');
+    panel.className = 'shortcuts-panel';
+    panel.innerHTML = '<div class="shortcuts-overlay"></div><div class="shortcuts-content">' +
+        '<h3>⌨ Keyboard Shortcuts</h3>' +
+        '<div class="shortcuts-list">' +
+        shortcuts.map(function(s) {
+            return '<div class="shortcut-item"><kbd>' + s.key + '</kbd><span>' + s.desc + '</span></div>';
+        }).join('') +
+        '</div>' +
+        '<p class="shortcuts-hint">Press <kbd>?</kbd> or <kbd>Esc</kbd> to close</p>' +
+        '</div>';
+    panel.style.display = 'none';
+    document.body.appendChild(panel);
+
+    var pendingKey = null;
+
+    document.addEventListener('keydown', function(e) {
+        var tag = (e.target.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+
+        // ? 토글
+        if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+            e.preventDefault();
+            panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+            return;
+        }
+
+        // Esc 닫기
+        if (e.key === 'Escape' && panel.style.display !== 'none') {
+            panel.style.display = 'none';
+            return;
+        }
+
+        // g + h/a/g 네비게이션
+        if (e.key === 'g') {
+            pendingKey = 'g';
+            setTimeout(function() { pendingKey = null; }, 1000);
+            return;
+        }
+
+        if (pendingKey === 'g') {
+            pendingKey = null;
+            if (e.key === 'h') window.location.href = '/';
+            else if (e.key === 'a') window.location.href = '/archive/';
+            else if (e.key === 'g') window.location.href = '/graph/';
+        }
+    });
+
+    panel.querySelector('.shortcuts-overlay').addEventListener('click', function() {
+        panel.style.display = 'none';
+    });
+})();
+</script>
+
 <!-- Custom Theme JavaScript (vanilla JS — no jQuery/Bootstrap dependency) -->
 <script src="{{ "/js/hux-blog.min.js" | prepend: site.baseurl }}" defer></script>
 

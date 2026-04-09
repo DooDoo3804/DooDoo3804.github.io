@@ -804,6 +804,135 @@
         el.innerHTML = html;
     }
 
+    /* --- VS Code Style Minimap --- */
+    function initMinimap() {
+        var postContainer = document.querySelector('.post-container[data-pagefind-body]');
+        if (!postContainer) return;
+        if (window.innerWidth < 1400) return; // 넓은 화면에서만
+
+        var minimap = document.createElement('div');
+        minimap.className = 'post-minimap';
+        minimap.setAttribute('aria-hidden', 'true');
+
+        var viewport = document.createElement('div');
+        viewport.className = 'minimap-viewport';
+        minimap.appendChild(viewport);
+
+        // 포스트 내용의 각 섹션을 블록으로 표현
+        var headings = postContainer.querySelectorAll('h2, h3');
+        var codeBlocks = postContainer.querySelectorAll('pre');
+        var totalHeight = postContainer.scrollHeight;
+
+        // 헤딩 마커
+        headings.forEach(function(h) {
+            var marker = document.createElement('div');
+            marker.className = 'minimap-heading';
+            marker.style.top = ((h.offsetTop / totalHeight) * 100) + '%';
+            marker.style.width = h.tagName === 'H2' ? '60%' : '40%';
+            minimap.appendChild(marker);
+        });
+
+        // 코드블록 영역
+        codeBlocks.forEach(function(pre) {
+            var block = document.createElement('div');
+            block.className = 'minimap-code';
+            block.style.top = ((pre.offsetTop / totalHeight) * 100) + '%';
+            block.style.height = ((pre.offsetHeight / totalHeight) * 100) + '%';
+            minimap.appendChild(block);
+        });
+
+        document.body.appendChild(minimap);
+
+        // 뷰포트 위치 업데이트
+        var ticking = false;
+        function updateViewport() {
+            var scrollY = window.scrollY;
+            var viewH = window.innerHeight;
+            var docH = document.documentElement.scrollHeight;
+            var minimapH = minimap.clientHeight;
+
+            var top = (scrollY / docH) * minimapH;
+            var height = (viewH / docH) * minimapH;
+
+            viewport.style.top = top + 'px';
+            viewport.style.height = height + 'px';
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    updateViewport();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        updateViewport();
+
+        // 클릭으로 점프
+        minimap.addEventListener('click', function(e) {
+            var rect = minimap.getBoundingClientRect();
+            var clickPct = (e.clientY - rect.top) / rect.height;
+            var scrollTarget = clickPct * document.documentElement.scrollHeight;
+            window.scrollTo({ top: scrollTarget });
+        });
+    }
+
+    /* --- Text Share Popup --- */
+    function initTextSharePopup() {
+        var postContainer = document.querySelector('.post-container[data-pagefind-body]');
+        if (!postContainer) return;
+
+        var popup = document.createElement('div');
+        popup.className = 'text-share-popup';
+        popup.innerHTML = '<button class="text-share-btn" data-action="copy">📋 Copy</button>' +
+                          '<button class="text-share-btn" data-action="tweet">𝕏 Tweet</button>';
+        popup.style.display = 'none';
+        document.body.appendChild(popup);
+
+        var selectedText = '';
+
+        postContainer.addEventListener('mouseup', function(e) {
+            var selection = window.getSelection();
+            var text = selection.toString().trim();
+
+            if (text.length > 10 && text.length < 500) {
+                selectedText = text;
+                popup.style.display = 'flex';
+                popup.style.left = e.pageX + 'px';
+                popup.style.top = (e.pageY - 45) + 'px';
+            } else {
+                popup.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('mousedown', function(e) {
+            if (!popup.contains(e.target)) {
+                popup.style.display = 'none';
+            }
+        });
+
+        popup.addEventListener('click', function(e) {
+            var btn = e.target.closest('.text-share-btn');
+            if (!btn) return;
+            var action = btn.getAttribute('data-action');
+
+            if (action === 'copy') {
+                navigator.clipboard.writeText(selectedText).then(function() {
+                    btn.textContent = '✓ Copied';
+                    setTimeout(function() { btn.textContent = '📋 Copy'; }, 1500);
+                });
+            } else if (action === 'tweet') {
+                var url = encodeURIComponent(window.location.href);
+                var tweetText = encodeURIComponent('"' + selectedText.substring(0, 200) + '…"');
+                window.open('https://twitter.com/intent/tweet?text=' + tweetText + '&url=' + url, '_blank');
+            }
+
+            popup.style.display = 'none';
+        });
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
@@ -823,6 +952,8 @@
         initDiffBlocks();
         initMindmap();
         initTypingChallenge();
+        initMinimap();
+        initTextSharePopup();
 
         // Mark body if mobile TOC exists (for back-to-top offset)
         if (document.querySelector('.mobile-toc-toggle')) {

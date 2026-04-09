@@ -1390,3 +1390,164 @@ pre:hover .typing-challenge-btn { opacity: 1; }
 .typing-wrong { color: #f38ba8; background: rgba(243,139,168,0.15); }
 .typing-cursor { background: rgba(var(--accent-color-raw), 0.3); }
 .typing-pending { color: var(--terminal-muted); }
+
+/* ========================================
+   VS CODE STYLE MINIMAP
+   ======================================== */
+.post-minimap {
+    position: fixed;
+    right: 8px;
+    top: 80px;
+    width: 60px;
+    height: calc(100vh - 100px);
+    background: rgba(var(--accent-color-raw), 0.03);
+    border-left: 1px solid var(--border-light);
+    z-index: 50;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.minimap-viewport {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgba(var(--accent-color-raw), 0.12);
+    border: 1px solid rgba(var(--accent-color-raw), 0.3);
+    border-radius: 2px;
+    pointer-events: none;
+    transition: top 0.05s linear;
+}
+
+.minimap-heading {
+    position: absolute;
+    left: 8px;
+    height: 2px;
+    background: var(--accent-primary);
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+.minimap-code {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    background: rgba(var(--accent-color-raw), 0.08);
+    border-radius: 2px;
+    min-height: 3px;
+}
+
+@media (max-width: 1400px) {
+    .post-minimap { display: none; }
+}
+
+/* --- Keyboard Shortcuts Panel --- */
+.shortcuts-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shortcuts-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.shortcuts-content {
+    position: relative;
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    color: var(--terminal-text);
+    font-family: var(--font-mono);
+}
+
+.shortcuts-content h3 {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: var(--terminal-green);
+}
+
+.shortcuts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortcut-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.shortcut-item kbd {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--terminal-header);
+    border: 1px solid var(--terminal-surface1);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--terminal-blue);
+    min-width: 30px;
+    text-align: center;
+}
+
+.shortcut-item span {
+    color: var(--terminal-overlay);
+}
+
+.shortcuts-hint {
+    margin: 20px 0 0;
+    font-size: 11px;
+    color: var(--terminal-muted);
+    text-align: center;
+}
+
+.shortcuts-hint kbd {
+    padding: 1px 6px;
+    background: var(--terminal-header);
+    border: 1px solid var(--terminal-surface1);
+    border-radius: 3px;
+    font-size: 11px;
+    color: var(--terminal-overlay);
+}
+
+/* --- Text Share Popup --- */
+.text-share-popup {
+    position: absolute;
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.text-share-btn {
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    color: var(--terminal-text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.text-share-btn:hover {
+    background: rgba(var(--accent-color-raw), 0.1);
+    color: var(--accent-primary);
+}
