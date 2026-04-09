@@ -28,13 +28,11 @@
     .series-nav,
     .related-posts,
     #disqus_thread,
-    .blog-terminal-wrapper,
     .rpg-widget,
     .reading-progress-widget,
     .mindmap-toggle,
     .mindmap-container,
     .typing-challenge-btn,
-    .author-hero-terminal-btn,
     .post-minimap,
     .text-share-popup,
     .shortcuts-panel,
@@ -42,9 +40,7 @@
         display: none !important;
     }
 
-    /* Hide terminal decorative pseudo-elements */
-    .author-hero::before,
-    .author-hero::after,
+    /* Hide decorative pseudo-elements */
     .about-hero::before,
     .about-hero::after,
     .post-container h2::before,
