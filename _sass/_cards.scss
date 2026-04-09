@@ -230,7 +230,7 @@
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: color 0.3s ease, letter-spacing 0.3s ease;
+    transition: color 0.2s ease, letter-spacing 0.2s ease;
     max-width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -267,7 +267,7 @@
     border-radius: var(--radius-2xl);
     margin-right: 6px;
     margin-bottom: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .post-card:hover .post-card-tags span {
@@ -284,7 +284,7 @@
     font-weight: 700;
     margin: 0 0 8px;
     line-height: 1.35;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .post-card:hover .post-title {

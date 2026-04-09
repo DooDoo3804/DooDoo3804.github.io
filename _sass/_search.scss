@@ -20,7 +20,7 @@
 
 .search-page #search-input {
     padding-left: 36px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.2s ease;
 }
 
 .search-page #search-input:focus {
@@ -129,7 +129,7 @@
     background: rgba(var(--accent-color-raw), 0.35);
     color: inherit;
     padding: 1px 2px;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
 }
 
 /* Generic mark element (dark mode safe) */
@@ -137,7 +137,7 @@ mark {
     background: rgba(var(--accent-color-raw), 0.25);
     color: inherit;
     padding: 1px 3px;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
 }
 
 [data-theme="dark"] mark {

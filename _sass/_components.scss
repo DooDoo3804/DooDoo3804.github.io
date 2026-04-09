@@ -1516,7 +1516,7 @@ pre:hover .typing-challenge-btn { opacity: 1; }
     padding: 1px 6px;
     background: var(--terminal-header);
     border: 1px solid var(--terminal-surface1);
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-size: 11px;
     color: var(--terminal-overlay);
 }

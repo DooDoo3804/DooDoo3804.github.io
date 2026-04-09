@@ -69,7 +69,7 @@ pre.highlight {
 /* --- Rouge Code Blocks --- */
 .highlighter-rouge .highlight {
     margin-bottom: 10px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--border-light);
 }
 
