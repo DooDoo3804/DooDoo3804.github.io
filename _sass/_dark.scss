@@ -36,6 +36,7 @@
 [data-theme="dark"] .post-card {
     background: var(--bg-surface-raised);
     border-color: var(--border-light);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* REDUNDANT removed: [data-theme="dark"] .post-card:hover
@@ -110,7 +111,7 @@
 /* table dark overrides consolidated in _base.scss */
 
 [data-theme="dark"] .post-container hr {
-    color: var(--terminal-muted);
+    color: var(--text-muted);
 }
 
 [data-theme="dark"] .header-mask {

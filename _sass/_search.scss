@@ -13,7 +13,7 @@
     position: absolute;
     left: 0;
     font-size: 22px;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
     pointer-events: none;
     transition: color 0.2s;
 }
@@ -40,7 +40,7 @@
 
 .search-hint {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     margin-top: 8px;
     text-align: center;
 }
@@ -50,10 +50,15 @@
     padding: 2px 6px;
     font-size: 11px;
     font-family: var(--font-mono);
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
+}
+
+[data-theme="dark"] .search-hint kbd {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Result count */
@@ -63,7 +68,7 @@
     color: var(--accent-primary);
     margin-top: 16px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border-light);
 }
 
 /* Search result items */
@@ -71,7 +76,7 @@
     padding: var(--space-4) var(--space-3);
     border-radius: var(--radius-md);
     transition: background 0.2s;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .search-result-item a {
@@ -147,7 +152,7 @@ mark {
 
 .search-excerpt {
     font-size: 13px;
-    color: var(--terminal-overlay);
+    color: var(--text-secondary);
     margin: 6px 0 8px;
     line-height: 1.5;
     font-weight: 400;
@@ -159,7 +164,7 @@ mark {
 
 .search-date {
     font-size: 11px;
-    color: var(--terminal-muted);
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -171,7 +176,7 @@ mark {
 }
 
 .search-empty-icon {
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--text-tertiary);
     margin-bottom: 16px;
 }
 
@@ -222,43 +227,18 @@ mark {
 }
 
 /* ========================================
-   SEARCH - Terminal Modal Overrides
-   Search modal is now always dark (terminal style),
-   so light mode uses same colors as dark mode.
+   SEARCH - Dark Mode Overrides
    ======================================== */
-.search-hint,
-.search-hint kbd {
-    color: var(--terminal-muted);
+[data-theme="dark"] .search-input-icon {
+    color: var(--text-muted);
 }
 
-.search-hint kbd {
-    color: var(--terminal-overlay);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
-}
-
-.search-input-icon {
-    color: var(--terminal-muted);
-}
-
-.search-page #search-input {
-    border-bottom-color: var(--terminal-surface1);
-}
-
-.search-result-count {
-    border-bottom-color: rgba(255, 255, 255, 0.06);
-}
-
-.search-result-item {
-    border-bottom-color: rgba(255, 255, 255, 0.04);
-}
-
-.search-empty-icon {
+[data-theme="dark"] .search-empty-icon {
     color: rgba(255, 255, 255, 0.1);
 }
 
-.search-empty-suggestions {
-    color: var(--terminal-overlay);
+[data-theme="dark"] .search-empty-suggestions {
+    color: var(--text-secondary);
 }
 
 /* ========================================
