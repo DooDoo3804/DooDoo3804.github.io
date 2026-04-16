@@ -1,39 +1,40 @@
 ---
-layout: page
+layout: default
 description: "Software Developer"
-header-mask: 0.3
-header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 233, 0.3) 100%)"
 ---
 
 <!-- Author Hero Section -->
-<div class="author-hero">
-    <div class="author-hero-mesh"></div>
-    <div class="author-hero-inner">
-        {% if site.sidebar-avatar %}
-        <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" width="80" height="80" loading="lazy" />
-        {% endif %}
-        <div class="author-hero-info">
-            <h2 class="author-hero-name">DoYoon Kim</h2>
-            <p class="author-hero-subtitle">Backend Developer</p>
-            <p class="author-hero-topics">Deep dives into JVM internals, Spring ecosystem, and system design patterns</p>
-            <div class="author-hero-links">
-                {% if site.github_username %}
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub</a>
-                {% endif %}
-                {% if site.linkedin_username %}
-                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn</a>
-                {% endif %}
-                {% if site.email_address %}
-                <a href="mailto:{{ site.email_address }}"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> Email</a>
-                {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="author-hero">
+                <div class="author-hero-inner">
+                    {% if site.sidebar-avatar %}
+                    <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" width="64" height="64" loading="lazy" />
+                    {% endif %}
+                    <div class="author-hero-info">
+                        <h1 class="author-hero-name">DoYoon Kim</h1>
+                        <p class="author-hero-topics">Backend developer. Writing about JVM, Spring, and system design.</p>
+                        <div class="author-hero-links">
+                            {% if site.github_username %}
+                            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            {% endif %}
+                            {% if site.linkedin_username %}
+                            <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="author-hero-updated"><svg class="icon" aria-hidden="true"><use href="#icon-arrows-rotate"/></svg> Last updated: {{ site.posts.first.date | date: "%B %Y" }}</p>
         </div>
     </div>
 </div>
 
 
 <!-- Category Filter Bar -->
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class="category-filter">
     <button class="category-btn active" data-filter="all">All</button>
     {% assign all_tags = "" | split: "" %}
@@ -150,6 +151,10 @@ header-bg-css: "linear-gradient(135deg, #0a0a1a 0%, #1a2a4e 60%, rgba(14, 165, 2
 </nav>
 {% endif %}
 
+
+</div>
+</div>
+</div>
 
 <!-- Category Filter + Relative Dates -->
 <script src="{{ "/js/index.js" | prepend: site.baseurl }}" defer></script>
