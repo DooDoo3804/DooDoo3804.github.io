@@ -105,6 +105,12 @@ goatcounter:
   enabled: false
   code: "REPLACE_WITH_YOUR_CODE"
 
+# Pinned Posts (shown at top of homepage)
+pinned_posts:
+  - /2026/04/05/spring-bean-lifecycle/
+  - /2026/04/01/kotlin-coroutines-guide/
+  - /2026/04/06/database-transaction-isolation/
+
 # Friends
 # friends:
 #   [

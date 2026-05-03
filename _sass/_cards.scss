@@ -1,3 +1,33 @@
+/* --- Pinned Posts --- */
+.pinned-posts {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pinned-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+}
+
+.pinned-item {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+
+.pinned-item:hover {
+  color: var(--accent-primary);
+}
+
 /* --- Category Filter Bar --- */
 .category-filter {
     display: flex;

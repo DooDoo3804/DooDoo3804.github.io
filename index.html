@@ -31,6 +31,25 @@ description: "Software Developer"
 </div>
 
 
+<!-- Pinned Posts -->
+{% if site.pinned_posts %}
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="pinned-posts">
+  <h3 class="pinned-label">Pinned</h3>
+  {% for pinned_url in site.pinned_posts %}
+    {% assign pinned = site.posts | where: "url", pinned_url | first %}
+    {% if pinned %}
+    <a href="{{ pinned.url | prepend: site.baseurl }}" class="pinned-item">{{ pinned.title }}</a>
+    {% endif %}
+  {% endfor %}
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
 <!-- Category Filter Bar -->
 <div class="container">
 <div class="row">

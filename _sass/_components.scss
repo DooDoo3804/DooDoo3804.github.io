@@ -133,11 +133,12 @@ body.has-mobile-toc #back-to-top {
 
 /* --- Code Block Enhancements --- */
 .post-container pre {
-    border-radius: var(--radius-md);
+    border-radius: 8px;
     border: 1px solid var(--border-light);
     position: relative;
     margin: 1.5em 0;
-    padding: 1em;
+    padding: 1.2em;
+    font-size: 14px;
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
@@ -619,7 +620,10 @@ code.has-line-numbers .code-line::before {
 /* --- Image lazy load fade-in --- */
 .post-container img {
     transition: opacity 0.4s ease;
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .post-container img.lazy-loading {
@@ -636,12 +640,12 @@ code.has-line-numbers .code-line::before {
    ABOUT PAGE - Tech Stack Tags
    ======================================== */
 .post-container code {
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.05);
     color: var(--text-primary);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: var(--radius-sm);
-    padding: 2px 8px;
-    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 14px;
     font-family: var(--font-mono);
 }
 

@@ -5,18 +5,17 @@ body {
 }
 
 .post-container {
-    line-height: 1.7;
-    font-size: 16px;
+    line-height: 1.8;
+    font-size: 17px;
+    max-width: 700px;
 }
 
 .post-container p {
-    margin-bottom: 1.5em;
+    margin-bottom: 24px;
 }
 
 .post-container h1, .post-container h2, .post-container h3, .post-container h4 {
     letter-spacing: -0.02em;
-    margin-top: 2em;
-    margin-bottom: 0.8em;
 }
 
 .post-container > h1:first-child,
@@ -26,20 +25,21 @@ body {
     margin-top: 0;
 }
 
-.post-container h1 { font-size: 2rem; }
-.post-container h2 { font-size: 1.5rem; }
-.post-container h3 { font-size: 1.25rem; }
-.post-container h4 { font-size: 1.125rem; }
+.post-container h1 { font-size: 2rem; margin-top: 56px; margin-bottom: 20px; }
+.post-container h2 { font-size: 28px; font-weight: 700; margin-top: 0; margin-bottom: 16px; }
+.post-container h3 { font-size: 22px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; }
+.post-container h4 { font-size: 1.125rem; margin-top: 24px; margin-bottom: 10px; }
 
 /* --- Blockquote --- */
 .post-container blockquote {
-    border-left: 4px solid var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.06);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    padding: 14px 20px 14px 20px;
+    border-left: 3px solid var(--accent-primary);
+    background: none;
+    border-radius: 0;
+    padding: 4px 0 4px 20px;
     margin: 1.5em 0;
     color: var(--text-muted);
     font-family: inherit;
+    font-style: normal;
     position: relative;
 }
 
