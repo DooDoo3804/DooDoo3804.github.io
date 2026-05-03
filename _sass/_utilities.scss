@@ -88,13 +88,7 @@ pre { overflow-x: auto; }
 .transitions-enabled .navbar-custom .nav li a,
 .transitions-enabled .intro-header,
 .transitions-enabled .post-container,
-.transitions-enabled .post-card,
-.transitions-enabled .post-card-body,
-.transitions-enabled .post-card-tags span,
-.transitions-enabled .post-card-meta,
-.transitions-enabled .post-card-excerpt,
-.transitions-enabled .post-card .post-title,
-.transitions-enabled .post-card .post-subtitle,
+.transitions-enabled .post-item,
 .transitions-enabled .post-breadcrumb,
 .transitions-enabled .post-breadcrumb a,
 .transitions-enabled .post-breadcrumb li,
@@ -120,8 +114,7 @@ pre { overflow-x: auto; }
 .transitions-enabled td,
 .transitions-enabled hr,
 .transitions-enabled .contact-link,
-.transitions-enabled .dark-mode-toggle,
-.transitions-enabled .post-card-thumb {
+.transitions-enabled .dark-mode-toggle {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
@@ -231,11 +224,6 @@ pre { overflow-x: auto; }
     .post-breadcrumb { font-size: 12px; }
     .post-breadcrumb li:not(:last-child)::after { margin: 0 4px; }
     .filter-no-results-card { padding: 32px 24px; }
-    .post-card-body { padding: 16px 20px 20px; }
-}
-
-@media (max-width: 480px) {
-    .post-card-body { padding: 14px 16px 16px; }
 }
 
 /* --- Utility Classes --- */

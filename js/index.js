@@ -10,7 +10,7 @@
     /* --- Category Filter --- */
     function initCategoryFilter() {
         var buttons = document.querySelectorAll('.category-btn');
-        var cards = document.querySelectorAll('.post-card');
+        var items = document.querySelectorAll('.post-item');
         var noResults = document.querySelector('.filter-no-results');
 
         buttons.forEach(function(btn) {
@@ -21,18 +21,18 @@
                 this.classList.add('active');
 
                 var visibleCount = 0;
-                cards.forEach(function(card) {
-                    var tags = (card.getAttribute('data-tags') || '').split(',');
+                items.forEach(function(item) {
+                    var tags = (item.getAttribute('data-tags') || '').split(',');
                     if (filter === 'all' || tags.indexOf(filter) !== -1) {
-                        card.style.display = '';
-                        card.classList.remove('filter-hidden');
-                        card.style.animationDelay = (visibleCount * 0.04) + 's';
-                        card.classList.add('filter-enter');
+                        item.style.display = '';
+                        item.classList.remove('filter-hidden');
+                        item.style.animationDelay = (visibleCount * 0.04) + 's';
+                        item.classList.add('filter-enter');
                         visibleCount++;
                     } else {
-                        card.classList.add('filter-hidden');
-                        card.classList.remove('filter-enter');
-                        card.style.display = 'none';
+                        item.classList.add('filter-hidden');
+                        item.classList.remove('filter-enter');
+                        item.style.display = 'none';
                     }
                 });
 

@@ -153,7 +153,7 @@
 
     // 카테고리 마스터리 뱃지 렌더링
     function renderCategoryBadges() {
-        var cards = document.querySelectorAll('.post-card');
+        var cards = document.querySelectorAll('.post-item');
         if (cards.length === 0) return;
 
         var stats;
@@ -164,9 +164,9 @@
         var catRead = {};
 
         cards.forEach(function(card) {
-            var tagAttr = card.getAttribute('data-tag');
-            if (!tagAttr) return;
-            var cat = tagAttr.toLowerCase();
+            var tagsAttr = card.getAttribute('data-tags');
+            if (!tagsAttr) return;
+            var cat = tagsAttr.split(',')[0].toLowerCase();
             catTotal[cat] = (catTotal[cat] || 0) + 1;
 
             var link = card.querySelector('a');
