@@ -214,17 +214,18 @@
     }
 
     function copyToClipboard(text, btn) {
-        var orig = btn.innerHTML;
+        var ICON_COPY = '\u{1F4CB}';    // clipboard emoji
+        var ICON_CHECK = '\u2713';       // checkmark
         function onSuccess() {
-            btn.innerHTML = "\u2713 Copied!";
+            btn.textContent = ICON_CHECK;
             btn.classList.add('copy-btn--success');
             btn.setAttribute('aria-label', 'Copied!');
             announceToSR("클립보드에 복사됐습니다");
-            setTimeout(function() { btn.innerHTML = orig; btn.classList.remove('copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, COPY_FEEDBACK_MS);
+            setTimeout(function() { btn.textContent = ICON_COPY; btn.classList.remove('copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, COPY_FEEDBACK_MS);
         }
         function onFail() {
-            btn.textContent = "Failed";
-            setTimeout(function() { btn.innerHTML = orig; }, COPY_FEEDBACK_MS);
+            btn.textContent = "\u2717";
+            setTimeout(function() { btn.textContent = ICON_COPY; }, COPY_FEEDBACK_MS);
         }
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
@@ -246,7 +247,7 @@
 
             var btn = document.createElement('button');
             btn.className = 'copy-btn';
-            btn.textContent = 'Copy';
+            btn.textContent = '\u{1F4CB}';
             btn.setAttribute('aria-label', 'Copy code to clipboard');
             pre.appendChild(btn);
         });
@@ -1013,9 +1014,9 @@
         initShareButtons();
         initMobileShareBar();
         initDiffBlocks();
-        initMindmap();
-        initTypingChallenge();
-        initMinimap();
+        // initMindmap();           // disabled Sprint 65 — minimal cleanup
+        // initTypingChallenge();   // disabled Sprint 65 — minimal cleanup
+        // initMinimap();           // disabled Sprint 65 — minimal cleanup
         initTextSharePopup();
         initSmartRecommendation();
 
