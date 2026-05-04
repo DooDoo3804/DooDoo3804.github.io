@@ -567,6 +567,65 @@
     margin-right: 8px;
 }
 
+/* --- About Page: Project Cards --- */
+.project-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project-card {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.project-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.project-icon {
+    font-size: 18px;
+}
+
+.project-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.project-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.project-tag {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.project-link {
+    font-size: 13px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
 /* ========================================
    SERIES INDEX PAGE
    ======================================== */
