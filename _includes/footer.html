@@ -366,6 +366,7 @@
         function openSearch() {
             if (!searchPage || searchPage.classList.contains('search-active')) return;
             searchPage.classList.add('search-active');
+            searchPage.setAttribute('aria-hidden', 'false');
             _noScrollTimer = setTimeout(function () { bodyEl.classList.add('no-scroll'); }, 400);
             if (searchInput) searchInput.focus();
             _searchActiveIdx = -1;
@@ -376,6 +377,7 @@
             if (!searchPage) return;
             if (_noScrollTimer) { clearTimeout(_noScrollTimer); _noScrollTimer = null; }
             searchPage.classList.remove('search-active');
+            searchPage.setAttribute('aria-hidden', 'true');
             bodyEl.classList.remove('no-scroll');
             if (searchInput) searchInput.value = '';
             resultsContainer.innerHTML = '';

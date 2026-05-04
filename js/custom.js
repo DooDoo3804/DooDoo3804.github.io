@@ -511,7 +511,7 @@
         if (!postContainer) return; // 포스트 페이지가 아니면 무시
 
         var slug = window.location.pathname;
-        var titleEl = document.querySelector('.post-header .post-heading') || document.querySelector('.intro-header .post-heading h1');
+        var titleEl = document.querySelector('.post-header .post-heading');
         var title = titleEl ? titleEl.textContent.trim() : document.title;
 
         // 읽기 기록 가져오기
@@ -634,7 +634,7 @@
         if (headings.length < 3) return; // 헤딩 3개 미만이면 마인드맵 불필요
 
         // 트리 구조 빌드
-        var titleEl = document.querySelector('.post-header .post-heading') || document.querySelector('.intro-header .post-heading h1');
+        var titleEl = document.querySelector('.post-header .post-heading');
         var root = { name: titleEl ? titleEl.textContent.trim() : 'Post', children: [] };
         var currentH2 = null;
 

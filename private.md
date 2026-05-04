@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Private
 protected: true
 description: "Password-protected private content."

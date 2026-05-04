@@ -7,9 +7,13 @@ no-catalog: true
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 ---
 
-{% include intro-header.html type='page' short=true %}
-
-<div class="container" style="padding-top:20px; padding-bottom:60px;">
+<div class="container" style="padding-top:48px; padding-bottom:60px;">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <h1 style="margin-bottom: 8px;">{{ page.title }}</h1>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">{{ page.description }}</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
             <div id="knowledge-graph" class="knowledge-graph-container"></div>

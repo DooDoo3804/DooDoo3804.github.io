@@ -23,10 +23,6 @@
     border: none;
 }
 
-[data-theme="dark"] .header-mask {
-    background: rgba(0, 0, 0, 0.65) !important;
-}
-
 [data-theme="dark"] .pager li > a {
     background: var(--bg-surface-raised);
     border-color: var(--border-light);
@@ -43,13 +39,6 @@
 
 [data-theme="dark"] .related-post-card:hover {
     box-shadow: var(--shadow-md);
-}
-
-[data-theme="dark"] .intro-header .post-heading h1,
-[data-theme="dark"] .intro-header .post-heading .subheading,
-[data-theme="dark"] .intro-header .site-heading h1,
-[data-theme="dark"] .intro-header .site-heading .subheading {
-    color: #fff;
 }
 
 [data-theme="dark"] .search-page {

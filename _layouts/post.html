@@ -195,6 +195,21 @@ layout: default
     </a>
 </div>
 
+<!-- Lazy-load post images (markdown-generated imgs lack loading attr) -->
+<script>
+(function(){
+    var imgs = document.querySelectorAll('.post-container img');
+    imgs.forEach(function(img) {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        if (!img.hasAttribute('decoding')) {
+            img.setAttribute('decoding', 'async');
+        }
+    });
+})();
+</script>
+
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
     <button class="lightbox-close" aria-label="Close">&times;</button>
