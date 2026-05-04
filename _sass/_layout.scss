@@ -229,3 +229,46 @@ code, kbd, pre, samp, .code-lang-label {
 [data-theme="dark"] .tags-summary {
     color: var(--text-tertiary);
 }
+
+/* ========================================
+   POST HEADER - Minimal Text Style
+   ======================================== */
+.post-header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 32px;
+}
+
+.post-heading {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+.post-subheading {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.post-meta-header {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-meta-sep {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.post-header-tags {
+    color: var(--accent-primary);
+}

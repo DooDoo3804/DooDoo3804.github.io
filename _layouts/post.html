@@ -6,10 +6,30 @@ layout: default
 <div id="reading-progress-bar" aria-hidden="true"></div>
 
 <!-- Post Header -->
-{% include intro-header.html type='post' %}
+<article>
+  <header class="post-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <h1 class="post-heading">{{ page.title }}</h1>
+          {% if page.subtitle %}
+          <p class="post-subheading">{{ page.subtitle }}</p>
+          {% endif %}
+          <div class="post-meta-header">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+            <span class="post-meta-sep">&middot;</span>
+            <span>{% include read-time.html content=page.content %}</span>
+            {% if page.tags.size > 0 %}
+            <span class="post-meta-sep">&middot;</span>
+            <span class="post-header-tags">{% for tag in page.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
 <!-- Post Content -->
-<article>
     <div class="container">
         <div class="row">
 
@@ -311,7 +331,7 @@ layout: default
           placement: 'right',
           // icon: '#'
         };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+        anchors.add().remove('.post-header h1').remove('.post-subheading').remove('.sidebar-container h5');
     })
 </script>
 <style>
