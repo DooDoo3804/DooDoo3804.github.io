@@ -1,104 +1,29 @@
 ---
-layout: page
+layout: default
 title: "Projects"
 description: "DoYoon Kim의 프로젝트 포트폴리오 — Spring Boot REST API, 시스템 디자인 스터디, 알고리즘 풀이, Docker/Kubernetes 인프라 실습 등 백엔드 개발 프로젝트 모음."
-header-bg-css: "linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%)"
-header-mask: 0.3
-nav-style: invert
 nav-order: 2
 ---
 
-<div class="projects-page">
-    <!-- Filter Bar -->
-    <div class="projects-filter">
-        <button class="projects-filter-btn active" data-filter="all">All</button>
-        {% assign all_techs = "" %}
-        {% for project in site.data.projects %}
-            {% for tech in project.tech %}
-                {% unless all_techs contains tech %}
-                    {% if all_techs != "" %}
-                        {% assign all_techs = all_techs | append: "," | append: tech %}
-                    {% else %}
-                        {% assign all_techs = tech %}
-                    {% endif %}
-                {% endunless %}
-            {% endfor %}
-        {% endfor %}
-        {% assign tech_list = all_techs | split: "," | sort %}
-        {% for tech in tech_list %}
-        <button class="projects-filter-btn" data-filter="{{ tech }}">{{ tech }}</button>
-        {% endfor %}
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+  <h1 class="page-heading">Projects</h1>
+  <div class="project-list">
+    {% for project in site.data.projects %}
+    <div class="project-item">
+      <h3 class="project-item-title">
+        {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
+      </h3>
+      <p class="project-item-desc">{{ project.description }}</p>
+      {% if project.tech %}
+      <div class="project-item-tech">
+        {% for t in project.tech %}<span>{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
     </div>
-
-    <!-- Projects Grid -->
-    <div class="projects-grid">
-        {% for project in site.data.projects %}
-        <div class="projects-card{% if project.featured %} projects-card--featured{% endif %}" data-techs="{{ project.tech | join: ',' }}">
-            <div class="projects-card-icon">
-                <svg class="icon" aria-hidden="true"><use href="#{{ project.icon }}"/></svg>
-            </div>
-            <div class="projects-card-body">
-                <div class="projects-card-meta">
-                    <span class="projects-status-badge projects-status-badge--{{ project.status }}">{{ project.status }}</span>
-                    {% if project.year %}<span class="projects-card-year">{{ project.year }}</span>{% endif %}
-                </div>
-                <h3 class="projects-card-title">{{ project.title }}</h3>
-                <p class="projects-card-desc">{{ project.description }}</p>
-                <div class="projects-card-techs">
-                    {% for tech in project.tech %}
-                    <span class="projects-tech-tag">{{ tech }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="projects-card-links">
-                {% if project.github %}
-                <a href="{{ project.github }}" class="projects-link-btn" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub
-                </a>
-                {% endif %}
-                {% if project.demo %}
-                <a href="{{ project.demo }}" class="projects-link-btn projects-link-btn--demo" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-external-link"/></svg> Demo
-                </a>
-                {% endif %}
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- No results message -->
-    <div class="projects-no-results" style="display: none;">
-        <svg class="icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
-        <p>No projects found for this tech stack.</p>
-    </div>
+    {% endfor %}
+  </div>
 </div>
-
-<script>
-(function() {
-    var filterBtns = document.querySelectorAll('.projects-filter-btn');
-    var cards = document.querySelectorAll('.projects-card');
-    var noResults = document.querySelector('.projects-no-results');
-
-    filterBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-
-            var filter = btn.getAttribute('data-filter');
-            var visibleCount = 0;
-
-            cards.forEach(function(card) {
-                var techs = card.getAttribute('data-techs').split(',');
-                if (filter === 'all' || techs.indexOf(filter) !== -1) {
-                    card.style.display = '';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            noResults.style.display = visibleCount === 0 ? '' : 'none';
-        });
-    });
-})();
-</script>
+</div>
+</div>

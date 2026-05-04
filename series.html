@@ -2,66 +2,44 @@
 title: Series
 layout: default
 description: "Posts grouped by series"
-header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 no-catalog: true
 hide-in-nav: true
 ---
 
-{% include intro-header.html type='page' short=true %}
-
 <div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+  <h1 class="page-heading">Series</h1>
 
-            <div class="series-index">
-            {% comment %}
-                Group posts by their "series" front matter field.
-                Only posts with series: defined are included.
-            {% endcomment %}
+  <div class="series-index">
+  {% assign series_posts = site.posts | where_exp: "post", "post.series" %}
+  {% assign series_names = series_posts | map: "series" | uniq | sort %}
 
-            {% assign series_posts = site.posts | where_exp: "post", "post.series" %}
-            {% assign series_names = series_posts | map: "series" | uniq | sort %}
+  {% if series_names.size == 0 %}
+  <p class="series-empty-text">No series yet. Add <code>series: "Name"</code> to a post's front matter to start one.</p>
+  {% endif %}
 
-            {% if series_names.size == 0 %}
-            <div class="series-empty">
-                <svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg>
-                <p>No series yet. Add <code>series: "Name"</code> to a post's front matter to start one.</p>
-            </div>
-            {% endif %}
-
-            {% for name in series_names %}
-                {% assign posts = series_posts | where: "series", name | sort: "date" %}
-                {% assign first_post = posts | first %}
-                {% assign last_post = posts | last %}
-                <div class="series-card">
-                    <div class="series-card-header">
-                        <h3 class="series-card-title">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg>
-                            {{ name }}
-                        </h3>
-                        <span class="series-card-count">{{ posts.size }} posts</span>
-                    </div>
-                    <div class="series-card-dates">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
-                        {{ first_post.date | date: "%b %-d, %Y" }} — {{ last_post.date | date: "%b %-d, %Y" }}
-                    </div>
-                    {% if first_post.subtitle %}
-                    <p class="series-card-preview">{{ first_post.subtitle }}</p>
-                    {% elsif first_post.excerpt %}
-                    <p class="series-card-preview">{{ first_post.excerpt | strip_html | truncate: 150 }}</p>
-                    {% endif %}
-                    <ol class="series-card-posts">
-                        {% for post in posts %}
-                        <li>
-                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                            <span class="series-card-post-date">{{ post.date | date: "%b %-d" }}</span>
-                        </li>
-                        {% endfor %}
-                    </ol>
-                </div>
-            {% endfor %}
-
-            </div>
-        </div>
+  {% for name in series_names %}
+    {% assign posts = series_posts | where: "series", name | sort: "date" %}
+    {% assign first_post = posts | first %}
+    {% assign last_post = posts | last %}
+    <div class="series-card">
+      <div class="series-card-header">
+        <h3 class="series-card-title">{{ name }}</h3>
+        <span class="series-card-count">{{ posts.size }} posts</span>
+      </div>
+      <p class="series-card-dates">{{ first_post.date | date: "%b %-d, %Y" }} — {{ last_post.date | date: "%b %-d, %Y" }}</p>
+      <ol class="series-card-posts">
+        {% for post in posts %}
+        <li>
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <span class="series-card-post-date">{{ post.date | date: "%b %-d" }}</span>
+        </li>
+        {% endfor %}
+      </ol>
     </div>
+  {% endfor %}
+  </div>
+</div>
+</div>
 </div>

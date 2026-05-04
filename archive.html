@@ -1,207 +1,27 @@
 ---
 title: Archive
 layout: default
-description: "Browse all posts by date and tag — algorithms, Kotlin, Spring, system design and more"
-header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
+description: "Browse all posts by date"
 no-catalog: true
 nav-order: 1
 ---
 
-{% include intro-header.html type='page' short=true %}
-
-<div class="container archive-container">
-	<div class="row">
-
-		<!-- Main: Tag filter + Post list -->
-		<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-			<div id='tag_cloud' class="tags tags-sup js-tags">
-				<button class="tag-button--all" data-encode="">
-					Show All
-					<sup>{{site.posts.size}}</sup>
-				</button>
-
-				{% capture tags %}
-				{% for tag in site.tags %}
-				<button data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
-					data-encode="{{ tag[0] | strip | url_encode }}" class="tag-button" title="{{ tag[0] }}"
-					data-count="{{ tag[1].size }}">
-					{{ tag[0] }}
-					<sup>{{tag[1].size}}</sup>
-				</button>__SEPERATOR__
-				{% endfor %}
-				{% endcapture %}
-				{{ tags | split:'__SEPERATOR__' | sort }}
-			</div>
-
-			<div class="mini-post-list js-result d-none">
-				{%- assign _sorted_list = site.posts -%}
-				{%- assign _sorted_list = _sorted_list | sort: 'date' -%}
-				{%- assign _sorted_list = _sorted_list | reverse -%}
-
-				{%- for _article in _sorted_list -%}
-				{%- assign _tags = '' -%}
-				{%- for _tag in _article.tags -%}
-				{%- assign _tag_encode = _tag | strip | url_encode -%}
-				{%- if forloop.last -%}
-				{%- assign _tags = _tags | append: _tag_encode -%}
-				{%- else -%}
-				{%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
-				{%- endif -%}
-				{%- endfor -%}
-
-				{%- assign _currentdate = _article.date | date: '%Y' -%}
-				{%- if _currentdate != _date -%}
-				{%- unless forloop.first -%}</section>{%- endunless -%}
-				<section>
-					<span class="listing-seperator">
-						<span class="tag-text">{{ _currentdate }}</span>
-					</span>
-					{%- assign _date = _currentdate -%}
-					{%- endif -%}
-
-					<div class="post-preview item" data-tags="{{ _tags }}">
-						<a href="{{ _article.url | prepend: site.baseurl }}">
-							<h2 class="post-title">
-								<b>{{ _article.title }}</b>
-							</h2>
-							{% if _article.subtitle %}
-							<h3 class="post-subtitle">
-								{{ _article.subtitle }}
-							</h3>
-							{% endif %}
-						</a>
-						<p class="post-meta">{{ _article.date | date: "%B %d, %Y" }}</p>
-						<hr>
-					</div>
-					{%- if forloop.last -%}
-				</section>{%- endif -%}
-				{% endfor %}
-			</div>
-		</div>
-
-		<!-- Sidebar -->
-		<div class="col-lg-3 col-md-4 hidden-sm hidden-xs archive-sidebar">
-			<div class="archive-side-card">
-				<h5>STATISTICS</h5>
-				<p class="archive-stat-total">Total <strong>{{ site.posts.size }}</strong> posts</p>
-			</div>
-
-			<div class="archive-side-card">
-				<h5>ACTIVITY</h5>
-				<div id="post-heatmap"></div>
-			</div>
-
-			<div class="archive-side-card">
-				<h5>BY YEAR</h5>
-				{% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-				{% for year in years %}
-				<div class="archive-year-item" data-year="{{ year.name }}">
-					<span>{{ year.name }}</span>
-					<span class="archive-year-count">{{ year.items | size }}</span>
-				</div>
-				{% endfor %}
-			</div>
-
-			<div class="archive-side-card">
-				<h5>TOP TAGS</h5>
-				<div class="archive-tags-list">
-					{% for tag in site.tags %}
-					{% if tag[1].size >= site.featured-condition-size %}
-					<a href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" class="archive-tag-item">
-						{{ tag[0] }}<span class="archive-year-count">{{ tag[1].size }}</span>
-					</a>
-					{% endif %}
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-
-	</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+  <h1 class="page-heading">Archive</h1>
+  {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for year in posts_by_year %}
+  <h2 class="archive-year">{{ year.name }}</h2>
+  <ul class="archive-list">
+    {% for post in year.items %}
+    <li class="archive-item">
+      <time>{{ post.date | date: "%b %-d" }}</time>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
 </div>
-
-<script>
-(function() {
-    var postDates = [
-        {% for post in site.posts %}
-        "{{ post.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-    ];
-
-    var container = document.getElementById('post-heatmap');
-    if (!container) return;
-
-    if (!postDates || postDates.length === 0) {
-        container.innerHTML = '<span style="color:var(--text-muted);font-size:12px">No posts yet</span>';
-        return;
-    }
-
-    var counts = {};
-    postDates.forEach(function(d) {
-        counts[d] = (counts[d] || 0) + 1;
-    });
-
-    var weeks = 26;
-    var today = new Date();
-    var startDate = new Date(today);
-    startDate.setDate(startDate.getDate() - (weeks * 7));
-    startDate.setDate(startDate.getDate() - startDate.getDay());
-
-    var cellSize = 12;
-    var cellGap = 2;
-    var totalSize = cellSize + cellGap;
-    var svgWidth = weeks * totalSize + 20;
-    var svgHeight = 7 * totalSize + 20;
-
-    var svg = '<svg width="' + svgWidth + '" height="' + svgHeight + '" style="display:block;margin:0 auto;">';
-
-    var dayLabels = ['', 'M', '', 'W', '', 'F', ''];
-    for (var d = 0; d < 7; d++) {
-        if (dayLabels[d]) {
-            svg += '<text x="0" y="' + (d * totalSize + cellSize + 8) + '" font-size="9" fill="var(--text-tertiary)" font-family="var(--font-mono)">' + dayLabels[d] + '</text>';
-        }
-    }
-
-    var currentDate = new Date(startDate);
-    for (var w = 0; w < weeks; w++) {
-        for (var d = 0; d < 7; d++) {
-            var dateStr = currentDate.toISOString().split('T')[0];
-            var count = counts[dateStr] || 0;
-            var color;
-            if (count === 0) color = 'var(--border-light)';
-            else if (count === 1) color = 'rgba(var(--accent-color-raw), 0.4)';
-            else if (count === 2) color = 'rgba(var(--accent-color-raw), 0.7)';
-            else color = 'var(--accent-primary)';
-
-            var x = w * totalSize + 15;
-            var y = d * totalSize + 4;
-            var opacity = currentDate > today ? '0.15' : '1';
-
-            svg += '<rect x="' + x + '" y="' + y + '" width="' + cellSize + '" height="' + cellSize + '" rx="2" fill="' + color + '" opacity="' + opacity + '">';
-            svg += '<title>' + dateStr + ': ' + count + ' post' + (count !== 1 ? 's' : '') + '</title>';
-            svg += '</rect>';
-
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-    }
-
-    svg += '</svg>';
-    container.innerHTML = svg;
-})();
-
-document.querySelectorAll('.archive-year-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-        var showAll = document.querySelector('.tag-button--all');
-        if (showAll) showAll.click();
-        var year = this.getAttribute('data-year');
-        setTimeout(function() {
-            var yearSpans = document.querySelectorAll('.mini-post-list .tag-text');
-            for (var i = 0; i < yearSpans.length; i++) {
-                if (yearSpans[i].textContent.trim() === year) {
-                    yearSpans[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    break;
-                }
-            }
-        }, 100);
-    });
-});
-</script>
+</div>
+</div>
