@@ -3,106 +3,16 @@ layout: default
 title: 404
 hide-in-nav: true
 description: "Page Not Found"
-header-bg-css: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)"
 no-catalog: true
 permalink: /404.html
 ---
 
-<div class="container" style="padding-top: 48px;">
+<div class="container" style="padding-top: 80px; padding-bottom: 80px;">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="error-404-content">
-                <div class="error-terminal">
-                    <div class="error-terminal-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">doodoo@blog ~ %</span>
-                    </div>
-                    <div class="error-terminal-body">
-                        <p><span class="prompt">$</span> curl -I {{ site.url }}{{ page.url }}</p>
-                        <p class="error-output">HTTP/1.1 <span class="error-status">404 Not Found</span></p>
-                        <p class="error-output">Server: DooDoo-Blog/2.0</p>
-                        <p class="error-output">X-Message: <span class="error-humor">This is not the page you're looking for.</span></p>
-                        <p>&nbsp;</p>
-                        <p><span class="prompt">$</span> git log --oneline -1 --grep="<span class="error-path" id="error-path">lost-page</span>"</p>
-                        <p class="error-output">fatal: no matching commits found</p>
-                        <p>&nbsp;</p>
-                        <p><span class="prompt">$</span> echo "Maybe try one of these?"</p>
-                        <p class="error-output">Maybe try one of these?</p>
-                        <p>&nbsp;</p>
-                        <p><span class="prompt">$</span> <span class="cursor">_</span></p>
-                    </div>
-                </div>
-
-                <!-- Search -->
-                <div class="error-search">
-                    <div class="error-search-wrapper">
-                        <svg class="icon error-search-icon" aria-hidden="true"><use href="#icon-magnifying-glass"/></svg>
-                        <input type="text" id="error-search-input" placeholder="Search posts..." autocomplete="off" spellcheck="false" aria-label="Search posts">
-                    </div>
-                    <div id="error-search-results" class="error-search-results"></div>
-                </div>
-
-                <!-- Recent Posts -->
-                <div class="error-recent-posts">
-                    <h2 class="error-recent-title"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> Recent Posts</h2>
-                    <ul class="error-recent-list">
-                        {% for post in site.posts limit:3 %}
-                        <li>
-                            <a href="{{ post.url | prepend: site.baseurl }}">
-                                <span class="error-recent-post-title">{{ post.title }}</span>
-                                <span class="error-recent-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <p class="error-subtitle">Lost? Don't worry — there's plenty of good stuff to explore.</p>
-
-                <div class="error-actions">
-                    <a href="{{ site.baseurl }}/" class="btn-home">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg> Home
-                    </a>
-                    <a href="{{ site.baseurl }}/archive" class="btn-archive">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-list"/></svg> Posts
-                    </a>
-                    <a href="{{ site.baseurl }}/about" class="btn-archive">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg> About
-                    </a>
-                    <a href="{{ site.baseurl }}/projects" class="btn-archive">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg> Projects
-                    </a>
-                </div>
-            </div>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="text-align: center;">
+            <h1 style="font-size: 6rem; font-weight: 700; margin: 0; color: var(--text-primary); letter-spacing: -2px;">404</h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted); margin: 16px 0 40px;">Page not found.</p>
+            <a href="{{ site.baseurl }}/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600; font-size: 1rem;">&larr; Back to Home</a>
         </div>
     </div>
 </div>
-
-<script>
-(function() {
-    var path = window.location.pathname.replace(/\//g, ' ').trim() || 'lost-page';
-    var el = document.getElementById('error-path');
-    if (el) el.textContent = path;
-})();
-</script>
-
-<!-- 404 Search — opens main Pagefind search overlay -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchInput = document.getElementById('error-search-input');
-    if (!searchInput) return;
-
-    searchInput.addEventListener('focus', function() {
-        this.blur();
-        var searchPage = document.querySelector('.search-page');
-        var mainInput = document.getElementById('search-input');
-        if (searchPage) {
-            searchPage.classList.add('search-active');
-            setTimeout(function() { document.body.classList.add('no-scroll'); }, 400);
-            if (mainInput) mainInput.focus();
-        }
-    });
-});
-</script>

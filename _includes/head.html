@@ -173,8 +173,8 @@
     <link rel="preconnect" href="https://giscus.app">
 
     <!-- Google Fonts (non-blocking load with display=swap) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"></noscript>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
@@ -197,7 +197,7 @@
             --accent-primary: #0ea5e9;
             --accent-gradient: linear-gradient(135deg, #0ea5e9, #38bdf8);
             --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             --text-muted: #6c757d;
             --text-secondary: #767676;
             --border-light: #e8e8e8;
@@ -205,7 +205,7 @@
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
