@@ -290,7 +290,6 @@
 
 /* --- Body & Typography --- */
 body {
-    font-family: var(--font-sans);
     line-height: 1.7;
     font-size: 16px;
     color: var(--text-primary);
@@ -422,7 +421,6 @@ code, kbd, pre, samp {
 }
 
 .post-container {
-    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -585,31 +583,7 @@ code, kbd, pre, samp {
     text-decoration: none !important;
 }
 
-/* --- Footer --- */
-footer {
-    font-size: 20px;
-    padding: 50px 0 65px;
-}
-
-footer .list-inline {
-    margin: 0;
-    padding: 0;
-}
-
-footer .copyright {
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 0;
-}
-
-footer .copyright a {
-    color: var(--accent-primary);
-}
-
-footer .copyright a:hover,
-footer .copyright a:focus {
-    color: var(--accent-primary);
-}
+/* --- Footer: moved to _layout.scss (.site-footer) --- */
 
 /* --- Pager (Previous/Next) --- */
 ul.pager {
@@ -679,28 +653,7 @@ ul.pager {
     }
 }
 
-/* --- Selection --- */
-::-moz-selection {
-    color: #fff;
-    text-shadow: none;
-    background: var(--accent-primary);
-}
-
-::selection {
-    color: #fff;
-    text-shadow: none;
-    background: var(--accent-primary);
-}
-
-img::selection {
-    color: #fff;
-    background: none;
-}
-
-img::-moz-selection {
-    color: #fff;
-    background: none;
-}
+/* --- Selection: moved to _base.scss --- */
 
 /* --- Utility --- */
 .d-none {

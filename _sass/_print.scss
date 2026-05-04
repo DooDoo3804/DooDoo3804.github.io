@@ -3,8 +3,9 @@
    ======================================== */
 @media print {
     /* Hide non-content elements */
+    nav,
     .navbar,
-    .navbar-default,
+    .navbar-custom,
     .sidebar-container,
     .side-catalog,
     .catalog-container,
@@ -17,32 +18,24 @@
     .sns-links,
     .giscus-wrapper,
     .comments-section,
-    .footer-col,
-    footer .container,
-    .featured-tags,
-    .search-overlay,
+    .site-footer,
+    .search-page,
+    .search-icon,
     .copy-btn,
     .code-lang-label,
     .lightbox-overlay,
     .category-filter,
     .series-nav,
     .related-posts,
+    .pager,
+    .pagination,
     #disqus_thread,
-    .rpg-widget,
-    .reading-progress-widget,
-    .mindmap-toggle,
-    .mindmap-container,
-    .typing-challenge-btn,
-    .post-minimap,
-    .text-share-popup,
     .shortcuts-panel,
     #reading-progress-bar {
         display: none !important;
     }
 
     /* Hide decorative pseudo-elements */
-    .about-hero::before,
-    .about-hero::after,
     .post-container h2::before,
     .post-container h3::before {
         display: none !important;
@@ -60,7 +53,10 @@
     .post-container h2,
     .post-container h3,
     .post-container h4,
-    .post-container blockquote {
+    .post-container blockquote,
+    .post-header,
+    .post-header .post-title,
+    .post-header .post-meta {
         color: #000 !important;
         background: #fff !important;
         -webkit-print-color-adjust: exact;
@@ -70,6 +66,19 @@
     body {
         font-size: 12pt;
         line-height: 1.6;
+    }
+
+    .post-header {
+        margin-bottom: 24pt;
+    }
+
+    .post-header .post-title {
+        font-size: 22pt;
+        margin-bottom: 8pt;
+    }
+
+    .post-header .post-meta {
+        font-size: 10pt;
     }
 
     .post-container {
