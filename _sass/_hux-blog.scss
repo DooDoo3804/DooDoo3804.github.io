@@ -815,11 +815,6 @@ img::-moz-selection {
     margin-bottom: -5px;
 }
 
-.tags.tags-sup a,
-.tags.tags-sup .tag {
-    padding: 0 10px 0 12px;
-}
-
 .tags a,
 .tags .tag {
     display: inline-block;
@@ -864,45 +859,6 @@ img::-moz-selection {
     .tags a,
     .tags .tag {
         margin-right: 5px;
-    }
-}
-
-/* --- Archive / Tag Cloud --- */
-#tag-heading {
-    padding: 70px 0 60px;
-}
-
-@media only screen and (min-width: 768px) {
-    #tag-heading {
-        padding: 55px 0;
-    }
-}
-
-#tag_cloud {
-    margin: 20px 0 15px 0;
-}
-
-/* tag-button--all accent & hover styles consolidated into _pages.scss */
-
-@media only screen and (min-width: 768px) {
-    #tag_cloud {
-        margin-bottom: 25px;
-    }
-}
-
-.listing-seperator {
-    color: var(--accent-primary);
-    font-size: 21px;
-}
-
-.listing-seperator::before {
-    margin-right: 5px;
-}
-
-@media only screen and (min-width: 768px) {
-    .listing-seperator {
-        font-size: 20px;
-        line-height: 2;
     }
 }
 

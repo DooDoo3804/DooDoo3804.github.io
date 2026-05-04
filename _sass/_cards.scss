@@ -249,3 +249,18 @@
         font-size: 14px;
     }
 }
+
+/* Post list mobile */
+@media (max-width: 767px) {
+    .post-item-title {
+        font-size: 19px;
+    }
+
+    .post-item {
+        padding: 20px 0;
+    }
+
+    .post-item-excerpt {
+        font-size: 14px;
+    }
+}

@@ -5,8 +5,7 @@
    Event delegation is used where practical for code quality, not leak prevention.
 
    Shared localStorage keys:
-   'doodoo-reading-stats' — read/write by custom.js, read by rpg.js & index.html
-   'doodoo-rpg'           — read/write by rpg.js; written by custom.js (typing challenge XP)
+   'doodoo-reading-stats' — read/write by custom.js, read by index.html
    'doodoo-blog-theme'    — read/write by custom.js only
    ======================================== */
 
