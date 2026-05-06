@@ -374,8 +374,16 @@
     color: var(--text-primary);
 }
 
+.page-heading::before {
+    content: "// ";
+    color: var(--text-secondary);
+    opacity: 0.4;
+    font-family: var(--font-mono);
+    font-weight: 400;
+}
+
 /* ========================================
-   ARCHIVE PAGE
+   ARCHIVE PAGE — git log style
    ======================================== */
 .archive-year {
     font-size: 20px;
@@ -384,35 +392,57 @@
     color: var(--text-primary);
 }
 
-.archive-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
+.git-log-entries {
+    font-family: var(--font-mono);
+    font-size: 13px;
 }
 
-.archive-item {
-    padding: 8px 0;
+.git-log-entry {
     display: flex;
     align-items: baseline;
-    gap: 16px;
+    gap: 12px;
+    padding: 6px 0;
+    flex-wrap: wrap;
 }
 
-.archive-item time {
-    font-size: 13px;
+.git-hash {
+    color: var(--accent-primary);
+    font-weight: 600;
+    min-width: 56px;
+}
+
+.git-date {
     color: var(--text-secondary);
-    min-width: 60px;
-    font-variant-numeric: tabular-nums;
+    min-width: 80px;
 }
 
-.archive-item a {
-    font-size: 16px;
+.git-message {
     color: var(--text-primary);
     text-decoration: none;
-    transition: color 0.15s;
+    flex: 1;
 }
 
-.archive-item a:hover {
+.git-message:hover {
     color: var(--accent-primary);
+}
+
+.git-branch {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+    .git-log-entry {
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .git-log-entry .git-hash,
+    .git-log-entry .git-date {
+        display: inline;
+    }
 }
 
 /* ========================================
@@ -1590,15 +1620,6 @@
     .page-heading {
         font-size: 26px;
         margin: 32px 0 24px;
-    }
-
-    .archive-item {
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .archive-item time {
-        min-width: auto;
     }
 
     .tags-post-item {

@@ -10,17 +10,24 @@ nav-order: 1
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
   <h1 class="page-heading">Archive</h1>
+
   {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
   {% for year in posts_by_year %}
-  <h2 class="archive-year">{{ year.name }}</h2>
-  <ul class="archive-list">
-    {% for post in year.items %}
-    <li class="archive-item">
-      <time>{{ post.date | date: "%b %-d" }}</time>
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-  </ul>
+  <div class="git-log-year">
+    <h2 class="archive-year">{{ year.name }}</h2>
+    <div class="git-log-entries">
+      {% for post in year.items %}
+      <div class="git-log-entry">
+        <span class="git-hash">{{ post.url | slugify | truncate: 7, "" }}</span>
+        <time class="git-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="git-message">{{ post.title }}</a>
+        {% if post.tags.first %}
+        <span class="git-branch">({{ post.tags | first | downcase }})</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
   {% endfor %}
 </div>
 </div>

@@ -74,89 +74,30 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 /* ========================================
-   BREADCRUMB NAVIGATION
+   FILEPATH BREADCRUMB (Code as Identity)
    ======================================== */
-.post-breadcrumb {
-    margin-bottom: var(--space-6);
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    font-size: 14px;
-    color: var(--text-tertiary);
+.post-filepath {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
 }
 
-.post-breadcrumb ol {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0;
-    margin: 0;
-    padding: 0;
+.filepath-prefix {
+    color: var(--text-secondary);
+    opacity: 0.6;
 }
 
-.post-breadcrumb li {
-    display: flex;
-    align-items: center;
-    color: var(--text-muted);
-    line-height: 1.4;
-}
-
-.post-breadcrumb li:not(:last-child)::after {
-    content: "/";
-    margin: 0 6px;
-    color: var(--text-tertiary);
-    font-size: 14px;
-    font-weight: 400;
-}
-
-/* Prompt prefix removed — simplified breadcrumb */
-.post-breadcrumb li:first-child::before {
-    display: none;
-}
-
-.post-breadcrumb a {
+.post-filepath a {
     color: var(--accent-primary);
     text-decoration: none;
 }
 
-.post-breadcrumb a:hover {
-    color: var(--accent-hover);
+.post-filepath a:hover {
     text-decoration: underline;
 }
 
-.post-breadcrumb li:last-child {
-    min-width: 0;
-}
-
-.post-breadcrumb li:last-child strong {
-    color: var(--text-primary);
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 300px;
-    display: inline-block;
-}
-
-@media (max-width: 480px) {
-    .post-breadcrumb li:last-child strong {
-        max-width: 180px;
-    }
-}
-
-/* [data-theme="dark"] .post-breadcrumb — removed: no background/border to override */
-
-[data-theme="dark"] .post-breadcrumb li {
-    color: var(--text-muted);
-}
-
-[data-theme="dark"] .post-breadcrumb a {
-    color: var(--accent-primary);
-}
-
-[data-theme="dark"] .post-breadcrumb li:last-child strong {
+.filepath-current {
     color: var(--text-primary);
 }
 
@@ -234,6 +175,7 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 .post-meta-header {
+    font-family: var(--font-mono);
     font-size: 14px;
     color: var(--text-secondary);
     display: flex;
