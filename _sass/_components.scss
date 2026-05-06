@@ -5,7 +5,7 @@
 
 .author-hero-inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
 }
 
@@ -15,57 +15,78 @@
     border-radius: 50%;
     flex-shrink: 0;
     object-fit: cover;
+    margin-top: 4px;
 }
 
-.author-hero-info {
+.author-hero-code {
     flex: 1;
     min-width: 0;
 }
 
-.author-hero-name {
-    font-size: 28px;
-    font-weight: 800;
-    margin: 0 0 8px;
-    color: var(--heading-dark);
-    letter-spacing: -0.03em;
-}
-
-[data-theme="dark"] .author-hero-name {
-    color: var(--text-primary);
-}
-
-.author-hero-topics {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin: 0 0 12px;
-    line-height: 1.5;
-}
-
-.author-hero-links {
-    display: flex;
-    gap: 16px;
-}
-
-.author-hero-links a {
+.hero-code-block {
+    background: #1e1e2e;  /* Catppuccin Base */
+    color: #cdd6f4;
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 14px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s;
+    line-height: 1.7;
+    margin: 0;
+    overflow-x: auto;
 }
 
-.author-hero-links a:hover {
-    color: var(--accent-primary);
+.hero-code-block code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    border: none;
+}
+
+.code-keyword { color: #cba6f7; }  /* Catppuccin Mauve */
+.code-var { color: #89b4fa; }      /* Catppuccin Blue */
+.code-key { color: #89dceb; }      /* Catppuccin Sky */
+.code-string { color: #a6e3a1; }   /* Catppuccin Green */
+.code-number { color: #fab387; }   /* Catppuccin Peach */
+
+.hero-code-block a {
+    color: #a6e3a1;
+    text-decoration: none;
+}
+
+.hero-code-block a:hover {
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .hero-code-block {
+    border: 1px solid var(--terminal-border);
+}
+
+/* Blog Stats */
+.blog-stats {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.stats-sep {
+    opacity: 0.4;
 }
 
 @media (max-width: 576px) {
     .author-hero { padding: 40px 0 24px; }
     .author-hero-inner {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
         gap: 12px;
     }
-    .author-hero-name { font-size: 24px; }
-    .author-hero-links { justify-content: center; }
+    .hero-code-block {
+        font-size: 11px;
+        padding: 14px 16px;
+    }
 }
 
 /* Scroll indicator removed — Sprint 15 M3 */
