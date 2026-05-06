@@ -1377,6 +1377,80 @@
     border-bottom-color: var(--border-light);
 }
 
+/* --- Timeline --- */
+.timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 0;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--border-medium);
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 24px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-base);
+    border: 2px solid var(--accent-primary);
+    z-index: 1;
+}
+
+.timeline-content {
+    padding: 0;
+}
+
+.timeline-date {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+}
+
+.timeline-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+}
+
+.timeline-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+[data-theme="dark"] .timeline::before {
+    background: var(--border-light);
+}
+
+[data-theme="dark"] .timeline-marker {
+    background: var(--bg-surface);
+    border-color: var(--accent-primary);
+}
+
 /* --- GitHub Profile Link --- */
 .github-profile-link {
     display: inline-flex;
