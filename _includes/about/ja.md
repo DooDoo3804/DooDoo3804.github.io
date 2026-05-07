@@ -1,95 +1,46 @@
 <div class="about-hero">
-    <h2 class="about-name">キム・ドユン <span class="about-name-en">DoYoon Kim</span></h2>
-    <p class="about-tagline">Backend Developer | Java · Kotlin · Spring Boot</p>
-    <p class="about-intro">こんにちは！堅牢なバックエンドシステムの構築に情熱を持つ開発者です。アルゴリズムの問題解決とシステム設計が好きで、学んだことをこのブログに記録しています。</p>
-    <div class="about-links">
-        <a href="https://github.com/DooDoo3804" class="about-link-btn"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub</a>
-        <a href="https://www.linkedin.com/in/doodoo3804" class="about-link-btn about-link-btn--outline"><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn</a>
-        <a href="mailto:doodoo3804@gmail.com" class="about-link-btn about-link-btn--outline"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> Email</a>
-    </div>
+  <pre class="about-config-block"><code><span class="code-comment"># about.yml</span>
+<span class="code-key">name</span>: <span class="code-string">"キム・ドユン (DoYoon Kim)"</span>
+<span class="code-key">role</span>: <span class="code-string">"Backend Developer"</span>
+<span class="code-key">stack</span>:
+  - <span class="code-string">Java / Kotlin</span>
+  - <span class="code-string">Spring Boot / JPA</span>
+  - <span class="code-string">PostgreSQL / Redis</span>
+  - <span class="code-string">Docker / Kubernetes</span>
+<span class="code-key">links</span>:
+  <span class="code-key">github</span>: <span class="code-string">"<a href="https://github.com/DooDoo3804" target="_blank" rel="noopener noreferrer">github.com/DooDoo3804</a>"</span>
+  <span class="code-key">email</span>: <span class="code-string">"<a href="mailto:doodoo3804@gmail.com">doodoo3804@gmail.com</a>"</span></code></pre>
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#9775;</span> 技術スタック
-    </h3>
-    <div class="skill-grid">
-        <div class="skill-category">
-            <div class="skill-category-label">言語</div>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--kotlin">Kotlin</span>
-                <span class="skill-badge skill-badge--java">Java</span>
-                <span class="skill-badge skill-badge--js">JavaScript</span>
-                <span class="skill-badge skill-badge--default">HTML / CSS</span>
-            </div>
+    <h3 class="about-section-title">技術スタック</h3>
+    <div class="about-stack">
+        <div class="about-stack-row">
+            <span class="about-stack-label">言語</span>
+            <span class="about-stack-items">Kotlin, Java, JavaScript</span>
         </div>
-        <div class="skill-category">
-            <div class="skill-category-label">バックエンド</div>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--spring">Spring Boot</span>
-                <span class="skill-badge skill-badge--spring">JPA / Hibernate</span>
-                <span class="skill-badge skill-badge--default">REST API</span>
-                <span class="skill-badge skill-badge--react">React</span>
-                <span class="skill-badge skill-badge--default">MySQL / PostgreSQL</span>
-                <span class="skill-badge skill-badge--default">Redis</span>
-            </div>
+        <div class="about-stack-row">
+            <span class="about-stack-label">バックエンド</span>
+            <span class="about-stack-items">Spring Boot, JPA/Hibernate, REST API</span>
         </div>
-        <div class="skill-category">
-            <div class="skill-category-label">ツール & インフラ</div>
-            <div class="skill-badges">
-                <span class="skill-badge skill-badge--default">Docker</span>
-                <span class="skill-badge skill-badge--default">Git</span>
-                <span class="skill-badge skill-badge--default">GitHub Actions</span>
-            </div>
+        <div class="about-stack-row">
+            <span class="about-stack-label">DB</span>
+            <span class="about-stack-items">PostgreSQL, MySQL, Redis</span>
+        </div>
+        <div class="about-stack-row">
+            <span class="about-stack-label">インフラ</span>
+            <span class="about-stack-items">Docker, Kubernetes, GitHub Actions</span>
         </div>
     </div>
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#128187;</span> プロジェクト
-    </h3>
-    <div class="project-grid">
-        <div class="project-card">
-            <div class="project-card-header">
-                <span class="project-icon">&#128214;</span>
-                <h4 class="project-title">DooDoo IT Blog</h4>
-            </div>
-            <p class="project-desc">Jekyllベースの技術ブログ。ダークモード、レスポンシブデザイン、PWA、検索機能、React統合などモダンWeb技術を活用したポートフォリオブログ。</p>
-            <div class="project-tags">
-                <span>Jekyll</span><span>React</span><span>GitHub Pages</span>
-            </div>
-            <a href="https://github.com/DooDoo3804/DooDoo3804.github.io" class="project-link" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-        </div>
-        <div class="project-card">
-            <div class="project-card-header">
-                <span class="project-icon">&#9881;</span>
-                <h4 class="project-title">アルゴリズム解析</h4>
-            </div>
-            <p class="project-desc">セグメントツリー、ワーシャルフロイド法、最小全域木など高度なアルゴリズムの分析と解法をまとめた学習シリーズ。</p>
-            <div class="project-tags">
-                <span>Algorithm</span><span>Kotlin</span><span>Problem Solving</span>
-            </div>
-            <a href="https://github.com/DooDoo3804" class="project-link" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-        </div>
-        <div class="project-card">
-            <div class="project-card-header">
-                <span class="project-icon">&#127793;</span>
-                <h4 class="project-title">Kotlin学習ノート</h4>
-            </div>
-            <p class="project-desc">Kotlinの基本文法からJavaとの詳細比較まで。JVMバックエンド転換のための体系的な学習記録。</p>
-            <div class="project-tags">
-                <span>Kotlin</span><span>Java</span><span>JVM</span>
-            </div>
-            <a href="/archive/?tag=Kotlin" class="project-link">シリーズを見る &rarr;</a>
-        </div>
-    </div>
+    <h3 class="about-section-title">プロジェクト</h3>
+    <p class="about-text"><a href="/projects/">→ プロジェクトページを見る</a></p>
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#127891;</span> 学歴
-    </h3>
+    <h3 class="about-section-title">学歴</h3>
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-marker"></div>
@@ -103,9 +54,7 @@
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#128188;</span> 経験
-    </h3>
+    <h3 class="about-section-title">経験</h3>
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-marker"></div>
@@ -119,45 +68,14 @@
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg></span> GitHubアクティビティ
-    </h3>
-    <a href="https://github.com/DooDoo3804" class="github-profile-link" target="_blank" rel="noopener noreferrer">&rarr; GitHubプロフィールを見る</a>
+    <h3 class="about-section-title">現在学習中</h3>
+    <p class="about-text" style="font-family: var(--font-mono); font-size: 14px; color: var(--text-secondary);">
+        System Design, Cloud Architecture, CI/CD, Performance Tuning
+    </p>
 </div>
 
 <div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon"><svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg></span> お問い合わせ
-    </h3>
-    <div class="contact-links">
-        <a href="mailto:{{ site.email_address }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg> {{ site.email_address }}
-        </a>
-        <a href="https://github.com/{{ site.github_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg> LinkedIn
-        </a>
-    </div>
-</div>
-
-<div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#127793;</span> 現在学習中
-    </h3>
-    <div class="currently-learning">
-        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-sitemap"/></svg> System Design</span>
-        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"/></svg> Cloud Architecture</span>
-        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-code-fork"/></svg> CI/CD Pipelines</span>
-        <span class="learning-pill"><svg class="icon" aria-hidden="true"><use href="#icon-chart-line"/></svg> Performance Tuning</span>
-    </div>
-</div>
-
-<div class="about-section">
-    <h3 class="about-section-title">
-        <span class="about-section-icon">&#128640;</span> 学習の歩み
-    </h3>
+    <h3 class="about-section-title">学習の歩み</h3>
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-marker"></div>
