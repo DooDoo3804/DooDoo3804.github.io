@@ -176,25 +176,27 @@ body.has-mobile-toc #back-to-top {
     margin-right: 0;
 }
 
+/* 코드블록 언어 라벨 — VS Code 탭 스타일 */
 .code-lang-label {
     position: absolute;
-    top: 6px;
-    right: 40px;
-    padding: 2px 8px;
-    font-size: 10px;
+    top: 0;
+    right: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 600;
-    font-family: 'JetBrains Mono', var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    padding: 4px 12px;
     background: rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
+    color: var(--text-muted);
+    border-radius: 0 8px 0 6px;
     line-height: 1.4;
+    user-select: none;
     z-index: 1;
 }
 
 [data-theme="dark"] .code-lang-label {
-    color: var(--text-tertiary);
+    color: rgba(205, 214, 244, 0.5);
     background: rgba(255, 255, 255, 0.06);
 }
 

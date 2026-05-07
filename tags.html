@@ -15,14 +15,13 @@ nav-order: 3
   {% capture tags_with_count %}{% for tag in site.tags %}{{ tag[1].size | prepend: "0000" | slice: -4, 4 }}::{{ tag[0] }}{% unless forloop.last %}|||{% endunless %}{% endfor %}{% endcapture %}
   {% assign sorted_tag_items = tags_with_count | split: "|||" | sort | reverse %}
 
-  <div class="tags-cloud">
+  <div class="tags-imports">
     {% for item in sorted_tag_items %}
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
-    <a href="#tag-{{ tag_name | slugify }}" class="tags-pill" data-count="{{ tag_posts.size }}">
-      {{ tag_name }}
-      <span class="tags-pill-count">{{ tag_posts.size }}</span>
+    <a href="#tag-{{ tag_name | slugify }}" class="tag-import">
+      <span class="import-keyword">import</span> { <span class="import-name">{{ tag_name }}</span> } <span class="import-from">from</span> <span class="import-path">"./posts"</span>; <span class="import-count">// {{ tag_posts.size }} posts</span>
     </a>
     {% endfor %}
   </div>
@@ -39,7 +38,7 @@ nav-order: 3
         {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
         {% for post in sorted_posts %}
         <li class="tags-post-item">
-          <time>{{ post.date | date: "%b %-d, %Y" }}</time>
+          <time>{{ post.date | date: "%Y-%m-%d" }}</time>
           <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </li>
         {% endfor %}
@@ -53,7 +52,7 @@ nav-order: 3
 
 <script>
 // Smooth scroll to tag section when clicking a tag pill
-document.querySelectorAll('.tags-pill').forEach(function(pill) {
+document.querySelectorAll('.tag-import').forEach(function(pill) {
     pill.addEventListener('click', function(e) {
         e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));

@@ -446,46 +446,34 @@
 }
 
 /* ========================================
-   TAGS PAGE
+   TAGS PAGE — import statement style
    ======================================== */
-.tags-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+.tags-imports {
+    font-family: var(--font-mono);
+    font-size: 14px;
     margin-bottom: 40px;
 }
 
-.tags-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-md);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-muted);
-    background: transparent;
-    cursor: pointer;
-    transition: color 0.15s, border-color 0.15s;
+.tag-import {
+    display: block;
+    padding: 4px 0;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background 0.15s;
+    line-height: 1.8;
+}
+
+.tag-import:hover {
+    background: rgba(var(--accent-color-raw), 0.04);
+    color: var(--text-primary);
     text-decoration: none;
 }
 
-.tags-pill:hover,
-.tags-pill:focus {
-    color: var(--accent-primary);
-    border-color: var(--accent-primary);
-    text-decoration: none;
-}
-
-.tags-pill-count {
-    font-size: 11px;
-    color: var(--text-secondary);
-}
-
-.tags-pill[data-count="1"] .tags-pill-count {
-    display: none;
-}
+.import-keyword { color: #cba6f7; }
+.import-name { color: #89b4fa; }
+.import-from { color: #cba6f7; }
+.import-path { color: #a6e3a1; }
+.import-count { color: var(--text-secondary); opacity: 0.5; }
 
 .tags-posts-section {
     margin-top: 10px;
@@ -531,6 +519,7 @@
 
 .tags-post-item time {
     font-size: 12px;
+    font-family: var(--font-mono);
     color: var(--text-secondary);
     min-width: 90px;
     font-variant-numeric: tabular-nums;
@@ -548,53 +537,66 @@
 }
 
 /* ========================================
-   PROJECTS PAGE
+   PROJECTS PAGE — package.json style
    ======================================== */
-.project-list {
-    display: flex;
-    flex-direction: column;
+.pkg-json {
+    font-family: var(--font-mono);
+    font-size: 14px;
 }
 
-.project-item {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border-light);
+.pkg-json-block {
+    background: none;
+    margin: 0;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: inherit;
+    line-height: 1.7;
 }
 
-.project-item:first-child {
-    padding-top: 0;
+.pkg-json-block code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    border: none;
 }
 
-.project-item:last-child {
-    border-bottom: none;
+.pkg-dep {
+    padding: 8px 0 16px 24px;
 }
 
-.project-item-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 8px;
+.pkg-dep-header {
+    line-height: 1.7;
 }
 
-.project-item-title a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color 0.15s;
-}
-
-.project-item-title a:hover {
+.pkg-dep-name {
     color: var(--accent-primary);
+    font-weight: 600;
 }
 
-.project-item-desc {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin: 0 0 8px;
-    line-height: 1.6;
+.pkg-dep-name a {
+    color: var(--accent-primary);
+    text-decoration: none;
 }
 
-.project-item-tech span {
+.pkg-dep-name a:hover {
+    text-decoration: underline;
+}
+
+.pkg-dep-version {
+    color: var(--code-number, #fab387);
+}
+
+.pkg-dep-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 4px 0 4px;
+    opacity: 0.7;
+}
+
+.pkg-dep-tech span {
     font-size: 12px;
     color: var(--text-secondary);
-    margin-right: 8px;
+    opacity: 0.5;
 }
 
 /* --- About Page: Project Cards --- */
@@ -1631,7 +1633,7 @@
         min-width: auto;
     }
 
-    .project-item-title {
-        font-size: 16px;
+    .pkg-json {
+        font-size: 12px;
     }
 }

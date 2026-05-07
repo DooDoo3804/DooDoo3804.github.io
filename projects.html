@@ -9,20 +9,25 @@ nav-order: 2
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
   <h1 class="page-heading">Projects</h1>
-  <div class="project-list">
+  <div class="pkg-json">
+    <pre class="pkg-json-block"><code>{
+  <span class="code-key">"name"</span>: <span class="code-string">"@doodoo/projects"</span>,
+  <span class="code-key">"dependencies"</span>: {</code></pre>
+
     {% for project in site.data.projects %}
-    <div class="project-item">
-      <h3 class="project-item-title">
-        {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
-      </h3>
-      <p class="project-item-desc">{{ project.description }}</p>
-      {% if project.tech %}
-      <div class="project-item-tech">
-        {% for t in project.tech %}<span>{{ t }}</span>{% endfor %}
+    <div class="pkg-dep">
+      <div class="pkg-dep-header">
+        <span class="pkg-dep-name">{% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">"{{ project.title | slugify }}"</a>{% else %}"{{ project.title | slugify }}"{% endif %}</span>: <span class="pkg-dep-version">"{{ project.year }}.0.0"</span>{% unless forloop.last %},{% endunless %}
       </div>
+      <p class="pkg-dep-desc">// {{ project.description }}</p>
+      {% if project.tech %}
+      <div class="pkg-dep-tech">{% for t in project.tech %}<span>#{{ t | downcase }}</span> {% endfor %}</div>
       {% endif %}
     </div>
     {% endfor %}
+
+    <pre class="pkg-json-block"><code>  }
+}</code></pre>
   </div>
 </div>
 </div>
