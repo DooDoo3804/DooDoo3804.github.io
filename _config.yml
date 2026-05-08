@@ -32,7 +32,6 @@ exclude:
     "README.md",
     "README.zh.md",
     "dev-react-pages",
-    "TEAM.md",
     "Makefile",
     "scripts"
   ]
@@ -93,9 +92,9 @@ page-mathjax: false
 # Giscus Comments
 giscus:
   repo: "DooDoo3804/DooDoo3804.github.io"
-  repo_id: "REPLACE_WITH_REPO_ID"
+  repo_id: "R_kgDOHqXOwA"
   category: "Announcements"
-  category_id: "REPLACE_WITH_CATEGORY_ID"
+  category_id: "DIC_kwDOHqXOwM4C8kph"
   mapping: "pathname"
   theme_light: "light"
   theme_dark: "transparent_dark"
