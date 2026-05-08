@@ -81,6 +81,9 @@ code, kbd, pre, samp, .code-lang-label {
     font-size: 13px;
     color: var(--text-secondary);
     margin-bottom: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .filepath-prefix {

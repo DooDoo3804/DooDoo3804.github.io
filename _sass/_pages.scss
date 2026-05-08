@@ -461,6 +461,9 @@
     color: var(--text-primary);
     transition: background 0.15s;
     line-height: 1.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tag-import:hover {
@@ -469,11 +472,16 @@
     text-decoration: none;
 }
 
-.import-keyword { color: #cba6f7; }
-.import-name { color: #89b4fa; }
-.import-from { color: #cba6f7; }
-.import-path { color: #a6e3a1; }
+.import-keyword { color: #7c3aed; }
+.import-name { color: #2563eb; }
+.import-from { color: #7c3aed; }
+.import-path { color: #16a34a; }
 .import-count { color: var(--text-secondary); opacity: 0.5; }
+
+[data-theme="dark"] .import-keyword,
+[data-theme="dark"] .import-from { color: #cba6f7; }
+[data-theme="dark"] .import-name { color: #89b4fa; }
+[data-theme="dark"] .import-path { color: #a6e3a1; }
 
 .tags-posts-section {
     margin-top: 10px;
@@ -561,6 +569,13 @@
     border: none;
 }
 
+/* Light-mode safe syntax colors for pkg-json (transparent bg) */
+.pkg-json .code-key { color: #0891b2; }
+.pkg-json .code-string { color: #16a34a; }
+
+[data-theme="dark"] .pkg-json .code-key { color: #89dceb; }
+[data-theme="dark"] .pkg-json .code-string { color: #a6e3a1; }
+
 .pkg-dep {
     padding: 8px 0 16px 24px;
 }
@@ -584,7 +599,11 @@
 }
 
 .pkg-dep-version {
-    color: var(--code-number, #fab387);
+    color: #c2410c;
+}
+
+[data-theme="dark"] .pkg-dep-version {
+    color: #fab387;
 }
 
 .pkg-dep-desc {
