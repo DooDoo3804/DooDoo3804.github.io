@@ -91,7 +91,7 @@
 {% comment %} Only render if we have at least 1 related post {% endcomment %}
 {% if related.size > 0 %}
 <section class="related-posts" aria-label="Related posts">
-    <h4>Related Posts</h4>
+    <h4 class="related-posts-heading">Related Posts</h4>
     <div class="related-posts-grid">
     {% for post in related %}
         <article class="related-post-card" tabindex="0" role="link" data-url="{{ post.url | prepend: site.baseurl }}" aria-label="{{ post.title }}">
@@ -99,7 +99,7 @@
                 {% if post.series and post.series == page.series %}
                 <span class="rp-series-badge">{{ post.series }}</span>
                 {% elsif post.tags.size > 0 %}
-                {{ post.tags | first }}
+                #{{ post.tags | first | downcase }}
                 {% endif %}
             </div>
             <h5 class="rp-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
@@ -108,9 +108,9 @@
             <div class="rp-excerpt">{{ excerpt_text }}</div>
             {% endif %}
             <div class="rp-meta">
-                <span class="rp-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                <span class="rp-date">{{ post.date | date: "%Y-%m-%d" }}</span>
                 {% if post.categories.size > 0 %}
-                <span class="rp-category">{{ post.categories | first }}</span>
+                <span class="rp-category">#{{ post.categories | first | downcase }}</span>
                 {% endif %}
             </div>
         </article>

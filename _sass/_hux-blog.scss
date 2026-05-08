@@ -620,17 +620,31 @@ ul.pager {
     background-color: var(--bg-surface);
 }
 
-.pager li > a > span {
+.pager li > a .pager-label {
     display: block;
-    font-size: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: none;
     font-weight: 500;
-    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.pager li > a .pager-title {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-secondary);
     transition: color 0.2s;
 }
 
-.pager li > a:hover > span,
-.pager li > a:focus > span {
+.pager li > a:hover .pager-label {
+    color: var(--accent-primary);
+}
+
+.pager li > a:hover .pager-title,
+.pager li > a:focus .pager-title {
     color: var(--text-primary);
 }
 

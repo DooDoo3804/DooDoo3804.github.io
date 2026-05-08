@@ -109,16 +109,16 @@ layout: default
                     {% if page.previous.url %}
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" title="{{page.previous.title}}">
-                        Previous<br>
-                        <span>{{page.previous.title | truncate:55}}</span>
+                        <span class="pager-label">&larr; prev</span>
+                        <span class="pager-title">{{page.previous.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
                     {% if page.next.url %}
                     <li class="next">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" title="{{page.next.title}}">
-                        Next<br>
-                        <span>{{page.next.title | truncate:55}}</span>
+                        <span class="pager-label">next &rarr;</span>
+                        <span class="pager-title">{{page.next.title | truncate:55}}</span>
                         </a>
                     </li>
                     {% endif %}
