@@ -569,6 +569,44 @@ code, kbd, pre, samp {
     text-decoration: underline;
 }
 
+/* --- External Link Indicator (↗) --- */
+.post-container a[href^="http"]:not([href*="doodoo3804.github.io"])::after {
+    content: "\2197"; /* ↗ */
+    display: inline-block;
+    font-size: 0.7em;
+    margin-left: 0.15em;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    vertical-align: super;
+    line-height: 1;
+}
+
+[data-theme="dark"] .post-container a[href^="http"]:not([href*="doodoo3804.github.io"])::after {
+    opacity: 0.7;
+}
+
+.post-container a[href^="http"]:not([href*="doodoo3804.github.io"]):hover::after {
+    opacity: 0.8;
+}
+
+/* Exclude: code blocks, images, buttons, pager, share, series nav, related posts */
+.post-container pre a[href^="http"]::after,
+.post-container code a[href^="http"]::after,
+.post-container .highlight a[href^="http"]::after,
+.post-container a[href^="http"]:has(> img)::after,
+.post-container .pager a[href^="http"]::after,
+.post-container .share-btn::after,
+.post-container .post-share a::after,
+.post-container .series-nav a::after,
+.post-container .related-post-card a::after,
+.post-container .mini-post-list a::after,
+.post-container .post-filepath a::after,
+.post-container .btn a::after,
+.post-container a.btn::after,
+.post-container a.share-btn::after {
+    content: none !important;
+}
+
 /* --- Navbar: moved to _navbar.scss --- */
 
 /* --- Intro Header: removed (Sprint 68) — page/keynote layouts deleted --- */

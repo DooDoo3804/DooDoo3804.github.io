@@ -16,7 +16,7 @@
     .mobile-share-bar,
     .share-btn,
     .sns-links,
-    .giscus-wrapper,
+    .giscus-container,
     .comments-section,
     .site-footer,
     .search-page,
@@ -120,6 +120,11 @@
         font-size: 9pt;
         color: #555;
         word-break: break-all;
+    }
+
+    /* External links: show URL instead of ↗ icon */
+    .post-container a[href^="http"]:not([href*="doodoo3804.github.io"])::after {
+        content: " (" attr(href) ")" !important;
     }
 
     /* Don't show URL for anchor links or javascript */

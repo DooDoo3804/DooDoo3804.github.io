@@ -82,7 +82,7 @@ hide-in-nav: true
                         </div>
                         <div class="cat-card-body">
                             <div class="cat-card-header">
-                                <h4 class="cat-card-name">{{ display_name }}</h4>
+                                <h2 class="cat-card-name">{{ display_name }}</h2>
                                 <span class="cat-card-count">{{ cat_posts.size }} posts</span>
                             </div>
                             {% if cat_desc != "" %}
@@ -121,7 +121,7 @@ hide-in-nav: true
                 {% endcase %}
                 <div class="tags-group category-group cat-group--{{ cat_name }}" id="cat-{{ cat_name | slugify }}">
                     <div class="tags-group-header">
-                        <h4 class="tags-group-title">{{ display_name }}</h4>
+                        <h2 class="tags-group-title">{{ display_name }}</h2>
                         <span class="tags-group-count">{{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}</span>
                     </div>
                     <div class="tags-group-posts">

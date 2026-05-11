@@ -30,8 +30,7 @@ exclude:
     "package.json",
     "package-lock.json",
     "README.md",
-    "README.zh.md",
-    "dev-react-pages",
+    ".staticrypt.json",
     "Makefile",
     "scripts"
   ]

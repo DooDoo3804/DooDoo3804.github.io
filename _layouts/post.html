@@ -349,3 +349,141 @@ layout: default
     }
 </style>
 {% endif %}
+
+<!-- External Links: target="_blank" + rel="noopener noreferrer" -->
+<script>
+(function() {
+    var host = location.hostname;
+    var links = document.querySelectorAll('.post-container a[href^="http"]');
+    links.forEach(function(a) {
+        try {
+            var linkHost = new URL(a.href).hostname;
+            if (linkHost === host) return;
+        } catch(e) { return; }
+        if (!a.hasAttribute('target')) {
+            a.setAttribute('target', '_blank');
+        }
+        if (a.getAttribute('target') === '_blank' && !a.querySelector('.sr-only')) {
+            var span = document.createElement('span');
+            span.className = 'sr-only';
+            span.textContent = '(새 창에서 열림)';
+            a.appendChild(span);
+        }
+        if (!a.hasAttribute('rel')) {
+            a.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            var rel = a.getAttribute('rel');
+            if (rel.indexOf('noopener') === -1) a.setAttribute('rel', rel + ' noopener');
+            rel = a.getAttribute('rel');
+            if (rel.indexOf('noreferrer') === -1) a.setAttribute('rel', rel + ' noreferrer');
+        }
+    });
+})();
+</script>
+
+<!-- Resume Reading: remember scroll position and offer to restore -->
+<script>
+(function() {
+    var STORAGE_PREFIX = 'reading-pos-';
+    var DEBOUNCE_MS = 500;
+    var MIN_PCT = 10;
+    var MAX_PCT = 90;
+    var EXPIRY_DAYS = 30;
+    var pathname = location.pathname;
+
+    function getStorage(key) {
+        try { return localStorage.getItem(key); } catch(e) { return null; }
+    }
+    function setStorage(key, val) {
+        try { localStorage.setItem(key, val); } catch(e) {}
+    }
+    function removeStorage(key) {
+        try { localStorage.removeItem(key); } catch(e) {}
+    }
+
+    // Clean up entries older than EXPIRY_DAYS
+    function cleanOldEntries() {
+        try {
+            var now = Date.now();
+            var keysToRemove = [];
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf(STORAGE_PREFIX) === 0) {
+                    var raw = localStorage.getItem(key);
+                    try {
+                        var data = JSON.parse(raw);
+                        if (data.ts && (now - data.ts) > EXPIRY_DAYS * 86400000) {
+                            keysToRemove.push(key);
+                        }
+                    } catch(e) {
+                        keysToRemove.push(key);
+                    }
+                }
+            }
+            keysToRemove.forEach(function(k) { localStorage.removeItem(k); });
+        } catch(e) {}
+    }
+
+    function getScrollPct() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (docHeight <= 0) return 0;
+        return Math.round((scrollTop / docHeight) * 100);
+    }
+
+    // Debounced save
+    var timer = null;
+    function onScroll() {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function() {
+            var pct = getScrollPct();
+            var key = STORAGE_PREFIX + pathname;
+            if (pct >= MAX_PCT) {
+                removeStorage(key);
+            } else if (pct >= MIN_PCT) {
+                setStorage(key, JSON.stringify({ pct: pct, ts: Date.now() }));
+            }
+        }, DEBOUNCE_MS);
+    }
+
+    // Register scroll listener
+    window.addEventListener('scroll', onScroll);
+
+    // Clean old entries on load
+    cleanOldEntries();
+
+    // Restore: show snackbar after defer scripts have loaded (createSnackbar)
+    function showResumePrompt() {
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (docHeight < 500) return; // 스크롤 가능 높이가 500px 미만이면 표시하지 않음
+
+        var saved = getStorage(STORAGE_PREFIX + pathname);
+        if (!saved) return;
+
+        var data;
+        try { data = JSON.parse(saved); } catch(e) { return; }
+        if (!data || !data.pct || data.pct < MIN_PCT) return;
+
+        var savedPct = data.pct;
+        if (typeof createSnackbar === 'function') {
+            createSnackbar({
+                message: '이전에 ' + savedPct + '%까지 읽었습니다 —',
+                actionText: '이동',
+                action: function() {
+                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    var targetY = Math.round((savedPct / 100) * docHeight);
+                    window.scrollTo({ top: targetY, behavior: 'smooth' });
+                },
+                duration: 7000
+            });
+        }
+    }
+
+    // Wait for all defer scripts (snackbar.js) to execute before calling
+    if (document.readyState === 'complete') {
+        showResumePrompt();
+    } else {
+        window.addEventListener('load', showResumePrompt);
+    }
+})();
+</script>

@@ -28,6 +28,8 @@ var createSnackbar = (function() {
     }
     var snackbar = document.createElement('div');
     snackbar.className = 'paper-snackbar';
+    snackbar.setAttribute('role', 'status');
+    snackbar.setAttribute('aria-live', 'polite');
     snackbar.dismiss = function() {
       this.style.opacity = 0;
     };
