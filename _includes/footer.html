@@ -40,6 +40,8 @@
         { key: '/', desc: 'Search' },
         { key: '?', desc: 'Show shortcuts' },
         { key: 'Esc', desc: 'Close panel' },
+        { key: '←', desc: 'Previous post' },
+        { key: '→', desc: 'Next post' },
         { key: 'g h', desc: 'Go to Home' },
         { key: 'g a', desc: 'Go to Archive' },
         { key: 'g g', desc: 'Go to Graph' },
@@ -91,6 +93,19 @@
             if (e.key === 'h') window.location.href = '/';
             else if (e.key === 'a') window.location.href = '/archive/';
             else if (e.key === 'g') window.location.href = '/graph/';
+            return;
+        }
+
+        // ← → 포스트 네비게이션
+        if (panel.style.display !== 'none') return;
+        if (document.querySelector('.search-page.search-active, #lightbox-overlay.active')) return;
+        if (e.key === 'ArrowLeft') {
+            var prev = document.querySelector('.pager .previous a');
+            if (prev) { window.location.href = prev.href; }
+        }
+        if (e.key === 'ArrowRight') {
+            var next = document.querySelector('.pager .next a');
+            if (next) { window.location.href = next.href; }
         }
     });
 

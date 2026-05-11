@@ -1212,4 +1212,30 @@ body.lightbox-open {
 
 /* Dark mode overrides for mindmap/typing/minimap removed — Sprint 65 */
 
+/* --- Heading Anchors (Sprint 79) --- */
+.heading-anchor {
+    opacity: 0;
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    margin-left: 0.3em;
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: opacity 0.2s;
+
+    &.copied {
+        color: var(--ctp-green, #a6e3a1);
+    }
+}
+
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+.heading-anchor:focus {
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .heading-anchor { opacity: 0.4; }
+}
+
 /* --- Reading Complete Banner — REMOVED (Sprint bug fix) --- */

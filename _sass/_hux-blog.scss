@@ -546,11 +546,6 @@ code, kbd, pre, samp {
     letter-spacing: 0.5px;
 }
 
-.post-container .anchorjs-link {
-    position: absolute;
-    text-decoration: none !important;
-}
-
 .post-container img {
     display: block;
     max-width: 100%;
@@ -559,12 +554,12 @@ code, kbd, pre, samp {
 }
 
 /* --- Post Body Links --- */
-.post-container a:not(.tag):not(.anchor):not(.anchorjs-link) {
+.post-container a:not(.tag):not(.anchor) {
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.post-container a:not(.tag):not(.anchor):not(.anchorjs-link):hover {
+.post-container a:not(.tag):not(.anchor):hover {
     color: var(--accent-hover);
     text-decoration: underline;
 }
@@ -603,7 +598,8 @@ code, kbd, pre, samp {
 .post-container .post-filepath a::after,
 .post-container .btn a::after,
 .post-container a.btn::after,
-.post-container a.share-btn::after {
+.post-container a.share-btn::after,
+.post-container a.edit-on-github::after {
     content: none !important;
 }
 

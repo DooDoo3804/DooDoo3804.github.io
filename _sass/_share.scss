@@ -161,3 +161,28 @@
 
     /* Terminal style is always dark — redundant [data-theme="dark"] overrides removed */
 }
+
+/* ========================================
+   EDIT ON GITHUB LINK
+   ======================================== */
+.edit-on-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.edit-on-github:hover {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.edit-on-github .icon {
+    width: 14px;
+    height: 14px;
+}

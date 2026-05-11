@@ -196,6 +196,11 @@ code, kbd, pre, samp, .code-lang-label {
     color: var(--accent-primary);
 }
 
+.post-updated {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
 /* ========================================
    POST HEADER - Mobile Responsive
    ======================================== */
