@@ -19,6 +19,33 @@
     var MOBILE_SHARE_SCROLL_PCT = 0.15;   // 모바일 공유바 표시 스크롤 비율
     var FOOTER_PROXIMITY_PX = 60;         // 모바일 공유바 숨김 footer 근접 거리(px)
 
+    /* --- Central Scroll Dispatcher ---
+       Single rAF throttle for all scroll handlers.
+       Each handler receives (scrollTop, scrollPct, docHeight). */
+    var scrollHandlers = [];
+
+    function registerScrollHandler(fn) {
+        scrollHandlers.push(fn);
+    }
+
+    (function() {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    var scrollPct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                    for (var i = 0; i < scrollHandlers.length; i++) {
+                        scrollHandlers[i](scrollTop, scrollPct, docHeight);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    })();
+
     /* --- Dark Mode --- */
     var THEME_KEY = 'doodoo-blog-theme';
 
@@ -98,19 +125,11 @@
         var btn = document.getElementById('back-to-top');
         if (!btn) return;
 
-        // rAF-based throttle: at most one frame queued at a time
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    if (window.scrollY > SCROLL_THRESHOLD) {
-                        btn.classList.add('visible');
-                    } else {
-                        btn.classList.remove('visible');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
+        registerScrollHandler(function(scrollTop) {
+            if (scrollTop > SCROLL_THRESHOLD) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
             }
         });
 
@@ -213,7 +232,7 @@
     }
 
     function copyToClipboard(text, btn) {
-        var ICON_COPY = '\u{1F4CB}';    // clipboard emoji
+        var ICON_COPY = '\uD83D\uDCCB';    // clipboard emoji
         var ICON_CHECK = '\u2713';       // checkmark
         function onSuccess() {
             btn.textContent = ICON_CHECK;
@@ -246,7 +265,7 @@
 
             var btn = document.createElement('button');
             btn.className = 'copy-btn';
-            btn.textContent = '\u{1F4CB}';
+            btn.textContent = '\uD83D\uDCCB';
             btn.setAttribute('aria-label', 'Copy code to clipboard');
             pre.appendChild(btn);
         });
@@ -277,20 +296,9 @@
         var bar = document.getElementById('reading-progress-bar');
         if (!bar) return;
 
-        // rAF-based throttle: at most one frame queued at a time
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    if (docHeight < 50) { bar.style.display = "none"; ticking = false; return; }
-                    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
-                    bar.style.width = pct + '%';
-                    ticking = false;
-                });
-                ticking = true;
-            }
+        registerScrollHandler(function(scrollTop, scrollPct, docHeight) {
+            if (docHeight < 50) { bar.style.display = "none"; return; }
+            bar.style.width = Math.min(100, scrollPct) + '%';
         });
     }
 
@@ -373,32 +381,23 @@
             });
         }
 
-        // rAF-based throttle: at most one frame queued at a time
-        var ticking = false;
         var footer = document.querySelector('.site-footer') || document.querySelector('footer');
 
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    var scrollY = window.scrollY || window.pageYOffset;
-                    var docHeight = document.documentElement.scrollHeight;
-                    var viewportHeight = window.innerHeight;
-                    var scrollPct = docHeight > viewportHeight ? scrollY / (docHeight - viewportHeight) : 0;
+        registerScrollHandler(function(scrollTop, scrollPct, docHeight) {
+            var viewportHeight = window.innerHeight;
+            // Mobile share bar uses 0-1 ratio, convert from 0-100 pct
+            var ratio = scrollPct / 100;
 
-                    var nearFooter = false;
-                    if (footer) {
-                        var footerRect = footer.getBoundingClientRect();
-                        nearFooter = footerRect.top < viewportHeight + FOOTER_PROXIMITY_PX;
-                    }
+            var nearFooter = false;
+            if (footer) {
+                var footerRect = footer.getBoundingClientRect();
+                nearFooter = footerRect.top < viewportHeight + FOOTER_PROXIMITY_PX;
+            }
 
-                    if (scrollPct >= MOBILE_SHARE_SCROLL_PCT && !nearFooter) {
-                        bar.classList.add('visible');
-                    } else {
-                        bar.classList.remove('visible');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
+            if (ratio >= MOBILE_SHARE_SCROLL_PCT && !nearFooter) {
+                bar.classList.add('visible');
+            } else {
+                bar.classList.remove('visible');
             }
         });
     }
@@ -530,26 +529,17 @@
         stats[slug].visits++;
         stats[slug].lastVisit = new Date().toISOString();
 
-        // 스크롤 추적 (기존 reading progress bar와 연동)
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(function() {
-                    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-                    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    if (docHeight > 50) {
-                        var pct = Math.round(Math.min(100, (scrollTop / docHeight) * 100));
-                        if (pct > (stats[slug].maxScroll || 0)) {
-                            stats[slug].maxScroll = pct;
-                            if (pct >= 70 && !stats[slug].readAt) {
-                                stats[slug].readAt = new Date().toISOString();
-                            }
-                            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch(e) {}
-                        }
+        // 스크롤 추적 (중앙 디스패처 사용)
+        registerScrollHandler(function(scrollTop, scrollPct, docHeight) {
+            if (docHeight > 50) {
+                var pct = Math.round(Math.min(100, scrollPct));
+                if (pct > (stats[slug].maxScroll || 0)) {
+                    stats[slug].maxScroll = pct;
+                    if (pct >= 70 && !stats[slug].readAt) {
+                        stats[slug].readAt = new Date().toISOString();
                     }
-                    ticking = false;
-                });
-                ticking = true;
+                    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch(e) {}
+                }
             }
         });
 

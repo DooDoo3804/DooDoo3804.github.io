@@ -39,8 +39,8 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Build JS (uglify hux-blog.min.js)
-        run: npx grunt uglify
+      - name: Build JS (uglify + banner)
+        run: npx grunt
 
       - name: Generate OG images for posts
         run: node scripts/generate-og-images.js

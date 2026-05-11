@@ -18,7 +18,7 @@ const PRECACHE_LIST = [
   "./offline.html",
   "./js/hux-blog.min.js",
   "./js/snackbar.js",
-  "./js/custom.js",
+  "./js/custom.min.js",
   "./css/grid.css",
   "./css/main.css"
 ]
