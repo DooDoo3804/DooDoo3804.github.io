@@ -214,6 +214,31 @@
         box-shadow: none !important;
     }
 
+    /* Abbr: solid underline for print */
+    .post-container abbr[title] {
+        border-bottom: 1px solid #000 !important;
+    }
+
+    /* Var / Samp: strip background for print */
+    .post-container var {
+        color: #000 !important;
+    }
+
+    .post-container samp {
+        background: transparent !important;
+        color: #000 !important;
+        border: 1px solid #ccc !important;
+    }
+
+    /* Definition list: ensure black text */
+    .post-container dt {
+        color: #000 !important;
+    }
+
+    .post-container dd {
+        color: #333 !important;
+    }
+
     /* Full width for main content */
     .container,
     .row,

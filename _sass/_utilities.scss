@@ -235,3 +235,21 @@ pre { overflow-x: auto; }
         transition-duration: 0.01ms !important;
     }
 }
+
+/* --- Accessibility: High Contrast --- */
+@media (prefers-contrast: more) {
+    :root {
+        --text-primary: #000;
+        --text-muted: #333;
+        --text-secondary: #444;
+        --border-light: #999;
+        --border-medium: #666;
+    }
+    [data-theme="dark"] {
+        --text-primary: #fff;
+        --text-muted: #ccc;
+        --text-secondary: #bbb;
+        --border-light: #888;
+        --border-medium: #aaa;
+    }
+}

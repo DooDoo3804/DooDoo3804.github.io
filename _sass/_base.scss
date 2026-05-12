@@ -387,6 +387,66 @@ html {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
+/* --- Post Content - Abbreviation --- */
+.post-container abbr[title] {
+    text-decoration: none;
+    border-bottom: 1px dashed var(--text-muted);
+    cursor: help;
+}
+
+[data-theme="dark"] .post-container abbr[title] {
+    border-bottom-color: var(--text-muted);
+}
+
+/* --- Post Content - Definition List --- */
+.post-container dl {
+    margin: 1.5em 0;
+}
+
+.post-container dt {
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    color: var(--text-primary);
+    margin-top: 12px;
+}
+
+.post-container dt:first-child {
+    margin-top: 0;
+}
+
+.post-container dd {
+    margin-left: 24px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-container dt {
+    color: #f5f5f5;
+}
+
+/* --- Post Content - Var (Variable) --- */
+.post-container var {
+    font-family: var(--font-mono);
+    font-style: italic;
+    color: var(--accent-primary);
+    font-size: 0.9em;
+}
+
+/* --- Post Content - Samp (Sample Output) --- */
+.post-container samp {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-container samp {
+    background: rgba(255, 255, 255, 0.06);
+}
+
 /* --- Post Content - Image Captions --- */
 .post-container img + em,
 .post-container figcaption {
