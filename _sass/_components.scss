@@ -108,7 +108,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 999;
+    z-index: 200;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -794,7 +794,7 @@ code.has-line-numbers .code-line::before {
     width: 0%;
     height: 2px;
     background: var(--accent-primary);
-    z-index: 9999;
+    z-index: 500;
     transition: width 0.1s linear;
     pointer-events: none;
 }
@@ -818,7 +818,7 @@ code.has-line-numbers .code-line::before {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 300;
 }
 
 .mobile-toc-wrapper .mobile-toc-toggle {
@@ -858,7 +858,7 @@ code.has-line-numbers .code-line::before {
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-md);
     padding: 15px;
-    z-index: 1001;
+    z-index: 301;
 }
 
 [data-theme="dark"] .mobile-toc-panel {
@@ -893,7 +893,7 @@ code.has-line-numbers .code-line::before {
 /* Mobile TOC active state — terminal palette */
 .mobile-catalog-body li a {
     display: block;
-    padding: 4px 8px;
+    padding: 10px 12px;
     font-size: 13px;
     font-family: var(--font-mono);
     color: var(--terminal-overlay);
@@ -944,7 +944,7 @@ body.lightbox-open {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 10000;
+    z-index: 501;
     background: rgba(0, 0, 0, 0.92);
     justify-content: center;
     align-items: center;
@@ -1001,7 +1001,7 @@ body.lightbox-open {
     cursor: pointer;
     transition: color 0.2s;
     line-height: 1;
-    z-index: 10000;
+    z-index: 501;
     background: none;
     border: none;
     padding: 0;
@@ -1027,7 +1027,7 @@ body.lightbox-open {
     border-top-color: #fff;
     border-radius: 50%;
     animation: lightbox-spin 0.7s linear infinite;
-    z-index: 10000;
+    z-index: 501;
 }
 @keyframes lightbox-spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -1102,7 +1102,7 @@ body.lightbox-open {
 .shortcuts-panel {
     position: fixed;
     inset: 0;
-    z-index: 10000;
+    z-index: 501;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1189,7 +1189,7 @@ body.lightbox-open {
     border: 1px solid var(--terminal-border);
     border-radius: var(--radius-md);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 500;
 }
 
 .text-share-btn {

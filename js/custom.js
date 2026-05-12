@@ -43,7 +43,7 @@
                 });
                 ticking = true;
             }
-        });
+        }, { passive: true });
     })();
 
     /* --- Dark Mode --- */
@@ -592,10 +592,22 @@
             var action = btn.getAttribute('data-action');
 
             if (action === 'copy') {
-                navigator.clipboard.writeText(selectedText).then(function() {
-                    btn.textContent = '✓ Copied';
-                    setTimeout(function() { btn.textContent = '📋 Copy'; }, 1500);
-                });
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(selectedText).then(function() {
+                        btn.textContent = '✓ Copied';
+                        setTimeout(function() { btn.textContent = '📋 Copy'; }, 1500);
+                    }).catch(function() {
+                        fallbackCopy(selectedText, function() {
+                            btn.textContent = '✓ Copied';
+                            setTimeout(function() { btn.textContent = '📋 Copy'; }, 1500);
+                        });
+                    });
+                } else {
+                    fallbackCopy(selectedText, function() {
+                        btn.textContent = '✓ Copied';
+                        setTimeout(function() { btn.textContent = '📋 Copy'; }, 1500);
+                    });
+                }
             } else if (action === 'tweet') {
                 var url = encodeURIComponent(window.location.href);
                 var tweetText = encodeURIComponent('"' + selectedText.substring(0, 200) + '…"');

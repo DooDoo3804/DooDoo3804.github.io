@@ -95,4 +95,10 @@
             if (e.target.classList.contains('icon-bar')) return;
             __HuxNav__.close();
         })
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && $navbar.classList.contains('in')) {
+                __HuxNav__.close();
+            }
+        })
     </script>

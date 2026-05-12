@@ -152,11 +152,11 @@
             document.head.appendChild(prefetchLink);
             prefetched[href] = true;
         }, 200);
-    });
+    }, { passive: true });
 
     document.addEventListener('mouseout', function(e) {
         if (timer) { clearTimeout(timer); timer = null; }
-    });
+    }, { passive: true });
 })();
 </script>
 
@@ -189,7 +189,7 @@
         };
         window.addEventListener("resize", function() {
             resizeIframe(chartEl);
-        });
+        }, { passive: true });
     });
 </script>
 {% endif %}

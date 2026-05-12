@@ -476,7 +476,7 @@ layout: default
     }
 
     // Register scroll listener
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     // Clean old entries on load
     cleanOldEntries();
