@@ -606,6 +606,66 @@
         });
     }
 
+    /* --- GitHub-style Callouts --- */
+    function initCallouts() {
+        var container = document.querySelector('.post-container');
+        if (!container) return;
+
+        var CALLOUT_TYPES = {
+            NOTE:      { icon: '\u2139',  label: 'Note' },
+            TIP:       { icon: '\u2731',  label: 'Tip' },
+            IMPORTANT: { icon: '\u2757',  label: 'Important' },
+            WARNING:   { icon: '\u26A0',  label: 'Warning' },
+            CAUTION:   { icon: '\u2718',  label: 'Caution' }
+        };
+        var PATTERN = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/;
+
+        var blockquotes = container.querySelectorAll('blockquote');
+        blockquotes.forEach(function(bq) {
+            var firstP = bq.querySelector('p');
+            if (!firstP) return;
+
+            // Check text content of the first paragraph
+            var textContent = firstP.textContent;
+            var match = textContent.match(PATTERN);
+            if (!match) return;
+
+            var type = match[1];
+            var config = CALLOUT_TYPES[type];
+            if (!config) return;
+
+            var typeLower = type.toLowerCase();
+
+            // Add callout classes
+            bq.classList.add('callout', 'callout-' + typeLower);
+
+            // Build title element
+            var titleEl = document.createElement('div');
+            titleEl.className = 'callout-title';
+            titleEl.innerHTML = '<span class="callout-icon">' + config.icon + '</span> ' + config.label;
+
+            // Remove [!TYPE] text from the paragraph
+            // Walk through child nodes to find and remove the pattern
+            var walker = document.createTreeWalker(firstP, NodeFilter.SHOW_TEXT, null, false);
+            var node;
+            while (node = walker.nextNode()) {
+                var nodeMatch = node.textContent.match(PATTERN);
+                if (nodeMatch) {
+                    node.textContent = node.textContent.replace(PATTERN, '');
+                    break;
+                }
+            }
+
+            // Insert title before the first paragraph
+            bq.insertBefore(titleEl, firstP);
+
+            // If firstP is now empty, remove it
+            if (!firstP.textContent.trim() && !firstP.querySelector('img, code, a')) {
+                firstP.remove();
+            }
+        });
+    }
+
     /* --- Smart Recommendation: Read badge on Related Posts --- */
     function initSmartRecommendation() {
         var relatedSection = document.querySelector('.related-posts');
@@ -657,6 +717,7 @@
         initShareButtons();
         initMobileShareBar();
         initDiffBlocks();
+        initCallouts();
         initTextSharePopup();
         initSmartRecommendation();
 
