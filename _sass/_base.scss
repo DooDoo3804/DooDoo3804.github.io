@@ -321,6 +321,73 @@ html {
 }
 
 /* --- Post Content - Image Captions --- */
+/* --- Post Content - Details/Summary (Collapsible Sections) --- */
+.post-container details {
+    margin: 16px 0;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+
+    summary {
+        padding: 10px 16px;
+        font-weight: 600;
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        cursor: pointer;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.02);
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
+
+        &::before {
+            content: "▶";
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+    }
+
+    &[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    > *:not(summary) {
+        padding: 0 16px;
+    }
+}
+
+[data-theme="dark"] .post-container details {
+    border-color: var(--border-medium);
+
+    summary {
+        background: rgba(255, 255, 255, 0.03);
+    }
+}
+
+/* --- Post Content - Kbd (Keyboard Key) --- */
+.post-container kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    line-height: 1.4;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    vertical-align: middle;
+}
+
+[data-theme="dark"] .post-container kbd {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-medium);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* --- Post Content - Image Captions --- */
 .post-container img + em,
 .post-container figcaption {
     display: block;

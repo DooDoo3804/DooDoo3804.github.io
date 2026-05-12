@@ -187,6 +187,33 @@
         content: "" !important;
     }
 
+    /* Details: force open for print */
+    .post-container details {
+        border: 1px solid #ccc !important;
+    }
+
+    .post-container details[open],
+    .post-container details:not([open]) {
+        open: true;
+    }
+
+    .post-container details:not([open]) > *:not(summary) {
+        display: block !important;
+    }
+
+    .post-container details summary::before {
+        content: "▼" !important;
+        transform: none !important;
+    }
+
+    /* Kbd: keep border for print */
+    .post-container kbd {
+        background: transparent !important;
+        color: #000 !important;
+        border: 1px solid #999 !important;
+        box-shadow: none !important;
+    }
+
     /* Full width for main content */
     .container,
     .row,

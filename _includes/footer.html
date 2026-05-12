@@ -128,6 +128,38 @@
 <script src="{{ "/js/sw-registration.js" | prepend: site.baseurl }}" defer></script>
 {% endif %}
 
+<!-- Link prefetch on hover -->
+<script>
+(function() {
+    var prefetched = {};
+    var timer = null;
+
+    document.addEventListener('mouseover', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+
+        var href = link.href;
+        if (link.hostname !== location.hostname) return;
+        if (href === location.href) return;
+        if (prefetched[href]) return;
+        if (link.getAttribute('href').charAt(0) === '#') return;
+        if (link.protocol !== 'https:' && link.protocol !== 'http:') return;
+
+        timer = setTimeout(function() {
+            var prefetchLink = document.createElement('link');
+            prefetchLink.rel = 'prefetch';
+            prefetchLink.href = href;
+            document.head.appendChild(prefetchLink);
+            prefetched[href] = true;
+        }, 200);
+    });
+
+    document.addEventListener('mouseout', function(e) {
+        if (timer) { clearTimeout(timer); timer = null; }
+    });
+})();
+</script>
+
 <!-- async load function -->
 <script>
     if (typeof loadScript !== 'function') {
