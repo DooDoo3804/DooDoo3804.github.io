@@ -1,4 +1,26 @@
 /* --- Author Hero Section --- */
+.hero-intro {
+    margin-bottom: 16px;
+}
+
+.hero-name {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.hero-role {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--accent-secondary);
+    margin: 4px 0 0;
+    font-weight: 400;
+}
+
 .author-hero {
     padding: 60px 0 40px;
 }
@@ -78,6 +100,8 @@
 
 @media (max-width: 576px) {
     .author-hero { padding: 40px 0 24px; }
+    .hero-name { font-size: 22px; }
+    .hero-role { font-size: 13px; }
     .author-hero-inner {
         flex-direction: column;
         align-items: center;
@@ -657,7 +681,8 @@ code.has-line-numbers .code-line::before {
 .featured-tags .tag-item a {
     border-radius: var(--radius-2xl);
     padding: 4px 14px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
+    color: var(--accent-secondary);
 }
 
 .featured-tags .tag-item a:hover {

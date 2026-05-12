@@ -146,14 +146,14 @@
 .post-item-meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--accent-secondary);
     display: flex;
     gap: 12px;
     align-items: center;
 }
 
 .post-item-meta .read-time {
-    color: var(--accent-primary);
+    color: var(--accent-secondary);
     font-weight: 600;
 }
 

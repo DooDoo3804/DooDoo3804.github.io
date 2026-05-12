@@ -20,7 +20,9 @@ nav-order: 3
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
-    <a href="#tag-{{ tag_name | slugify }}" class="tag-import">
+    {% assign t_size = tag_posts.size %}
+    {% if t_size >= 10 %}{% assign tag_weight = "tag-weight-lg" %}{% elsif t_size >= 5 %}{% assign tag_weight = "tag-weight-md" %}{% else %}{% assign tag_weight = "tag-weight-sm" %}{% endif %}
+    <a href="#tag-{{ tag_name | slugify }}" class="tag-import {{ tag_weight }}">
       <span class="import-keyword">import</span> { <span class="import-name">{{ tag_name }}</span> } <span class="import-from">from</span> <span class="import-path">"./posts"</span>; <span class="import-count">// {{ tag_posts.size }} posts</span>
     </a>
     {% endfor %}

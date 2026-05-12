@@ -236,9 +236,13 @@
     function getLang() { return new URLSearchParams(document.location.search).get("lang") }
 
     function setLang(newLang) {
+        // Update URL without reload (pushState)
         var params = new URLSearchParams(document.location.search)
         params.set("lang", newLang)
-        document.location.search = params.toString()  // refresh.
+        var newUrl = document.location.pathname + '?' + params.toString() + document.location.hash;
+        history.replaceState(null, '', newUrl);
+        // Re-render in place (no page reload)
+        _render();
     }
 
     function _hideAll() {

@@ -7,6 +7,7 @@
 /* --- Design System Variables --- */
 :root {
     --accent-primary: #0ea5e9;
+    --accent-secondary: #64748b;
     --accent-gradient: linear-gradient(135deg, #0ea5e9, #38bdf8);
     --accent-color-raw: 14, 165, 233;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -70,8 +71,9 @@
     --cat-backend: #e67e22;
 }
 [data-theme="dark"] {
-    --accent-primary: #58a6ff;
-    --accent-color-raw: 88, 166, 255;
+    --accent-primary: #6cb4ff;
+    --accent-secondary: #94a3b8;
+    --accent-color-raw: 108, 180, 255;
     --text-primary: #e6edf3;
     --text-muted: #9aa0a6;
     --text-secondary: #9ca3af;
@@ -85,7 +87,7 @@
     --heading-dark: #c9d1d9;
     --text-on-accent: #0d1117;
     --text-base: #c9d1d9;
-    --accent-gradient: linear-gradient(135deg, #58a6ff, #b07fff);
+    --accent-gradient: linear-gradient(135deg, #6cb4ff, #b07fff);
     --color-success: #3fb950;
     --accent-hover: #79b8ff;
     --bg-surface-hover: #1f2937;

@@ -392,6 +392,13 @@
     color: var(--text-primary);
 }
 
+.archive-year-count {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
 .git-log-entries {
     font-family: var(--font-mono);
     font-size: 13px;
@@ -477,6 +484,21 @@
 .import-from { color: #7c3aed; }
 .import-path { color: #16a34a; }
 .import-count { color: var(--text-secondary); opacity: 0.5; }
+
+/* Tag cloud weight classes */
+.tag-import.tag-weight-sm {
+    font-size: 13px;
+}
+
+.tag-import.tag-weight-md {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tag-import.tag-weight-lg {
+    font-size: 16px;
+    font-weight: 700;
+}
 
 [data-theme="dark"] .import-keyword,
 [data-theme="dark"] .import-from { color: #cba6f7; }

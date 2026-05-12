@@ -51,7 +51,7 @@ code, kbd, pre, samp, .code-lang-label {
 
 .footer-links a {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--accent-secondary);
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -180,7 +180,7 @@ code, kbd, pre, samp, .code-lang-label {
 .post-meta-header {
     font-family: var(--font-mono);
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--accent-secondary);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
