@@ -32,5 +32,17 @@
   "display": "standalone",
   "orientation": "portrait",
   "lang": "ko",
-  "categories": ["blog", "technology", "education"]
+  "categories": ["blog", "technology", "education"],
+  "shortcuts": [
+    {
+      "name": "Archive",
+      "url": "/archive/",
+      "description": "All posts"
+    },
+    {
+      "name": "Tags",
+      "url": "/tags/",
+      "description": "Browse by tag"
+    }
+  ]
 }

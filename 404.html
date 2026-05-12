@@ -13,6 +13,20 @@ permalink: /404.html
             <h1 style="font-size: 6rem; font-weight: 700; margin: 0; color: var(--text-primary); letter-spacing: -2px;">404</h1>
             <p style="font-size: 1.25rem; color: var(--text-muted); margin: 16px 0 40px;">Page not found.</p>
             <a href="{{ site.baseurl }}/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600; font-size: 1rem;">&larr; Back to Home</a>
+            <span style="display: inline-block; margin: 0 12px; color: var(--text-muted);">|</span>
+            <a href="{{ site.baseurl }}/search/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600; font-size: 1rem;">Search</a>
+
+            <div style="margin-top: 56px; text-align: left; max-width: 480px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Recent Posts</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    {% for post in site.posts limit:3 %}
+                    <li style="margin-bottom: 12px;">
+                        <a href="{{ post.url | prepend: site.baseurl }}" style="color: var(--text-primary); text-decoration: none; font-weight: 500;">{{ post.title }}</a>
+                        <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 8px;">{{ post.date | date: "%Y.%m.%d" }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>

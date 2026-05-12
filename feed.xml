@@ -13,7 +13,7 @@ layout: null
     <language>ko</language>
     {% if site.email %}<managingEditor>{{ site.email }} ({{ site.title }})</managingEditor>{% endif %}
     <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:20 %}
+    {% for post in site.posts limit:25 %}
       {% assign abs_content = post.content
         | replace: 'src="/', 'src="SITE_URL_PLACEHOLDER/'
         | replace: "src='/", "src='SITE_URL_PLACEHOLDER/"

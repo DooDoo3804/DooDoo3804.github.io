@@ -2,13 +2,17 @@
     <meta charset="utf-8">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.layout == 'post' or page.path contains '_posts/' %}{{ page.excerpt | strip_html | truncate:155 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keyword }}{% endif %}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
 
     <!-- Open Graph -->
-    {% case page.layout %}
-    {% when 'post' %}
+    {% if paginator and paginator.page > 1 %}
+    <meta property="og:title" content="Page {{ paginator.page }} | {{ site.SEOTitle }}">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{{ site.description }}">
+    {% elsif page.layout == 'post' %}
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:type" content="article">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.excerpt | strip_html | truncate:155 }}{% endif %}">
@@ -27,7 +31,7 @@
     <meta property="og:type" content="website">
     <meta property="og:description"
         content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    {% endcase %}
+    {% endif %}
     {% capture og_per_post %}/assets/img/og/{{ page.slug }}.png{% endcapture %}
     {% assign og_per_post_path = og_per_post | remove_first: "/" %}
     {% if page.thumbnail %}
@@ -65,7 +69,7 @@
     {% endif %}
     {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}">{% endif %}
 
-    <title>{% if page.title %}{{ page.title }} | {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+    <title>{% if paginator and paginator.page > 1 %}Page {{ paginator.page }} | {{ site.SEOTitle }}{% elsif page.title %}{{ page.title }} | {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
     <!-- JSON-LD Structured Data -->
     {% if page.layout == 'post' %}
