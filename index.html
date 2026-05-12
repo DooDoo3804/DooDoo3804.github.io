@@ -56,7 +56,7 @@ description: "Software Developer"
   {% for pinned_url in site.pinned_posts %}
     {% assign pinned = site.posts | where: "url", pinned_url | first %}
     {% if pinned %}
-    <a href="{{ pinned.url | prepend: site.baseurl }}" class="pinned-item">{{ pinned.title }}</a>
+    <a href="{{ pinned.url | prepend: site.baseurl }}" class="pinned-item" data-category="{{ pinned.categories | first | downcase }}"><span class="cat-dot" style="background: var(--cat-{{ pinned.categories | first | downcase }})"></span>{{ pinned.title }}</a>
     {% endif %}
   {% endfor %}
 </div>
@@ -88,9 +88,9 @@ description: "Software Developer"
 <div class="post-list">
 {% assign post_list = paginator.posts | default: site.posts %}
 {% for post in post_list %}
-<article class="post-item" data-tags="{{ post.tags | join: ',' | downcase }}">
+<article class="post-item" data-tags="{{ post.tags | join: ',' | downcase }}" data-category="{{ post.categories | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-item-title">{{ post.title }}</h2>
+        <h2 class="post-item-title"><span class="cat-dot" style="background: var(--cat-{{ post.categories | first | downcase }})"></span>{{ post.title }}</h2>
         {% if post.subtitle %}
         <p class="post-item-excerpt">{{ post.subtitle }}</p>
         {% else %}

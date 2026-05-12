@@ -87,6 +87,19 @@
     background: rgba(var(--accent-color-raw), 0.08);
 }
 
+/* --- Category Dot --- */
+.cat-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
 /* --- Post List (Homepage) --- */
 .post-list {
     display: flex;
