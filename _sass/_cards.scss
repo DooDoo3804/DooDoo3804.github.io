@@ -22,8 +22,11 @@
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
-  padding: 6px 0;
-  transition: color 0.15s;
+  padding: 6px 12px;
+  transition: color 0.15s, background-color 0.15s;
+  border-left: 3px solid var(--accent-primary);
+  background: rgba(var(--accent-color-raw), 0.02);
+  border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
 }
 
 .pinned-item:hover {
@@ -90,8 +93,15 @@
 }
 
 .post-item {
-    padding: 24px 0;
+    padding: 24px 16px;
+    margin: 0 -16px;
     border-bottom: 1px solid var(--border-light);
+    border-radius: var(--radius-md, 8px);
+    transition: background-color 0.15s;
+}
+
+.post-item:hover {
+    background-color: rgba(var(--accent-color-raw), 0.03);
 }
 
 .post-item:first-child {
@@ -261,7 +271,8 @@
     }
 
     .post-item {
-        padding: 20px 0;
+        padding: 20px 12px;
+        margin: 0 -12px;
     }
 
     .post-item-excerpt {

@@ -444,13 +444,7 @@ code, kbd, pre, samp {
     line-height: 1.4;
 }
 
-.post-container h2::before {
-    content: " ";
-    display: block;
-    border-bottom: 1px solid var(--border-light);
-    margin-top: 44px;
-    margin-bottom: 30px;
-}
+/* h2::before 구분선 제거 — Sprint 86: heading은 font-weight/크기로 계층 표현 */
 
 .post-container h4 {
     font-size: 22px;
@@ -485,7 +479,7 @@ code, kbd, pre, samp {
 
 .post-container ul,
 .post-container ol {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 @media screen and (max-width: 768px) {

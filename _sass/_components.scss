@@ -162,6 +162,11 @@ body.has-mobile-toc #back-to-top {
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
+    background: #fafbfc;
+}
+
+[data-theme="dark"] .post-container pre {
+    background: #282c34;
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
@@ -176,11 +181,11 @@ body.has-mobile-toc #back-to-top {
     margin-right: 0;
 }
 
-/* 코드블록 언어 라벨 — VS Code 탭 스타일 */
+/* 코드블록 언어 라벨 — 좌상단 배치 (Sprint 86) */
 .code-lang-label {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 600;
@@ -189,7 +194,7 @@ body.has-mobile-toc #back-to-top {
     padding: 4px 12px;
     background: rgba(0, 0, 0, 0.04);
     color: var(--text-muted);
-    border-radius: 0 8px 0 6px;
+    border-radius: 0 0 6px 0;
     line-height: 1.4;
     user-select: none;
     z-index: 1;
@@ -678,13 +683,21 @@ code.has-line-numbers .code-line::before {
    ABOUT PAGE - Tech Stack Tags
    ======================================== */
 .post-container code {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.08);
     color: var(--text-primary);
     border: none;
     border-radius: 4px;
     padding: 2px 6px;
     font-size: 14px;
     font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .post-container code {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .post-container pre code {
+    background: transparent;
 }
 
 .post-container pre code {
