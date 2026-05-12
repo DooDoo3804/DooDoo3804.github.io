@@ -10,6 +10,12 @@ body {
     max-width: 700px;
 }
 
+@media (max-width: 576px) {
+    .post-container {
+        font-size: 16px;
+    }
+}
+
 .post-container p {
     margin-bottom: 24px;
 }
