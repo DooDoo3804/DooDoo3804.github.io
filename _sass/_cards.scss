@@ -81,9 +81,10 @@
 }
 
 .category-btn.active {
-    color: var(--text-primary);
+    color: var(--accent-primary);
     border-bottom-color: var(--accent-primary);
     font-weight: 600;
+    background: rgba(var(--accent-color-raw), 0.08);
 }
 
 /* --- Post List (Homepage) --- */

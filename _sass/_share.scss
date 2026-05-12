@@ -114,11 +114,12 @@
         left: 50%;
         transform: translateX(-50%) translateY(80px);
         gap: 12px;
-        background: var(--terminal-bg);
-        border: 1px solid var(--terminal-border);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-light);
         border-radius: var(--radius-full);
         padding: 8px 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
         z-index: 310;
         opacity: 0;
         visibility: hidden;
@@ -139,8 +140,8 @@
         height: 44px;
         border-radius: 50%;
         border: none;
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--terminal-text);
+        background: rgba(0, 0, 0, 0.06);
+        color: var(--text-primary);
         font-size: 16px;
         cursor: pointer;
         text-decoration: none;
@@ -149,17 +150,32 @@
 
     .mobile-share-btn:hover,
     .mobile-share-btn:active {
-        background: var(--terminal-blue);
-        color: var(--terminal-bg);
+        background: var(--accent-primary);
+        color: #fff;
         text-decoration: none;
     }
 
     .mobile-share-btn--copied {
-        background: var(--terminal-green) !important;
-        color: var(--terminal-bg) !important;
+        background: var(--color-success) !important;
+        color: #fff !important;
     }
 
-    /* Terminal style is always dark — redundant [data-theme="dark"] overrides removed */
+    [data-theme="dark"] .mobile-share-bar {
+        background: rgba(30, 30, 46, 0.95);
+        border-color: var(--border-medium);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="dark"] .mobile-share-btn {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--terminal-text);
+    }
+
+    [data-theme="dark"] .mobile-share-btn:hover,
+    [data-theme="dark"] .mobile-share-btn:active {
+        background: var(--accent-primary);
+        color: #fff;
+    }
 }
 
 /* ========================================
