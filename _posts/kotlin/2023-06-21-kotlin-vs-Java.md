@@ -33,7 +33,7 @@ Why we should learn kotlin?
 
 Kotlin vs Java
 ---
-![Kotlin vs Java 기능 비교](https://kruschecompany.com/wp-content/uploads/2022/01/overview-2048x1603.png)
+![Kotlin vs Java 기능 비교](/assets/img/posts/kotlin-vs-java-overview.png)
 ### 변수 상수
 
 Java  
