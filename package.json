@@ -10,7 +10,7 @@
     },
     "bugs": "https://github.com/DooDoo3804/DooDoo3804.github.io/issues",
     "devDependencies": {
-        "grunt": "^1.6.0",
+        "grunt": "^1.4.0",
         "grunt-banner": "~0.2.3",
         "grunt-contrib-uglify": "^4.0.1",
         "grunt-contrib-watch": "^1.1.0",
