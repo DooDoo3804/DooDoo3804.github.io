@@ -349,14 +349,18 @@
 
             if (query.length === 0) {
                 resultsContainer.innerHTML = '';
+                resultsContainer.setAttribute('aria-busy', 'false');
                 resultCount.textContent = '';
                 resultCount.style.display = 'none';
                 emptyState.style.display = 'none';
                 return;
             }
 
+            resultsContainer.setAttribute('aria-busy', 'true');
+
             var pf = await ensurePagefind();
             if (!pf) {
+                resultsContainer.setAttribute('aria-busy', 'false');
                 emptyState.style.display = '';
                 var emptyText = emptyState.querySelector('.search-empty-text');
                 if (emptyText) emptyText.innerHTML = '<strong>Search unavailable</strong><br><span style="font-size:14px;opacity:0.7">Search index not found (build with Pagefind first)</span>';
@@ -369,6 +373,7 @@
             );
 
             renderResults(results);
+            resultsContainer.setAttribute('aria-busy', 'false');
 
             if (results.length > 0) {
                 resultCount.textContent = search.results.length + ' result' + (search.results.length !== 1 ? 's' : '') + ' found';

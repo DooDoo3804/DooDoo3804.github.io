@@ -92,3 +92,9 @@
     --accent-hover: #79b8ff;
     --bg-surface-hover: #1f2937;
 }
+
+// Breakpoints (define only — gradual adoption in future sprints)
+$bp-mobile: 576px;
+$bp-tablet: 768px;
+$bp-desktop: 992px;
+$bp-wide: 1200px;

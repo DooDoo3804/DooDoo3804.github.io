@@ -90,6 +90,28 @@ layout: default
                         </li>
                     {% endfor %}
                     </ol>
+
+                    {% assign prev_series = nil %}
+                    {% assign next_series = nil %}
+                    {% assign found_current = false %}
+                    {% for p in reversed_series %}
+                        {% if found_current %}
+                            {% assign next_series = p %}
+                            {% break %}
+                        {% endif %}
+                        {% if p.url == page.url %}
+                            {% assign found_current = true %}
+                        {% else %}
+                            {% assign prev_series = p %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if prev_series or next_series %}
+                    <div class="series-pager">
+                        {% if prev_series %}<a href="{{ prev_series.url | prepend: site.baseurl }}" class="series-prev">&larr; {{ prev_series.title | truncate: 40 }}</a>{% endif %}
+                        {% if next_series %}<a href="{{ next_series.url | prepend: site.baseurl }}" class="series-next">{{ next_series.title | truncate: 40 }} &rarr;</a>{% endif %}
+                    </div>
+                    {% endif %}
                 </nav>
                 {% endif %}
                 {% endif %}
@@ -420,6 +442,12 @@ layout: default
     var EXPIRY_DAYS = 30;
     var pathname = location.pathname;
 
+    // BFCache guard: suppress Resume Reading snackbar on back/forward navigation
+    var isBackForward = false;
+    window.addEventListener('pageshow', function(e) {
+        if (e.persisted) isBackForward = true;
+    });
+
     function getStorage(key) {
         try { return localStorage.getItem(key); } catch(e) { return null; }
     }
@@ -483,6 +511,8 @@ layout: default
 
     // Restore: show snackbar after defer scripts have loaded (createSnackbar)
     function showResumePrompt() {
+        if (isBackForward) return; // BFCache 복원 시 브라우저 자동 스크롤과 충돌 방지
+
         var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         if (docHeight < 500) return; // 스크롤 가능 높이가 500px 미만이면 표시하지 않음
 

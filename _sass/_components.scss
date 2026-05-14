@@ -522,6 +522,42 @@ code.has-line-numbers .code-line::before {
     vertical-align: middle;
 }
 
+/* Series Pager (prev/next within series) */
+.series-pager {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+}
+
+.series-pager a {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    transition: color 0.2s, border-color 0.2s;
+    max-width: 48%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.series-pager a:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.series-pager .series-next {
+    margin-left: auto;
+}
+
 /* Series Nav — dark mode */
 [data-theme="dark"] .series-nav {
     background: var(--bg-surface-raised);
