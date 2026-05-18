@@ -636,6 +636,7 @@ code.has-line-numbers .code-line::before {
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .related-post-card:hover {

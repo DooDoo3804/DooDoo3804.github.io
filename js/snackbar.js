@@ -60,6 +60,21 @@ var createSnackbar = (function() {
       }
     }.bind(snackbar));
 
+    // Fallback for prefers-reduced-motion: transitionend may never fire
+    // when transitions are globally disabled, so ensure DOM cleanup
+    snackbar.addEventListener('transitionend', function() {
+      clearTimeout(snackbar._dismissFallback);
+    });
+    var origDismiss = snackbar.dismiss;
+    snackbar.dismiss = function() {
+      origDismiss.call(this);
+      var el = this;
+      el._dismissFallback = setTimeout(function() {
+        if (el.parentElement) el.parentElement.removeChild(el);
+        if (previous === el) previous = null;
+      }, 1000);
+    };
+
 
     
     previous = snackbar;
