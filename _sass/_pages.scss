@@ -489,7 +489,7 @@
 .import-name { color: #2563eb; }
 .import-from { color: #7c3aed; }
 .import-path { color: #16a34a; }
-.import-count { color: var(--text-secondary); opacity: 0.5; }
+.import-count { color: var(--text-secondary); opacity: 0.7; }
 
 /* Tag cloud weight classes */
 .tag-import.tag-weight-sm {
@@ -1141,6 +1141,14 @@
    ABOUT PAGE
    ======================================== */
 
+/* FOUC prevention: hide all language sections by default, show Korean (fallback for no-JS) */
+.kr, .en, .ja {
+    display: none;
+}
+.kr {
+    display: block;
+}
+
 /* --- Hero Section --- */
 .about-hero {
     margin-bottom: 32px;
@@ -1281,7 +1289,7 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: var(--bg-base);
+    background: var(--bg-surface);
     border: 2px solid var(--accent-primary);
     z-index: 1;
 }
