@@ -52,31 +52,16 @@
   padding-right: 15px;
 }
 
-/* xs columns (default — no media query) */
-.col-xs-12 { width: 100%; }
-
-/* sm columns */
-@media (min-width: 768px) {
-  .col-sm-12 { width: 100%; }
-}
-
 /* md columns */
 @media (min-width: 992px) {
-  .col-md-3  { width: 25%;       }
-  .col-md-4  { width: 33.33333%; }
-  .col-md-8  { width: 66.66667%; }
   .col-md-10 { width: 83.33333%; }
 
-  .col-md-offset-0 { margin-left: 0; }
   .col-md-offset-1 { margin-left: 8.33333%; }
 }
 
 /* lg columns */
 @media (min-width: 1200px) {
-  .col-lg-2  { width: 16.66667%; }
-  .col-lg-3  { width: 25%;       }
   .col-lg-8  { width: 66.66667%; }
-  .col-lg-9  { width: 75%;       }
 
   .col-lg-offset-0 { margin-left: 0; }
   .col-lg-offset-1 { margin-left: 8.33333%; }
@@ -308,34 +293,7 @@
 }
 
 /* ========================================
-   8. Responsive Embed
-   ======================================== */
-.embed-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.embed-responsive .embed-responsive-item,
-.embed-responsive iframe,
-.embed-responsive embed,
-.embed-responsive object,
-.embed-responsive video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
-
-/* ========================================
-   9. Screen Reader Only
+   8. Screen Reader Only
    ======================================== */
 .sr-only {
   position: absolute;
@@ -350,9 +308,8 @@
 }
 
 /* ========================================
-   10. Typography & Utility Classes
+   9. Typography & Utility Classes
    ======================================== */
-.text-center { text-align: center; }
 .text-muted  { color: var(--text-muted, #777); }
 
 .list-inline {
@@ -367,6 +324,6 @@
 }
 
 /* ========================================
-   11. Display Utility
+   10. Display Utility
    ======================================== */
 .d-none { display: none !important; }

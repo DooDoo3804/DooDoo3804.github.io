@@ -175,8 +175,32 @@ async function generateOgImage(title, tags, date, outputPath) {
 }
 
 // ---------------------------------------------------------------------------
+// Concurrency-limited parallel runner
+// ---------------------------------------------------------------------------
+async function runParallel(tasks, concurrency) {
+  const results = [];
+  let idx = 0;
+
+  async function worker() {
+    while (idx < tasks.length) {
+      const i = idx++;
+      results[i] = await tasks[i]();
+    }
+  }
+
+  const workers = Array.from(
+    { length: Math.min(concurrency, tasks.length) },
+    () => worker()
+  );
+  await Promise.all(workers);
+  return results;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
+const CONCURRENCY = 8;
+
 async function main() {
   fs.mkdirSync(OG_DIR, { recursive: true });
 
@@ -184,6 +208,8 @@ async function main() {
   let generated = 0;
   let skipped = 0;
 
+  // Build task list — skip posts that already have OG images (unless --force)
+  const tasks = [];
   for (const postPath of posts) {
     const slug = slugFromFilename(postPath);
     const output = path.join(OG_DIR, `${slug}.png`);
@@ -212,10 +238,15 @@ async function main() {
       }
     }
 
-    await generateOgImage(fm.title, fm.tags, dateStr, output);
-    generated++;
-    console.log(`Generated: ${output}`);
+    tasks.push(async () => {
+      await generateOgImage(fm.title, fm.tags, dateStr, output);
+      generated++;
+      console.log(`Generated: ${output}`);
+    });
   }
+
+  // Run up to CONCURRENCY tasks in parallel
+  await runParallel(tasks, CONCURRENCY);
 
   console.log(
     `\nOG image generation complete. Generated: ${generated}, Skipped: ${skipped}`
