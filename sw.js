@@ -16,7 +16,7 @@ const CACHE = CACHE_NAMESPACE + 'precache-' + CACHE_VERSION;
 const PRECACHE_LIST = [
   "./",
   "./offline.html",
-  "./js/hux-blog.min.js",
+  "./js/toc.js",
   "./js/snackbar.js",
   "./js/custom.min.js",
   "./css/grid.css",

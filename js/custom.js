@@ -712,12 +712,35 @@
         });
     }
 
+    /* --- Post Content Responsive Wrappers (table + iframe) --- */
+    function initResponsiveWrappers() {
+        // Wrap tables for horizontal scroll
+        document.querySelectorAll('.post-container table').forEach(function(table) {
+            if (!table.parentElement.classList.contains('table-responsive')) {
+                var wrapper = document.createElement('div');
+                wrapper.className = 'table-responsive';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            }
+        });
+        // Wrap iframes (videos) for responsive sizing
+        document.querySelectorAll('.post-container iframe').forEach(function(iframe) {
+            if (!iframe.parentElement.classList.contains('responsive-video')) {
+                var wrapper = document.createElement('div');
+                wrapper.className = 'responsive-video';
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
+            }
+        });
+    }
+
     /* --- Init --- */
     // Dark mode must init immediately (before DOMContentLoaded to prevent flash)
     initDarkMode();
 
     document.addEventListener('DOMContentLoaded', function() {
         updateToggleIcon(getPreferredTheme());
+        initResponsiveWrappers();
         initBackToTop();
         initReadingProgress();
         initReadingTracker();

@@ -53,15 +53,34 @@
     }
 
     /**
+     * Cached TOC link lists — populated once after TOC is built.
+     * Avoids repeated querySelectorAll on every IntersectionObserver callback.
+     */
+    var cachedDesktopLis = [];
+    var cachedMobileLis = [];
+    var cachedSidebar = null;
+
+    function cacheTocElements() {
+        var desktopBody = document.querySelector('.catalog-body');
+        cachedDesktopLis = desktopBody ? desktopBody.querySelectorAll('li') : [];
+
+        var mobileBody = document.querySelector('.mobile-catalog-body');
+        cachedMobileLis = mobileBody ? mobileBody.querySelectorAll('li') : [];
+
+        cachedSidebar = document.querySelector('.side-catalog');
+    }
+
+    /**
      * Set the active TOC link by heading id across desktop + mobile lists.
+     * Uses cached NodeLists instead of querying the DOM each time.
      */
     function setActiveTocLink(id) {
-        var selectors = ['.catalog-body li', '.mobile-catalog-body li'];
-        selectors.forEach(function (sel) {
-            var lis = document.querySelectorAll(sel);
+        var lists = [cachedDesktopLis, cachedMobileLis];
+        lists.forEach(function (lis) {
             var passedActive = false;
 
-            lis.forEach(function (li) {
+            for (var i = 0; i < lis.length; i++) {
+                var li = lis[i];
                 var a = li.querySelector('a');
                 if (a && a.getAttribute('href') === '#' + id) {
                     li.classList.add('active');
@@ -76,20 +95,19 @@
                     li.classList.remove('active');
                     li.classList.remove('completed');
                 }
-            });
+            }
         });
 
         // Auto-scroll sidebar to keep active item visible
         // Manual scroll instead of scrollIntoView to prevent page-level scroll jumps
-        var sidebar = document.querySelector('.side-catalog');
-        if (sidebar && sidebar.offsetParent !== null && sidebar.scrollHeight > sidebar.clientHeight) {
-            var activeLi = sidebar.querySelector('.active');
+        if (cachedSidebar && cachedSidebar.offsetParent !== null && cachedSidebar.scrollHeight > cachedSidebar.clientHeight) {
+            var activeLi = cachedSidebar.querySelector('.active');
             if (activeLi) {
-                var liTop = activeLi.offsetTop - sidebar.offsetTop;
-                var viewTop = sidebar.scrollTop;
-                var viewBottom = viewTop + sidebar.clientHeight;
+                var liTop = activeLi.offsetTop - cachedSidebar.offsetTop;
+                var viewTop = cachedSidebar.scrollTop;
+                var viewBottom = viewTop + cachedSidebar.clientHeight;
                 if (liTop < viewTop || liTop > viewBottom - 30) {
-                    sidebar.scrollTop = liTop - sidebar.clientHeight / 3;
+                    cachedSidebar.scrollTop = liTop - cachedSidebar.clientHeight / 3;
                 }
             }
         }
@@ -218,6 +236,9 @@
         // Populate mobile catalog
         var mobileUl = document.querySelector('.mobile-catalog-body');
         if (mobileUl) populateList(mobileUl, items);
+
+        // Cache TOC elements for scroll highlight performance
+        cacheTocElements();
 
         // Wire up interactions
         initCatalogToggle();
