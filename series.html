@@ -29,6 +29,7 @@ hide-in-nav: true
       <div class="series-branch">
         <span class="branch-icon">*</span>
         <a href="#series-{{ name | slugify }}" class="branch-name">{{ name }}</a>
+        <span class="series-count">({{ posts.size }}편)</span>
         <span class="branch-meta">{{ posts.size }} commits &middot; {% if first_year == last_year %}{{ first_year }}{% else %}{{ first_year }} ~ {{ last_year }}{% endif %}</span>
       </div>
       <ol class="series-card-posts" id="series-{{ name | slugify }}">
