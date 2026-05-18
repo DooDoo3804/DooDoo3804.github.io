@@ -16,7 +16,6 @@ RSS: "/feed.xml"
 github_username: doodoo3804
 email_address: doodoo3804@gmail.com
 # twitter_username: huxpro
-# facebook_username:  huxpro
 linkedin_username: doodoo3804
 
 # Build settings
@@ -33,7 +32,9 @@ exclude:
     ".staticrypt.json",
     "Makefile",
     "scripts",
-    "pagefind.yml"
+    "pagefind.yml",
+    ".github",
+    "Rakefile"
   ]
 timezone: Asia/Seoul
 

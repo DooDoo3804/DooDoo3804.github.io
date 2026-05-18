@@ -10,9 +10,23 @@ set -euo pipefail
 PASSWORD="${1:-${PAGE_PASSWORD:-}}"
 
 if [ -z "$PASSWORD" ]; then
-  echo "Warning: No password provided. Skipping encryption."
-  echo "Set PAGE_PASSWORD env var or pass as argument: bash scripts/encrypt-pages.sh \"your-password\""
-  exit 0
+  # Check if any source files actually have protected: true
+  PROTECTED_EXISTS=false
+  for f in $(find . -maxdepth 1 \( -name "*.md" -o -name "*.html" \) -not -path "./_site/*" -not -path "./_*/*"); do
+    if awk 'NR==1 && !/^---$/{exit 1} /^---$/{n++; next} n==1 && /^protected:[ \t]*true/{found=1; exit} n>=2{exit} END{if (!found) exit 1}' "$f" 2>/dev/null; then
+      PROTECTED_EXISTS=true
+      break
+    fi
+  done
+
+  if [ "$PROTECTED_EXISTS" = true ]; then
+    echo "Error: Protected pages exist but no password provided."
+    echo "Set PAGE_PASSWORD env var or pass as argument: bash scripts/encrypt-pages.sh \"your-password\""
+    exit 1
+  else
+    echo "No password provided and no protected pages found. Skipping encryption."
+    exit 0
+  fi
 fi
 
 SITE_DIR="_site"
