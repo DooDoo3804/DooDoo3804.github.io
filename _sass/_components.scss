@@ -184,6 +184,8 @@ body.has-mobile-toc #back-to-top {
     position: relative;
     margin: 1.5em 0;
     padding: 1.2em;
+    padding-top: 12px;
+    min-height: 48px;
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;

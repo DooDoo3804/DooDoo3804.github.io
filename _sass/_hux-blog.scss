@@ -306,6 +306,14 @@
     .search-shortcut-hint {
         display: none;
     }
+
+    .search-page {
+        padding-top: 5vh;
+    }
+
+    .search-page #search-results {
+        max-height: 50vh;
+    }
 }
 
 /* --- Body & Typography --- */
@@ -402,8 +410,10 @@ table.table > thead td {
     display: block;
     width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     border: 0;
+    border-radius: var(--radius-md);
 }
 
 .table-responsive > .table {

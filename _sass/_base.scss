@@ -230,8 +230,6 @@ html {
     font-size: 14px;
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    overflow: hidden;
 }
 
 .post-container table th {
@@ -456,6 +454,12 @@ html {
 }
 
 /* --- Post Content - Image Captions --- */
+/* --- Placeholder Style --- */
+::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
 .post-container img + em,
 .post-container figcaption {
     display: block;

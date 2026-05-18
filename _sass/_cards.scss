@@ -11,8 +11,7 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
-  color: var(--text-secondary);
-  opacity: 0.6;
+  color: var(--text-muted);
   margin: 0 0 12px;
 }
 
@@ -50,8 +49,8 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        mask-image: linear-gradient(to right, #000 85%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
 
     .category-filter::-webkit-scrollbar {
