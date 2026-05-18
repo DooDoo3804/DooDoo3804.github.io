@@ -16,10 +16,17 @@ header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
     </div>
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-            <div id="knowledge-graph" class="knowledge-graph-container"></div>
+            <div id="knowledge-graph" class="knowledge-graph-container" role="img" aria-label="Knowledge graph showing connections between blog posts"></div>
             <div id="graph-tooltip" class="graph-tooltip" style="display:none;"></div>
         </div>
     </div>
+    <noscript>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>This interactive knowledge graph requires JavaScript to display. It visualizes connections between blog posts based on shared tags, categories, and series.</p>
+            </div>
+        </div>
+    </noscript>
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -138,6 +145,9 @@ header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
             .on('drag', dragged)
             .on('end', dragended));
 
+    // 노드 접근성 title
+    node.append('title').text(function(d) { return d.title; });
+
     // 노드 라벨
     var label = g.append('g')
         .selectAll('text')
@@ -214,6 +224,6 @@ header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
         svg.attr('width', width);
         simulation.force('center', d3.forceCenter(width / 2, height / 2));
         simulation.alpha(0.3).restart();
-    });
+    }, { passive: true });
 })();
 </script>

@@ -11,7 +11,7 @@
   icon: "icon-globe"
   featured: true
   status: active
-  year: 2024
+  year: 2026
 
 - title: "Spring Boot REST API Server"
   description: "Spring Boot 기반 RESTful API 서버. JPA/Hibernate ORM, PostgreSQL 데이터베이스, Redis 캐싱, JWT 인증/인가, Docker Compose 환경 구성. Swagger API 문서 자동화."

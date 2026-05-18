@@ -12,7 +12,7 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - **Hosting:** GitHub Pages (via GitHub Actions CI/CD)
 - **Comments:** Giscus (GitHub Discussions-backed)
 - **Fonts:** Inter, JetBrains Mono (Google Fonts)
-- **Icons:** Font Awesome 6
+- **Icons:** Custom SVG sprite (`icons.svg`)
 
 ## Features
 
@@ -89,31 +89,9 @@ bundle exec jekyll serve
 # Site will be available at http://localhost:4000
 ```
 
-## TODO (나중에 직접 처리)
+## Giscus 댓글
 
-- [ ] **Giscus repo_id / category_id 교체** — `_config.yml`에 플레이스홀더 상태. [giscus.app](https://giscus.app) 에서 값 발급 후 교체 필요
-
----
-
-## Giscus 댓글 설정
-
-댓글 기능 활성화를 위해 `_config.yml`의 `giscus` 섹션에 실제 값을 입력해야 합니다.
-
-1. [giscus.app](https://giscus.app) 에서 레포 연동 후 `repo_id`, `category_id` 발급
-2. `_config.yml` 수정:
-
-```yaml
-giscus:
-  repo: "DooDoo3804/DooDoo3804.github.io"
-  repo_id: "REPLACE_WITH_REPO_ID"         # ← 여기 교체
-  category: "Announcements"
-  category_id: "REPLACE_WITH_CATEGORY_ID" # ← 여기 교체
-  mapping: "pathname"
-  theme_light: "light"
-  theme_dark: "transparent_dark"
-```
-
-> GitHub 레포 Settings → Discussions 탭이 활성화되어 있어야 합니다.
+Giscus 댓글 시스템은 `_config.yml`의 `giscus` 섹션에 설정 완료 상태. GitHub Discussions 기반으로 동작하며, 다크모드 자동 연동됨.
 
 ## License
 

@@ -1,16 +1,11 @@
 {% if site.goatcounter.enabled %}
-  {% if site.goatcounter.code == "REPLACE_WITH_YOUR_CODE" %}
-  <!-- [GoatCounter] code is still a placeholder. Sign up at https://www.goatcounter.com and set goatcounter.code in _config.yml -->
-  {% else %}
-  <!-- GoatCounter Analytics — skip on localhost -->
-  <script>
-    var devHosts = ['localhost','127.0.0.1','0.0.0.0','::1',''];
-    if (devHosts.indexOf(location.hostname) === -1) {
-      var s = document.createElement('script');
-      s.dataset.goatcounter = 'https://{{ site.goatcounter.code }}.goatcounter.com/count';
-      s.src = 'https://gc.zgo.at/count.js';
-      document.head.appendChild(s);
-    }
-  </script>
-  {% endif %}
+<script>
+  var devHosts = ['localhost','127.0.0.1','0.0.0.0','::1',''];
+  if (devHosts.indexOf(location.hostname) === -1) {
+    var s = document.createElement('script');
+    s.dataset.goatcounter = 'https://{{ site.goatcounter.code }}.goatcounter.com/count';
+    s.src = 'https://gc.zgo.at/count.js';
+    document.head.appendChild(s);
+  }
+</script>
 {% endif %}
