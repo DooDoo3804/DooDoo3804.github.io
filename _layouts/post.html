@@ -12,23 +12,23 @@ layout: default
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <h1 class="post-heading">{{ page.title }}</h1>
-          {% if page.subtitle %}
+          {%- if page.subtitle %}
           <p class="post-subheading">{{ page.subtitle }}</p>
-          {% endif %}
+          {%- endif %}
           <div class="post-meta-header">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-            {% assign mod_date = page.last_modified_at | date: "%Y-%m-%d" %}
-            {% assign pub_date = page.date | date: "%Y-%m-%d" %}
-            {% if page.last_modified_at and mod_date != pub_date %}
+            {%- assign mod_date = page.last_modified_at | date: "%Y-%m-%d" -%}
+            {%- assign pub_date = page.date | date: "%Y-%m-%d" -%}
+            {%- if page.last_modified_at and mod_date != pub_date %}
             <span class="post-meta-sep">&middot;</span>
             <span class="post-updated">Updated {{ page.last_modified_at | date: "%Y-%m-%d" }}</span>
-            {% endif %}
+            {%- endif %}
             <span class="post-meta-sep">&middot;</span>
             <span>{% include read-time.html content=page.content %}</span>
-            {% if page.tags.size > 0 %}
+            {%- if page.tags.size > 0 %}
             <span class="post-meta-sep">&middot;</span>
-            <span class="post-header-tags">{% for tag in page.tags %}#{{ tag | downcase }}{% unless forloop.last %} {% endunless %}{% endfor %}</span>
-            {% endif %}
+            <span class="post-header-tags">{%- for tag in page.tags %}#{{ tag | downcase }}{%- unless forloop.last %} {%- endunless -%}{%- endfor %}</span>
+            {%- endif %}
           </div>
         </div>
       </div>
@@ -51,70 +51,70 @@ layout: default
                 </div>
 
                 <!-- Multi-Lingual -->
-                {% if page.multilingual %}
+                {%- if page.multilingual %}
                     {% include multilingual-sel.html %}
-                {% endif %}
+                {%- endif %}
 
 				{{ content }}
 
                 <!-- Series Navigation (posts with same series frontmatter) -->
-                {% if page.series %}
-                {% assign series_posts = "" | split: "" %}
-                {% for p in site.posts %}
-                    {% if p.series == page.series %}
-                        {% assign series_posts = series_posts | push: p %}
-                    {% endif %}
-                {% endfor %}
-                {% if series_posts.size > 1 %}
-                {% assign reversed_series = series_posts | reverse %}
-                {% assign current_index = 0 %}
-                {% for p in reversed_series %}
-                    {% if p.url == page.url %}
-                        {% assign current_index = forloop.index %}
-                    {% endif %}
-                {% endfor %}
+                {%- if page.series -%}
+                {%- assign series_posts = "" | split: "" -%}
+                {%- for p in site.posts -%}
+                    {%- if p.series == page.series -%}
+                        {%- assign series_posts = series_posts | push: p -%}
+                    {%- endif -%}
+                {%- endfor -%}
+                {%- if series_posts.size > 1 -%}
+                {%- assign reversed_series = series_posts | reverse -%}
+                {%- assign current_index = 0 -%}
+                {%- for p in reversed_series -%}
+                    {%- if p.url == page.url -%}
+                        {%- assign current_index = forloop.index -%}
+                    {%- endif -%}
+                {%- endfor %}
                 <nav class="series-nav" aria-label="Series navigation">
                     <h4 class="series-nav-title"><svg class="icon" aria-hidden="true"><use href="#icon-layer-group"/></svg> {{ page.series }} <span class="series-count">{{ reversed_series.size }}편 중 {{ current_index }}편</span></h4>
                     <div class="series-progress" role="progressbar" aria-valuenow="{{ current_index }}" aria-valuemin="1" aria-valuemax="{{ reversed_series.size }}" aria-label="Series progress">
                         <div class="series-progress-fill" style="width: {{ current_index | times: 100 | divided_by: reversed_series.size }}%"></div>
                     </div>
                     <ol class="series-list">
-                    {% for p in reversed_series %}
-                        <li class="series-item{% if p.url == page.url %} series-item--current{% endif %}">
-                            {% if p.url == page.url %}
+                    {%- for p in reversed_series %}
+                        <li class="series-item{%- if p.url == page.url %} series-item--current{%- endif %}">
+                            {%- if p.url == page.url %}
                                 <span class="series-item-title">{{ p.title }}</span>
                                 <span class="series-item-current-badge">Current</span>
-                            {% else %}
+                            {%- else %}
                                 <a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
-                            {% endif %}
+                            {%- endif %}
                         </li>
-                    {% endfor %}
+                    {%- endfor %}
                     </ol>
 
-                    {% assign prev_series = nil %}
-                    {% assign next_series = nil %}
-                    {% assign found_current = false %}
-                    {% for p in reversed_series %}
-                        {% if found_current %}
-                            {% assign next_series = p %}
-                            {% break %}
-                        {% endif %}
-                        {% if p.url == page.url %}
-                            {% assign found_current = true %}
-                        {% else %}
-                            {% assign prev_series = p %}
-                        {% endif %}
-                    {% endfor %}
+                    {%- assign prev_series = nil -%}
+                    {%- assign next_series = nil -%}
+                    {%- assign found_current = false -%}
+                    {%- for p in reversed_series -%}
+                        {%- if found_current -%}
+                            {%- assign next_series = p -%}
+                            {%- break -%}
+                        {%- endif -%}
+                        {%- if p.url == page.url -%}
+                            {%- assign found_current = true -%}
+                        {%- else -%}
+                            {%- assign prev_series = p -%}
+                        {%- endif -%}
+                    {%- endfor %}
 
-                    {% if prev_series or next_series %}
+                    {%- if prev_series or next_series %}
                     <div class="series-pager">
-                        {% if prev_series %}<a href="{{ prev_series.url | prepend: site.baseurl }}" class="series-prev">&larr; {{ prev_series.title | truncate: 40 }}</a>{% endif %}
-                        {% if next_series %}<a href="{{ next_series.url | prepend: site.baseurl }}" class="series-next">{{ next_series.title | truncate: 40 }} &rarr;</a>{% endif %}
+                        {%- if prev_series %}<a href="{{ prev_series.url | prepend: site.baseurl }}" class="series-prev">&larr; {{ prev_series.title | truncate: 40 }}</a>{%- endif %}
+                        {%- if next_series %}<a href="{{ next_series.url | prepend: site.baseurl }}" class="series-next">{{ next_series.title | truncate: 40 }} &rarr;</a>{%- endif %}
                     </div>
-                    {% endif %}
+                    {%- endif %}
                 </nav>
-                {% endif %}
-                {% endif %}
+                {%- endif -%}
+                {%- endif %}
 
                 {% include related-posts.html %}
 
@@ -139,22 +139,22 @@ layout: default
 
                 <hr class="spacer-hidden">
                 <ul class="pager" data-pagefind-ignore>
-                    {% if page.previous.url %}
+                    {%- if page.previous.url %}
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" title="{{page.previous.title}}">
                         <span class="pager-label">&larr; prev</span>
                         <span class="pager-title">{{page.previous.title | truncate:55}}</span>
                         </a>
                     </li>
-                    {% endif %}
-                    {% if page.next.url %}
+                    {%- endif -%}
+                    {%- if page.next.url %}
                     <li class="next">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" title="{{page.next.title}}">
                         <span class="pager-label">next &rarr;</span>
                         <span class="pager-title">{{page.next.title | truncate:55}}</span>
                         </a>
                     </li>
-                    {% endif %}
+                    {%- endif %}
                 </ul>
 
                 <hr class="spacer-hidden">
@@ -163,7 +163,7 @@ layout: default
             </div>  
 
     <!-- Side Catalog Container -->
-        {% unless page.no-catalog %}
+        {%- unless page.no-catalog %}
             <div class="
                 col-lg-2 col-lg-offset-0
                 visible-lg-block
@@ -188,7 +188,7 @@ layout: default
                     <ul class="mobile-catalog-body"></ul>
                 </div>
             </div>
-        {% endunless %}
+        {%- endunless %}
 
     <!-- Sidebar Container -->
             <div class="
@@ -219,6 +219,7 @@ layout: default
 <!-- Lazy-load post images (markdown-generated imgs lack loading attr) -->
 <script>
 (function(){
+    'use strict';
     var imgs = document.querySelectorAll('.post-container img');
     imgs.forEach(function(img) {
         if (!img.hasAttribute('loading')) {
@@ -240,6 +241,7 @@ layout: default
 </div>
 <script>
 (function() {
+    'use strict';
     var overlay = document.getElementById('lightbox-overlay');
     var lbImg = document.getElementById('lightbox-img');
     var lbCaption = document.getElementById('lightbox-caption');
@@ -272,7 +274,7 @@ layout: default
     article.querySelectorAll('.post-container img').forEach(function(img) {
         img.setAttribute('tabindex', '0');
         img.setAttribute('role', 'button');
-        img.setAttribute('aria-label', (img.alt || 'Image') + ' — 클릭하여 크게 보기');
+        img.setAttribute('aria-label', (img.alt || '이미지') + ' — 클릭하여 크게 보기');
         img.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -352,15 +354,16 @@ layout: default
 <!-- Screen reader live region for copy/share announcements -->
 <div id="sr-status" aria-live="polite" class="sr-only"></div>
 
-{% if page.mathjax %}
+{%- if page.mathjax %}
   {% include mathjax_support.html %}
-{% endif %}
+{%- endif %}
 
 
 
 <!-- Heading anchors — hover to show #, click to copy permalink -->
 <script>
 (function() {
+    'use strict';
     var headings = document.querySelectorAll('.post-container h2[id], .post-container h3[id], .post-container h4[id]');
     headings.forEach(function(h) {
         var link = document.createElement('a');
@@ -404,6 +407,7 @@ layout: default
 <!-- External Links: target="_blank" + rel="noopener noreferrer" -->
 <script>
 (function() {
+    'use strict';
     var host = location.hostname;
     var links = document.querySelectorAll('.post-container a[href^="http"]');
     links.forEach(function(a) {
@@ -435,6 +439,7 @@ layout: default
 <!-- Resume Reading: remember scroll position and offer to restore -->
 <script>
 (function() {
+    'use strict';
     var STORAGE_PREFIX = 'reading-pos-';
     var DEBOUNCE_MS = 500;
     var MIN_PCT = 10;

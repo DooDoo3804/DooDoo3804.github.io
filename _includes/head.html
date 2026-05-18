@@ -2,6 +2,9 @@
     <meta charset="utf-8">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    {% if paginator and paginator.page > 1 %}
+    <meta name="robots" content="noindex, follow">
+    {% endif %}
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.layout == 'post' or page.path contains '_posts/' %}{{ page.excerpt | strip_html | truncate:155 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keyword }}{% endif %}">
