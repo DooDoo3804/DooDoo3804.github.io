@@ -155,7 +155,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": {{ page.tags.first | jsonify }},
-                "item": "{{ site.url }}{{ site.baseurl }}/archive/?tag={{ page.tags.first | url_encode }}"
+                "item": "{{ site.url }}{{ site.baseurl }}/tags/#tag-{{ page.tags.first | slugify }}"
             },{% endif %}
             {
                 "@type": "ListItem",
