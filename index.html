@@ -70,7 +70,7 @@ description: "Backend Developer"
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class="category-filter">
-    <button class="category-btn active" data-filter="all">*</button>
+    <button class="category-btn active" data-filter="all" aria-pressed="true">*</button>
     {% assign all_tags = "" | split: "" %}
     {% for post in site.posts %}
         {% for tag in post.tags %}
@@ -81,7 +81,7 @@ description: "Backend Developer"
         {% endfor %}
     {% endfor %}
     {% for tag in all_tags %}
-    <button class="category-btn" data-filter="{{ tag }}">#{{ tag | downcase }}</button>
+    <button class="category-btn" data-filter="{{ tag }}" aria-pressed="false">#{{ tag | downcase }}</button>
     {% endfor %}
 </div>
 

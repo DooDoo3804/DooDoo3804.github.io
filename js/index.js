@@ -17,8 +17,12 @@
             btn.addEventListener('click', function() {
                 var filter = this.getAttribute('data-filter');
 
-                buttons.forEach(function(b) { b.classList.remove('active'); });
+                buttons.forEach(function(b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
 
                 var visibleCount = 0;
                 items.forEach(function(item) {

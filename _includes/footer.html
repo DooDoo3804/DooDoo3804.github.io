@@ -5,7 +5,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="footer-content">
                     <span class="footer-copyright">// &copy; {{ site.time | date: '%Y' }} DoYoon Kim</span>
-                    <nav class="footer-links">
+                    <nav class="footer-links" aria-label="Footer navigation">
                         <a href="{{ "/" | prepend: site.baseurl }}">Home</a>
                         <a href="{{ "/archive/" | prepend: site.baseurl }}">Archive</a>
                         <a href="{{ "/categories/" | prepend: site.baseurl }}">Categories</a>
@@ -24,9 +24,9 @@
 <!-- Konami Code Easter Egg -->
 <script>
 (function() {
-    var k = [38,38,40,40,37,39,37,39,66,65], n = 0;
+    var k = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'], n = 0;
     document.addEventListener('keydown', function(e) {
-        if (e.keyCode === k[n]) {
+        if (e.key === k[n]) {
             n++;
             if (n === k.length) {
                 n = 0;

@@ -52,6 +52,7 @@
   ],
   "background_color": "#1e1e2e",
   "theme_color": "#1e1e2e",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
