@@ -778,9 +778,7 @@ code.has-line-numbers .code-line::before {
     font-size: inherit;
 }
 
-/* --- Side Catalog Sticky Fix --- */
-/* hux-blog.min.js toggles .fixed class (position:fixed; top:-21px) on scroll.
-   Replace with position:sticky so the catalog stays in its column bounds. */
+/* --- Side Catalog Sticky --- */
 .side-catalog {
     position: sticky !important;
     top: 80px !important;

@@ -102,7 +102,7 @@ self.addEventListener('install', e => {
     caches.open(CACHE).then(cache => {
       return cache.addAll(PRECACHE_LIST)
         .then(() => self.skipWaiting())
-        .catch(err => console.log(err))
+        .catch(function() {})
     })
   )
 });
@@ -121,7 +121,6 @@ self.addEventListener('activate', event => {
         .filter(cacheName => cacheName.startsWith(CACHE_NAMESPACE) && cacheName !== CACHE)
         .map(cacheName => caches.delete(cacheName))
     )).then(() => {
-      console.log('service worker activated.');
       return self.clients.claim();
     })
   );
@@ -242,7 +241,6 @@ self.addEventListener('fetch', event => {
 function sendMessageToAllClients(msg) {
   self.clients.matchAll().then(clients => {
     clients.forEach(client => {
-      console.log(client);
       client.postMessage(msg)
     })
   })
@@ -262,7 +260,6 @@ function sendMessageToClientsAsync(msg) {
 
 /**
  * if content modified, we can notify clients to refresh
- * TODO: Gh-pages rebuild everything in each release. should find a workaround (e.g. ETag with cloudflare)
  *
  * @param  {Promise<response>} cachedResp  [description]
  * @param  {Promise<response>} fetchedResp [description]
@@ -275,7 +272,6 @@ function revalidateContent(cachedResp, fetchedResp) {
       if (!cached || !fetched) return;
       const cachedVer = cached.headers.get('last-modified')
       const fetchedVer = fetched.headers.get('last-modified')
-      console.log(`"${cachedVer}" vs. "${fetchedVer}"`);
       if (cachedVer !== fetchedVer) {
         sendMessageToClientsAsync({
           'command': 'UPDATE_FOUND',
@@ -283,5 +279,5 @@ function revalidateContent(cachedResp, fetchedResp) {
         })
       }
     })
-    .catch(err => console.log(err))
+    .catch(function() {})
 }
