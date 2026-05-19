@@ -1,6 +1,6 @@
 ---
 layout: default
-description: "Software Developer"
+description: "Backend Developer"
 ---
 
 <!-- Author Hero Section -->
@@ -40,7 +40,7 @@ description: "Software Developer"
                 <span class="stats-sep">&middot;</span>
                 <span>{{ site.categories.size }} categories</span>
                 <span class="stats-sep">&middot;</span>
-                <span>since 2024</span>
+                <span>since {{ site.posts.last.date | date: "%Y" }}</span>
             </div>
         </div>
     </div>
@@ -88,6 +88,11 @@ description: "Software Developer"
 <div class="post-list">
 {% assign post_list = paginator.posts | default: site.posts %}
 {% for post in post_list %}
+  {% assign is_pinned = false %}
+  {% for pin_url in site.pinned_posts %}
+    {% if post.url == pin_url %}{% assign is_pinned = true %}{% break %}{% endif %}
+  {% endfor %}
+  {% if is_pinned %}{% continue %}{% endif %}
 <article class="post-item" data-tags="{{ post.tags | join: ',' | downcase }}" data-category="{{ post.categories | first | downcase }}">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-item-title"><span class="cat-dot" style="background: var(--cat-{{ post.categories | first | downcase }})"></span>{{ post.title }}</h2>

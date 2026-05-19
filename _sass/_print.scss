@@ -249,4 +249,10 @@
         margin: 0 !important;
         padding: 0 !important;
     }
+
+    /* Sprint 103: additional print-hidden elements */
+    .series-pager { display: none !important; }
+    .cat-dot { display: none !important; }
+    .hero-intro { display: none !important; }
+    figcaption { font-style: italic; font-size: 11pt; color: #555; text-align: center; }
 }
