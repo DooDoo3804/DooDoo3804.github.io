@@ -15,11 +15,17 @@ nav-order: 2
   <span class="code-key">"dependencies"</span>: {</code></pre>
 
     {% for project in site.data.projects %}
-    <div class="pkg-dep">
+    <div class="pkg-dep{% if project.featured %} pkg-dep--featured{% endif %}">
       <div class="pkg-dep-header">
-        <span class="pkg-dep-name">{% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">"{{ project.title | slugify }}"</a>{% else %}"{{ project.title | slugify }}"{% endif %}</span>: <span class="pkg-dep-version">"{{ project.year }}.0.0"</span>{% unless forloop.last %},{% endunless %}
+        {% if project.featured %}<span class="pkg-dep-star" title="Featured">⭐</span> {% endif %}<span class="pkg-dep-name">{% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">"{{ project.title | slugify }}"</a>{% else %}"{{ project.title | slugify }}"{% endif %}</span>: <span class="pkg-dep-version">"{{ project.year }}.0.0"</span>{% unless forloop.last %},{% endunless %}
       </div>
       <p class="pkg-dep-desc">// {{ project.description }}</p>
+      {% if project.status %}
+      <div class="pkg-dep-field"><span class="code-key">"status"</span>: <span class="pkg-dep-status pkg-dep-status--{{ project.status }}">"{{ project.status }}"</span></div>
+      {% endif %}
+      {% if project.demo %}
+      <div class="pkg-dep-field"><span class="code-key">"demo"</span>: <span class="pkg-dep-demo"><a href="{{ project.demo }}" target="_blank" rel="noopener">"{{ project.demo }}"</a></span></div>
+      {% endif %}
       {% if project.tech %}
       <div class="pkg-dep-tech">{% for t in project.tech %}<span>#{{ t | downcase }}</span> {% endfor %}</div>
       {% endif %}
