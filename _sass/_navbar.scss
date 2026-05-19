@@ -228,6 +228,12 @@
         color: var(--accent-primary);
     }
 
+    .navbar-custom.is-fixed .nav li.active > a,
+    .navbar-custom.invert .nav li.active > a {
+        border-bottom: 2px solid var(--accent-primary);
+        padding-bottom: 18px; /* 기존 20px에서 2px 줄여 보상 */
+    }
+
     .navbar-custom.is-visible {
         transform: translate3d(0, 100%, 0);
     }

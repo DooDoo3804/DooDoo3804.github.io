@@ -25,6 +25,8 @@ layout: default
             {%- endif %}
             <span class="post-meta-sep">&middot;</span>
             <span>{% include read-time.html content=page.content %}</span>
+            <span class="post-meta-sep">&middot;</span>
+            <span>{{ page.content | strip_html | number_of_words }} words</span>
             {%- if page.tags.size > 0 %}
             <span class="post-meta-sep">&middot;</span>
             <span class="post-header-tags">{%- for tag in page.tags %}#{{ tag | downcase }}{%- unless forloop.last %} {%- endunless -%}{%- endfor %}</span>
@@ -227,6 +229,15 @@ layout: default
         }
         if (!img.hasAttribute('decoding')) {
             img.setAttribute('decoding', 'async');
+        }
+        // alt가 있고 figure 안에 없으면 figure+figcaption 래핑
+        if (img.alt && img.alt.trim() && !img.closest('figure')) {
+            var figure = document.createElement('figure');
+            var caption = document.createElement('figcaption');
+            caption.textContent = img.alt;
+            img.parentNode.insertBefore(figure, img);
+            figure.appendChild(img);
+            figure.appendChild(caption);
         }
     });
 })();

@@ -70,6 +70,10 @@ hide-in-nav: true
                             {% assign display_name = "Backend" %}
                             {% assign cat_icon = "icon-server" %}
                             {% assign cat_desc = "Backend architecture, caching, messaging, and server-side patterns" %}
+                        {% when 'jvm' %}
+                            {% assign display_name = "JVM" %}
+                            {% assign cat_icon = "icon-microchip" %}
+                            {% assign cat_desc = "JVM internals and optimization" %}
                         {% else %}
                             {% assign display_name = cat_name | capitalize %}
                             {% assign cat_icon = "icon-folder" %}
@@ -93,6 +97,9 @@ hide-in-nav: true
                                 {% for post in sorted_posts limit:3 %}
                                 <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
                                 {% endfor %}
+                                {% if sorted_posts.size > 3 %}
+                                <li class="cat-card-more">and {{ sorted_posts.size | minus: 3 }} more...</li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -117,6 +124,7 @@ hide-in-nav: true
                     {% when 'spring' %}{% assign display_name = "Spring" %}
                     {% when 'system-design' %}{% assign display_name = "System Design" %}
                     {% when 'backend' %}{% assign display_name = "Backend" %}
+                    {% when 'jvm' %}{% assign display_name = "JVM" %}
                     {% else %}{% assign display_name = cat_name | capitalize %}
                 {% endcase %}
                 <div class="tags-group category-group cat-group--{{ cat_name }}" id="cat-{{ cat_name | slugify }}">

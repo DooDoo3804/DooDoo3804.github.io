@@ -991,6 +991,16 @@
     text-decoration: underline;
 }
 
+.cat-card-more {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.cat-card-more::before {
+    content: none;
+}
+
 [data-theme="dark"] .cat-card {
     border-color: var(--border-medium);
     background: var(--bg-surface-raised);
