@@ -511,5 +511,19 @@
                 if (url) { closeSearch(); window.location.href = url; }
             }
         });
+
+        // Focus trap: keep Tab inside search modal
+        document.addEventListener('keydown', function(e) {
+            if (!searchPage || !searchPage.classList.contains('search-active') || e.key !== 'Tab') return;
+            var focusable = searchPage.querySelectorAll('input, button, a[href], [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        });
     });
 </script>

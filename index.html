@@ -99,7 +99,7 @@ description: "Backend Developer"
         {% if post.subtitle %}
         <p class="post-item-excerpt">{{ post.subtitle }}</p>
         {% else %}
-        <p class="post-item-excerpt">{{ post.content | strip_html | truncate: 120 }}</p>
+        <p class="post-item-excerpt">{{ post.content | strip_html | truncatewords: 25 }}</p>
         {% endif %}
         <div class="post-item-meta">
             <time class="post-date" data-date="{{ post.date | date_to_xmlschema }}" title="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y-%m-%d" }}</time>

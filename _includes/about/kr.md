@@ -9,7 +9,8 @@
   - <span class="code-string">Docker / Kubernetes</span>
 <span class="code-key">links</span>:
   <span class="code-key">github</span>: <span class="code-string">"<a href="https://github.com/DooDoo3804" target="_blank" rel="noopener noreferrer">github.com/DooDoo3804</a>"</span>
-  <span class="code-key">email</span>: <span class="code-string">"<a href="mailto:doodoo3804@gmail.com">doodoo3804@gmail.com</a>"</span></code></pre>
+  <span class="code-key">email</span>: <span class="code-string">"<a href="mailto:doodoo3804@gmail.com">doodoo3804@gmail.com</a>"</span>
+  <span class="code-key">linkedin</span>: <span class="code-string">"<a href="https://www.linkedin.com/in/doodoo3804" target="_blank" rel="noopener noreferrer">linkedin.com/in/doodoo3804</a>"</span></code></pre>
 </div>
 
 <div class="about-section">
