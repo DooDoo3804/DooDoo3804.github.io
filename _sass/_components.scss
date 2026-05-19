@@ -858,6 +858,16 @@ code.has-line-numbers .code-line::before {
     background: rgba(var(--accent-color-raw), 0.08);
 }
 
+/* Catalog fold/unfold (Sprint 77) */
+.side-catalog.fold .catalog-body {
+    display: none;
+}
+
+.side-catalog.fold h5 a::after {
+    content: " [+]";
+    font-size: 10px;
+}
+
 /* Completed TOC link — already-read sections */
 .side-catalog .catalog-body li.completed a {
     color: var(--color-success);

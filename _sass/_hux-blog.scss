@@ -69,6 +69,7 @@
 
 .catalog-container {
     padding: 0;
+    width: 100%; /* 부모 col-lg-2의 폭에 맞춤 — fold/unfold 시 폭 고정 */
 }
 
 /* Side-catalog styles moved to _components.scss (Sprint 18) */

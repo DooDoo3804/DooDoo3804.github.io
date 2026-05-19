@@ -494,16 +494,18 @@
 /* Tag cloud weight classes */
 .tag-import.tag-weight-sm {
     font-size: 13px;
+    opacity: 0.7;
 }
 
 .tag-import.tag-weight-md {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .tag-import.tag-weight-lg {
     font-size: 16px;
     font-weight: 700;
+    color: var(--text-primary); /* 더 진하게 */
 }
 
 [data-theme="dark"] .import-keyword,
