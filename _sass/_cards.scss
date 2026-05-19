@@ -43,7 +43,7 @@
     border-bottom: 1px solid var(--border-light);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .category-filter {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -279,7 +279,7 @@
 }
 
 /* Post list mobile */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .post-item-title {
         font-size: 19px;
     }

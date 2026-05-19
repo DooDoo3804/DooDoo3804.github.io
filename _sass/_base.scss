@@ -20,6 +20,8 @@ body {
 
 .post-container p {
     margin-bottom: 24px;
+    orphans: 2;
+    widows: 2;
 }
 
 .post-container h1, .post-container h2, .post-container h3, .post-container h4 {
