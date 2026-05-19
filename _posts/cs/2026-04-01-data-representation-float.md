@@ -10,7 +10,6 @@ catalog: true
 series: "CS Fundamentals"
 keywords: "ieee 754, floating point, single precision, double precision, NaN"
 tags:
-  - CS
   - CS Fundamentals
 categories:
   - cs

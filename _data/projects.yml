@@ -22,7 +22,7 @@
     - PostgreSQL
     - Redis
     - Docker
-  github: "https://github.com/DooDoo3804/spring-boot-api-server"
+  github: "https://github.com/DooDoo3804/spring-boot-rest-api-server"
   icon: "icon-server"
   featured: true
   status: active
