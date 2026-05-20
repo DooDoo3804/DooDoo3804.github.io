@@ -192,13 +192,12 @@
         border: 1px solid #ccc !important;
     }
 
-    .post-container details[open],
-    .post-container details:not([open]) {
-        open: true;
+    .post-container details > * {
+        display: block !important;
     }
 
-    .post-container details:not([open]) > *:not(summary) {
-        display: block !important;
+    .post-container details summary::after {
+        content: " (expanded)" !important;
     }
 
     .post-container details summary::before {

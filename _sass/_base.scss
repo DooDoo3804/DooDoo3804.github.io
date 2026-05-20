@@ -1,7 +1,7 @@
 /* --- Typography --- */
 
 body {
-    font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-family: var(--font-sans);
 }
 
 .post-container {
