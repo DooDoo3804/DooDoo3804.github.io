@@ -461,17 +461,17 @@ code.has-line-numbers .code-line::before {
 }
 
 .series-progress {
-    height: 4px;
+    height: 6px;
     background: var(--border-light);
-    border-radius: 2px;
+    border-radius: 3px;
     margin: 12px 0 16px;
     overflow: hidden;
 }
 
 .series-progress-fill {
     height: 100%;
-    background: var(--accent-primary);
-    border-radius: 2px;
+    background: var(--accent-gradient);
+    border-radius: 3px;
     transition: width 0.5s ease;
 }
 
@@ -596,9 +596,7 @@ code.has-line-numbers .code-line::before {
 }
 
 .related-posts h4.related-posts-heading::before {
-    content: "// ";
-    font-family: var(--font-mono);
-    color: var(--text-secondary);
+    content: none;
 }
 
 .related-posts-grid {

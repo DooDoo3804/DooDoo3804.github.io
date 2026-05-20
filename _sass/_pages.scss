@@ -375,11 +375,7 @@
 }
 
 .page-heading::before {
-    content: "// ";
-    color: var(--text-secondary);
-    opacity: 0.4;
-    font-family: var(--font-mono);
-    font-weight: 400;
+    content: none;
 }
 
 /* ========================================
@@ -914,8 +910,7 @@
     cursor: pointer;
     display: flex;
     gap: 14px;
-    padding: 20px;
-    padding-top: 24px;
+    padding: 28px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     background: var(--bg-surface);
@@ -958,8 +953,8 @@
 
 .cat-card-icon {
     flex-shrink: 0;
-    width: 46px;
-    height: 46px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -967,7 +962,7 @@
     background: rgba(0, 0, 0, 0.05);
     background: color-mix(in srgb, var(--cat-accent) 14%, transparent);
     color: var(--cat-accent);
-    font-size: 20px;
+    font-size: 24px;
 }
 
 [data-theme="dark"] .cat-card-icon {
@@ -1279,9 +1274,7 @@
 }
 
 .about-section-title::before {
-    content: "## ";
-    color: var(--text-secondary);
-    opacity: 0.4;
+    content: none;
 }
 
 /* --- About Text --- */

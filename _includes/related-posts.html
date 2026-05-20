@@ -1,12 +1,12 @@
 {% comment %}
   Related Posts Component
-  Shows up to 6 related posts with weighted scoring.
+  Shows up to 3 related posts with weighted scoring.
   Priority: same series > tag overlap (3+, 2, 1) × category boost > category-only > recent.
   Within each bucket, posts are naturally sorted newest-first by Jekyll.
   Single-pass collection with bucket sorting for performance.
 {% endcomment %}
 
-{% assign maxRelated = 6 %}
+{% assign maxRelated = 3 %}
 {% assign currentCat = page.categories | first %}
 {% assign series_matches = "" | split: "" %}
 {% assign tag3_cat_matches = "" | split: "" %}
