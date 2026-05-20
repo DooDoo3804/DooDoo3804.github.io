@@ -108,9 +108,8 @@
         align-items: center;
         gap: 12px;
     }
-    .hero-code-block {
-        font-size: 11px;
-        padding: 14px 16px;
+    .author-hero-code {
+        display: none;
     }
 }
 
@@ -203,10 +202,17 @@ body.has-mobile-toc #back-to-top {
     padding-top: 2.2em;
 }
 
-/* Code blocks same width as body text */
+/* Code blocks same width as body text; breakout on large screens */
 .post-container .highlighter-rouge {
     margin-left: 0;
     margin-right: 0;
+}
+
+@media (min-width: 992px) {
+    .post-container .highlighter-rouge {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
 }
 
 /* 코드블록 언어 라벨 — 좌상단 배치 (Sprint 86) */

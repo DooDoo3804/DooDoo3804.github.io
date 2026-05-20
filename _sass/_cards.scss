@@ -21,16 +21,21 @@
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
-  padding: 6px 12px;
-  margin-bottom: 4px;
-  transition: color 0.15s, background-color 0.15s;
+  padding: 12px 16px;
+  margin-bottom: 6px;
+  border: 1px solid var(--border-light);
   border-left: 3px solid var(--accent-primary);
-  background: rgba(var(--accent-color-raw), 0.02);
   border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+  background: rgba(var(--accent-color-raw), 0.02);
+  transition: all 0.15s;
 }
 
 .pinned-item:hover {
   color: var(--accent-primary);
+  background: rgba(var(--accent-color-raw), 0.06);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+  text-decoration: none;
 }
 
 /* --- Category Filter Bar --- */
