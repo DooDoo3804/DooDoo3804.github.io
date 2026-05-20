@@ -12,16 +12,15 @@
     --accent-color-raw: 14, 165, 233;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-    --text-primary: #333;
-    --text-muted: #525960;
-    --text-secondary: #767676;
+    --text-primary: #1a1a2e;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
     --bg-surface: #fff;
     --bg-surface-raised: #fff;
     --border-light: #e8e8e8;
     --border-medium: #dee2e6;
     --border-subtle: #e1e4e8;
     --border-divider: #f0f0f0;
-    --text-tertiary: #666;
     --heading-dark: #1a1a2e;
     --text-on-accent: #fff;
     --text-base: #1a1a2e;
@@ -35,9 +34,9 @@
     --space-4: 16px;
 
     /* Shadow tokens */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
 
     /* Border-radius tokens */
     --radius-sm: 4px;
@@ -75,15 +74,14 @@
     --accent-secondary: #94a3b8;
     --accent-color-raw: 108, 180, 255;
     --text-primary: #e6edf3;
-    --text-muted: #9aa0a6;
     --text-secondary: #9ca3af;
-    --bg-surface: #0d1117;
-    --bg-surface-raised: #161b22;
+    --text-muted: #6b7280;
+    --bg-surface: #111827;
+    --bg-surface-raised: #1e293b;
     --border-light: #30363d;
     --border-medium: #444;
     --border-subtle: #21262d;
     --border-divider: #1c2128;
-    --text-tertiary: #848d97;
     --heading-dark: #c9d1d9;
     --text-on-accent: #0d1117;
     --text-base: #c9d1d9;
@@ -91,6 +89,11 @@
     --color-success: #3fb950;
     --accent-hover: #79b8ff;
     --bg-surface-hover: #1f2937;
+
+    /* Shadow tokens — slightly stronger for dark backgrounds */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.12);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.25), 0 4px 6px -2px rgba(0,0,0,0.12);
 }
 
 // Breakpoints (define only — gradual adoption in future sprints)

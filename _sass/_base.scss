@@ -42,8 +42,8 @@ body {
 
 /* --- Blockquote --- */
 .post-container blockquote {
-    border-left: 3px solid var(--accent-primary);
-    background: none;
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.04);
     border-radius: 0;
     padding: 4px 0 4px 20px;
     margin: 1.5em 0;
@@ -208,7 +208,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-tertiary);
+    background: var(--text-muted);
 }
 
 /* --- Custom Text Selection --- */
@@ -278,7 +278,7 @@ html {
     border: none;
     text-align: center;
     margin: 2em 0;
-    color: var(--text-tertiary);
+    color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 12px;
     opacity: 0.4;

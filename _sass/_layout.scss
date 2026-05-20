@@ -10,7 +10,7 @@
 }
 
 [data-theme="dark"] .navbar-custom.is-fixed {
-    background: rgba(13, 17, 23, 0.92) !important;
+    background: rgba(17, 24, 39, 0.92) !important;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
@@ -151,20 +151,20 @@ code, kbd, pre, samp, .code-lang-label {
 }
 
 [data-theme="dark"] .tags-summary {
-    color: var(--text-tertiary);
+    color: var(--text-muted);
 }
 
 /* ========================================
    POST HEADER - Minimal Text Style
    ======================================== */
 .post-header {
-    padding: 48px 0 32px;
-    border-bottom: 1px solid var(--border-light);
-    margin-bottom: 32px;
+    padding: 64px 0 40px;
+    border-bottom: none;
+    margin-bottom: 40px;
 }
 
 .post-heading {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 800;
     line-height: 1.2;
     margin: 0 0 12px;

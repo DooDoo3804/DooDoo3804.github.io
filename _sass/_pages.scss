@@ -330,7 +330,7 @@
 }
 
 [data-theme="dark"] .error-search input::placeholder {
-    color: var(--text-tertiary);
+    color: var(--text-muted);
 }
 
 [data-theme="dark"] .error-search-result-item {
@@ -343,7 +343,7 @@
 }
 
 [data-theme="dark"] .error-search-no-results {
-    color: var(--text-tertiary);
+    color: var(--text-muted);
 }
 
 [data-theme="dark"] .error-recent-title {

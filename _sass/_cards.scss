@@ -110,12 +110,14 @@
     padding: 24px 16px;
     margin: 0 -16px;
     border-bottom: 1px solid var(--border-light);
-    border-radius: var(--radius-md, 8px);
-    transition: background-color 0.15s;
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .post-item:hover {
-    background-color: rgba(var(--accent-color-raw), 0.03);
+    background-color: rgba(var(--accent-color-raw), 0.04);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
 }
 
 .post-item:first-child {

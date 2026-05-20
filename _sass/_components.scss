@@ -32,8 +32,8 @@
 }
 
 .author-hero-avatar {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     flex-shrink: 0;
     object-fit: cover;
@@ -179,7 +179,7 @@ body.has-mobile-toc #back-to-top {
 
 /* --- Code Block Enhancements --- */
 .post-container pre {
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid var(--border-light);
     position: relative;
     margin: 1.5em 0;
@@ -189,11 +189,12 @@ body.has-mobile-toc #back-to-top {
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
-    background: #fafbfc;
+    background: #f1f5f9;
 }
 
 [data-theme="dark"] .post-container pre {
     background: #282c34;
+    border-radius: 12px;
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
@@ -292,7 +293,7 @@ code.has-line-numbers .code-line::before {
     left: -3em;
     width: 2.5em;
     text-align: right;
-    color: var(--text-tertiary);
+    color: var(--text-muted);
     font-size: 0.85em;
     pointer-events: none;
     user-select: none;

@@ -712,7 +712,7 @@ ul.pager {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-    color: var(--text-tertiary);
+    color: var(--text-muted);
     background-color: var(--bg-surface-raised);
     cursor: not-allowed;
     border-color: var(--border-light);
