@@ -180,8 +180,8 @@
     <link rel="preconnect" href="https://giscus.app">
 
     <!-- Google Fonts (non-blocking load with display=swap) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400&display=swap"></noscript>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
@@ -201,10 +201,11 @@
     <!-- Critical CSS (inlined for faster FCP) -->
     <style>
         :root {
-            --accent-primary: #0ea5e9;
-            --accent-gradient: linear-gradient(135deg, #0ea5e9, #38bdf8);
+            --accent-primary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #818cf8);
             --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            --font-display: 'Plus Jakarta Sans', var(--font-sans);
             --text-muted: #94a3b8;
             --text-secondary: #64748b;
             --border-light: #e8e8e8;

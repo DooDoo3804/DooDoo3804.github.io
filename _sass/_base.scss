@@ -28,6 +28,12 @@ body {
     letter-spacing: -0.02em;
 }
 
+.post-container h1,
+.post-container h2,
+.post-container h3 {
+    font-family: var(--font-display);
+}
+
 .post-container > h1:first-child,
 .post-container > h2:first-child,
 .post-container > h3:first-child,
@@ -96,9 +102,9 @@ body {
 }
 
 .post-container blockquote.callout-note {
-    border-left-color: #0ea5e9;
-    background: rgba(14, 165, 233, 0.06);
-    .callout-title { color: #0ea5e9; }
+    border-left-color: #6366f1;
+    background: rgba(99, 102, 241, 0.06);
+    .callout-title { color: #6366f1; }
 }
 
 .post-container blockquote.callout-tip {
@@ -126,7 +132,7 @@ body {
 }
 
 [data-theme="dark"] .post-container blockquote.callout-note {
-    background: rgba(14, 165, 233, 0.10);
+    background: rgba(99, 102, 241, 0.10);
 }
 
 [data-theme="dark"] .post-container blockquote.callout-tip {
