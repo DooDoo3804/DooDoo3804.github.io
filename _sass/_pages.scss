@@ -659,7 +659,7 @@
 /* Status & demo fields */
 .pkg-dep-field {
     font-size: 13px;
-    margin: 2px 0;
+    margin: 4px 0;
     line-height: 1.7;
 }
 
@@ -910,7 +910,7 @@
     cursor: pointer;
     display: flex;
     gap: 14px;
-    padding: 28px;
+    padding: 24px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     background: var(--bg-surface);
@@ -930,6 +930,7 @@
 .cat-card--spring { --cat-accent: var(--cat-spring); }
 .cat-card--system-design { --cat-accent: var(--cat-system-design); }
 .cat-card--backend { --cat-accent: var(--cat-backend); }
+.cat-card--jvm { --cat-accent: var(--cat-jvm); }
 
 /* Top accent bar */
 .cat-card-accent {
@@ -1102,7 +1103,7 @@
 .tags-group-posts {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
 }
 
 .tags-group-posts a.tags-post-item {
@@ -1172,6 +1173,7 @@
 .cat-group--spring { border-left-color: var(--cat-spring); }
 .cat-group--system-design { border-left-color: var(--cat-system-design); }
 .cat-group--backend { border-left-color: var(--cat-backend); }
+.cat-group--jvm { border-left-color: var(--cat-jvm); }
 
 /* ========================================
    RELATED POSTS
