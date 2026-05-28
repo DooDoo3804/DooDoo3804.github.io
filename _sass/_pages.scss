@@ -866,7 +866,7 @@
 .cat-card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px;
     margin-bottom: 48px;
 }
 
@@ -1001,13 +1001,13 @@
 }
 
 .cat-card-posts li {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.5;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 4px 0;
+    padding: 6px 0;
 }
 
 .cat-card-posts li::before {
@@ -1048,7 +1048,7 @@
 
 /* Category detail list (used by categories.html) */
 .tags-group {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .tags-group--highlight {
@@ -1060,8 +1060,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -1070,6 +1070,8 @@
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
+    border-left: 3px solid var(--accent-primary);
+    padding-left: 12px;
 }
 
 .tags-group-count {
@@ -1086,15 +1088,17 @@
 
 .tags-group-posts a.tags-post-item {
     display: block;
-    padding: 10px 0;
+    padding: 12px 10px;
     text-decoration: none;
     color: inherit;
-    transition: color 0.15s;
+    transition: color 0.15s, background 0.15s;
+    border-radius: var(--radius-md);
 }
 
 .tags-group-posts a.tags-post-item:hover {
     text-decoration: none;
     color: inherit;
+    background: rgba(var(--accent-color-raw), 0.05);
 }
 
 .tags-post-meta {

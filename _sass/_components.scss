@@ -5,7 +5,7 @@
 
 .hero-name {
     font-family: var(--font-mono);
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
@@ -55,6 +55,7 @@
     line-height: 1.7;
     margin: 0;
     overflow-x: auto;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .hero-code-block code {
@@ -101,7 +102,7 @@
 
 @media (max-width: 576px) {
     .author-hero { padding: 40px 0 24px; }
-    .hero-name { font-size: 22px; }
+    .hero-name { font-size: 26px; }
     .hero-role { font-size: 13px; }
     .author-hero-inner {
         flex-direction: column;
@@ -188,7 +189,7 @@ body.has-mobile-toc #back-to-top {
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
-    background: #f8fafc;
+    background: #f1f5f9;
     box-shadow: var(--shadow-sm);
 }
 
@@ -644,6 +645,7 @@ code.has-line-numbers .code-line::before {
     padding: 20px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
+    background: var(--bg-surface);
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     display: flex;
     flex-direction: column;
