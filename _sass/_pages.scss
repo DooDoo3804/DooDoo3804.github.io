@@ -902,8 +902,9 @@
     position: relative;
     cursor: pointer;
     display: flex;
-    gap: 16px;
-    padding: 24px 28px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     background: var(--bg-surface);
@@ -947,8 +948,8 @@
 
 .cat-card-icon {
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -956,7 +957,7 @@
     background: rgba(0, 0, 0, 0.05);
     background: color-mix(in srgb, var(--cat-accent) 14%, transparent);
     color: var(--cat-accent);
-    font-size: 24px;
+    font-size: 20px;
 }
 
 [data-theme="dark"] .cat-card-icon {
@@ -972,8 +973,8 @@
 .cat-card-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .cat-card-name {
@@ -1016,12 +1017,9 @@
 }
 
 .cat-card-posts li {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
     line-height: 1.5;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding: 6px 0;
 }
 
@@ -1157,20 +1155,11 @@
     line-height: 1.4;
 }
 
-/* Category group border */
+/* Category group — no left border on section, only on title */
 .category-group {
-    border-left: 3px solid var(--accent-primary);
+    border-left: none;
 }
-.cat-group--algo  { border-left-color: var(--cat-algo); }
-.cat-group--cs    { border-left-color: var(--cat-cs); }
-.cat-group--db    { border-left-color: var(--cat-db); }
-.cat-group--infra { border-left-color: var(--cat-infra); }
-.cat-group--kotlin { border-left-color: var(--cat-kotlin); }
-.cat-group--react { border-left-color: var(--cat-react); }
-.cat-group--spring { border-left-color: var(--cat-spring); }
-.cat-group--system-design { border-left-color: var(--cat-system-design); }
-.cat-group--backend { border-left-color: var(--cat-backend); }
-.cat-group--jvm { border-left-color: var(--cat-jvm); }
+/* cat-group accent colors removed — section border-left removed */
 
 /* ========================================
    RELATED POSTS
