@@ -574,11 +574,22 @@
 /* ========================================
    PROJECTS PAGE — Card style
    ======================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .project-card {
     border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 24px;
-    margin-bottom: 16px;
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -1258,7 +1269,7 @@
     letter-spacing: -0.01em;
     margin: 0 0 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid var(--border-divider);
+    border-bottom: 1px solid var(--border-medium);
 }
 
 .about-section-title::before {

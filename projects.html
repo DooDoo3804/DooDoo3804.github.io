@@ -10,6 +10,7 @@ nav-order: 2
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
   <h1 class="page-heading">Projects</h1>
 
+  <div class="project-grid">
   {% for project in site.data.projects %}
   <div class="project-card{% if project.featured %} project-card--featured{% endif %}">
     <div class="project-card-header">
@@ -42,6 +43,7 @@ nav-order: 2
     </div>
   </div>
   {% endfor %}
+  </div>
 
 </div>
 </div>

@@ -22,63 +22,13 @@ nav-order: 2.5
                 {% assign cats_with_count_clean = cats_with_count | strip_newlines | strip %}
                 {% assign sorted_cat_items = cats_with_count_clean | split: "|||" | sort | reverse %}
 
-                {% comment %} Category display name mapping (single source of truth) {% endcomment %}
-                {% assign cat_map = "algo:Algorithm|backend:Backend|db:Database|infra:Infrastructure|kotlin:Kotlin|react:React|spring:Spring|system-design:System Design" %}
-                {% assign cat_map_entries = cat_map | split: "|" %}
-
                 <div class="cat-card-grid">
                     {% for item in sorted_cat_items %}
                     {% assign parts = item | split: "::" %}
                     {% assign cat_name = parts[1] | strip %}
                     {% if cat_name == "" %}{% continue %}{% endif %}
                     {% assign cat_posts = site.categories[cat_name] %}
-                    {% comment %} Display name and icon mapping {% endcomment %}
-                    {% case cat_name %}
-                        {% when 'algo' %}
-                            {% assign display_name = "Algorithm" %}
-                            {% assign cat_icon = "icon-code" %}
-                            {% assign cat_desc = "Data structures, sorting, graphs, and problem solving" %}
-                        {% when 'cs' %}
-                            {% assign display_name = "Computer Science" %}
-                            {% assign cat_icon = "icon-microchip" %}
-                            {% assign cat_desc = "OS, networks, and CS fundamentals" %}
-                        {% when 'db' %}
-                            {% assign display_name = "Database" %}
-                            {% assign cat_icon = "icon-database" %}
-                            {% assign cat_desc = "SQL, NoSQL, indexing, and query optimization" %}
-                        {% when 'infra' %}
-                            {% assign display_name = "Infrastructure" %}
-                            {% assign cat_icon = "icon-server" %}
-                            {% assign cat_desc = "Docker, Kubernetes, CI/CD, and cloud ops" %}
-                        {% when 'kotlin' %}
-                            {% assign display_name = "Kotlin" %}
-                            {% assign cat_icon = "icon-code" %}
-                            {% assign cat_desc = "Coroutines, idioms, and Kotlin best practices" %}
-                        {% when 'react' %}
-                            {% assign display_name = "React" %}
-                            {% assign cat_icon = "icon-react" %}
-                            {% assign cat_desc = "Hooks, state management, and frontend patterns" %}
-                        {% when 'spring' %}
-                            {% assign display_name = "Spring" %}
-                            {% assign cat_icon = "icon-leaf" %}
-                            {% assign cat_desc = "Spring Boot, JPA, security, and backend architecture" %}
-                        {% when 'system-design' %}
-                            {% assign display_name = "System Design" %}
-                            {% assign cat_icon = "icon-sitemap" %}
-                            {% assign cat_desc = "Scalability, caching, messaging, and distributed systems" %}
-                        {% when 'backend' %}
-                            {% assign display_name = "Backend" %}
-                            {% assign cat_icon = "icon-server" %}
-                            {% assign cat_desc = "Backend architecture, caching, messaging, and server-side patterns" %}
-                        {% when 'jvm' %}
-                            {% assign display_name = "JVM" %}
-                            {% assign cat_icon = "icon-microchip" %}
-                            {% assign cat_desc = "JVM internals and optimization" %}
-                        {% else %}
-                            {% assign display_name = cat_name | capitalize %}
-                            {% assign cat_icon = "icon-folder" %}
-                            {% assign cat_desc = "" %}
-                    {% endcase %}
+                    {% include cat-meta.html %}
                     <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}" tabindex="0" role="button" aria-label="{{ display_name }} — {{ cat_posts.size }} posts">
                         <div class="cat-card-accent"></div>
                         <div class="cat-card-icon">
@@ -114,19 +64,7 @@ nav-order: 2.5
                 {% assign cat_name = parts[1] | strip %}
                 {% if cat_name == "" %}{% continue %}{% endif %}
                 {% assign cat_posts = site.categories[cat_name] %}
-                {% case cat_name %}
-                    {% when 'algo' %}{% assign display_name = "Algorithm" %}
-                    {% when 'cs' %}{% assign display_name = "Computer Science" %}
-                    {% when 'db' %}{% assign display_name = "Database" %}
-                    {% when 'infra' %}{% assign display_name = "Infrastructure" %}
-                    {% when 'kotlin' %}{% assign display_name = "Kotlin" %}
-                    {% when 'react' %}{% assign display_name = "React" %}
-                    {% when 'spring' %}{% assign display_name = "Spring" %}
-                    {% when 'system-design' %}{% assign display_name = "System Design" %}
-                    {% when 'backend' %}{% assign display_name = "Backend" %}
-                    {% when 'jvm' %}{% assign display_name = "JVM" %}
-                    {% else %}{% assign display_name = cat_name | capitalize %}
-                {% endcase %}
+                {% include cat-meta.html %}
                 <div class="tags-group category-group cat-group--{{ cat_name }}" id="cat-{{ cat_name | slugify }}">
                     <div class="tags-group-header">
                         <h2 class="tags-group-title">{{ display_name }}</h2>
