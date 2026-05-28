@@ -667,6 +667,10 @@
     color: var(--text-secondary);
 }
 
+[data-theme="dark"] .project-tech-tag {
+    background: rgba(var(--accent-color-raw), 0.15);
+}
+
 [data-theme="dark"] .project-card {
     border-color: var(--border-medium);
     background: var(--bg-surface-raised);

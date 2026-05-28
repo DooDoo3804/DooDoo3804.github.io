@@ -58,7 +58,7 @@
     /* --- Relative Dates --- */
     function initRelativeDates() {
         var rtf = typeof Intl !== 'undefined' && Intl.RelativeTimeFormat
-            ? new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
+            ? new Intl.RelativeTimeFormat('ko', { numeric: 'auto' })
             : null;
 
         function timeAgo(dateStr) {

@@ -47,7 +47,6 @@
         { key: '→', desc: 'Next post' },
         { key: 'g h', desc: 'Go to Home' },
         { key: 'g a', desc: 'Go to Archive' },
-        { key: 'g g', desc: 'Go to Graph' },
         { key: '↑↑↓↓←→←→BA', desc: 'Easter egg' }
     ];
 
@@ -95,7 +94,6 @@
             pendingKey = null;
             if (e.key === 'h') window.location.href = '/';
             else if (e.key === 'a') window.location.href = '/archive/';
-            else if (e.key === 'g') window.location.href = '/graph/';
             return;
         }
 
@@ -427,13 +425,11 @@
             }
         }
 
-        var _noScrollTimer = null;
-
         function openSearch() {
             if (!searchPage || searchPage.classList.contains('search-active')) return;
             searchPage.classList.add('search-active');
             searchPage.setAttribute('aria-hidden', 'false');
-            _noScrollTimer = setTimeout(function () { bodyEl.classList.add('no-scroll'); }, 400);
+            bodyEl.classList.add('no-scroll');
             if (searchInput) searchInput.focus();
             _searchActiveIdx = -1;
             ensurePagefind();
@@ -441,7 +437,6 @@
 
         function closeSearch() {
             if (!searchPage) return;
-            if (_noScrollTimer) { clearTimeout(_noScrollTimer); _noScrollTimer = null; }
             searchPage.classList.remove('search-active');
             searchPage.setAttribute('aria-hidden', 'true');
             bodyEl.classList.remove('no-scroll');

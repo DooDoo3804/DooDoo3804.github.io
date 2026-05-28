@@ -137,7 +137,7 @@ nav-order: 2.5
                         {% for post in sorted_posts %}
                         <a href="{{ post.url | prepend: site.baseurl }}" class="tags-post-item">
                             <div class="tags-post-meta">
-                                <span class="tags-post-category">{{ post.tags | first }}</span>
+                                <span class="tags-post-category">{{ display_name }}</span>
                                 <span class="tags-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
                             </div>
                             <div class="tags-post-title">{{ post.title }}</div>

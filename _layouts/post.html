@@ -277,6 +277,12 @@ layout: default
         if (lbSpinner) lbSpinner.style.display = 'none';
     });
 
+    // Handle image load failure
+    lbImg.addEventListener('error', function() {
+        if (lbSpinner) lbSpinner.style.display = 'none';
+        lbCaption.textContent = 'Image failed to load';
+    });
+
     // Attach click to article images
     var article = document.querySelector('article');
     if (!article) return;
