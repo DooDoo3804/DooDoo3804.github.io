@@ -231,8 +231,18 @@
 
     .navbar-custom.is-fixed .nav li.active > a,
     .navbar-custom.invert .nav li.active > a {
-        border-bottom: 2px solid var(--accent-primary);
-        padding-bottom: 18px; /* 기존 20px에서 2px 줄여 보상 */
+        position: relative;
+    }
+    .navbar-custom.is-fixed .nav li.active > a::after,
+    .navbar-custom.invert .nav li.active > a::after {
+        content: "";
+        position: absolute;
+        bottom: 14px;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: var(--accent-primary);
+        border-radius: 1px;
     }
 
     .navbar-custom.is-visible {

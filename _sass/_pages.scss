@@ -887,8 +887,8 @@
     position: relative;
     cursor: pointer;
     display: flex;
-    gap: 14px;
-    padding: 24px;
+    gap: 16px;
+    padding: 24px 28px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     background: var(--bg-surface);
@@ -988,10 +988,10 @@
 }
 
 .cat-card-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-secondary);
-    margin: 0 0 12px;
-    line-height: 1.4;
+    margin: 0 0 14px;
+    line-height: 1.5;
 }
 
 .cat-card-posts {
