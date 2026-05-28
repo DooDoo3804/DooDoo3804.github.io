@@ -202,11 +202,16 @@ mark {
 
 .search-empty-suggestions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 8px;
     font-size: 13px;
     color: var(--text-muted);
+}
+
+.search-empty-suggestions > span {
+    white-space: nowrap;
 }
 
 .search-suggestion-link {

@@ -9,32 +9,40 @@ nav-order: 2
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
   <h1 class="page-heading">Projects</h1>
-  <div class="pkg-json">
-    <pre class="pkg-json-block"><code>{
-  <span class="code-key">"name"</span>: <span class="code-string">"@doodoo/projects"</span>,
-  <span class="code-key">"dependencies"</span>: {</code></pre>
 
-    {% for project in site.data.projects %}
-    <div class="pkg-dep{% if project.featured %} pkg-dep--featured{% endif %}">
-      <div class="pkg-dep-header">
-        {% if project.featured %}<span class="pkg-dep-star" title="Featured">⭐</span> {% endif %}<span class="pkg-dep-name">{% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">"{{ project.title | slugify }}"</a>{% else %}"{{ project.title | slugify }}"{% endif %}</span>: <span class="pkg-dep-version">"{{ project.year }}.0.0"</span>{% unless forloop.last %},{% endunless %}
-      </div>
-      <p class="pkg-dep-desc">// {{ project.description }}</p>
-      {% if project.status %}
-      <div class="pkg-dep-field"><span class="code-key">"status"</span>: <span class="pkg-dep-status pkg-dep-status--{{ project.status }}">"{{ project.status }}"</span></div>
-      {% endif %}
-      {% if project.demo %}
-      <div class="pkg-dep-field"><span class="code-key">"demo"</span>: <span class="pkg-dep-demo"><a href="{{ project.demo }}" target="_blank" rel="noopener">"{{ project.demo }}"</a></span></div>
-      {% endif %}
-      {% if project.tech %}
-      <div class="pkg-dep-tech">{% for t in project.tech %}<span>#{{ t | downcase }}</span> {% endfor %}</div>
+  {% for project in site.data.projects %}
+  <div class="project-card{% if project.featured %} project-card--featured{% endif %}">
+    <div class="project-card-header">
+      <h3 class="project-card-title">{{ project.title }}</h3>
+      {% if project.status == "active" %}
+      <span class="project-status project-status--active">Active</span>
+      {% elsif project.status == "completed" %}
+      <span class="project-status project-status--completed">Completed</span>
       {% endif %}
     </div>
-    {% endfor %}
-
-    <pre class="pkg-json-block"><code>  }
-}</code></pre>
+    <p class="project-card-desc">{{ project.description }}</p>
+    {% if project.tech %}
+    <div class="project-card-tech">
+      {% for t in project.tech %}
+      <span class="project-tech-tag">{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="project-card-links">
+      {% if project.github %}
+      <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">
+        <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+      </a>
+      {% endif %}
+      {% if project.demo %}
+      <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer">
+        <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg> Demo
+      </a>
+      {% endif %}
+    </div>
   </div>
+  {% endfor %}
+
 </div>
 </div>
 </div>

@@ -179,21 +179,24 @@ body.has-mobile-toc #back-to-top {
 /* --- Code Block Enhancements --- */
 .post-container pre {
     border-radius: 12px;
-    border: 1px solid var(--border-light);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     position: relative;
     margin: 1.5em 0;
-    padding: 1.2em;
-    padding-top: 12px;
+    padding: 20px 24px;
+    padding-top: 40px;
     min-height: 48px;
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
-    background: #f1f5f9;
+    background: #f8fafc;
+    box-shadow: var(--shadow-sm);
 }
 
 [data-theme="dark"] .post-container pre {
     background: #282c34;
     border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Override hux-blog.min.css specificity - ensure label space */
@@ -221,12 +224,12 @@ body.has-mobile-toc #back-to-top {
     top: 0;
     left: 0;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.02em;
     padding: 4px 12px;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.08);
     color: var(--text-muted);
     border-radius: 0 0 6px 0;
     line-height: 1.4;
@@ -236,7 +239,7 @@ body.has-mobile-toc #back-to-top {
 
 [data-theme="dark"] .code-lang-label {
     color: rgba(205, 214, 244, 0.5);
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .copy-btn {
@@ -271,7 +274,7 @@ pre:hover .copy-btn {
 }
 
 @media (hover: none) {
-    .copy-btn { opacity: 0.7; }
+    .copy-btn { opacity: 0.5; }
 }
 
 .copy-btn.copy-btn--success {

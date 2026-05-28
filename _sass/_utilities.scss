@@ -214,7 +214,7 @@ pre { overflow-x: auto; }
     .category-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .footer-social { gap: 12px; }
     .footer-social-link { width: 36px; height: 36px; font-size: 16px; }
-    .search-empty-suggestions { flex-direction: column; gap: 8px; }
+    .search-empty-suggestions { gap: 6px; }
     .post-breadcrumb { font-size: 12px; }
     .post-breadcrumb li:not(:last-child)::after { margin: 0 4px; }
     .filter-no-results-card { padding: 32px 24px; }
