@@ -27,7 +27,11 @@
         headings.forEach(function (h) {
             var tag = h.tagName.toLowerCase(); // h2 or h3
             var id = h.id;
-            var text = h.textContent;
+            // heading의 자식 중 .heading-anchor(#)를 제외한 텍스트만 추출
+            var clone = h.cloneNode(true);
+            var anchor = clone.querySelector('.heading-anchor');
+            if (anchor) anchor.remove();
+            var text = clone.textContent.trim();
 
             var a = document.createElement('a');
             a.href = '#' + id;
