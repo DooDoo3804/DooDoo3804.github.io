@@ -442,7 +442,6 @@ table.table > thead td {
 /* Ensure table-responsive wrapper scrolls horizontally without collapsing */
 .table-responsive {
     display: block;
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -452,8 +451,6 @@ table.table > thead td {
 
 .table-responsive > .table {
     margin-bottom: 0;
-    width: 100%;
-    max-width: 100%;
 }
 
 @media screen and (max-width: 768px) {

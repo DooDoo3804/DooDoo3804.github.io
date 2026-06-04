@@ -92,8 +92,8 @@
     font-weight: 700;
     font-size: 16px;
     color: #fff;
-    height: 56px;
-    line-height: 25px;
+    height: auto;
+    line-height: 1;
     letter-spacing: -0.02em;
 }
 
@@ -120,8 +120,9 @@
 
     .navbar-custom .navbar-brand {
         color: #fff;
-        padding: 20px;
-        line-height: 20px;
+        height: auto;
+        padding: 18px 20px;
+        line-height: 1;
         font-size: 16px;
         font-weight: 700;
     }
@@ -134,7 +135,10 @@
     .navbar-custom .nav li a,
     .navbar-custom .nav li button {
         color: #fff;
-        padding: 20px;
+        display: flex;
+        align-items: center;
+        height: 56px;
+        padding: 0 16px;
     }
 
     .navbar-custom .nav li a:hover,
