@@ -768,8 +768,11 @@ code.has-line-numbers .code-line::before {
     border: none;
     border-radius: 4px;
     padding: 2px 6px;
+    margin: 0 2px;
     font-size: 14px;
     font-family: var(--font-mono);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 [data-theme="dark"] .post-container code {

@@ -45,10 +45,6 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container" data-pagefind-body>
 
-                <!-- Filepath Breadcrumb -->
-                <div class="post-filepath">
-                  <span class="filepath-prefix">~/blog</span>/{% if page.categories.size > 0 %}<a href="{{ site.baseurl }}/categories/#cat-{{ page.categories | first | slugify }}">{{ page.categories | first }}</a>/{% elsif page.tags.size > 0 %}<a href="{{ site.baseurl }}/archive/?tag={{ page.tags | first | url_encode }}">{{ page.tags | first }}</a>/{% endif %}<span class="filepath-current">{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}.md</span>
-                </div>
 
                 <!-- Multi-Lingual -->
                 {%- if page.multilingual %}
