@@ -794,11 +794,6 @@ code.has-line-numbers .code-line::before {
 
 /* --- Side Catalog --- */
 .side-catalog {
-    opacity: 0.4;
-    transition: opacity 0.25s ease;
-}
-
-.side-catalog:hover {
     opacity: 1;
 }
 
@@ -876,14 +871,9 @@ code.has-line-numbers .code-line::before {
     font-size: 10px;
 }
 
-/* Completed TOC link — already-read sections */
+/* Completed TOC link — no special styling, just dim */
 .side-catalog .catalog-body li.completed a {
-    color: var(--color-success);
-}
-
-.side-catalog .catalog-body li.completed a::before {
-    content: '\2713\0020';
-    font-size: 10px;
+    color: var(--text-secondary);
 }
 
 /* ========================================

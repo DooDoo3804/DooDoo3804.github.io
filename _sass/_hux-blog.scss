@@ -74,17 +74,17 @@
 
 .catalog-container {
     position: fixed;
-    top: 80px;
-    right: calc((100vw - 1170px) / 2);
+    top: 120px;
+    right: calc((100vw - 1170px) / 2 - 20px);
     width: 200px;
     padding: 0;
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
 }
 
 @media (min-width: 1200px) and (max-width: 1439px) {
     .catalog-container {
-        right: calc((100vw - 1170px) / 2);
+        right: calc((100vw - 1170px) / 2 - 10px);
         width: 190px;
     }
 }
