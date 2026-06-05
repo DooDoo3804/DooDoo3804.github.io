@@ -767,10 +767,10 @@ code.has-line-numbers .code-line::before {
     color: var(--text-primary);
     border: none;
     border-radius: 4px;
-    padding: 2px 6px;
+    padding: 2px 5px;
+    margin: 0 3px;
     font-size: 14px;
     font-family: var(--font-mono);
-    word-break: keep-all;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
 }
