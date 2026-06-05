@@ -455,84 +455,107 @@
 }
 
 /* ========================================
-   TAGS PAGE — chip cloud style
+   TAGS PAGE — glassmorphic chip cloud
    ======================================== */
 .tags-cloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 48px;
+    gap: 12px;
+    margin-bottom: 56px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(var(--accent-color-raw), 0.03) 0%, rgba(var(--accent-color-raw), 0.01) 100%);
+    border: 1px solid var(--border-divider);
 }
 
 .tag-chip {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-surface);
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    background: var(--bg-surface-raised);
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     font-size: 13px;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .tag-chip:hover {
     border-color: var(--accent-primary);
     color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.06);
+    background: rgba(var(--accent-color-raw), 0.08);
     text-decoration: none;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--accent-color-raw), 0.2);
 }
 
 .tag-chip__name {
     font-family: var(--font-mono);
+    letter-spacing: -0.01em;
 }
 
 .tag-chip__count {
     font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: rgba(var(--accent-color-raw), 0.08);
-    padding: 1px 7px;
-    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
 }
 
 .tag-chip:hover .tag-chip__count {
-    color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.15);
+    color: #fff;
+    background: var(--accent-primary);
 }
 
 /* Size variants */
 .tag-chip--sm {
     font-size: 12px;
-    padding: 5px 12px;
+    padding: 6px 14px;
+    color: var(--text-muted);
 }
 
 .tag-chip--md {
     font-size: 14px;
-    padding: 7px 16px;
+    padding: 9px 18px;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .tag-chip--lg {
     font-size: 15px;
-    padding: 8px 18px;
+    padding: 10px 20px;
     font-weight: 700;
-    border-color: rgba(var(--accent-color-raw), 0.3);
+    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(var(--accent-color-raw), 0.06), rgba(var(--accent-color-raw), 0.02));
+    border: 1px solid rgba(var(--accent-color-raw), 0.15);
+}
+
+.tag-chip--lg .tag-chip__count {
+    font-size: 11px;
+    padding: 2px 10px;
 }
 
 [data-theme="dark"] .tag-chip {
-    border-color: var(--border-light);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .tag-chip:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(var(--accent-color-raw), 0.25);
+}
+
+[data-theme="dark"] .tags-cloud {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--border-light);
 }
 
 .tags-posts-section {
