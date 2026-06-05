@@ -16,15 +16,16 @@ hide-in-nav: true
   {% capture tags_with_count %}{% for tag in site.tags %}{{ tag[1].size | prepend: "0000" | slice: -4, 4 }}::{{ tag[0] }}{% unless forloop.last %}|||{% endunless %}{% endfor %}{% endcapture %}
   {% assign sorted_tag_items = tags_with_count | split: "|||" | sort | reverse %}
 
-  <div class="tags-imports">
+  <div class="tags-cloud">
     {% for item in sorted_tag_items %}
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
     {% assign t_size = tag_posts.size %}
-    {% if t_size >= 10 %}{% assign tag_weight = "tag-weight-lg" %}{% elsif t_size >= 5 %}{% assign tag_weight = "tag-weight-md" %}{% else %}{% assign tag_weight = "tag-weight-sm" %}{% endif %}
-    <a href="#tag-{{ tag_name | slugify }}" class="tag-import {{ tag_weight }}">
-      <span class="import-keyword">import</span> { <span class="import-name">{{ tag_name }}</span> } <span class="import-from">from</span> <span class="import-path">"./posts"</span>; <span class="import-count">// {{ tag_posts.size }} posts</span>
+    {% if t_size >= 10 %}{% assign tag_weight = "tag-chip--lg" %}{% elsif t_size >= 5 %}{% assign tag_weight = "tag-chip--md" %}{% else %}{% assign tag_weight = "tag-chip--sm" %}{% endif %}
+    <a href="#tag-{{ tag_name | slugify }}" class="tag-chip {{ tag_weight }}">
+      <span class="tag-chip__name">{{ tag_name }}</span>
+      <span class="tag-chip__count">{{ tag_posts.size }}</span>
     </a>
     {% endfor %}
   </div>
@@ -54,9 +55,8 @@ hide-in-nav: true
 </div>
 
 <script>
-// Smooth scroll to tag section when clicking a tag pill
-document.querySelectorAll('.tag-import').forEach(function(pill) {
-    pill.addEventListener('click', function(e) {
+document.querySelectorAll('.tag-chip').forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
         e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));
         if (target) {

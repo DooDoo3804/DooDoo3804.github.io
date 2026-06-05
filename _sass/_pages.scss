@@ -455,59 +455,85 @@
 }
 
 /* ========================================
-   TAGS PAGE — import statement style
+   TAGS PAGE — chip cloud style
    ======================================== */
-.tags-imports {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    margin-bottom: 40px;
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 48px;
 }
 
-.tag-import {
-    display: block;
-    padding: 4px 0;
+.tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
     text-decoration: none;
     color: var(--text-primary);
-    transition: background 0.15s;
-    line-height: 1.8;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
     white-space: nowrap;
 }
 
-.tag-import:hover {
-    background: rgba(var(--accent-color-raw), 0.04);
-    color: var(--text-primary);
+.tag-chip:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.06);
     text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.import-keyword { color: #7c3aed; }
-.import-name { color: #2563eb; }
-.import-from { color: #7c3aed; }
-.import-path { color: #16a34a; }
-.import-count { color: var(--text-secondary); opacity: 0.7; }
-
-/* Tag cloud weight classes */
-.tag-import.tag-weight-sm {
-    font-size: 13px;
-    opacity: 0.7;
+.tag-chip__name {
+    font-family: var(--font-mono);
 }
 
-.tag-import.tag-weight-md {
+.tag-chip__count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(var(--accent-color-raw), 0.08);
+    padding: 1px 7px;
+    border-radius: 10px;
+}
+
+.tag-chip:hover .tag-chip__count {
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.15);
+}
+
+/* Size variants */
+.tag-chip--sm {
+    font-size: 12px;
+    padding: 5px 12px;
+}
+
+.tag-chip--md {
     font-size: 14px;
+    padding: 7px 16px;
     font-weight: 600;
 }
 
-.tag-import.tag-weight-lg {
-    font-size: 16px;
+.tag-chip--lg {
+    font-size: 15px;
+    padding: 8px 18px;
     font-weight: 700;
-    color: var(--text-primary); /* 더 진하게 */
+    border-color: rgba(var(--accent-color-raw), 0.3);
 }
 
-[data-theme="dark"] .import-keyword,
-[data-theme="dark"] .import-from { color: #cba6f7; }
-[data-theme="dark"] .import-name { color: #89b4fa; }
-[data-theme="dark"] .import-path { color: #a6e3a1; }
+[data-theme="dark"] .tag-chip {
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .tag-chip:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
 
 .tags-posts-section {
     margin-top: 10px;
