@@ -75,13 +75,14 @@
     position: absolute;
     top: 0;
     right: 15px;
-    width: 180px;
+    width: 200px;
+    height: 100%;
     padding: 0;
 }
 
 @media (min-width: 1200px) {
     .catalog-container {
-        width: 200px;
+        width: 220px;
     }
 }
 

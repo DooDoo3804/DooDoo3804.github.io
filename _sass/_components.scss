@@ -793,16 +793,17 @@ code.has-line-numbers .code-line::before {
 
 /* --- Side Catalog Sticky --- */
 .side-catalog {
-    position: sticky !important;
-    top: 80px !important;
-    height: auto !important;
+    position: sticky;
+    top: 80px;
+    height: auto;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    opacity: 0.4;
+    transition: opacity 0.25s ease;
 }
 
-.side-catalog.fixed {
-    position: sticky !important;
-    top: 80px !important;
+.side-catalog:hover {
+    opacity: 1;
 }
 
 /* TOC sidebar title */
