@@ -724,13 +724,18 @@ ul.pager {
 .pager li > span {
     font-size: 13px;
     font-weight: 600;
-    padding: 16px 20px;
-    background-color: var(--bg-surface);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
+    padding: 20px 24px;
+    background: var(--bg-surface-raised);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
     display: block;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--text-primary);
+    text-align: left;
+}
+
+.pager li.next > a {
+    text-align: right;
 }
 
 .pager li > a {
@@ -740,29 +745,31 @@ ul.pager {
 
 .pager li > a:hover,
 .pager li > a:focus {
-    color: var(--accent-primary);
     border-color: var(--accent-primary);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(var(--accent-color-raw), 0.15);
     transform: translateY(-2px);
-    background-color: var(--bg-surface);
+    background: var(--bg-surface-raised);
+    text-decoration: none;
 }
 
 .pager li > a .pager-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-secondary);
-    text-transform: none;
-    font-weight: 500;
-    margin-bottom: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .pager li > a .pager-title {
     display: block;
     font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
     transition: color 0.2s;
 }
 
@@ -772,7 +779,7 @@ ul.pager {
 
 .pager li > a:hover .pager-title,
 .pager li > a:focus .pager-title {
-    color: var(--text-primary);
+    color: var(--accent-primary);
 }
 
 .pager .disabled > a,
