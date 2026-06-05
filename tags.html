@@ -30,23 +30,29 @@ hide-in-nav: true
     {% endfor %}
   </div>
 
-  <!-- Posts grouped by tag (sorted by frequency) -->
-  <div class="tags-posts-section">
+  <!-- Posts: 2-column masonry grid -->
+  <div class="tags-grid">
     {% for item in sorted_tag_items %}
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
-    <div class="tags-group" id="tag-{{ tag_name | slugify }}">
-      <h3 class="tags-group-title">{{ tag_name }} <span class="tags-group-count">{{ tag_posts.size }}</span></h3>
-      <ul class="tags-group-posts">
-        {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
-        {% for post in sorted_posts %}
-        <li class="tags-post-item">
-          <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
+    <div class="tags-card" id="tag-{{ tag_name | slugify }}">
+      <div class="tags-card__header">
+        <span class="tags-card__title">{{ tag_name }}</span>
+        <span class="tags-card__count">{{ tag_posts.size }}</span>
+      </div>
+      <ul class="tags-card__list">
+        {% for post in sorted_posts limit:3 %}
+        <li>
           <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <time>{{ post.date | date: "%m.%d" }}</time>
         </li>
         {% endfor %}
       </ul>
+      {% if tag_posts.size > 3 %}
+      <a href="#" class="tags-card__more" data-tag="{{ tag_name | slugify }}">+{{ tag_posts.size | minus: 3 }} more</a>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -55,20 +61,27 @@ hide-in-nav: true
 </div>
 
 <script>
+// Chip → scroll
 document.querySelectorAll('.tag-chip').forEach(function(chip) {
     chip.addEventListener('click', function(e) {
         e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            var offset = 80;
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
             window.scrollTo({ top: top, behavior: 'smooth' });
-
-            target.classList.add('tags-group--highlight');
-            setTimeout(function() {
-                target.classList.remove('tags-group--highlight');
-            }, 1500);
+            target.classList.add('tags-card--highlight');
+            setTimeout(function() { target.classList.remove('tags-card--highlight'); }, 1500);
         }
+    });
+});
+
+// "more" → expand full list
+document.querySelectorAll('.tags-card__more').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var card = this.closest('.tags-card');
+        card.classList.add('tags-card--expanded');
+        this.style.display = 'none';
     });
 });
 </script>
