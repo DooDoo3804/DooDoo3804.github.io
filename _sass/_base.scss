@@ -233,8 +233,10 @@ html {
 /* --- Post Content - Tables --- */
 .post-container table {
     width: 100%;
+    max-width: 100%;
     margin: 1.5em 0;
     border-collapse: collapse;
+    table-layout: auto;
     font-size: 14px;
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
@@ -250,6 +252,8 @@ html {
     font-size: 12px;
     letter-spacing: 0.05em;
     font-family: inherit;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .post-container table td {
@@ -257,6 +261,8 @@ html {
     border: 1px solid var(--border-subtle);
     vertical-align: top;
     color: var(--text-secondary);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .post-container table tr:nth-child(even) td {
