@@ -29,7 +29,7 @@ nav-order: 2.5
                     {% if cat_name == "" %}{% continue %}{% endif %}
                     {% assign cat_posts = site.categories[cat_name] %}
                     {% include cat-meta.html %}
-                    <div class="cat-card cat-card--{{ cat_name }}" data-target="#cat-{{ cat_name | slugify }}" tabindex="0" role="button" aria-label="{{ display_name }} — {{ cat_posts.size }} posts">
+                    <div class="cat-card cat-card--{{ cat_name }}">
                         <div class="cat-card-accent"></div>
                         <div class="cat-card-icon">
                             <svg class="icon" aria-hidden="true"><use href="#{{ cat_icon }}"/></svg>
