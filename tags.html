@@ -23,25 +23,21 @@ hide-in-nav: true
     {% assign tag_posts = site.tags[tag_name] %}
     {% assign t_size = tag_posts.size %}
     {% if t_size >= 10 %}{% assign tag_weight = "tag-chip--lg" %}{% elsif t_size >= 5 %}{% assign tag_weight = "tag-chip--md" %}{% else %}{% assign tag_weight = "tag-chip--sm" %}{% endif %}
-    <a href="#tag-{{ tag_name | slugify }}" class="tag-chip {{ tag_weight }}" data-tag="{{ tag_name | slugify }}">
+    <a href="#tag-{{ tag_name | slugify }}" class="tag-chip {{ tag_weight }}">
       <span class="tag-chip__name">{{ tag_name }}</span>
       <span class="tag-chip__count">{{ tag_posts.size }}</span>
     </a>
     {% endfor %}
   </div>
 
-  <!-- Posts grouped by tag (all collapsed by default) -->
+  <!-- Posts grouped by tag (sorted by frequency) -->
   <div class="tags-posts-section">
     {% for item in sorted_tag_items %}
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
-    <div class="tags-group" id="tag-{{ tag_name | slugify }}" data-tag="{{ tag_name | slugify }}">
-      <button class="tags-group-header" aria-expanded="false">
-        <span class="tags-group-title">{{ tag_name }}</span>
-        <span class="tags-group-count">{{ tag_posts.size }} posts</span>
-        <span class="tags-group-chevron">›</span>
-      </button>
+    <div class="tags-group" id="tag-{{ tag_name | slugify }}">
+      <h3 class="tags-group-title">{{ tag_name }} <span class="tags-group-count">{{ tag_posts.size }}</span></h3>
       <ul class="tags-group-posts">
         {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
         {% for post in sorted_posts %}
@@ -59,47 +55,20 @@ hide-in-nav: true
 </div>
 
 <script>
-(function() {
-    // Chip click → scroll to group + expand
-    document.querySelectorAll('.tag-chip').forEach(function(chip) {
-        chip.addEventListener('click', function(e) {
-            e.preventDefault();
-            var tag = this.dataset.tag;
-            var group = document.querySelector('.tags-group[data-tag="' + tag + '"]');
-            if (!group) return;
-
-            // Expand if collapsed
-            if (!group.classList.contains('tags-group--open')) {
-                group.classList.add('tags-group--open');
-                group.querySelector('.tags-group-header').setAttribute('aria-expanded', 'true');
-            }
-
-            // Highlight chip
-            document.querySelectorAll('.tag-chip').forEach(function(c) { c.classList.remove('tag-chip--active'); });
-            this.classList.add('tag-chip--active');
-
-            // Scroll
-            var top = group.getBoundingClientRect().top + window.pageYOffset - 80;
+document.querySelectorAll('.tag-chip').forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            var offset = 80;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
             window.scrollTo({ top: top, behavior: 'smooth' });
-        });
-    });
 
-    // Group header click → toggle
-    document.querySelectorAll('.tags-group-header').forEach(function(header) {
-        header.addEventListener('click', function() {
-            var group = this.closest('.tags-group');
-            var isOpen = group.classList.toggle('tags-group--open');
-            this.setAttribute('aria-expanded', isOpen);
-        });
-    });
-
-    // URL hash → auto-expand
-    if (window.location.hash) {
-        var target = document.querySelector(window.location.hash);
-        if (target && target.classList.contains('tags-group')) {
-            target.classList.add('tags-group--open');
-            target.querySelector('.tags-group-header').setAttribute('aria-expanded', 'true');
+            target.classList.add('tags-group--highlight');
+            setTimeout(function() {
+                target.classList.remove('tags-group--highlight');
+            }, 1500);
         }
-    }
-})();
+    });
+});
 </script>
