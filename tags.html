@@ -11,10 +11,17 @@ hide-in-nav: true
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
   <h1 class="page-heading">Tags</h1>
+  <p class="tags-subtitle">태그를 클릭하면 관련 포스트를 확인할 수 있습니다.</p>
 
-  {% comment %} Build tags sorted by frequency (most used first) {% endcomment %}
   {% capture tags_with_count %}{% for tag in site.tags %}{{ tag[1].size | prepend: "0000" | slice: -4, 4 }}::{{ tag[0] }}{% unless forloop.last %}|||{% endunless %}{% endfor %}{% endcapture %}
   {% assign sorted_tag_items = tags_with_count | split: "|||" | sort | reverse %}
+
+  {% assign max_count = 0 %}
+  {% for item in sorted_tag_items limit:1 %}
+    {% assign parts = item | split: "::" %}
+    {% assign tag_name = parts[1] | strip %}
+    {% assign max_count = site.tags[tag_name].size %}
+  {% endfor %}
 
   <div class="tags-cloud">
     {% for item in sorted_tag_items %}
@@ -22,66 +29,71 @@ hide-in-nav: true
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
     {% assign t_size = tag_posts.size %}
-    {% if t_size >= 10 %}{% assign tag_weight = "tag-chip--lg" %}{% elsif t_size >= 5 %}{% assign tag_weight = "tag-chip--md" %}{% else %}{% assign tag_weight = "tag-chip--sm" %}{% endif %}
-    <a href="#tag-{{ tag_name | slugify }}" class="tag-chip {{ tag_weight }}">
-      <span class="tag-chip__name">{{ tag_name }}</span>
-      <span class="tag-chip__count">{{ tag_posts.size }}</span>
-    </a>
+    {% assign ratio = t_size | times: 100 | divided_by: max_count %}
+    {% if ratio >= 60 %}{% assign tag_tier = "tag-tier-1" %}{% elsif ratio >= 30 %}{% assign tag_tier = "tag-tier-2" %}{% elsif ratio >= 15 %}{% assign tag_tier = "tag-tier-3" %}{% else %}{% assign tag_tier = "tag-tier-4" %}{% endif %}
+    <a href="#tag-{{ tag_name | slugify }}" class="tag-pill {{ tag_tier }}">{{ tag_name }}<sup>{{ t_size }}</sup></a>
     {% endfor %}
   </div>
 
-  <!-- Posts: 2-column masonry grid -->
-  <div class="tags-grid">
+  <!-- Hidden post sections for in-page navigation -->
+  <div class="tags-detail" id="tags-detail">
     {% for item in sorted_tag_items %}
     {% assign parts = item | split: "::" %}
     {% assign tag_name = parts[1] | strip %}
     {% assign tag_posts = site.tags[tag_name] %}
-    {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
-    <div class="tags-card" id="tag-{{ tag_name | slugify }}">
-      <div class="tags-card__header">
-        <span class="tags-card__title">{{ tag_name }}</span>
-        <span class="tags-card__count">{{ tag_posts.size }}</span>
+    <div class="tags-detail__section" id="tag-{{ tag_name | slugify }}" style="display:none;">
+      <div class="tags-detail__header">
+        <h2>{{ tag_name }}</h2>
+        <span>{{ tag_posts.size }} posts</span>
+        <button class="tags-detail__close" aria-label="Close">&times;</button>
       </div>
-      <ul class="tags-card__list">
-        {% for post in sorted_posts limit:3 %}
+      <ul>
+        {% assign sorted_posts = tag_posts | sort: "date" | reverse %}
+        {% for post in sorted_posts %}
         <li>
+          <time>{{ post.date | date: "%Y-%m-%d" }}</time>
           <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <time>{{ post.date | date: "%m.%d" }}</time>
         </li>
         {% endfor %}
       </ul>
-      {% if tag_posts.size > 3 %}
-      <a href="#" class="tags-card__more" data-tag="{{ tag_name | slugify }}">+{{ tag_posts.size | minus: 3 }} more</a>
-      {% endif %}
     </div>
     {% endfor %}
   </div>
+
 </div>
 </div>
 </div>
 
 <script>
-// Chip → scroll
-document.querySelectorAll('.tag-chip').forEach(function(chip) {
-    chip.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-            target.classList.add('tags-card--highlight');
-            setTimeout(function() { target.classList.remove('tags-card--highlight'); }, 1500);
-        }
-    });
-});
+(function() {
+    var pills = document.querySelectorAll('.tag-pill');
+    var sections = document.querySelectorAll('.tags-detail__section');
+    var detail = document.getElementById('tags-detail');
 
-// "more" → expand full list
-document.querySelectorAll('.tags-card__more').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var card = this.closest('.tags-card');
-        card.classList.add('tags-card--expanded');
-        this.style.display = 'none';
+    pills.forEach(function(pill) {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            var id = this.getAttribute('href').substring(1);
+
+            // Hide all, show selected
+            sections.forEach(function(s) { s.style.display = 'none'; });
+            pills.forEach(function(p) { p.classList.remove('tag-pill--active'); });
+
+            var target = document.getElementById(id);
+            if (target) {
+                target.style.display = 'block';
+                this.classList.add('tag-pill--active');
+                var top = detail.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+        });
     });
-});
+
+    document.querySelectorAll('.tags-detail__close').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.closest('.tags-detail__section').style.display = 'none';
+            pills.forEach(function(p) { p.classList.remove('tag-pill--active'); });
+        });
+    });
+})();
 </script>

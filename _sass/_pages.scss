@@ -455,222 +455,183 @@
 }
 
 /* ========================================
-   TAGS PAGE — glassmorphic chip cloud
+   TAGS PAGE — word cloud + inline detail
    ======================================== */
+.tags-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
 .tags-cloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 56px;
-    padding: 24px;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(var(--accent-color-raw), 0.03) 0%, rgba(var(--accent-color-raw), 0.01) 100%);
-    border: 1px solid var(--border-divider);
+    align-items: center;
+    gap: 6px 10px;
+    margin-bottom: 32px;
+    line-height: 2;
 }
 
-.tag-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 24px;
-    border: 1px solid transparent;
-    background: var(--bg-surface-raised);
+/* Tag pills — size varies dramatically by tier */
+.tag-pill {
+    display: inline-block;
     text-decoration: none;
     color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-sans);
+    transition: color 0.2s, transform 0.15s;
     white-space: nowrap;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
 }
 
-.tag-chip:hover {
-    border-color: var(--accent-primary);
+.tag-pill:hover {
     color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.08);
     text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--accent-color-raw), 0.2);
+    transform: scale(1.05);
 }
 
-.tag-chip__name {
-    font-family: var(--font-mono);
-    letter-spacing: -0.01em;
+.tag-pill--active {
+    color: var(--accent-primary) !important;
+    font-weight: 700 !important;
 }
 
-.tag-chip__count {
-    font-family: var(--font-mono);
-    font-size: 10px;
+.tag-pill sup {
+    font-size: 0.6em;
+    color: var(--text-muted);
+    margin-left: 1px;
+    font-weight: 400;
+}
+
+/* Tier 1: dominant — largest tags */
+.tag-tier-1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* Tier 2: major */
+.tag-tier-2 {
+    font-size: 20px;
     font-weight: 700;
-    min-width: 20px;
-    text-align: center;
-    color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.1);
-    padding: 2px 8px;
-    border-radius: 12px;
+    color: var(--text-primary);
 }
 
-.tag-chip:hover .tag-chip__count {
-    color: #fff;
-    background: var(--accent-primary);
+/* Tier 3: moderate */
+.tag-tier-3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
 }
 
-/* Size variants */
-.tag-chip--sm {
-    font-size: 12px;
-    padding: 6px 14px;
+/* Tier 4: minor */
+.tag-tier-4 {
+    font-size: 13px;
+    font-weight: 400;
     color: var(--text-muted);
 }
 
-.tag-chip--md {
-    font-size: 14px;
-    padding: 9px 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.tag-chip--lg {
-    font-size: 15px;
-    padding: 10px 20px;
-    font-weight: 700;
-    color: var(--text-primary);
-    background: linear-gradient(135deg, rgba(var(--accent-color-raw), 0.06), rgba(var(--accent-color-raw), 0.02));
-    border: 1px solid rgba(var(--accent-color-raw), 0.15);
-}
-
-.tag-chip--lg .tag-chip__count {
-    font-size: 11px;
-    padding: 2px 10px;
-}
-
-[data-theme="dark"] .tag-chip {
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .tag-chip:hover {
-    box-shadow: 0 4px 16px rgba(var(--accent-color-raw), 0.25);
-}
-
-[data-theme="dark"] .tags-cloud {
-    background: rgba(255, 255, 255, 0.02);
-    border-color: var(--border-light);
-}
-
-/* --- Tags: 2-column card grid --- */
-.tags-grid {
-    columns: 2;
-    column-gap: 20px;
+/* --- Detail panel (shown on pill click) --- */
+.tags-detail {
     margin-top: 8px;
 }
 
-@media (max-width: 600px) {
-    .tags-grid { columns: 1; }
-}
-
-.tags-card {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    padding: 16px 20px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-divider);
+.tags-detail__section {
+    padding: 20px 24px;
+    border-radius: var(--radius-lg);
     background: var(--bg-surface-raised);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-subtle);
+    animation: tagDetailIn 0.2s ease;
 }
 
-.tags-card:hover {
-    border-color: var(--border-subtle);
+@keyframes tagDetailIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.tags-card--highlight {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 1px rgba(var(--accent-color-raw), 0.2), var(--shadow-md);
-}
-
-.tags-card__header {
+.tags-detail__header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-divider);
 }
 
-.tags-card__title {
-    font-size: 15px;
+.tags-detail__header h2 {
+    font-size: 18px;
     font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.tags-detail__header span {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.1);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.tags-detail__close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.15s;
+}
+
+.tags-detail__close:hover {
     color: var(--text-primary);
 }
 
-.tags-card__count {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent-primary);
-    background: rgba(var(--accent-color-raw), 0.1);
-    padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.tags-card__list {
+.tags-detail__section ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.tags-card__list li {
+.tags-detail__section li {
     display: flex;
-    justify-content: space-between;
     align-items: baseline;
-    padding: 5px 0;
-    border-top: 1px solid var(--border-divider);
+    gap: 14px;
+    padding: 6px 8px;
+    margin: 0 -8px;
+    border-radius: var(--radius-sm);
+    transition: background 0.12s;
 }
 
-.tags-card__list li a {
-    font-size: 13px;
-    color: var(--text-secondary);
+.tags-detail__section li:hover {
+    background: var(--bg-surface-hover);
+}
+
+.tags-detail__section li time {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    min-width: 85px;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.tags-detail__section li a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
     text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1;
-    min-width: 0;
     transition: color 0.15s;
 }
 
-.tags-card__list li a:hover {
+.tags-detail__section li a:hover {
     color: var(--accent-primary);
 }
 
-.tags-card__list li time {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    margin-left: 8px;
-}
-
-.tags-card__more {
-    display: block;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent-primary);
-    text-decoration: none;
-    transition: opacity 0.15s;
-}
-
-.tags-card__more:hover {
-    opacity: 0.7;
-    text-decoration: none;
-}
-
-/* Expanded: show all posts (JS adds hidden li via limit:3 in template — use full list approach) */
-.tags-card--expanded .tags-card__list li {
-    display: flex;
-}
-
-[data-theme="dark"] .tags-card {
-    background: rgba(255, 255, 255, 0.02);
+[data-theme="dark"] .tags-detail__section {
+    background: rgba(255, 255, 255, 0.03);
     border-color: var(--border-light);
 }
 
