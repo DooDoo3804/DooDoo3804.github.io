@@ -75,8 +75,8 @@
 .catalog-container {
     position: fixed;
     top: 120px;
-    right: calc((100vw - 1170px) / 2 - 20px);
-    width: 200px;
+    right: calc((100vw - 1170px) / 2 - 40px);
+    width: 180px;
     padding: 0;
     max-height: calc(100vh - 140px);
     overflow-y: auto;
@@ -84,15 +84,15 @@
 
 @media (min-width: 1200px) and (max-width: 1439px) {
     .catalog-container {
-        right: calc((100vw - 1170px) / 2 - 10px);
-        width: 190px;
+        right: calc((100vw - 1170px) / 2 - 30px);
+        width: 180px;
     }
 }
 
 @media (min-width: 1440px) {
     .catalog-container {
-        right: calc((100vw - 1170px) / 2);
-        width: 210px;
+        right: calc((100vw - 1170px) / 2 - 40px);
+        width: 190px;
     }
 }
 
