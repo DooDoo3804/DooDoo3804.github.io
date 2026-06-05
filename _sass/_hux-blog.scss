@@ -613,6 +613,8 @@ code, kbd, pre, samp {
 .post-container .pager li {
     flex: 1 1 0;
     min-width: 0;
+    display: block;
+    list-style: none;
 }
 
 .post-container .pager li > a {
@@ -621,6 +623,13 @@ code, kbd, pre, samp {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.post-container .pager li::before,
+.post-container .pager li::after,
+.post-container .pager li > a::before {
+    content: none !important;
+    display: none !important;
 }
 
 .post-container .pager li > a > span {
