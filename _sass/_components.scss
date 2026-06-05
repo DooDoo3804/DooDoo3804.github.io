@@ -763,16 +763,17 @@ code.has-line-numbers .code-line::before {
    ABOUT PAGE - Tech Stack Tags
    ======================================== */
 .post-container :not(pre) > code {
+    display: inline-block;
     background: rgba(0, 0, 0, 0.08);
     color: var(--text-primary);
     border: none;
     border-radius: 4px;
-    padding: 2px 5px;
-    margin: 0 3px;
+    padding: 1px 6px;
+    margin: 0 4px;
     font-size: 14px;
+    line-height: inherit;
+    vertical-align: baseline;
     font-family: var(--font-mono);
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
 }
 
 [data-theme="dark"] .post-container code {
