@@ -802,10 +802,10 @@ ul.pager {
 .tags a,
 .tags .tag {
     display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
     padding: 2px 10px;
-    color: #fff;
+    color: var(--text-primary);
     line-height: 22px;
     font-size: 12px;
     font-family: var(--font-mono);
@@ -813,7 +813,7 @@ ul.pager {
     margin: 0 2px;
     margin-bottom: 6px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface-hover);
 }
 
 .tags a::before,
@@ -833,9 +833,9 @@ ul.pager {
 .tags .tag:hover,
 .tags a:active,
 .tags .tag:active {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    background-color: rgba(var(--accent-color-raw), 0.08);
     text-decoration: none;
 }
 
