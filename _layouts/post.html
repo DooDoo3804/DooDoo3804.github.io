@@ -37,17 +37,12 @@ layout: default
 
 <!-- Post Content -->
     <div class="container">
-        <div class="row">
+        <div class="row post-row">
 
     <!-- Post Container -->
             <div class="
-                {%- unless page.no-catalog %}
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                {%- else %}
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
-                {%- endunless %}
                 post-container" data-pagefind-body>
 
 
@@ -166,10 +161,7 @@ layout: default
     <!-- Side Catalog Container -->
         {%- unless page.no-catalog %}
             <div class="
-                col-lg-2 col-lg-offset-1
-                col-md-3
-                visible-md-block visible-lg-block
-                sidebar-container
+                hidden-xs hidden-sm
                 catalog-container" data-pagefind-ignore>
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">

@@ -67,9 +67,22 @@
     padding-left: 0;
 }
 
+.post-row {
+    position: relative;
+}
+
 .catalog-container {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 180px;
     padding: 0;
-    width: 100%; /* 부모 col-lg-2의 폭에 맞춤 — fold/unfold 시 폭 고정 */
+}
+
+@media (min-width: 1200px) {
+    .catalog-container {
+        width: 200px;
+    }
 }
 
 /* Side-catalog styles moved to _components.scss (Sprint 18) */
