@@ -762,18 +762,36 @@ code.has-line-numbers .code-line::before {
 /* ========================================
    ABOUT PAGE - Tech Stack Tags
    ======================================== */
-.post-container :not(pre) > code {
-    display: inline-block;
+.post-container p > code,
+.post-container li > code,
+.post-container td > code,
+.post-container th > code,
+.post-container strong > code,
+.post-container em > code,
+.post-container blockquote code {
+    display: inline-block !important;
     background: rgba(0, 0, 0, 0.08);
     color: var(--text-primary);
     border: none;
     border-radius: 4px;
-    padding: 1px 6px;
-    margin: 0 4px;
+    padding: 1px 6px !important;
+    margin: 0 4px !important;
     font-size: 14px;
     line-height: inherit;
     vertical-align: baseline;
     font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .post-container p > code,
+[data-theme="dark"] .post-container li > code,
+[data-theme="dark"] .post-container td > code,
+[data-theme="dark"] .post-container th > code,
+[data-theme="dark"] .post-container strong > code,
+[data-theme="dark"] .post-container em > code,
+[data-theme="dark"] .post-container blockquote code {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 4px !important;
 }
 
 [data-theme="dark"] .post-container code {
