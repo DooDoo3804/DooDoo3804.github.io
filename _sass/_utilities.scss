@@ -75,7 +75,7 @@
    OVERFLOW FIXES
    ======================================== */
 pre { overflow-x: auto; }
-.post-container table { display: block; overflow-x: auto; max-width: 100%; }
+.post-container table { overflow-x: auto; }
 .post-container { overflow-wrap: break-word; word-break: break-word; }
 
 /* ========================================
