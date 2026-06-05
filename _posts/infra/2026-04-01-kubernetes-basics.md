@@ -21,7 +21,7 @@ description: "Kubernetes 핵심 개념 정리. Pod, Deployment, Service, ConfigM
 
 ## 왜 Kubernetes인가
 
-[이전 Docker 포스트](/infra/2026/03/20/docker-getting-started/)에서 컨테이너를 만들고 `docker-compose`로 멀티 컨테이너 환경을 구성하는 법을 다뤘다. 로컬 개발이나 소규모 서비스에서는 충분하지만, **프로덕션 환경**에서는 금방 한계에 부딪힌다.
+[이전 Docker 포스트](/2026/03/20/docker-getting-started/)에서 컨테이너를 만들고 `docker-compose`로 멀티 컨테이너 환경을 구성하는 법을 다뤘다. 로컬 개발이나 소규모 서비스에서는 충분하지만, **프로덕션 환경**에서는 금방 한계에 부딪힌다.
 
 - 컨테이너가 죽으면 누가 다시 띄우는가?
 - 트래픽이 급증하면 컨테이너를 어떻게 늘리는가?
@@ -414,6 +414,6 @@ Kubernetes는 단순한 배포 도구가 아니라 **선언적 인프라 관리 
 
 ## 관련 포스트
 
-- [Docker 시작하기](/infra/2026/03/20/docker-getting-started/)
-- [MSA 핵심 패턴 — Circuit Breaker, API Gateway, Saga](/system-design/2026/04/03/msa-patterns/)
-- [gRPC 기초 — Spring Boot 연동](/infra/2026/04/03/grpc-spring-boot/)
+- [Docker 시작하기](/2026/03/20/docker-getting-started/)
+- [MSA 핵심 패턴 — Circuit Breaker, API Gateway, Saga](/2026/04/03/msa-patterns/)
+- [gRPC 기초 — Spring Boot 연동](/2026/04/03/grpc-spring-boot/)

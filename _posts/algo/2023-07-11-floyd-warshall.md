@@ -74,6 +74,6 @@ int main() {
 
 ## 관련 포스트
 
-- [Minimum Spanning Tree — 크루스칼 알고리즘](/algorithm/2023/07/12/minimun-spanning-tree-kruskal/)
-- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/algorithm/2023/06/19/Segment-tree/)
-- [Trie 자료구조 — 원리와 구현](/algorithm/2026/04/01/trie/)
+- [Minimum Spanning Tree — 크루스칼 알고리즘](/2023/07/12/minimun-spanning-tree-kruskal/)
+- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/2023/06/19/Segment-tree/)
+- [Trie 자료구조 — 원리와 구현](/2026/04/01/trie/)

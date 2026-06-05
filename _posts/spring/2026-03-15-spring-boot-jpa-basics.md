@@ -161,7 +161,7 @@ public class PostService {
 }
 ```
 
-`@Transactional(readOnly = true)`를 클래스 레벨에 걸고, 쓰기 작업에만 `@Transactional`을 따로 붙이는 패턴이 일반적이다. 읽기 전용 트랜잭션은 Hibernate의 플러시 모드를 MANUAL로 설정하기 때문에 성능상 이점이 있다. `@Transactional`의 전파 레벨과 격리 수준을 더 깊이 이해하려면 [Spring 트랜잭션 전파 레벨](/spring/2026/04/04/spring-transaction-propagation/)과 [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)을 참고하자.
+`@Transactional(readOnly = true)`를 클래스 레벨에 걸고, 쓰기 작업에만 `@Transactional`을 따로 붙이는 패턴이 일반적이다. 읽기 전용 트랜잭션은 Hibernate의 플러시 모드를 MANUAL로 설정하기 때문에 성능상 이점이 있다. `@Transactional`의 전파 레벨과 격리 수준을 더 깊이 이해하려면 [Spring 트랜잭션 전파 레벨](/2026/04/04/spring-transaction-propagation/)과 [데이터베이스 트랜잭션과 격리 수준](/2026/04/06/database-transaction-isolation/)을 참고하자.
 
 ---
 
@@ -229,13 +229,13 @@ Client → Controller → Service → Repository → Database
 
 ## 마무리
 
-이번 글에서는 Spring Boot + JPA의 가장 기본적인 패턴을 다뤘다. 실무에서는 여기에 **DTO 변환**, **예외 처리(@ControllerAdvice)**, **Validation**, **페이징 처리** 등이 추가된다. 또한 연관 관계가 복잡해지면 [JPA N+1 문제](/spring/2026/04/04/jpa-n-plus-one-problem/)를 반드시 이해해야 한다. 다음 글에서는 이 API에 Spring Security를 적용하는 방법을 알아보겠다.
+이번 글에서는 Spring Boot + JPA의 가장 기본적인 패턴을 다뤘다. 실무에서는 여기에 **DTO 변환**, **예외 처리(@ControllerAdvice)**, **Validation**, **페이징 처리** 등이 추가된다. 또한 연관 관계가 복잡해지면 [JPA N+1 문제](/2026/04/04/jpa-n-plus-one-problem/)를 반드시 이해해야 한다. 다음 글에서는 이 API에 Spring Security를 적용하는 방법을 알아보겠다.
 
 ---
 
 ## 관련 포스트
 
-- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
-- [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)
-- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
-- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
+- [JPA N+1 문제 완전 정복](/2026/04/04/jpa-n-plus-one-problem/)
+- [Spring Security 6 + JWT 인증 구현](/2026/04/01/spring-security-jwt/)
+- [Spring AOP 내부 동작 원리](/2026/04/03/spring-aop-internals/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/2026/04/04/spring-transaction-propagation/)

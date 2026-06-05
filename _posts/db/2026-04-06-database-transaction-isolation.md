@@ -164,7 +164,7 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
 ## PostgreSQL 격리 수준 실제 동작
 
-PostgreSQL은 내부적으로 **MVCC(Multi-Version Concurrency Control)** 를 사용한다. PostgreSQL의 쿼리 성능 최적화가 필요하다면 [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)도 함께 참고하자. 각 트랜잭션에 스냅샷을 할당하여 락 없이도 격리성을 제공한다.
+PostgreSQL은 내부적으로 **MVCC(Multi-Version Concurrency Control)** 를 사용한다. PostgreSQL의 쿼리 성능 최적화가 필요하다면 [PostgreSQL 인덱스 제대로 이해하기](/2026/03/25/postgresql-index/)도 함께 참고하자. 각 트랜잭션에 스냅샷을 할당하여 락 없이도 격리성을 제공한다.
 
 ### PostgreSQL의 특이점
 
@@ -342,7 +342,7 @@ public void processOrder(Long orderId) {
 
 ### 주의: 프록시 기반 동작
 
-Spring의 `@Transactional`은 **AOP 프록시**를 통해 동작한다 ([Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/) 참고). 같은 클래스 내부에서 호출하면 프록시를 거치지 않아 트랜잭션이 적용되지 않는다:
+Spring의 `@Transactional`은 **AOP 프록시**를 통해 동작한다 ([Spring AOP 내부 동작 원리](/2026/04/03/spring-aop-internals/) 참고). 같은 클래스 내부에서 호출하면 프록시를 거치지 않아 트랜잭션이 적용되지 않는다:
 
 ```java
 @Service
@@ -611,7 +611,7 @@ public class ProductService {
 
 ## 관련 포스트
 
-- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
-- [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)
-- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
-- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/database/2026/04/01/mysql-vs-postgresql/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/2026/04/04/spring-transaction-propagation/)
+- [PostgreSQL 인덱스 제대로 이해하기](/2026/03/25/postgresql-index/)
+- [JPA N+1 문제 완전 정복](/2026/04/04/jpa-n-plus-one-problem/)
+- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/2026/04/01/mysql-vs-postgresql/)

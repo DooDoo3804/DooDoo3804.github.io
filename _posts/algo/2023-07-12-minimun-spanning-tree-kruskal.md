@@ -104,6 +104,6 @@ int main() {
 
 ## 관련 포스트
 
-- [Floyd Warshall — 모든 쌍 최단 경로](/algorithm/2023/07/11/floyd-warshall/)
-- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/algorithm/2023/06/19/Segment-tree/)
-- [Trie 자료구조 — 원리와 구현](/algorithm/2026/04/01/trie/)
+- [Floyd Warshall — 모든 쌍 최단 경로](/2023/07/11/floyd-warshall/)
+- [Segment Tree — 구간 쿼리를 위한 트리 자료구조](/2023/06/19/Segment-tree/)
+- [Trie 자료구조 — 원리와 구현](/2026/04/01/trie/)

@@ -64,7 +64,7 @@ Spring은 두 가지 방식으로 프록시를 생성한다.
 | **성능** | 리플렉션 사용 (상대적으로 느림) | 바이트코드 조작 (상대적으로 빠름) |
 | **Spring Boot 기본값** | X | **O** (2.0부터 기본) |
 
-Spring Boot 2.0부터는 `spring.aop.proxy-target-class=true`가 기본값이므로 인터페이스 유무와 관계없이 **CGLIB**으로 프록시를 생성한다. CGLIB은 런타임에 바이트코드를 조작하여 서브클래스를 생성하는데, 이 과정은 [JVM 클래스 로딩 메커니즘](/jvm/2026/04/03/jvm-architecture-classloading/)의 Application ClassLoader를 통해 이루어진다.
+Spring Boot 2.0부터는 `spring.aop.proxy-target-class=true`가 기본값이므로 인터페이스 유무와 관계없이 **CGLIB**으로 프록시를 생성한다. CGLIB은 런타임에 바이트코드를 조작하여 서브클래스를 생성하는데, 이 과정은 [JVM 클래스 로딩 메커니즘](/2026/04/03/jvm-architecture-classloading/)의 Application ClassLoader를 통해 이루어진다.
 
 ```java
 // CGLIB 프록시가 생성되는 과정 (개념적 표현)
@@ -95,7 +95,7 @@ public class PostService$$EnhancerBySpringCGLIB extends PostService {
 
 ## @Transactional이 AOP로 동작하는 원리
 
-[이전 글(Spring Boot + JPA 기초)](/spring/2026/03/15/spring-boot-jpa-basics/)에서 `@Transactional`을 사용했다. 이 어노테이션이 실제로 동작하는 과정은 다음과 같다.
+[이전 글(Spring Boot + JPA 기초)](/2026/03/15/spring-boot-jpa-basics/)에서 `@Transactional`을 사용했다. 이 어노테이션이 실제로 동작하는 과정은 다음과 같다.
 
 ```
 1. Spring 컨테이너 기동
@@ -108,7 +108,7 @@ public class PostService$$EnhancerBySpringCGLIB extends PostService {
 8. 정상이면 커밋, RuntimeException이면 롤백
 ```
 
-`TransactionInterceptor`는 `MethodInterceptor`를 구현한 Spring의 내장 Advice다. `@Transactional`의 속성(`propagation`, `isolation`, `rollbackFor` 등)을 읽어서 트랜잭션 동작을 결정한다. 트랜잭션 전파 레벨에 대한 자세한 내용은 [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)에서 다룬다.
+`TransactionInterceptor`는 `MethodInterceptor`를 구현한 Spring의 내장 Advice다. `@Transactional`의 속성(`propagation`, `isolation`, `rollbackFor` 등)을 읽어서 트랜잭션 동작을 결정한다. 트랜잭션 전파 레벨에 대한 자세한 내용은 [Spring 트랜잭션 전파 레벨 완전 정복](/2026/04/04/spring-transaction-propagation/)에서 다룬다.
 
 ---
 
@@ -272,13 +272,13 @@ public class ProductService {
 
 ## 마무리
 
-Spring AOP는 프록시 패턴을 기반으로 동작하며, 이를 이해하면 `@Transactional`을 비롯한 대부분의 Spring 어노테이션이 어떻게 동작하는지 명확해진다. 특히 Self-invocation 문제는 실무에서 정말 자주 만나는 버그 원인이니 반드시 기억해 두자. [Spring Bean 라이프사이클](/spring/2026/04/05/spring-bean-lifecycle/)에서 프록시 빈이 생성되는 시점을 더 자세히 다룰 예정이다.
+Spring AOP는 프록시 패턴을 기반으로 동작하며, 이를 이해하면 `@Transactional`을 비롯한 대부분의 Spring 어노테이션이 어떻게 동작하는지 명확해진다. 특히 Self-invocation 문제는 실무에서 정말 자주 만나는 버그 원인이니 반드시 기억해 두자. [Spring Bean 라이프사이클](/2026/04/05/spring-bean-lifecycle/)에서 프록시 빈이 생성되는 시점을 더 자세히 다룰 예정이다.
 
 ---
 
 ## 관련 포스트
 
-- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
-- [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)
-- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
-- [Spring Bean 라이프사이클 완전 정복](/spring/2026/04/05/spring-bean-lifecycle/)
+- [Spring Boot + JPA 기초](/2026/03/15/spring-boot-jpa-basics/)
+- [Spring Security 6 + JWT 인증 구현](/2026/04/01/spring-security-jwt/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/2026/04/04/spring-transaction-propagation/)
+- [Spring Bean 라이프사이클 완전 정복](/2026/04/05/spring-bean-lifecycle/)

@@ -154,8 +154,8 @@ class User(
 Conclusion
 ---
 자바와 코틀린은 완벽 호환이 된다고는 하지만 많은 부분 코틀린이 더 간결한 방식으로 다릅니다. 위에서 다 다루지 못한 내용들이 많이 있지만 다음 글들을 통해서 확인하면 좋습니다.  
-[「Kotlin 기본 문법」](/kotlin/2023/06/20/kotlin-기본-문법/)
-[「Kotlin 고급 문법」](/kotlin/2026/04/01/kotlin-advanced-syntax/)
+[「Kotlin 기본 문법」](/2023/06/20/kotlin-기본-문법/)
+[「Kotlin 고급 문법」](/2026/04/01/kotlin-advanced-syntax/)
 
 참고
 --

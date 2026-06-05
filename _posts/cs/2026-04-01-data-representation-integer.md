@@ -339,4 +339,4 @@ References
 
 ## 관련 포스트
 
-- [부동소수점 IEEE 754 완전 정복](/cs/2026/04/01/data-representation-float/)
+- [부동소수점 IEEE 754 완전 정복](/2026/04/01/data-representation-float/)

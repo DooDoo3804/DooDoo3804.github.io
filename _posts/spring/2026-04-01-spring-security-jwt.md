@@ -21,7 +21,7 @@ description: "Spring Security 6 + JWT 인증 구현 실전 가이드. SecurityFi
 
 ## 들어가며
 
-[이전 글(Spring Boot + JPA로 REST API 만들기)](/spring/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다. 이번에는 이 API에 **인증(Authentication)** 을 적용한다. 세션 기반 인증 대신 **JWT(JSON Web Token)** 를 사용해서 stateless한 인증 시스템을 만들 것이다.
+[이전 글(Spring Boot + JPA로 REST API 만들기)](/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다. 이번에는 이 API에 **인증(Authentication)** 을 적용한다. 세션 기반 인증 대신 **JWT(JSON Web Token)** 를 사용해서 stateless한 인증 시스템을 만들 것이다.
 
 Spring Security 6.x + Spring Boot 3.x 기준으로 작성했다. Spring Security 5.x 이하와 설정 방식이 상당히 다르니 주의하자.
 
@@ -29,7 +29,7 @@ Spring Security 6.x + Spring Boot 3.x 기준으로 작성했다. Spring Security
 
 ## Spring Security 아키텍처 개요
 
-Spring Security는 **서블릿 필터 체인** 기반으로 동작한다. 요청이 Controller에 도달하기 전에 여러 보안 필터를 거치게 된다. 아키텍처를 더 깊이 이해하려면 [Spring Security 아키텍처 완전 이해](/spring/2026/04/05/spring-security-architecture/)를 참고하자.
+Spring Security는 **서블릿 필터 체인** 기반으로 동작한다. 요청이 Controller에 도달하기 전에 여러 보안 필터를 거치게 된다. 아키텍처를 더 깊이 이해하려면 [Spring Security 아키텍처 완전 이해](/2026/04/05/spring-security-architecture/)를 참고하자.
 
 ```
 HTTP Request
@@ -118,7 +118,7 @@ HMACSHA256(
 | **HS256** | 대칭키 (HMAC) | 하나의 secret | 단일 서버, 간단한 구조 |
 | **RS256** | 비대칭키 (RSA) | private/public key pair | MSA, 외부 검증 필요 시 |
 
-HS256은 구현이 간단하지만, 검증하는 쪽도 비밀키를 알아야 한다. MSA 환경에서는 RS256이 더 적합하다 — 발급 서버만 private key를 갖고, 다른 서비스는 public key로 검증만 하면 된다. [MSA 패턴](/system-design/2026/04/03/msa-patterns/)에서 다루는 API Gateway에서 JWT 검증을 중앙화하면 각 서비스의 인증 부담을 줄일 수 있다.
+HS256은 구현이 간단하지만, 검증하는 쪽도 비밀키를 알아야 한다. MSA 환경에서는 RS256이 더 적합하다 — 발급 서버만 private key를 갖고, 다른 서비스는 public key로 검증만 하면 된다. [MSA 패턴](/2026/04/03/msa-patterns/)에서 다루는 API Gateway에서 JWT 검증을 중앙화하면 각 서비스의 인증 부담을 줄일 수 있다.
 
 ---
 
@@ -672,6 +672,6 @@ References
 
 ## 관련 포스트
 
-- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
-- [Spring Security 아키텍처 완전 이해](/spring/2026/04/05/spring-security-architecture/)
-- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
+- [Spring Boot + JPA 기초](/2026/03/15/spring-boot-jpa-basics/)
+- [Spring Security 아키텍처 완전 이해](/2026/04/05/spring-security-architecture/)
+- [Spring AOP 내부 동작 원리](/2026/04/03/spring-aop-internals/)

@@ -313,7 +313,7 @@ AuthenticationFilter
 
 ## JWT 기반 인증 구현
 
-실제 JWT 인증의 전체 구현 코드와 Refresh Token 전략은 [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)에서 다룬다.
+실제 JWT 인증의 전체 구현 코드와 Refresh Token 전략은 [Spring Security 6 + JWT 인증 구현](/2026/04/01/spring-security-jwt/)에서 다룬다.
 
 ### JWT 유틸리티 클래스
 
@@ -696,7 +696,7 @@ Spring Security의 핵심 아키텍처를 정리하면:
 
 ## 관련 포스트
 
-- [Spring Security 6 + JWT 인증 구현](/spring/2026/04/01/spring-security-jwt/)
-- [Spring AOP 내부 동작 원리](/spring/2026/04/03/spring-aop-internals/)
-- [Spring Bean 라이프사이클 완전 정복](/spring/2026/04/05/spring-bean-lifecycle/)
-- [MSA 핵심 패턴 — API Gateway에서의 JWT 중앙 인증](/system-design/2026/04/03/msa-patterns/)
+- [Spring Security 6 + JWT 인증 구현](/2026/04/01/spring-security-jwt/)
+- [Spring AOP 내부 동작 원리](/2026/04/03/spring-aop-internals/)
+- [Spring Bean 라이프사이클 완전 정복](/2026/04/05/spring-bean-lifecycle/)
+- [MSA 핵심 패턴 — API Gateway에서의 JWT 중앙 인증](/2026/04/03/msa-patterns/)

@@ -22,7 +22,7 @@ categories:
 
 ## 들어가며
 
-[Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다면, 실무에서 반드시 만나게 되는 문제가 있다. 바로 **N+1 문제**다. 엔티티 하나를 조회했을 뿐인데 연관된 엔티티를 가져오기 위해 추가 쿼리가 N번 더 나가는 현상이다.
+[Spring Boot + JPA 기초](/2026/03/15/spring-boot-jpa-basics/)에서 기본적인 CRUD API를 구현했다면, 실무에서 반드시 만나게 되는 문제가 있다. 바로 **N+1 문제**다. 엔티티 하나를 조회했을 뿐인데 연관된 엔티티를 가져오기 위해 추가 쿼리가 N번 더 나가는 현상이다.
 
 개발 단계에서는 데이터가 적어 문제를 인지하지 못하다가, 운영 환경에서 데이터가 쌓이면 성능이 급격히 떨어진다. 이 글에서는 N+1 문제의 원인을 정확히 이해하고, 상황에 맞는 해결 전략을 코드와 함께 정리한다.
 
@@ -453,13 +453,13 @@ N+1 문제는 JPA를 쓰는 한 피할 수 없다. 중요한 것은 **문제를 
 3. **페이징이 필요하면**: Batch Size를 활용한다.
 4. **복잡한 조건이면**: QueryDSL로 해결한다.
 
-항상 `hibernate.SQL` 로그를 켜두고, 개발 단계에서 쿼리 수를 확인하는 습관을 들이자. 운영에서 터지기 전에 잡을 수 있다. N+1을 해결한 후에도 조회 성능이 부족하다면 [Redis 캐싱 전략](/backend/2026/04/02/redis-caching-strategy/)을 도입하여 DB 부하를 한 단계 더 낮출 수 있다. 또한 대량 조회로 인한 JVM 메모리 압박이 있다면 [GC 튜닝](/jvm/2026/04/04/jvm-gc-tuning/)도 함께 점검하자.
+항상 `hibernate.SQL` 로그를 켜두고, 개발 단계에서 쿼리 수를 확인하는 습관을 들이자. 운영에서 터지기 전에 잡을 수 있다. N+1을 해결한 후에도 조회 성능이 부족하다면 [Redis 캐싱 전략](/2026/04/02/redis-caching-strategy/)을 도입하여 DB 부하를 한 단계 더 낮출 수 있다. 또한 대량 조회로 인한 JVM 메모리 압박이 있다면 [GC 튜닝](/2026/04/04/jvm-gc-tuning/)도 함께 점검하자.
 
 ---
 
 ## 관련 포스트
 
-- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
-- [PostgreSQL 인덱스 제대로 이해하기](/database/2026/03/25/postgresql-index/)
-- [Spring 트랜잭션 전파 레벨 완전 정복](/spring/2026/04/04/spring-transaction-propagation/)
-- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)
+- [Spring Boot + JPA 기초](/2026/03/15/spring-boot-jpa-basics/)
+- [PostgreSQL 인덱스 제대로 이해하기](/2026/03/25/postgresql-index/)
+- [Spring 트랜잭션 전파 레벨 완전 정복](/2026/04/04/spring-transaction-propagation/)
+- [데이터베이스 트랜잭션과 격리 수준](/2026/04/06/database-transaction-isolation/)

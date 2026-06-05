@@ -20,12 +20,12 @@ description: "jmap과 HeapDumpOnOutOfMemoryError로 힙 덤프를 생성하고, 
 
 ## OOM, 언제 만나게 될까
 
-운영 중인 서버에서 `java.lang.OutOfMemoryError: Java heap space`가 발생하면 당황하기 마련이다. [GC 튜닝](/jvm/2026/04/04/jvm-gc-tuning/)으로 버틸 수 있는 한계를 넘어선 상황이기 때문이다. 이때 필요한 것이 **힙 덤프 분석**이다.
+운영 중인 서버에서 `java.lang.OutOfMemoryError: Java heap space`가 발생하면 당황하기 마련이다. [GC 튜닝](/2026/04/04/jvm-gc-tuning/)으로 버틸 수 있는 한계를 넘어선 상황이기 때문이다. 이때 필요한 것이 **힙 덤프 분석**이다.
 
 힙 덤프는 특정 시점의 Heap 메모리 스냅샷으로, 어떤 객체가 메모리를 얼마나 차지하고 있는지 확인할 수 있다. 이번 포스트에서는 힙 덤프 생성부터 분석, 메모리 누수 원인 추적까지 실전 과정을 다룬다.
 
 > 이 포스트는 **JVM 완전 정복** 시리즈의 세 번째 글입니다.
-> 이전 편: [GC 종류와 튜닝 전략](/jvm/2026/04/04/jvm-gc-tuning/)
+> 이전 편: [GC 종류와 튜닝 전략](/2026/04/04/jvm-gc-tuning/)
 
 ---
 
@@ -250,7 +250,7 @@ OOM이 발생했을 때 다음 순서로 대응하자.
 2. **MAT으로 Leak Suspects 확인**: 자동 분석 결과부터 살펴본다
 3. **Dominator Tree 분석**: 가장 큰 객체의 GC Root 경로를 추적한다
 4. **코드 확인**: 해당 객체를 참조하는 코드에서 해제 로직 점검
-5. **재배포 후 모니터링**: [GC 로그](/jvm/2026/04/04/jvm-gc-tuning/)를 통해 개선 여부 확인
+5. **재배포 후 모니터링**: [GC 로그](/2026/04/04/jvm-gc-tuning/)를 통해 개선 여부 확인
 
 ```bash
 # 운영 서버 JVM 권장 옵션 (종합)
@@ -269,11 +269,11 @@ java -Xms4g -Xmx4g \
 
 힙 덤프 분석은 OOM 문제 해결의 핵심 기술이다. **운영 서버에는 반드시 `HeapDumpOnOutOfMemoryError` 옵션을 설정**하고, MAT과 같은 도구로 분석하는 연습을 해 두자.
 
-이 시리즈에서 다룬 [JVM 아키텍처](/jvm/2026/04/03/jvm-architecture-classloading/), [GC 튜닝](/jvm/2026/04/04/jvm-gc-tuning/), 힙 덤프 분석을 종합하면 대부분의 JVM 메모리 문제에 대응할 수 있다. Spring Boot 애플리케이션에서 OOM이 빈번하다면 [JPA N+1 문제](/spring/2026/04/04/jpa-n-plus-one-problem/)로 인한 대량 객체 생성이 원인일 수 있으니 함께 점검해 보자. 또한 [Redis 캐싱 전략](/backend/2026/04/02/redis-caching-strategy/)을 도입하면 DB 조회를 줄여 Heap 사용량 자체를 낮출 수 있다.
+이 시리즈에서 다룬 [JVM 아키텍처](/2026/04/03/jvm-architecture-classloading/), [GC 튜닝](/2026/04/04/jvm-gc-tuning/), 힙 덤프 분석을 종합하면 대부분의 JVM 메모리 문제에 대응할 수 있다. Spring Boot 애플리케이션에서 OOM이 빈번하다면 [JPA N+1 문제](/2026/04/04/jpa-n-plus-one-problem/)로 인한 대량 객체 생성이 원인일 수 있으니 함께 점검해 보자. 또한 [Redis 캐싱 전략](/2026/04/02/redis-caching-strategy/)을 도입하면 DB 조회를 줄여 Heap 사용량 자체를 낮출 수 있다.
 
 ---
 
 **JVM 완전 정복 시리즈**
-1. [JVM 아키텍처와 클래스 로딩](/jvm/2026/04/03/jvm-architecture-classloading/)
-2. [GC 종류와 튜닝 전략](/jvm/2026/04/04/jvm-gc-tuning/)
+1. [JVM 아키텍처와 클래스 로딩](/2026/04/03/jvm-architecture-classloading/)
+2. [GC 종류와 튜닝 전략](/2026/04/04/jvm-gc-tuning/)
 3. **JVM 힙 덤프 분석** ← 현재 글

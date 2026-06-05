@@ -94,4 +94,4 @@ long long sum(vector<long long> &tree, int node, int start, int end, int left, i
 
 ## 관련 포스트
 
-- [Trie 자료구조 — 문자열 검색에 최적화된 트리 구조](/algorithm/2026/04/01/trie/)
+- [Trie 자료구조 — 문자열 검색에 최적화된 트리 구조](/2026/04/01/trie/)

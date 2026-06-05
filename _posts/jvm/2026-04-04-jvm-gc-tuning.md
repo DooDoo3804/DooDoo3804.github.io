@@ -23,13 +23,13 @@ description: "Serial부터 ZGC까지 GC 종류를 비교하고, GC 로그 분석
 Java는 개발자가 메모리를 직접 해제하지 않아도 된다. 하지만 **GC가 언제, 어떻게 동작하는지** 이해하지 못하면 운영 환경에서 갑작스러운 지연(Stop-the-World)이나 OOM을 만나게 된다. 이번 포스트에서는 GC의 종류를 비교하고, 실전 튜닝 옵션을 정리한다.
 
 > 이 포스트는 **JVM 완전 정복** 시리즈의 두 번째 글입니다.
-> 이전 편: [JVM 아키텍처와 클래스 로딩](/jvm/2026/04/03/jvm-architecture-classloading/)
+> 이전 편: [JVM 아키텍처와 클래스 로딩](/2026/04/03/jvm-architecture-classloading/)
 
 ---
 
 ## GC 기본 동작 원리
 
-[이전 포스트](/jvm/2026/04/03/jvm-architecture-classloading/)에서 다룬 **Heap 영역**은 보통 두 세대로 나뉜다.
+[이전 포스트](/2026/04/03/jvm-architecture-classloading/)에서 다룬 **Heap 영역**은 보통 두 세대로 나뉜다.
 
 ```
 ┌──────────────────────────────────────────┐
@@ -238,7 +238,7 @@ GC 모니터링 시작...
 - **대용량 Heap + 초저지연 필수** → ZGC
 - **컨테이너 환경 (Heap ≤ 512MB)** → Serial GC도 고려
 
-GC를 변경한 후에는 반드시 **GC 로그를 분석**하고, 실제 워크로드로 성능 테스트를 수행해야 한다. 특히 Spring Boot 애플리케이션에서 [JPA N+1 문제](/spring/2026/04/04/jpa-n-plus-one-problem/)로 대량의 객체가 생성되는 경우, Young Gen 압박이 커지므로 GC 튜닝의 효과가 극대화된다.
+GC를 변경한 후에는 반드시 **GC 로그를 분석**하고, 실제 워크로드로 성능 테스트를 수행해야 한다. 특히 Spring Boot 애플리케이션에서 [JPA N+1 문제](/2026/04/04/jpa-n-plus-one-problem/)로 대량의 객체가 생성되는 경우, Young Gen 압박이 커지므로 GC 튜닝의 효과가 극대화된다.
 
 ---
 
@@ -246,11 +246,11 @@ GC를 변경한 후에는 반드시 **GC 로그를 분석**하고, 실제 워크
 
 GC 튜닝의 핵심은 **"측정 먼저, 최적화는 나중에"**이다. GC 로그를 켜고, 현재 상태를 파악한 다음, 목표에 맞는 옵션을 조정하자. 대부분의 경우 G1GC 기본 설정과 적절한 Heap 크기 설정만으로 충분하다.
 
-GC가 아무리 잘 동작해도 메모리 누수가 있으면 결국 OOM이 발생한다. 다음 포스트에서는 [JVM 힙 덤프 분석](/jvm/2026/04/05/jvm-heap-dump-analysis/)을 통해 메모리 누수를 찾아내는 방법을 다룬다.
+GC가 아무리 잘 동작해도 메모리 누수가 있으면 결국 OOM이 발생한다. 다음 포스트에서는 [JVM 힙 덤프 분석](/2026/04/05/jvm-heap-dump-analysis/)을 통해 메모리 누수를 찾아내는 방법을 다룬다.
 
 ---
 
 **JVM 완전 정복 시리즈**
-1. [JVM 아키텍처와 클래스 로딩](/jvm/2026/04/03/jvm-architecture-classloading/)
+1. [JVM 아키텍처와 클래스 로딩](/2026/04/03/jvm-architecture-classloading/)
 2. **GC 종류와 튜닝 전략** ← 현재 글
-3. [JVM 힙 덤프 분석](/jvm/2026/04/05/jvm-heap-dump-analysis/)
+3. [JVM 힙 덤프 분석](/2026/04/05/jvm-heap-dump-analysis/)

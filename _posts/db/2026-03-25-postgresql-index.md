@@ -140,7 +140,7 @@ WHERE status = 'PAID' AND created_at > '2026-01-01'
 
 인덱스는 만능이 아니다. 오히려 성능을 떨어뜨리는 경우도 있다:
 
-- **쓰기가 매우 빈번한 테이블**: INSERT/UPDATE/DELETE 시 인덱스도 함께 갱신되므로 오버헤드 발생. 동시 쓰기가 많다면 [트랜잭션 격리 수준](/database/2026/04/06/database-transaction-isolation/)도 함께 고려해야 한다
+- **쓰기가 매우 빈번한 테이블**: INSERT/UPDATE/DELETE 시 인덱스도 함께 갱신되므로 오버헤드 발생. 동시 쓰기가 많다면 [트랜잭션 격리 수준](/2026/04/06/database-transaction-isolation/)도 함께 고려해야 한다
 - **카디널리티가 극단적으로 낮은 컬럼**: `gender`처럼 값이 2~3개뿐이면 Full Scan이 더 빠를 수 있음
 - **테이블 크기가 작은 경우**: 수천 건 이하라면 Seq Scan이 충분히 빠름
 
@@ -177,7 +177,7 @@ SELECT pg_size_pretty(pg_total_relation_size('orders'));
 
 ## 관련 포스트
 
-- [데이터베이스 트랜잭션과 격리 수준](/database/2026/04/06/database-transaction-isolation/)
-- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/database/2026/04/01/mysql-vs-postgresql/)
-- [JPA N+1 문제 완전 정복](/spring/2026/04/04/jpa-n-plus-one-problem/)
-- [Spring Boot + JPA 기초](/spring/2026/03/15/spring-boot-jpa-basics/)
+- [데이터베이스 트랜잭션과 격리 수준](/2026/04/06/database-transaction-isolation/)
+- [MySQL vs PostgreSQL — 백엔드 개발자가 알아야 할 차이](/2026/04/01/mysql-vs-postgresql/)
+- [JPA N+1 문제 완전 정복](/2026/04/04/jpa-n-plus-one-problem/)
+- [Spring Boot + JPA 기초](/2026/03/15/spring-boot-jpa-basics/)
