@@ -791,13 +791,8 @@ code.has-line-numbers .code-line::before {
     font-size: inherit;
 }
 
-/* --- Side Catalog Sticky --- */
+/* --- Side Catalog --- */
 .side-catalog {
-    position: sticky;
-    top: 80px;
-    height: auto;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
     opacity: 0.4;
     transition: opacity 0.25s ease;
 }
