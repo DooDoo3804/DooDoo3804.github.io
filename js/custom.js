@@ -232,18 +232,16 @@
     }
 
     function copyToClipboard(text, btn) {
-        var ICON_COPY = '\uD83D\uDCCB';    // clipboard emoji
-        var ICON_CHECK = '\u2713';       // checkmark
         function onSuccess() {
-            btn.textContent = ICON_CHECK;
-            btn.classList.add('copy-btn--success');
+            btn.textContent = 'Copied!';
+            btn.classList.add('code-copy-btn--success');
             btn.setAttribute('aria-label', 'Copied!');
             announceToSR("클립보드에 복사됐습니다");
-            setTimeout(function() { btn.textContent = ICON_COPY; btn.classList.remove('copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, COPY_FEEDBACK_MS);
+            setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('code-copy-btn--success'); btn.setAttribute('aria-label', 'Copy code to clipboard'); }, COPY_FEEDBACK_MS);
         }
         function onFail() {
-            btn.textContent = "\u2717";
-            setTimeout(function() { btn.textContent = ICON_COPY; }, COPY_FEEDBACK_MS);
+            btn.textContent = 'Error';
+            setTimeout(function() { btn.textContent = 'Copy'; }, COPY_FEEDBACK_MS);
         }
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
@@ -258,34 +256,34 @@
         var container = document.querySelector('.post-container');
         if (!container) return;
 
-        // Create buttons (no individual listeners — delegation below handles clicks)
-        var pres = container.querySelectorAll('pre');
-        pres.forEach(function(pre) {
-            if (pre.querySelector('.copy-btn')) return;
+        // Create copy buttons on each .highlighter-rouge block
+        var codeBlocks = container.querySelectorAll('.highlighter-rouge');
+        codeBlocks.forEach(function(block) {
+            if (block.querySelector('.code-copy-btn')) return;
 
             var btn = document.createElement('button');
-            btn.className = 'copy-btn';
-            btn.textContent = '\uD83D\uDCCB';
+            btn.className = 'code-copy-btn';
+            btn.textContent = 'Copy';
             btn.setAttribute('aria-label', 'Copy code to clipboard');
-            pre.appendChild(btn);
+            block.appendChild(btn);
         });
 
         // Single delegated listener for all copy buttons
         container.addEventListener('click', function(e) {
-            var btn = e.target.closest('.copy-btn');
+            var btn = e.target.closest('.code-copy-btn');
             if (!btn) return;
 
-            var pre = btn.closest('pre');
-            if (!pre) return;
+            var block = btn.closest('.highlighter-rouge');
+            if (!block) return;
 
-            var code = pre.querySelector('code');
+            // Get code text from the rouge-code cell (excludes line numbers)
+            var codeCell = block.querySelector('.rouge-code code') || block.querySelector('code');
             var text;
-            if (code) {
-                text = code.textContent;
+            if (codeCell) {
+                text = codeCell.textContent;
             } else {
-                btn.hidden = true;
-                text = pre.textContent;
-                btn.hidden = false;
+                var pre = block.querySelector('pre');
+                text = pre ? pre.textContent : '';
             }
             copyToClipboard(text, btn);
         });

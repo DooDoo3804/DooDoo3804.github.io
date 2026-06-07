@@ -7,7 +7,8 @@
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
-      "WebFetch(*)"
+      "WebFetch(*)",
+      "WebSearch"
     ]
   }
 }

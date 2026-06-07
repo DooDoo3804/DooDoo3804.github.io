@@ -69,6 +69,10 @@ pre.highlight {
 [data-theme="dark"] .highlight .gi { color: #a6e22e; }
 
 /* --- Rouge Code Blocks --- */
+.highlighter-rouge {
+    position: relative;
+}
+
 .highlighter-rouge .highlight {
     margin-bottom: 10px;
     border-radius: var(--radius-md);
