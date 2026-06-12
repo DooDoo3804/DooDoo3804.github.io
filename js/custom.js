@@ -310,6 +310,8 @@
                     var figure = document.createElement('figure');
                     var caption = document.createElement('figcaption');
                     caption.textContent = img.alt;
+                    // alt를 그대로 복제하므로 스크린리더 2중 낭독 방지 (시각 표시는 유지)
+                    caption.setAttribute('aria-hidden', 'true');
                     img.parentNode.insertBefore(figure, img);
                     figure.appendChild(img);
                     figure.appendChild(caption);

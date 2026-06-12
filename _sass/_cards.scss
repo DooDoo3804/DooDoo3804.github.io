@@ -75,7 +75,7 @@
     color: var(--text-secondary);
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400; // JetBrains Mono는 400만 로드 — 기존 500은 400 폴백 렌더 중이라 정규화(시각 불변)
     text-transform: none;
     cursor: pointer;
     transition: all 0.15s;
