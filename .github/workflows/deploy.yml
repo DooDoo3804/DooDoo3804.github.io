@@ -5,9 +5,6 @@ on:
     branches: [master]
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: read
   pages: write
@@ -22,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -33,7 +30,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -80,7 +77,12 @@ jobs:
           PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
+        with:
+          # v4+ excludes dotfiles (.[^/]*) by default; v3 included them.
+          # Preserve v3 behavior so no _site dotfile is silently dropped.
+          # (.git/.github are excluded regardless and aren't in _site anyway.)
+          include-hidden-files: true
 
   deploy:
     environment:
@@ -91,4 +93,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
