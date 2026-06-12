@@ -14,7 +14,8 @@ description: "Backend development blog by DoYoon Kim — Spring, JVM, Kotlin, Sy
                 </div>
                 <div class="author-hero-inner">
                     {% if site.sidebar-avatar %}
-                    <img class="author-hero-avatar" src="{{ site.sidebar-avatar }}" alt="{{ site.title }} avatar" width="64" height="64" loading="eager" fetchpriority="high" />
+                    {%- comment -%} animated WebP (57KB) for body img; config keeps .gif for JSON-LD/crawlers {%- endcomment -%}
+                    <img class="author-hero-avatar" src="{{ site.sidebar-avatar | replace: '.gif', '.webp' }}" alt="{{ site.title }} avatar" width="64" height="64" loading="eager" fetchpriority="high" />
                     {% endif %}
                     <div class="author-hero-code">
                         <pre class="hero-code-block"><code><span class="code-keyword">const</span> <span class="code-var">doodoo</span> = {
