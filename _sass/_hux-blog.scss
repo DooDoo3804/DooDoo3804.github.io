@@ -395,10 +395,12 @@ article {
     overflow: visible;
 }
 
+/* Base blockquote — normal style (italic/0.95em removed: post-container
+   blockquotes override these and the global rule only leaked to stray quotes,
+   making them inconsistent with callouts). Sprint 88. */
 blockquote {
     color: var(--text-muted);
-    font-style: italic;
-    font-size: 0.95em;
+    font-style: normal;
     margin: 20px 0 20px;
 }
 
@@ -619,7 +621,7 @@ code, kbd, pre, samp {
     margin-left: 0.15em;
     opacity: 0.6;
     transition: opacity 0.2s;
-    vertical-align: super;
+    vertical-align: baseline;
     line-height: 1;
 }
 

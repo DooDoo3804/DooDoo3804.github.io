@@ -154,6 +154,7 @@
                 label.className = 'code-lang-label';
                 label.textContent = lang;
                 pre.insertBefore(label, pre.firstChild);
+                pre.classList.add('has-lang-label');
             }
         });
     }

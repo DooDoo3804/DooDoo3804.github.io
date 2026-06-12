@@ -7,7 +7,7 @@ body {
 .post-container {
     line-height: 1.8;
     font-size: 17px;
-    max-width: 700px;
+    max-width: 720px;
     word-break: keep-all;
     overflow-wrap: break-word;
 }
@@ -252,7 +252,7 @@ html {
     margin: 1.5em 0;
     border-collapse: collapse;
     table-layout: auto;
-    font-size: 14px;
+    font-size: 15px;
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
 }
@@ -264,8 +264,8 @@ html {
     padding: 10px 14px;
     border: 1px solid var(--border-subtle);
     text-align: left;
-    font-size: 12px;
-    letter-spacing: 0.05em;
+    font-size: 13px;
+    letter-spacing: 0.02em;
     font-family: inherit;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -300,26 +300,24 @@ html {
     background: rgba(255, 255, 255, 0.02);
 }
 
-/* --- Post Content - HR (Terminal Divider) --- */
+/* --- Post Content - HR (responsive gradient divider) --- */
 .post-container hr {
     border: none;
-    text-align: center;
-    margin: 2em 0;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    opacity: 0.4;
-}
-
-.post-container hr::after {
-    content: '─────────────────────────────';
-    letter-spacing: -0.05em;
+    height: 1px;
+    margin: 2.5em 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--border-medium) 20%,
+        var(--border-medium) 80%,
+        transparent
+    );
 }
 
 /* --- Post Content - Lists (Terminal Prompt Style) --- */
 .post-container ul {
     list-style: none;
-    padding-left: 1.5em;
+    padding-left: 1.25em;
 }
 
 .post-container ul > li {
@@ -327,11 +325,11 @@ html {
 }
 
 .post-container ul > li::before {
-    content: '\25B8 ';
+    content: '\25B8';
     color: var(--accent-primary);
     font-family: var(--font-mono);
-    margin-left: -1.5em;
     position: absolute;
+    left: -1.25em;
 }
 
 .post-container ol {

@@ -72,7 +72,9 @@ code, kbd, pre, samp, .code-lang-label {
     color: var(--accent-primary);
 }
 
-@media (max-width: 576px) {
+/* Stack footer vertically below tablet so links don't cram into 2–3 lines
+   in the 577–768px band (max-width:50% forced ragged wrapping). Sprint 88. */
+@media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
         gap: 8px;

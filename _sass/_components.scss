@@ -184,13 +184,17 @@ body.has-mobile-toc #back-to-top {
     position: relative;
     margin: 1.5em 0;
     padding: 20px 24px;
-    padding-top: 40px;
     min-height: 48px;
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
     background: #f6f8fa;
     box-shadow: var(--shadow-sm);
+}
+
+/* Extra top space only when a language label is present (added by JS) */
+.post-container pre.has-lang-label {
+    padding-top: 40px;
 }
 
 [data-theme="dark"] .post-container pre {
@@ -215,8 +219,14 @@ body.has-mobile-toc #back-to-top {
 
 @media (min-width: 992px) {
     .post-container .highlighter-rouge {
-        margin-left: -16px;
-        margin-right: -16px;
+        margin-left: -32px;
+        margin-right: -32px;
+    }
+
+    /* Tables breakout in step with code blocks (wrapper scrolls if overflow) */
+    .post-container .table-responsive {
+        margin-left: -32px;
+        margin-right: -32px;
     }
 }
 
@@ -231,8 +241,8 @@ body.has-mobile-toc #back-to-top {
     text-transform: uppercase;
     letter-spacing: 0.02em;
     padding: 4px 12px;
-    background: rgba(0, 0, 0, 0.08);
-    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.16);
+    color: var(--text-secondary);
     border-radius: 0 0 6px 0;
     line-height: 1.4;
     user-select: none;
@@ -240,8 +250,8 @@ body.has-mobile-toc #back-to-top {
 }
 
 [data-theme="dark"] .code-lang-label {
-    color: rgba(205, 214, 244, 0.5);
-    background: rgba(255, 255, 255, 0.08);
+    color: rgba(205, 214, 244, 0.75);
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .code-copy-btn {
@@ -443,7 +453,7 @@ code.has-line-numbers .code-line::before {
     padding: 24px;
     position: relative;
     background: var(--bg-surface-raised);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     border-left: 3px solid var(--accent-primary);
     overflow: hidden;
@@ -469,7 +479,7 @@ code.has-line-numbers .code-line::before {
     background: rgba(var(--accent-color-raw), 0.1);
     color: var(--accent-primary);
     padding: 2px 10px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-full);
     margin-left: auto;
 }
 
@@ -534,7 +544,7 @@ code.has-line-numbers .code-line::before {
     background: var(--accent-primary);
     color: #fff;
     padding: 1px 8px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     margin-left: 8px;
     vertical-align: middle;
 }
@@ -638,7 +648,7 @@ code.has-line-numbers .code-line::before {
     font-size: 10px;
     font-weight: 700;
     padding: 2px 8px;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
@@ -720,7 +730,7 @@ code.has-line-numbers .code-line::before {
     color: var(--color-success);
     background: rgba(var(--accent-color-raw), 0.06);
     padding: 2px 8px;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
 }
 
 /* --- Tag Improvements --- */
