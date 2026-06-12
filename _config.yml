@@ -47,7 +47,6 @@ sass:
 # Plugins
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
 
 # Pagination
 paginate: 10

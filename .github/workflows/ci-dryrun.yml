@@ -1,8 +1,11 @@
-name: Build and Deploy
+name: CI Dry Run (build verification, no deploy)
+
+# Mirrors the build job of deploy.yml WITHOUT any Pages deployment.
+# Gate for the build-hardening branch: must be green before merging to master.
 
 on:
   push:
-    branches: [master]
+    branches: [build-hardening]
   workflow_dispatch:
 
 env:
@@ -10,15 +13,13 @@ env:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "ci-dryrun-${{ github.ref }}"
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-dryrun:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,8 +28,6 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          # Pinned to exact patch: "3.1" currently resolves to 3.1.7 (final 3.1.x).
-          # Exact pin freezes today's behavior without touching Gemfile.lock.
           ruby-version: "3.1.7"
           bundler-cache: true
 
@@ -74,17 +73,3 @@ jobs:
         run: bash scripts/encrypt-pages.sh "${{ secrets.PAGE_PASSWORD }}"
         env:
           PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

@@ -141,7 +141,7 @@ async function generateOgImage(title, tags, date, outputPath) {
   const titleTspans = titleLines
     .map((line, i) => {
       const y = titleStartY + i * lineHeight;
-      return `<text x="${W / 2}" y="${y}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="700" font-size="${titleFontSize}" fill="#ffffff">${escapeXml(line)}</text>`;
+      return `<text x="${W / 2}" y="${y}" text-anchor="middle" font-family="'Inter','Noto Sans CJK KR','Helvetica Neue','Arial',sans-serif" font-weight="700" font-size="${titleFontSize}" fill="#ffffff">${escapeXml(line)}</text>`;
     })
     .join("\n    ");
 
@@ -156,7 +156,7 @@ async function generateOgImage(title, tags, date, outputPath) {
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
 
   <!-- Blog name -->
-  <text x="${W / 2}" y="52" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="600" font-size="26" fill="#ffffff" opacity="0.85">DooDoo IT Blog</text>
+  <text x="${W / 2}" y="52" text-anchor="middle" font-family="'Inter','Noto Sans CJK KR','Helvetica Neue','Arial',sans-serif" font-weight="600" font-size="26" fill="#ffffff" opacity="0.85">DooDoo IT Blog</text>
 
   <!-- Accent line -->
   <rect x="${W / 2 - 40}" y="68" width="80" height="3" rx="1.5" fill="#89b4fa"/>
@@ -165,10 +165,10 @@ async function generateOgImage(title, tags, date, outputPath) {
   ${titleTspans}
 
   <!-- Date -->
-  <text x="${W / 2}" y="${H - 72}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="400" font-size="20" fill="#9399b2">${escapeXml(dateStr)}</text>
+  <text x="${W / 2}" y="${H - 72}" text-anchor="middle" font-family="'Inter','Noto Sans CJK KR','Helvetica Neue','Arial',sans-serif" font-weight="400" font-size="20" fill="#9399b2">${escapeXml(dateStr)}</text>
 
   <!-- Tags -->
-  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#89b4fa">${escapeXml(tagsStr)}</text>
+  <text x="${W / 2}" y="${H - 40}" text-anchor="middle" font-family="'Inter','Noto Sans CJK KR','Helvetica Neue','Arial',sans-serif" font-weight="500" font-size="22" fill="#89b4fa">${escapeXml(tagsStr)}</text>
 </svg>`;
 
   await sharp(Buffer.from(svg)).png().toFile(outputPath);

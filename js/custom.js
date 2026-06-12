@@ -290,19 +290,34 @@
         });
     }
 
-    /* --- Image Lazy Loading --- */
+    /* --- Image Handling (lazy loading + figure captions, single pass) ---
+       Consolidates the former post.html inline script and initLazyImages:
+       - post-container imgs: lazy/decoding when missing + figure/figcaption wrap (alt as caption)
+       - other imgs: lazy/decoding only when no loading attr (existing attrs untouched) */
     function initLazyImages() {
         var postContainer = document.querySelector('.post-container');
-        var imgs = document.querySelectorAll('img:not([loading])');
-        imgs.forEach(function(img, i) {
+        document.querySelectorAll('img').forEach(function(img) {
             var inPost = postContainer && postContainer.contains(img);
-            // Skip first image in post content (likely above the fold)
-            if (inPost && i === 0) {
+            if (inPost) {
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                if (!img.hasAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
+                // alt가 있고 figure 안에 없으면 figure+figcaption 래핑 (시각 동작 현행 유지)
+                if (img.alt && img.alt.trim() && !img.closest('figure')) {
+                    var figure = document.createElement('figure');
+                    var caption = document.createElement('figcaption');
+                    caption.textContent = img.alt;
+                    img.parentNode.insertBefore(figure, img);
+                    figure.appendChild(img);
+                    figure.appendChild(caption);
+                }
+            } else if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
                 img.setAttribute('decoding', 'async');
-                return;
             }
-            img.setAttribute('loading', 'lazy');
-            img.setAttribute('decoding', 'async');
         });
     }
 

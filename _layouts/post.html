@@ -204,30 +204,7 @@ layout: default
     </a>
 </div>
 
-<!-- Lazy-load post images (markdown-generated imgs lack loading attr) -->
-<script>
-(function(){
-    'use strict';
-    var imgs = document.querySelectorAll('.post-container img');
-    imgs.forEach(function(img) {
-        if (!img.hasAttribute('loading')) {
-            img.setAttribute('loading', 'lazy');
-        }
-        if (!img.hasAttribute('decoding')) {
-            img.setAttribute('decoding', 'async');
-        }
-        // alt가 있고 figure 안에 없으면 figure+figcaption 래핑
-        if (img.alt && img.alt.trim() && !img.closest('figure')) {
-            var figure = document.createElement('figure');
-            var caption = document.createElement('figcaption');
-            caption.textContent = img.alt;
-            img.parentNode.insertBefore(figure, img);
-            figure.appendChild(img);
-            figure.appendChild(caption);
-        }
-    });
-})();
-</script>
+<!-- Image lazy-load + figure/figcaption wrapping: handled in js/custom.js (initLazyImages) -->
 
 <!-- Image Lightbox -->
 <div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">

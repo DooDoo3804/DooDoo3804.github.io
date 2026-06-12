@@ -72,7 +72,8 @@ for f in $(find . -maxdepth 1 \( -name "*.md" -o -name "*.html" \) -not -path ".
 
   # Encrypt to a temp directory, then copy back in place
   tmpdir=$(mktemp -d)
-  npx staticrypt "$target" \
+  # Pinned to the exact version from package-lock.json (^3.5.4 → 3.5.4)
+  npx staticrypt@3.5.4 "$target" \
     -p "$PASSWORD" \
     --short \
     -d "$tmpdir" \
