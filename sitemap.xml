@@ -13,7 +13,7 @@ layout: null
   {% endfor %}
 
   {% for page in site.pages %}
-  {% if page.title and page.layout != null and page.url != '/feed.xml' and page.url != '/sitemap.xml' %}
+  {% if page.title and page.layout != null and page.sitemap != false and page.url != '/feed.xml' and page.url != '/sitemap.xml' %}
   <url>
     <loc>{{ page.url | absolute_url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>

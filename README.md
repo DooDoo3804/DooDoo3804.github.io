@@ -10,7 +10,6 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - **Styling:** Bootstrap 3, Less, custom CSS (4400+ lines)
 - **JavaScript:** jQuery, Simple Jekyll Search, custom modules
 - **Hosting:** GitHub Pages (via GitHub Actions CI/CD)
-- **Comments:** Giscus (GitHub Discussions-backed)
 - **Fonts:** Inter, JetBrains Mono (Google Fonts)
 - **Icons:** Custom SVG sprite (`icons.svg`)
 
@@ -30,7 +29,6 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 - Mobile floating share bar and mobile TOC
 - SEO optimized (Open Graph, Twitter Card, JSON-LD structured data)
 - Back-to-top button
-- Giscus comment system (GitHub Discussions-backed, dark mode sync)
 - Category page with unique color accent per category
 - RSS feed with full content and author metadata
 - CSS color token system (`--color-accent`, `--color-link`, etc.) for consistent theming
@@ -88,10 +86,6 @@ bundle exec jekyll serve
 
 # Site will be available at http://localhost:4000
 ```
-
-## Giscus 댓글
-
-Giscus 댓글 시스템은 `_config.yml`의 `giscus` 섹션에 설정 완료 상태. GitHub Discussions 기반으로 동작하며, 다크모드 자동 연동됨.
 
 ## License
 

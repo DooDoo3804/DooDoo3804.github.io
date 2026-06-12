@@ -67,17 +67,6 @@
         document.documentElement.setAttribute('data-theme', theme);
         storeTheme(theme);
         updateToggleIcon(theme);
-        updateGiscusTheme(theme);
-    }
-
-    function updateGiscusTheme(theme) {
-        var giscusFrame = document.querySelector('iframe.giscus-frame');
-        if (!giscusFrame) return;
-        var giscusTheme = theme === 'dark' ? 'transparent_dark' : 'light';
-        giscusFrame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme: giscusTheme } } },
-            'https://giscus.app'
-        );
     }
 
     function updateToggleIcon(theme) {
@@ -115,7 +104,6 @@
                 var newTheme = e.matches ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 updateToggleIcon(newTheme);
-                updateGiscusTheme(newTheme);
             }
         });
     }
@@ -134,7 +122,8 @@
         });
 
         btn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         });
     }
 

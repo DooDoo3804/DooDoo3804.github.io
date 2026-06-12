@@ -90,16 +90,6 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
-# Giscus Comments
-giscus:
-  repo: "DooDoo3804/DooDoo3804.github.io"
-  repo_id: "R_kgDOHqXOwA"
-  category: "Announcements"
-  category_id: "DIC_kwDOHqXOwM4C8kph"
-  mapping: "pathname"
-  theme_light: "light"
-  theme_dark: "transparent_dark"
-
 # GoatCounter Analytics
 goatcounter:
   enabled: false

@@ -1142,61 +1142,6 @@ body.lightbox-open {
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Giscus: section heading */
-.giscus-heading {
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-}
-
-/* Giscus: loading placeholder & error — terminal style */
-.giscus-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 32px 16px;
-    color: var(--text-muted);
-    font-size: 14px;
-    font-family: var(--font-mono);
-}
-.giscus-placeholder-spinner {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border-light);
-    border-top-color: var(--accent-primary);
-    border-radius: 50%;
-    animation: giscus-spin 0.7s linear infinite;
-}
-@keyframes giscus-spin {
-    to { transform: rotate(360deg); }
-}
-.giscus-error {
-    text-align: center;
-    padding: 24px 16px;
-    color: var(--text-muted);
-    font-size: 14px;
-}
-.giscus-retry-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--text-on-accent);
-    background: var(--accent-primary);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-.giscus-retry-btn:hover {
-    opacity: 0.85;
-}
-
 /* Blog terminal emulator removed — Sprint 22 */
 
 /* Reading progress widget & RPG widget CSS removed (Sprint 22) */
