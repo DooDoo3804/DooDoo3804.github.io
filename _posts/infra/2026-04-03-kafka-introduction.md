@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "kafka, message-queue, event-streaming, backend"
-description: "Apache Kafka의 Producer/Consumer, Partition, Consumer Group, Dead Letter Queue, 메시지 보장 수준(At-Least-Once, Exactly-Once)과 Spring Boot 연동을 코드로 정리합니다."
+description: "Kafka의 Producer/Consumer, Partition, Consumer Group, Dead Letter Queue, 메시지 보장 수준(At-Least-Once, Exactly-Once)과 Spring Boot 연동을 정리합니다."
 series: "백엔드 심화"
 tags:
   - Kafka
@@ -16,7 +16,7 @@ tags:
   - Event Streaming
   - Backend
 categories:
-  - backend
+  - infra
 ---
 
 Apache Kafka는 **분산 이벤트 스트리밍 플랫폼**이다. 단순한 메시지 큐를 넘어서 실시간 데이터 파이프라인과 이벤트 기반 아키텍처의 중심에 있다. 이 글에서는 핵심 개념부터 실전 패턴까지 정리한다.

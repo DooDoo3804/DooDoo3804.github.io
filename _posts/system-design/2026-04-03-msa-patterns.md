@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MSA 핵심 패턴 — Circuit Breaker, API Gateway, Service Discovery, Saga"
+title: "MSA 핵심 패턴 — Circuit Breaker, Gateway, Discovery, Saga"
 subtitle: "마이크로서비스 아키텍처의 안정성을 위한 4가지 필수 패턴과 실전 구현"
 date: "2026-04-03"
 author: "DoYoon Kim"

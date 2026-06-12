@@ -14,7 +14,7 @@ tags:
   - Java
 categories:
   - spring
-description: "Spring Bean의 생성부터 소멸까지 전체 라이프사이클을 단계별로 설명합니다. @PostConstruct, InitializingBean, BeanPostProcessor의 실행 순서와 활용법을 코드 예제로 다룹니다."
+description: "Spring Bean의 생성부터 소멸까지 라이프사이클을 설명합니다. @PostConstruct, InitializingBean, BeanPostProcessor의 실행 순서와 활용법을 코드로 다룹니다."
 ---
 
 ## 들어가며

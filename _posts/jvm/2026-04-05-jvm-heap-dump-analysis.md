@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JVM 힙 덤프 분석으로 메모리 누수 잡기 — OOM 디버깅 실전 가이드"
+title: "JVM 힙 덤프 분석으로 메모리 누수 잡기 — OOM 디버깅 가이드"
 subtitle: "jmap, Eclipse MAT, VisualVM으로 메모리 누수 원인 추적하기"
 date: "2026-04-05"
 author: "DoYoon Kim"

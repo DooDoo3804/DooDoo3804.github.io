@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GC 종류와 튜닝 전략 — 실전에서 바로 쓰는 JVM 가비지 컬렉션 가이드"
+title: "GC 종류와 튜닝 전략 — 실전 JVM 가비지 컬렉션 가이드"
 subtitle: "Serial부터 ZGC까지 비교하고 운영 환경 JVM 튜닝 옵션 정리"
 date: "2026-04-04"
 author: "DoYoon Kim"

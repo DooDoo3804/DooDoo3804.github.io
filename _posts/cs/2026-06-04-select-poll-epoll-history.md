@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1f2a38 100%)"
 catalog: true
 keywords: "select, poll, epoll, io multiplexing, c10k, io_uring, kqueue, iocp"
-series: "Computer Science"
+series: "CS Fundamentals"
 tags:
   - OS
   - Network
@@ -16,7 +16,7 @@ tags:
   - Backend
 categories:
   - cs
-description: "I/O 멀티플렉싱의 40년 역사를 추적합니다. select()가 1983년에 탄생한 배경, poll()이 해결한 것과 못한 것, epoll의 커널 내부 구조, 그리고 io_uring까지. 시스템콜 수준의 동작 원리와 실제 프레임워크들의 선택까지 정리합니다."
+description: "I/O 멀티플렉싱 40년의 진화를 추적합니다. select()의 탄생 배경, poll()의 한계, epoll의 커널 내부 구조, io_uring까지 시스템콜 수준의 동작 원리를 정리합니다."
 ---
 
 ## 왜 이 글을 쓰는가

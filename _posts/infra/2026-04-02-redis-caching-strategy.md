@@ -8,7 +8,7 @@ header-style: text
 header-bg-css: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 catalog: true
 keywords: "redis, caching, backend, performance"
-description: "Redis를 활용한 Cache-Aside, Write-Through, Write-Behind 전략 비교와 Cache Stampede/Thundering Herd 해결, TTL 설계, Spring Boot @Cacheable 연동을 정리합니다."
+description: "Redis를 활용한 Cache-Aside, Write-Through, Write-Behind 전략 비교, Cache Stampede/Thundering Herd 해결, TTL 설계, Spring Boot @Cacheable 연동을 정리합니다."
 series: "백엔드 심화"
 tags:
   - Redis
@@ -16,7 +16,7 @@ tags:
   - Backend
   - Performance
 categories:
-  - backend
+  - infra
 ---
 
 캐싱은 백엔드 성능 최적화의 핵심이다. [캐싱 전략 기초](/2026/03/28/caching-strategy/)에서 Cache-Aside, Write-Through, Write-Behind 패턴의 개념을 다뤘다면, 이 글에서는 Redis를 활용한 구체적인 구현과 실전에서 마주치는 문제, 해결책을 정리한다.

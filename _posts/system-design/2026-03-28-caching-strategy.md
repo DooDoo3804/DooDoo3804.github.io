@@ -1,5 +1,5 @@
 ---
-title: "시스템 디자인: 캐싱 전략 (Cache-Aside, Write-Through, Write-Behind)"
+title: "캐싱 전략 — Cache-Aside, Write-Through, Write-Behind"
 subtitle: "Redis 기반 캐싱 패턴 비교와 실무 선택 기준"
 layout: post
 date: "2026-03-28"

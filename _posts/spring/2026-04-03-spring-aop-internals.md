@@ -15,7 +15,7 @@ tags:
   - Java
 categories:
   - spring
-description: "Spring AOP의 내부 동작 원리를 파헤칩니다. JDK Dynamic Proxy와 CGLIB의 차이, @Transactional이 AOP로 동작하는 메커니즘, Self-invocation 문제와 해결법까지 다룹니다."
+description: "Spring AOP의 동작 원리를 파헤칩니다. JDK Dynamic Proxy와 CGLIB의 차이, @Transactional이 AOP로 동작하는 메커니즘, Self-invocation 문제와 해결법을 다룹니다."
 ---
 
 ## 들어가며
