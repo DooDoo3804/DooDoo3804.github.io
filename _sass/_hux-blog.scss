@@ -369,18 +369,12 @@ p {
     margin: 1em 0;
 }
 
-.post-container p {
-    margin: 1.5em 0;
-}
+/* .post-container p margin consolidated in _base.scss (margin: 0 0 1.5em) — Sprint 87 */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     line-height: 1.25;
     font-weight: 700;
-}
-
-h4 {
-    font-size: 21px;
 }
 
 a {
@@ -527,47 +521,8 @@ code, kbd, pre, samp {
     color: var(--accent-hover);
 }
 
-.post-container h1,
-.post-container h2,
-.post-container h3,
-.post-container h4,
-.post-container h5,
-.post-container h6 {
-    line-height: 1.4;
-}
-
-/* h2::before 구분선 제거 — Sprint 86: heading은 font-weight/크기로 계층 표현 */
-
-.post-container h4 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.post-container h4 + p {
-    margin-top: 10px;
-}
-
-.post-container h5,
-.post-container h6 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.post-container h5 + p,
-.post-container h6 + p {
-    margin-top: 10px;
-}
-
-@media screen and (max-width: 768px) {
-    .post-container h1 { font-size: 30px; }
-    .post-container h2 { font-size: 22px; }
-    .post-container h3 { font-size: 20px; }
-    .post-container h4 { font-size: 19px; }
-    .post-container h5,
-    .post-container h6 { font-size: 18px; }
-}
+/* heading hierarchy (sizes/weights/colors/family) consolidated in _base.scss
+   — Sprint 87: single source of truth, modular scale, clamp() for mobile */
 
 .post-container ul,
 .post-container ol {

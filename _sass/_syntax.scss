@@ -7,21 +7,21 @@
 
 .highlight,
 pre.highlight {
-    background: #fafbfc;
+    background: #f6f8fa;
     color: #383a42;
 }
 
-.highlight pre { background: #fafbfc; }
+.highlight pre { background: #f6f8fa; }
 .highlight .hll { background: #e8eaed; }
 
 [data-theme="dark"] .highlight,
 [data-theme="dark"] pre.highlight {
-    background: #282c34;
+    background: var(--code-bg-dark);
     color: #abb2bf;
 }
 
-[data-theme="dark"] .highlight pre { background: #282c34; }
-[data-theme="dark"] .highlight .hll { background: #282c34; }
+[data-theme="dark"] .highlight pre { background: var(--code-bg-dark); }
+[data-theme="dark"] .highlight .hll { background: var(--code-bg-dark); }
 .highlight .c { color: #5c6370; font-style: italic; }
 /* One Light (light mode) */
 .highlight .c, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs { color: #a0a1a7; font-style: italic; }

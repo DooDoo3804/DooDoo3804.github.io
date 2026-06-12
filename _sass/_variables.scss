@@ -59,17 +59,17 @@
     --terminal-blue: #89b4fa;
     --terminal-green: #a6e3a1;
 
-    /* Category accent colors */
-    --cat-algo: #2ecc71;
-    --cat-cs: #9b59b6;
-    --cat-db: #e67e22;
-    --cat-infra: #3498db;
-    --cat-kotlin: #7f52ff;
-    --cat-react: #61dafb;
-    --cat-spring: #6db33f;
-    --cat-jvm: #e74c3c;
-    --cat-system-design: #e74c3c;
-    --cat-backend: #e67e22;
+    /* Category accent colors — Tailwind 500 scale (tone-aligned, all distinct) */
+    --cat-algo: #22c55e;          /* green-500 */
+    --cat-cs: #a855f7;            /* purple-500 */
+    --cat-db: #f97316;            /* orange-500 */
+    --cat-infra: #3b82f6;         /* blue-500 */
+    --cat-kotlin: #8b5cf6;        /* violet-500 */
+    --cat-react: #06b6d4;         /* cyan-500 */
+    --cat-spring: #84cc16;        /* lime-500 */
+    --cat-jvm: #ef4444;           /* red-500 */
+    --cat-system-design: #ec4899; /* pink-500 (was dup of jvm) */
+    --cat-backend: #f59e0b;       /* amber-500 (was dup of db) */
 }
 [data-theme="dark"] {
     --accent-primary: #818cf8;
@@ -91,6 +91,11 @@
     --color-success: #3fb950;
     --accent-hover: #a5b4fc;
     --bg-surface-hover: #1f2937;
+
+    /* Code block bg — sits ABOVE --bg-surface-raised (#1e293b) as the most-elevated
+       code surface (page < card < code block), GitHub-dark style. Contrast vs page
+       bg #111827 ≈ 1.30, clearly brighter than raised. */
+    --code-bg-dark: #232e44;
 
     /* Shadow tokens — slightly stronger for dark backgrounds */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.12);
