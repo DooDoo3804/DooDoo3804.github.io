@@ -60,6 +60,10 @@ jobs:
             echo "::error::_site/sw.js not found — service worker missing from build output"
             exit 1
           fi
+          if ! grep -q __BUILD_VERSION__ _site/sw.js; then
+            echo "::error::sw.js placeholder __BUILD_VERSION__ missing — source sw.js was renamed or pre-stamped"
+            exit 1
+          fi
           sed -i "s/__BUILD_VERSION__/v$(date +%Y%m%d%H%M%S)/" _site/sw.js
           if grep -q __BUILD_VERSION__ _site/sw.js; then
             echo "::error::sw.js stamp failed — __BUILD_VERSION__ placeholder still present"
@@ -73,3 +77,9 @@ jobs:
         run: bash scripts/encrypt-pages.sh "${{ secrets.PAGE_PASSWORD }}"
         env:
           PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
+
+      # Mirrors deploy.yml's artifact step to cover artifact-specific failure
+      # modes (symlinks, size limits). No deploy job — artifact creation only.
+      # Uses the Actions runtime token, so contents: read is sufficient.
+      - name: Upload artifact (dry run — never deployed)
+        uses: actions/upload-pages-artifact@v3

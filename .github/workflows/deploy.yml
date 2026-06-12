@@ -61,6 +61,10 @@ jobs:
             echo "::error::_site/sw.js not found — service worker missing from build output"
             exit 1
           fi
+          if ! grep -q __BUILD_VERSION__ _site/sw.js; then
+            echo "::error::sw.js placeholder __BUILD_VERSION__ missing — source sw.js was renamed or pre-stamped"
+            exit 1
+          fi
           sed -i "s/__BUILD_VERSION__/v$(date +%Y%m%d%H%M%S)/" _site/sw.js
           if grep -q __BUILD_VERSION__ _site/sw.js; then
             echo "::error::sw.js stamp failed — __BUILD_VERSION__ placeholder still present"

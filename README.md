@@ -6,12 +6,14 @@ Backend development blog by DoYoon Kim — notes on algorithms, data structures,
 
 ## Tech Stack
 
-- **Static Site Generator:** Jekyll (kramdown, jekyll-paginate)
-- **Styling:** Bootstrap 3, Less, custom CSS (4400+ lines)
-- **JavaScript:** jQuery, Simple Jekyll Search, custom modules
+- **Static Site Generator:** Jekyll 4 (kramdown GFM, jekyll-paginate)
+- **Styling:** SCSS single pipeline (`css/main.scss` → `_sass/` partials, compiled & compressed by Jekyll) + minimal `css/grid.css`
+- **JavaScript:** Vanilla JS modules (no jQuery), minified via Grunt (`js/custom.js` → `js/custom.min.js`)
+- **Search:** Pagefind (static index built at deploy time)
+- **OG Images:** Auto-generated per post with sharp (`scripts/generate-og-images.js`)
 - **Hosting:** GitHub Pages (via GitHub Actions CI/CD)
-- **Fonts:** Inter, JetBrains Mono (Google Fonts)
-- **Icons:** Custom SVG sprite (`icons.svg`)
+- **Fonts:** Inter, Plus Jakarta Sans, JetBrains Mono (Google Fonts)
+- **Icons:** Custom SVG sprite (`_includes/icons.svg`)
 
 ## Features
 
