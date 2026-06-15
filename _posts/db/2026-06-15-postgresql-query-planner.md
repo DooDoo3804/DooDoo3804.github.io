@@ -21,12 +21,6 @@ description: "PostgreSQL 쿼리 플래너의 내부 동작을 파헤친다. 통�
 
 이 글은 PostgreSQL 마스터 시리즈의 마지막 편으로, 플래너가 *왜* 그리고 *어떻게* 특정 플랜을 선택하는지 그 내부 동작을 다룬다. 인덱스의 종류나 `EXPLAIN ANALYZE` 출력을 읽는 기초는 [PostgreSQL 인덱스 제대로 이해하기](/2026/03/25/postgresql-index/)에서 이미 다뤘으니, 여기서는 그 위에서 동작하는 **플래너의 의사결정 과정**에 집중한다.
 
-> [!NOTE]
-> **PostgreSQL 마스터 시리즈**
-> - Part 1: [MVCC와 VACUUM 내부 동작](/2026/06/13/postgresql-mvcc-vacuum/)
-> - Part 2: [WAL과 크래시 복구](/2026/06/14/postgresql-wal-recovery/)
-> - **Part 3: 쿼리 플래너와 실행 엔진 (이 글)**
-
 ---
 
 ## 쿼리 한 줄이 결과가 되기까지

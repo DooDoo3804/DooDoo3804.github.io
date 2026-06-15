@@ -17,12 +17,6 @@ categories:
 description: "PostgreSQL WAL의 내부 동작 완전 정리. Write-Ahead Logging 원리, LSN, 체크포인트와 full_page_writes, 크래시 복구(REDO) 과정, 복제와 PITR의 기반까지 깊이 있게 다룬다."
 ---
 
-> [!NOTE]
-> **PostgreSQL 마스터 시리즈** — 데이터베이스 내부 동작 원리 3부작
-> - Part 1. [MVCC와 VACUUM 내부 동작](/2026/06/13/postgresql-mvcc-vacuum/)
-> - **Part 2. WAL과 크래시 복구 (이 글)**
-> - Part 3. [쿼리 플래너와 실행 엔진](/2026/06/15/postgresql-query-planner/)
-
 ## COMMIT은 정확히 무엇을 보장하는가
 
 은행 이체 트랜잭션이 `COMMIT`을 반환했다. 그 직후 서버의 전원이 끊겼다. 다시 켰을 때, 이체는 반영되어 있을까?
