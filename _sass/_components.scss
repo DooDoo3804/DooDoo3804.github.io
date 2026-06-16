@@ -782,39 +782,12 @@ code.has-line-numbers .code-line::before {
 .post-container strong > code,
 .post-container em > code,
 .post-container blockquote code {
-    display: inline;
-    background: rgba(0, 0, 0, 0.06);
-    color: var(--text-primary);
-    border: none;
-    border-radius: 4px;
-    padding: 1px 6px;
-    font-size: 14px;
-    line-height: inherit;
-    vertical-align: baseline;
     font-family: var(--font-mono);
-    /* Wrap fix: clone padding/background per line fragment so the pill
-       doesn't overlap adjacent text when an inline code spans a line break
-       (notably Safari). Also neutralize .post-container word-break:break-word
-       so identifiers don't split mid-token, breaking only when truly needed. */
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    word-break: normal;
-    overflow-wrap: anywhere;
-}
-
-[data-theme="dark"] .post-container p > code,
-[data-theme="dark"] .post-container li > code,
-[data-theme="dark"] .post-container td > code,
-[data-theme="dark"] .post-container th > code,
-[data-theme="dark"] .post-container strong > code,
-[data-theme="dark"] .post-container em > code,
-[data-theme="dark"] .post-container blockquote code {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .post-container code {
-    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.9em;
+    color: var(--accent-primary);
+    background: none;
+    padding: 0;
+    border: none;
 }
 
 [data-theme="dark"] .post-container pre code {
