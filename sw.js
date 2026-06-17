@@ -214,15 +214,17 @@ self.addEventListener('fetch', event => {
       return;
     }
 
-    // Stale-while-revalidate for other resources (CSS, JS, etc.)
+    // Network-first for other resources (CSS, JS, etc.) so deploys reflect
+    // immediately; fall back to cache only when offline. (Was stale-while-
+    // revalidate, which served one-version-old CSS after every deploy.)
     const cached = caches.match(event.request);
     const fetched = fetch(getCacheBustingUrl(event.request), { cache: "no-store" });
     const fetchedCopy = fetched.then(resp => resp.clone());
 
     event.respondWith(
-      Promise.race([fetched.catch(_ => cached), cached])
-        .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
+      fetched
+        .then(resp => resp || cached)
+        .catch(_ => cached.then(resp => resp || caches.match('offline.html')))
     );
 
     // Update the cache with the version we fetched (only for ok status)
