@@ -211,14 +211,18 @@ body.has-mobile-toc #back-to-top {
     padding-bottom: 1.6em;
 }
 
-/* Code blocks same width as body text; breakout on large screens */
-.post-container .highlighter-rouge {
+/* Code blocks same width as body text; breakout on large screens.
+   NOTE: scope to div.highlighter-rouge — Rouge gives BOTH code blocks
+   (<div class="highlighter-rouge">) AND inline code (<code class="highlighter-rouge">)
+   this class. The -32px breakout margin must NOT hit inline <code>, or its
+   negative margins drag adjacent text over it (overlap bug, ≥992px only). */
+.post-container div.highlighter-rouge {
     margin-left: 0;
     margin-right: 0;
 }
 
 @media (min-width: 992px) {
-    .post-container .highlighter-rouge {
+    .post-container div.highlighter-rouge {
         margin-left: -32px;
         margin-right: -32px;
     }
