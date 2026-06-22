@@ -786,16 +786,17 @@ code.has-line-numbers .code-line::before {
 .post-container strong > code,
 .post-container em > code,
 .post-container blockquote code {
-    /* 인라인 코드 스타일 완전 제거 — 주변 본문과 동일한 일반 텍스트로 렌더.
-       모노스페이스/색/배경/패딩을 모두 없애 어떤 브라우저에서도 인접 글자와
-       겹칠 여지를 제거한다. (코드블록 pre code 는 별도 규칙이라 영향 없음) */
-    font-family: inherit !important;
-    font-size: inherit;
-    font-weight: inherit;
-    color: inherit;
-    background: none;
-    padding: 0;
-    border: none;
+    /* 인라인 코드 — 모노스페이스 + 테마적응 accent 틴트 pill.
+       겹침의 진짜 원인이던 breakout 음수마진은 div.highlighter-rouge로 한정돼
+       인라인 code엔 더 이상 적용되지 않으므로, pill 스타일을 안전하게 복원. */
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--accent-primary);
+    background: rgba(var(--accent-color-raw), 0.1);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 [data-theme="dark"] .post-container pre code {
