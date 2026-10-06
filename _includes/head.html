@@ -89,7 +89,8 @@
         "author": {
             "@type": "Person",
             "name": "{{ page.author | default: site.title }}",
-            "url": "{{ site.url }}"
+            "url": "{{ site.url }}"{% if site.github_username %},
+            "sameAs": ["https://github.com/{{ site.github_username }}"]{% endif %}
         },
         "publisher": {
             "@type": "Organization",

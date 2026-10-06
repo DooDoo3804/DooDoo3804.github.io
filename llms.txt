@@ -1,0 +1,27 @@
+---
+layout: null
+---
+# {{ site.title }}
+
+> {{ site.description | strip_html | truncate: 200 }}
+
+{{ site.title }}는 DoYoon Kim이 운영하는 백엔드 개발 기술 블로그입니다. 알고리즘/자료구조, Kotlin, Java, Spring Boot, 데이터베이스, 시스템 디자인, 인프라(Docker/Kubernetes) 주제를 다루며, 모든 글은 한국어로 작성됩니다. 각 글은 schema.org BlogPosting 구조화 데이터(JSON-LD)를 포함합니다.
+
+## Start Here
+- [About]({{ site.url }}{{ site.baseurl }}/about/): Author bio and background (DoYoon Kim, backend developer).
+- [Projects]({{ site.url }}{{ site.baseurl }}/projects/): Portfolio of backend/infra side projects.
+
+## Browse
+- [Categories]({{ site.url }}{{ site.baseurl }}/categories/): Posts grouped by topic (algorithm, cs, db, infra, jvm, kotlin, react, spring, system-design).
+- [Tags]({{ site.url }}{{ site.baseurl }}/tags/): Posts grouped by fine-grained tag.
+- [Series]({{ site.url }}{{ site.baseurl }}/series/): Multi-part post series read in order.
+- [Archive]({{ site.url }}{{ site.baseurl }}/archive/): All posts by date.
+
+## Recent Posts
+{% for post in site.posts limit:20 %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description | default: post.excerpt | strip_html | truncate: 140 }}
+{% endfor %}
+
+## Feeds & Data
+- [Sitemap]({{ site.url }}{{ site.baseurl }}/sitemap.xml): Full list of indexed URLs, updated on every build.
+- [RSS Feed]({{ site.url }}{{ site.baseurl }}/feed.xml): Full post feed for programmatic access.
