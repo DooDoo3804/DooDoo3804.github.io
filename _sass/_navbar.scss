@@ -30,6 +30,20 @@
         color: var(--text-primary) !important;
     }
 
+    /* Icon-only nav buttons had no padding, so their tap target equaled the
+       icon's visual size (dark-mode toggle 16px, search 30px) — well under
+       the 44px mobile touch-target minimum. Expand the hit area via
+       min-width/height instead of font-size, so the icon's visual size and
+       the surrounding list layout are unchanged. */
+    .search-icon button,
+    .dark-mode-toggle {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     #huxblog_navbar .navbar-nav > li > a:hover,
     #huxblog_navbar .navbar-nav > li > a:focus {
         color: var(--accent-primary) !important;

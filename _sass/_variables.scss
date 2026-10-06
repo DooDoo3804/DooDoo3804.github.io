@@ -15,7 +15,8 @@
     --font-display: 'Plus Jakarta Sans', var(--font-sans);
     --text-primary: #2d3748;
     --text-secondary: #5a6577;
-    --text-muted: #8a94a6;
+    /* was #8a94a6 (2.90:1 on --bg-surface, fails WCAG AA 4.5:1); now 4.52:1+ */
+    --text-muted: #64748b;
     --bg-surface: #f8f9fb;
     --bg-surface-raised: #fff;
     --border-light: #e2e5ea;
@@ -70,6 +71,17 @@
     --cat-jvm: #ef4444;           /* red-500 */
     --cat-system-design: #ec4899; /* pink-500 (was dup of jvm) */
     --cat-backend: #f59e0b;       /* amber-500 (was dup of db) */
+
+    /* Text/icon variants for the 5 categories whose -500 accent fails 3:1 on
+       white/near-white card chips (algo 2.28:1, db 2.80:1, react 2.43:1,
+       spring 1.98:1, backend 2.15:1). Darkened to -800 for 6:1+ vs the chip
+       tint. Accent bars/hover borders keep the bright -500 — contrast only
+       matters where the color IS the text/icon, per --cat-accent-text below. */
+    --cat-algo-text: #166534;
+    --cat-db-text: #9a3412;
+    --cat-react-text: #155e75;
+    --cat-spring-text: #3f6212;
+    --cat-backend-text: #92400e;
 }
 [data-theme="dark"] {
     --accent-primary: #818cf8;
@@ -77,7 +89,8 @@
     --accent-color-raw: 129, 140, 248;
     --text-primary: #e6edf3;
     --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
+    /* was #6b7280 (3.03:1 on --bg-surface-raised, fails WCAG AA 4.5:1); now 5.71:1+ */
+    --text-muted: #94a3b8;
     --bg-surface: #111827;
     --bg-surface-raised: #1e293b;
     --border-light: #30363d;
@@ -91,6 +104,15 @@
     --color-success: #3fb950;
     --accent-hover: #a5b4fc;
     --bg-surface-hover: #1f2937;
+
+    /* Dark mode already clears 3:1 with the bright -500 accents (3.45–7.4:1
+       vs --bg-surface-raised), so restore them instead of inheriting the
+       light-mode darkened -text variants, which would read as too dim here. */
+    --cat-algo-text: var(--cat-algo);
+    --cat-db-text: var(--cat-db);
+    --cat-react-text: var(--cat-react);
+    --cat-spring-text: var(--cat-spring);
+    --cat-backend-text: var(--cat-backend);
 
     /* Code block bg — sits ABOVE --bg-surface-raised (#1e293b) as the most-elevated
        code surface (page < card < code block), GitHub-dark style. Contrast vs page
