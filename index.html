@@ -3,20 +3,29 @@ layout: default
 description: "Backend development blog by DoYoon Kim — Spring, JVM, Kotlin, System Design notes and deep-dives."
 ---
 
-<!-- Author Hero Section -->
+<!-- Author Hero Section: full terminal window (LEO-8 visual renewal) -->
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="author-hero">
-                <div class="hero-intro">
-                    <h1 class="hero-name">DoYoon Kim</h1>
-                    <p class="hero-role">Backend Developer</p>
+            <div class="terminal-hero">
+                <div class="terminal-hero-bar" aria-hidden="true">
+                    <span class="chrome-dot chrome-dot--red"></span>
+                    <span class="chrome-dot chrome-dot--yellow"></span>
+                    <span class="chrome-dot chrome-dot--green"></span>
+                    <span class="terminal-hero-path">doodoo@blog:~</span>
                 </div>
-                <div class="author-hero-inner">
-                    {% if site.sidebar-avatar %}
-                    {%- comment -%} animated WebP (57KB) for body img; config keeps .gif for JSON-LD/crawlers {%- endcomment -%}
-                    <img class="author-hero-avatar" src="{{ site.sidebar-avatar | replace: '.gif', '.webp' }}" alt="{{ site.title }} avatar" width="64" height="64" loading="eager" fetchpriority="high" />
-                    {% endif %}
+                <div class="terminal-hero-body">
+                    <div class="author-hero-inner">
+                        {% if site.sidebar-avatar %}
+                        {%- comment -%} animated WebP (57KB) for body img; config keeps .gif for JSON-LD/crawlers {%- endcomment -%}
+                        <img class="author-hero-avatar" src="{{ site.sidebar-avatar | replace: '.gif', '.webp' }}" alt="{{ site.title }} avatar" width="64" height="64" loading="eager" fetchpriority="high" />
+                        {% endif %}
+                        <div class="hero-intro">
+                            <p class="hero-prompt">$ whoami</p>
+                            <h1 class="hero-name">DoYoon Kim<span class="hero-cursor" aria-hidden="true"></span></h1>
+                            <p class="hero-role">// Backend Developer</p>
+                        </div>
+                    </div>
                     <div class="author-hero-code">
                         <pre class="hero-code-block"><code><span class="code-keyword">const</span> <span class="code-var">doodoo</span> = {
   <span class="code-key">role</span>: <span class="code-string">"Backend Developer"</span>,
@@ -25,23 +34,15 @@ description: "Backend development blog by DoYoon Kim — Spring, JVM, Kotlin, Sy
   <span class="code-key">github</span>: <span class="code-string">"<a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">{{ site.github_username }}</a>"</span>
 };</code></pre>
                     </div>
+                    <div class="blog-stats">
+                        <span class="blog-stats-prompt" aria-hidden="true">&gt;</span>
+                        <span>{{ site.posts.size }} posts</span>
+                        <span class="stats-sep">&middot;</span>
+                        <span>{{ site.categories.size }} categories</span>
+                        <span class="stats-sep">&middot;</span>
+                        <span>since {{ site.posts.last.date | date: "%Y" }}</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Blog Stats -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="blog-stats">
-                <span>{{ site.posts.size }} posts</span>
-                <span class="stats-sep">&middot;</span>
-                <span>{{ site.categories.size }} categories</span>
-                <span class="stats-sep">&middot;</span>
-                <span>since {{ site.posts.last.date | date: "%Y" }}</span>
             </div>
         </div>
     </div>
@@ -94,7 +95,7 @@ description: "Backend development blog by DoYoon Kim — Spring, JVM, Kotlin, Sy
     {% if post.url == pin_url %}{% assign is_pinned = true %}{% break %}{% endif %}
   {% endfor %}
   {% if is_pinned %}{% continue %}{% endif %}
-<article class="post-item" data-tags="{{ post.tags | join: ',' | downcase }}" data-category="{{ post.categories | first | downcase }}">
+<article class="post-item" data-tags="{{ post.tags | join: ',' | downcase }}" data-category="{{ post.categories | first | downcase }}" style="--item-accent: var(--cat-{{ post.categories | first | downcase }})">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-item-title"><span class="cat-dot" style="background: var(--cat-{{ post.categories | first | downcase }})"></span>{{ post.title }}</h2>
         {% if post.subtitle %}

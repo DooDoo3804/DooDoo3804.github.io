@@ -1,28 +1,95 @@
-/* --- Author Hero Section --- */
+/* --- Author Hero Section: terminal window (LEO-8 visual renewal) ---
+   Replaces the old light "card with a code snippet floating in it" hero.
+   The whole hero is now one dark editor-window surface — same --chrome-*
+   tokens as the nav bar and the 404 page, so the three read as one system
+   (Gestalt: uniform connectedness) — with a much larger, heavier name for
+   immediate visual impact (Von Restorff) on both light and dark site themes. */
+.terminal-hero {
+    margin: 32px 0 28px;
+    background: var(--chrome-bg-raised);
+    border: 1px solid var(--chrome-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.terminal-hero-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--chrome-bg);
+    border-bottom: 1px solid var(--chrome-border);
+}
+
+.chrome-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.chrome-dot--red { background: var(--chrome-dot-red); }
+.chrome-dot--yellow { background: var(--chrome-dot-yellow); }
+.chrome-dot--green { background: var(--chrome-dot-green); }
+
+.terminal-hero-path {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--chrome-text-muted);
+}
+
+.terminal-hero-body {
+    padding: 32px 28px 28px;
+}
+
 .hero-intro {
-    margin-bottom: 16px;
+    min-width: 0;
+}
+
+.hero-prompt {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--chrome-text-muted);
+    margin: 0 0 6px;
 }
 
 .hero-name {
     font-family: var(--font-display);
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-size: clamp(2.25rem, 1.7rem + 2.5vw, 3.25rem);
+    font-weight: 800;
+    color: #fff;
     margin: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.hero-cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.85em;
+    margin-left: 0.1em;
+    background: var(--chrome-accent);
+    vertical-align: text-bottom;
+    animation: hero-cursor-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-cursor { animation: none; opacity: 1; }
+}
+
+@keyframes hero-cursor-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
 }
 
 .hero-role {
     font-family: var(--font-mono);
-    font-size: 15px;
-    color: var(--accent-secondary);
-    margin: 4px 0 0;
+    font-size: 16px;
+    color: var(--chrome-accent);
+    margin: 8px 0 0;
     font-weight: 400;
-}
-
-.author-hero {
-    padding: 40px 0 40px;
 }
 
 .author-hero-inner {
@@ -38,24 +105,24 @@
     flex-shrink: 0;
     object-fit: cover;
     margin-top: 4px;
+    border: 2px solid var(--chrome-border);
 }
 
 .author-hero-code {
-    flex: 1;
+    margin-top: 24px;
     min-width: 0;
 }
 
 .hero-code-block {
-    background: #1e1e2e;  /* Catppuccin Base */
-    color: #cdd6f4;
-    border-radius: var(--radius-md);
-    padding: 20px 24px;
+    background: none;
+    color: var(--chrome-text);
+    padding: 0;
     font-family: var(--font-mono);
     font-size: 14px;
     line-height: 1.7;
     margin: 0;
     overflow-x: auto;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: none;
 }
 
 .hero-code-block code {
@@ -80,20 +147,22 @@
     text-decoration: underline;
 }
 
-[data-theme="dark"] .hero-code-block {
-    border: 1px solid var(--terminal-border);
-}
-
 /* Blog Stats */
 .blog-stats {
     font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--text-secondary);
-    margin-top: 24px;
+    color: var(--chrome-text-muted);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--chrome-border);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+}
+
+.blog-stats-prompt {
+    color: var(--chrome-accent);
 }
 
 .stats-sep {
@@ -101,12 +170,12 @@
 }
 
 @media (max-width: 576px) {
-    .author-hero { padding: 40px 0 24px; }
-    .hero-name { font-size: 26px; }
-    .hero-role { font-size: 13px; }
+    .terminal-hero-body { padding: 24px 20px 20px; }
+    .hero-name { font-size: 2rem; }
+    .hero-role { font-size: 14px; }
     .author-hero-inner {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 12px;
     }
     .author-hero-code {
@@ -177,38 +246,43 @@ body.has-mobile-toc #back-to-top {
     }
 }
 
-/* --- Code Block Enhancements --- */
-.post-container pre {
+/* --- Code Block Enhancements ---
+   LEO-8: code blocks are now always-dark "editor window" chrome regardless
+   of site theme (the same reasoning as --chrome-* for nav/hero: a dark
+   syntax theme reads as a deliberate editor surface, the way most IDEs keep
+   a dark code theme even in a light UI). The 3-dot title-bar strip ties
+   code blocks visually to the hero terminal and the 404 page without any
+   extra markup — it's drawn with background-image so no DOM/JS change is
+   needed, and it stays put (background-attachment default) while the code
+   scrolls horizontally underneath. */
+/* Grouped selector, not split rules: `pre.highlight` is simultaneously a
+   descendant of `.highlighter-rouge .highlight` (_syntax.scss resets its
+   padding/border/background to 0/0/none there) and of plain `.post-container
+   pre`. Declaring all three selectors together means whichever one the
+   cascade picks for specificity, the values are identical — no more
+   fighting a higher-specificity reset rule in another file. */
+.post-container pre,
+.post-container .highlighter-rouge .highlight pre,
+.post-container .rouge-code pre {
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--chrome-border);
     position: relative;
     margin: 1.5em 0;
-    padding: 20px 24px;
+    padding: 38px 24px 20px;
     min-height: 48px;
     font-size: 14px;
     font-family: 'JetBrains Mono', var(--font-mono);
     overflow-x: auto;
-    background: #f6f8fa;
+    background-color: var(--code-bg);
+    /* Layers paint first-on-top: dots must precede the opaque bar strip,
+       or the bar (same region, y 0-34px) covers them entirely. */
+    background-image:
+        radial-gradient(circle 4px at 20px 17px, var(--chrome-dot-red) 99%, transparent 100%),
+        radial-gradient(circle 4px at 36px 17px, var(--chrome-dot-yellow) 99%, transparent 100%),
+        radial-gradient(circle 4px at 52px 17px, var(--chrome-dot-green) 99%, transparent 100%),
+        linear-gradient(to bottom, var(--chrome-bg) 0, var(--chrome-bg) 34px, transparent 34px);
+    background-repeat: no-repeat;
     box-shadow: var(--shadow-sm);
-}
-
-/* Extra top space only when a language label is present (added by JS) */
-.post-container pre.has-lang-label {
-    padding-top: 40px;
-}
-
-[data-theme="dark"] .post-container pre {
-    background: var(--code-bg-dark);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Override hux-blog.min.css specificity - ensure label space */
-.post-container .highlighter-rouge .highlight pre,
-.post-container .rouge-code pre {
-    padding-top: 1em;
-    padding-bottom: 1.6em;
 }
 
 /* Code blocks same width as body text; breakout on large screens.
@@ -234,41 +308,36 @@ body.has-mobile-toc #back-to-top {
     }
 }
 
-/* 코드블록 언어 라벨 — 좌상단 배치 (Sprint 86) */
+/* 코드블록 언어 라벨 — 타이틀 바 안, 닷 우측에 배치 (Sprint 86, LEO-8 재배치) */
 .code-lang-label {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 8px;
+    left: 68px;
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    padding: 4px 12px;
-    background: rgba(0, 0, 0, 0.16);
-    color: var(--text-secondary);
-    border-radius: 0 0 6px 0;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--chrome-text-muted);
+    border-radius: var(--radius-sm);
     line-height: 1.4;
     user-select: none;
     z-index: 1;
 }
 
-[data-theme="dark"] .code-lang-label {
-    color: rgba(205, 214, 244, 0.75);
-    background: rgba(255, 255, 255, 0.14);
-}
-
 .code-copy-btn {
     position: absolute;
-    top: 8px;
+    top: 7px;
     right: 8px;
     padding: 4px 10px;
     font-family: var(--font-mono);
     font-size: 12px;
     line-height: 1.4;
-    background: var(--bg-surface);
-    color: var(--text-muted);
-    border: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--chrome-text-muted);
+    border: 1px solid var(--chrome-border);
     border-radius: var(--radius-sm);
     cursor: pointer;
     opacity: 0;
@@ -797,10 +866,6 @@ code.has-line-numbers .code-line::before {
     border-radius: 4px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-}
-
-[data-theme="dark"] .post-container pre code {
-    background: transparent;
 }
 
 .post-container pre code {

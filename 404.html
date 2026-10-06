@@ -11,18 +11,38 @@ robots: noindex
 
 <div class="container" style="padding-top: 80px; padding-bottom: 80px;">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="text-align: center;">
-            <h1 style="font-size: 6rem; font-weight: 700; margin: 0; color: var(--text-primary); letter-spacing: -2px;">404</h1>
-            <p style="font-size: 1.25rem; color: var(--text-muted); margin: 16px 0 40px;">Page not found.</p>
-            <a href="{{ site.baseurl }}/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600; font-size: 1rem;">&larr; Back to Home</a>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 error-404-content">
 
-            <div style="margin-top: 56px; text-align: left; max-width: 480px; margin-left: auto; margin-right: auto;">
-                <h3 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Recent Posts</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
+            <div class="error-terminal">
+                <div class="error-terminal-header" aria-hidden="true">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">doodoo@blog:~</span>
+                </div>
+                <div class="error-terminal-body">
+                    <p><span class="prompt">$</span>cd <span class="error-path">{{ page.url }}</span></p>
+                    <p><span class="error-status">Error:</span> <span class="error-output">no such file or directory</span></p>
+                    <p class="error-humor">// 이 페이지는 존재하지 않습니다<span class="cursor">_</span></p>
+                </div>
+            </div>
+
+            <p class="error-subtitle">찾으시는 페이지가 없습니다. 주소가 바뀌었거나 삭제되었을 수 있어요.</p>
+
+            <div class="error-actions">
+                <a href="{{ site.baseurl }}/" class="btn-home">&larr; Back to Home</a>
+                <a href="{{ site.baseurl }}/archive.html" class="btn-archive">Browse Archive</a>
+            </div>
+
+            <div class="error-recent-posts">
+                <h3 class="error-recent-title">Recent Posts</h3>
+                <ul class="error-recent-list">
                     {% for post in site.posts limit:3 %}
-                    <li style="margin-bottom: 12px;">
-                        <a href="{{ post.url | prepend: site.baseurl }}" style="color: var(--text-primary); text-decoration: none; font-weight: 500;">{{ post.title }}</a>
-                        <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 8px;">{{ post.date | date: "%Y.%m.%d" }}</span>
+                    <li>
+                        <a href="{{ post.url | prepend: site.baseurl }}">
+                            <span class="error-recent-post-title">{{ post.title }}</span>
+                            <span class="error-recent-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>

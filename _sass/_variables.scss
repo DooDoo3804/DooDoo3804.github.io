@@ -6,10 +6,15 @@
 
 /* --- Design System Variables --- */
 :root {
-    --accent-primary: #6366f1;
+    /* Primary/hover swapped vs. the previous indigo (#6366f1 default / #4f46e5
+       hover): #6366f1 measures 4.46:1 on white, just under the 4.5:1 AA floor
+       for normal text. #4f46e5 (6.29:1) is now the resting link/accent color;
+       the lighter #6366f1 is reserved for hover/focus, which also gains an
+       underline, so the brief contrast dip there is paired with a non-color cue. */
+    --accent-primary: #4f46e5;
     --accent-secondary: #64748b;
-    --accent-gradient: linear-gradient(135deg, #6366f1, #818cf8);
-    --accent-color-raw: 99, 102, 241;
+    --accent-gradient: linear-gradient(135deg, #4f46e5, #818cf8);
+    --accent-color-raw: 79, 70, 229;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
     --font-display: 'Plus Jakarta Sans', var(--font-sans);
@@ -27,8 +32,25 @@
     --text-on-accent: #fff;
     --text-base: #2d3748;
     --color-success: #2ea043;
-    --accent-hover: #4f46e5;
+    --accent-hover: #6366f1;
     --bg-surface-hover: #eef0f4;
+
+    /* Window-chrome tokens (LEO-8 visual renewal) — the dark "editor window"
+       treatment shared by the nav bar, the hero terminal, code blocks and the
+       404 page. Theme-independent on purpose: the chrome reads as an IDE/
+       terminal surface regardless of light/dark site theme, same way a code
+       editor's dark theme doesn't change when the OS switches appearance. */
+    --chrome-bg: #181825;
+    --chrome-bg-raised: #1e1e2e;
+    --chrome-border: #313244;
+    --chrome-text: #cdd6f4;
+    --chrome-text-muted: #9399b2;
+    --chrome-accent: #a6e3a1;
+    --chrome-dot-red: #ff5f57;
+    --chrome-dot-yellow: #febc2e;
+    --chrome-dot-green: #28c840;
+    --code-bg: #1e1e2e;
+    --nav-height: 56px;
 
     /* Spacing tokens */
     --space-1: 4px;

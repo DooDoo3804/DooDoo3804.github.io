@@ -3,26 +3,14 @@
    Only rules that CSS variables alone cannot handle.
    ======================================== */
 
-[data-theme="dark"] .navbar-custom {
-    background: rgba(13, 17, 23, 0.95);
-    border-bottom: 1px solid var(--border-light);
-    backdrop-filter: blur(10px);
-}
-
-[data-theme="dark"] .navbar-custom.is-fixed {
-    background: rgba(13, 17, 23, 0.97);
-}
+/* .navbar-custom is theme-independent dark chrome now — see _navbar.scss */
 
 [data-theme="dark"] .post-container img:not(.lightbox-img) {
     filter: brightness(0.9);
 }
 
 /* inline code dark styles moved to _components.scss */
-
-[data-theme="dark"] .post-container pre code {
-    background: transparent;
-    border: none;
-}
+/* .post-container pre code is transparent unconditionally now — see _components.scss */
 
 [data-theme="dark"] .pager li > a {
     background: var(--bg-surface-raised);

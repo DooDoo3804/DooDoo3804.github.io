@@ -4,10 +4,13 @@
     padding: 60px 20px 80px;
 }
 
+/* LEO-8: same --chrome-* dark "editor window" surface as the hero terminal
+   and code blocks (theme-independent on purpose — see _variables.scss) so
+   the 404 page reads as part of the same system instead of a one-off. */
 .error-terminal {
-    background: var(--bg-surface);
+    background: var(--chrome-bg-raised);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--chrome-border);
     max-width: 520px;
     margin: 0 auto 32px;
     text-align: left;
@@ -16,12 +19,12 @@
 }
 
 .error-terminal-header {
-    background: var(--bg-surface-raised);
+    background: var(--chrome-bg);
     padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 7px;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--chrome-border);
 }
 
 .error-terminal-header .dot {
@@ -30,13 +33,13 @@
     border-radius: 50%;
 }
 
-.error-terminal-header .dot.red    { background: #ff5f57; }
-.error-terminal-header .dot.yellow { background: #febc2e; }
-.error-terminal-header .dot.green  { background: #28c840; }
+.error-terminal-header .dot.red    { background: var(--chrome-dot-red); }
+.error-terminal-header .dot.yellow { background: var(--chrome-dot-yellow); }
+.error-terminal-header .dot.green  { background: var(--chrome-dot-green); }
 
 .terminal-title {
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--chrome-text-muted);
     margin-left: auto;
     margin-right: auto;
     font-family: var(--font-mono);
@@ -47,7 +50,7 @@
     font-family: var(--font-mono);
     font-size: 14px;
     line-height: 1.8;
-    color: var(--text-base);
+    color: var(--chrome-text);
 }
 
 .error-terminal-body p {
@@ -55,7 +58,7 @@
 }
 
 .prompt {
-    color: var(--color-success);
+    color: var(--chrome-accent);
     font-weight: 600;
     margin-right: 8px;
 }
@@ -66,7 +69,7 @@
 }
 
 .error-output {
-    color: var(--text-secondary);
+    color: var(--chrome-text-muted);
 }
 
 .error-humor {
@@ -75,7 +78,7 @@
 }
 
 .error-path {
-    color: var(--accent-primary);
+    color: var(--terminal-blue);
 }
 
 .error-subtitle {
@@ -88,7 +91,7 @@
 .cursor {
     display: inline-block;
     animation: blink 1s step-end infinite;
-    color: var(--accent-primary);
+    color: var(--chrome-accent);
 }
 
 @keyframes blink {
