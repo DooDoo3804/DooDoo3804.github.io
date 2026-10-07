@@ -382,67 +382,100 @@
 }
 
 /* ========================================
-   ARCHIVE PAGE — git log style
-   ======================================== */
+   ARCHIVE PAGE — git log, inside the same terminal-window chrome as the
+   homepage hero (LEO-10 structural renewal). Previously a plain unstyled
+   list on the page background — now reuses .terminal-hero/.chrome-dot so
+   Archive reads as part of the same "editor window" system as the hero,
+   code blocks and the 404 page (Gestalt: uniform connectedness) instead of
+   being the one nav destination that looks like raw HTML. Always-dark
+   chrome, same reasoning as the hero: theme-independent. */
+.archive-terminal {
+    margin: 32px 0 48px;
+}
+
+.archive-terminal-body {
+    padding: 28px 28px 20px;
+}
+
+.git-log-year:first-child .archive-year {
+    margin-top: 0;
+}
+
 .archive-year {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 32px 0 12px;
-    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 28px 0 4px;
+    color: var(--chrome-accent);
 }
 
 .archive-year-count {
-    font-family: var(--font-mono);
-    font-size: 14px;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--chrome-text-muted);
 }
 
 .git-log-entries {
     font-family: var(--font-mono);
     font-size: 13px;
+    border-top: 1px solid var(--chrome-border);
 }
 
 .git-log-entry {
     display: flex;
     align-items: baseline;
     gap: 12px;
-    padding: 6px 0;
+    padding: 9px 8px;
+    margin: 0 -8px;
+    border-radius: var(--radius-sm);
+    border-bottom: 1px solid var(--chrome-border);
     flex-wrap: wrap;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.git-log-entry:hover,
+.git-log-entry:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.git-log-entry:hover .git-message,
+.git-log-entry:focus-visible .git-message {
+    color: var(--chrome-accent);
 }
 
 .git-hash {
-    color: var(--accent-primary);
+    color: var(--chrome-dot-yellow);
     font-weight: 600;
     min-width: 56px;
 }
 
 .git-date {
-    color: var(--text-secondary);
-    min-width: 80px;
+    color: var(--chrome-text-muted);
+    min-width: 92px;
 }
 
 .git-message {
-    color: var(--text-primary);
-    text-decoration: none;
+    color: var(--chrome-text);
     flex: 1;
-}
-
-.git-message:hover {
-    color: var(--accent-primary);
+    min-width: 200px;
+    transition: color 0.15s;
 }
 
 .git-branch {
-    color: var(--text-secondary);
-    opacity: 0.6;
+    display: inline-flex;
+    align-items: center;
+    color: var(--chrome-text-muted);
+    white-space: nowrap;
 }
 
 @media (max-width: 767px) {
+    .archive-terminal-body { padding: 20px 16px 16px; }
+
     .git-log-entry {
         flex-direction: column;
-        gap: 2px;
-        padding: 8px 0;
-        border-bottom: 1px solid var(--border-light);
+        align-items: flex-start;
+        gap: 4px;
+        padding: 12px 8px;
     }
 
     .git-log-entry .git-hash,

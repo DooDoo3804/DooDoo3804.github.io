@@ -11,7 +11,7 @@
 .highlight,
 pre.highlight {
     background: var(--code-bg);
-    color: #abb2bf;
+    color: var(--code-fg);
 }
 
 .highlight pre { background: var(--code-bg); }
@@ -28,14 +28,14 @@ pre.highlight {
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd; }
 .highlight .l, .highlight .ld, .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .s1 { color: #98c379; }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il { color: #d19a66; }
-.highlight .n, .highlight .nf, .highlight .nn, .highlight .nx { color: #abb2bf; }
+.highlight .n, .highlight .nf, .highlight .nn, .highlight .nx { color: var(--code-fg); }
 .highlight .na { color: #d19a66; }
 .highlight .nb, .highlight .nc, .highlight .no, .highlight .nd, .highlight .ni, .highlight .ne, .highlight .nl, .highlight .py, .highlight .bp, .highlight .vc, .highlight .vg { color: #e5c07b; }
 .highlight .nt { color: #e06c75; }
 .language-json .highlight .s2 { color: #98c379; }
 .language-json .highlight .nt { color: #61afef; }
 .highlight .nv, .highlight .vi { color: #e06c75; }
-.highlight .o, .highlight .p { color: #abb2bf; }
+.highlight .o, .highlight .p { color: var(--code-fg); }
 .highlight .sr, .highlight .ss { color: #56b6c2; }
 .highlight .ge { font-style: italic; }
 .highlight .gs { font-weight: 700; }
@@ -60,10 +60,19 @@ pre.highlight {
     border: 1px solid var(--chrome-border);
 }
 
+/* kramdown.syntax_highlighter_opts sets span/block line_numbers: false
+   site-wide, so Rouge never emits the .rouge-table/.rouge-gutter/.rouge-code
+   wrapper — every code block is a plain <div class="highlight"><pre>. A prior
+   rule here targeted .rouge-code pre (dead, never matches) while this pre
+   rule won the cascade with --chrome-text-muted, a dimmer color than the
+   token-level #abb2bf/var(--code-fg) rules above use. Untagged
+   (language-plaintext) blocks get zero token spans, so 100% of their text
+   rendered in the dim color while tagged blocks mostly didn't — the
+   reported "코드 블럭" brightness mismatch. Fixed by matching --code-fg here. */
 .highlighter-rouge .highlight pre {
     font-size: 14px;
     line-height: 1.5;
-    color: var(--chrome-text-muted);
+    color: var(--code-fg);
     background: none;
     border: 0;
     margin: 0;
@@ -71,51 +80,10 @@ pre.highlight {
     word-wrap: normal;
 }
 
-.highlighter-rouge .highlight .rouge-table .rouge-gutter,
-.highlighter-rouge .highlight .rouge-table .rouge-code {
-    border: 0 !important;
-}
-
-.highlighter-rouge .highlight .rouge-code pre {
-    color: #abb2bf;
-}
-
-.highlighter-rouge .highlight .table-responsive {
-    margin: 0;
-    border: 0;
-}
-
-.highlighter-rouge .highlight .table {
-    margin: 0;
-    table-layout: fixed;
-}
-
-.highlighter-rouge .highlight table > tbody > tr > td {
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
-
-.highlighter-rouge .highlight table > tbody > tr > td > pre {
-    padding: 8px 10px 14px;
-}
-
-.highlighter-rouge .highlight td.rouge-gutter {
-    width: 56px;
-}
-
 @media (max-width: 480px) {
     .highlighter-rouge .highlight {
         margin-left: -15px;
         margin-right: -15px;
         border-radius: 0;
-    }
-
-    .highlighter-rouge .highlight td.rouge-gutter {
-        width: 36px;
-    }
-
-    .highlighter-rouge .highlight table > tbody > tr > td > pre {
-        padding: 14px 10px;
     }
 }

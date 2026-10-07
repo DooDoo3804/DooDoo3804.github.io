@@ -258,12 +258,11 @@ body.has-mobile-toc #back-to-top {
 /* Grouped selector, not split rules: `pre.highlight` is simultaneously a
    descendant of `.highlighter-rouge .highlight` (_syntax.scss resets its
    padding/border/background to 0/0/none there) and of plain `.post-container
-   pre`. Declaring all three selectors together means whichever one the
+   pre`. Declaring both selectors together means whichever one the
    cascade picks for specificity, the values are identical — no more
    fighting a higher-specificity reset rule in another file. */
 .post-container pre,
-.post-container .highlighter-rouge .highlight pre,
-.post-container .rouge-code pre {
+.post-container .highlighter-rouge .highlight pre {
     border-radius: var(--radius-lg);
     border: 1px solid var(--chrome-border);
     position: relative;

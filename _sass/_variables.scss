@@ -50,6 +50,11 @@
     --chrome-dot-yellow: #febc2e;
     --chrome-dot-green: #28c840;
     --code-bg: #1e1e2e;
+    /* Default/unspanned token text color inside code blocks (One Dark
+       foreground). Same value the .n/.nx/.o/.p token rules in _syntax.scss
+       already use explicitly — named so untagged (language-plaintext) blocks,
+       which get zero token spans, can share it instead of drifting. */
+    --code-fg: #abb2bf;
     --nav-height: 56px;
 
     /* Spacing tokens */
@@ -93,6 +98,16 @@
     --cat-jvm: #ef4444;           /* red-500 */
     --cat-system-design: #ec4899; /* pink-500 (was dup of jvm) */
     --cat-backend: #f59e0b;       /* amber-500 (was dup of db) */
+
+    /* Aliases under the real post-category slugs (algorithm/database), not
+       the short tokens above (algo/db). .cat-card--algorithm/--database in
+       _pages.scss already remap through these short tokens via --cat-accent,
+       but any direct var(--cat-{{ post.categories | first | downcase }})
+       usage (archive git-log dots, homepage pinned-post dots) needs the
+       real-slug name to resolve at all — without this it silently renders
+       an invisible dot for exactly these two categories. */
+    --cat-algorithm: var(--cat-algo);
+    --cat-database: var(--cat-db);
 
     /* Text/icon variants for the 5 categories whose -500 accent fails 3:1 on
        white/near-white card chips (algo 2.28:1, db 2.80:1, react 2.43:1,
