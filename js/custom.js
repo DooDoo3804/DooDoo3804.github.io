@@ -266,8 +266,7 @@
             var block = btn.closest('.highlighter-rouge');
             if (!block) return;
 
-            // Get code text from the rouge-code cell (excludes line numbers)
-            var codeCell = block.querySelector('.rouge-code code') || block.querySelector('code');
+            var codeCell = block.querySelector('code');
             var text;
             if (codeCell) {
                 text = codeCell.textContent;

@@ -44,10 +44,18 @@
   margin-right: -15px;
 }
 
-/* shared column base */
+/* shared column base
+   min-width: 0 overrides the flex-item default (min-width: auto, i.e. the
+   column's max-content size). Without it, a wide child — a table with many
+   columns, a long code line — sets the column's shrink floor, so below the
+   col-lg-8/col-md-10 breakpoints (no explicit width to override that floor)
+   the whole column renders at content's intrinsic width instead of the
+   viewport, and .row's overflow clips everything else past the edge: body
+   text cut off mid-sentence on mobile with no scrollbar to reach it. */
 [class*="col-"] {
   position: relative;
   min-height: 1px;
+  min-width: 0;
   padding-left: 15px;
   padding-right: 15px;
 }

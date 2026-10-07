@@ -60,7 +60,7 @@
    ======================================== */
 :focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 
-.author-hero :focus-visible,
+.terminal-hero :focus-visible,
 .search-page :focus-visible {
     outline-color: var(--terminal-blue);
 }
@@ -101,7 +101,7 @@ pre { overflow-x: auto; }
 .transitions-enabled .mobile-share-bar,
 .transitions-enabled .code-lang-label,
 .transitions-enabled .code-copy-btn,
-.transitions-enabled .author-hero,
+.transitions-enabled .terminal-hero,
 .transitions-enabled .author-hero-mesh,
 .transitions-enabled .search-page,
 .transitions-enabled .archive-container,
